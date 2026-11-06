@@ -1,0 +1,3 @@
+# Arquivos de dist/ que NÃO sobem para o Cloudflare Workers
+# (.htaccess só serve para hospedagem Apache/LiteSpeed)
+.htaccess

@@ -1,0 +1,39 @@
+/**
+ * Cloudflare Workers — site 100% estático (Workers Static Assets, sem código de Worker).
+ * Requisições a arquivos estáticos não contam como invocações do Worker (grátis e ilimitadas).
+ *
+ * Deploy: npx wrangler deploy  → roda o build (npm run build → ./dist) e publica.
+ * No Workers Builds (GitHub) basta o comando de implantação `npx wrangler deploy`;
+ * o comando de build do painel pode ficar vazio.
+ */
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "venturavet",
+  "compatibility_date": "2026-11-04",
+
+  // Executado automaticamente antes de `wrangler deploy`, `versions upload` e `dev`
+  "build": {
+    "command": "npm run build"
+  },
+
+  "assets": {
+    "directory": "./dist",
+    // /quem-somos → /quem-somos/ (as páginas são pasta/index.html, como no WordPress)
+    "html_handling": "auto-trailing-slash",
+    // URL inexistente → dist/404.html com status 404
+    "not_found_handling": "404-page"
+  },
+
+  // URL de teste <nome>.<subdominio>.workers.dev e URLs de prévia por versão.
+  // Depois que o domínio próprio estiver no ar, mude para false para não haver cópia indexável.
+  "workers_dev": true,
+  "preview_urls": true
+
+  // Domínio próprio: descomente SÓ na hora de virar a chave (o WordPress sai do ar nesse momento).
+  // Antes, apague no DNS da Cloudflare os registros A/AAAA/CNAME de venturavet.com.br —
+  // o deploy recusa um hostname que já tem registro DNS.
+  // ,
+  // "routes": [
+  //   { "pattern": "venturavet.com.br", "custom_domain": true }
+  // ]
+}

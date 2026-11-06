@@ -1,0 +1,128 @@
+<!---
+title: Contato | Agende na Ventura Vet — Paraíso, São Paulo
+description: Fale com a Ventura Vet: WhatsApp (11) 95048-1577, telefone (11) 3884-7758 ou formulário. Rua Otávio Nébias, 190, Paraíso, São Paulo – SP. Veja horários e mapa.
+path: /contato/
+type: contact
+breadcrumb: [["Contato"]]
+ogSource: fachada-ventura-vet-paraiso.png
+priority: 0.8
+--->
+
+<section class="page-hero page-hero--plain">
+  <div class="wrap">
+    <x-breadcrumbs></x-breadcrumbs>
+    <h1>Como podemos <em>ajudar?</em></h1>
+    <p class="page-hero__lede">Preencha os dados abaixo e a mensagem abre pronta no WhatsApp da clínica. Se preferir, ligue para {{site.phone.display}} ou mande um e-mail.</p>
+  </div>
+</section>
+
+<section class="section section--tight">
+  <div class="wrap contact">
+    <form class="form" data-contact-form data-whatsapp="{{site.whatsapp.number}}" data-email="{{site.email}}" novalidate>
+      <div class="form__row">
+        <div class="field">
+          <label for="f-nome">Seu nome</label>
+          <input id="f-nome" name="nome" autocomplete="name" required aria-describedby="f-nome-erro">
+          <p class="field__error" id="f-nome-erro" aria-live="polite"></p>
+        </div>
+        <div class="field">
+          <label for="f-telefone">Telefone com DDD</label>
+          <input id="f-telefone" name="telefone" type="tel" inputmode="tel" autocomplete="tel-national" placeholder="(11) 90000-0000" required aria-describedby="f-telefone-erro">
+          <p class="field__error" id="f-telefone-erro" aria-live="polite"></p>
+        </div>
+      </div>
+      <div class="form__row">
+        <div class="field">
+          <label for="f-pet">Nome do pet</label>
+          <input id="f-pet" name="pet" autocomplete="off" required aria-describedby="f-pet-erro">
+          <p class="field__error" id="f-pet-erro" aria-live="polite"></p>
+        </div>
+        <fieldset class="field">
+          <legend>Espécie</legend>
+          <div class="options">
+            <label class="option"><input type="radio" name="especie" value="cão" checked><span>Cão</span></label>
+            <label class="option"><input type="radio" name="especie" value="gato"><span>Gato</span></label>
+          </div>
+        </fieldset>
+      </div>
+      <div class="form__row">
+        <div class="field">
+          <label for="f-raca">Raça <small>(opcional)</small></label>
+          <input id="f-raca" name="raca" autocomplete="off">
+        </div>
+        <div class="field">
+          <label for="f-idade">Idade <small>(opcional)</small></label>
+          <input id="f-idade" name="idade" autocomplete="off" placeholder="Ex.: 3 anos">
+        </div>
+      </div>
+      <fieldset class="field">
+        <legend>Do que você precisa?</legend>
+        <div class="options">
+          <label class="option"><input type="radio" name="necessidade" value="Consulta" checked><span>Consulta</span></label>
+          <label class="option"><input type="radio" name="necessidade" value="Exame"><span>Exame</span></label>
+          <label class="option"><input type="radio" name="necessidade" value="Vacina"><span>Vacina</span></label>
+          <label class="option"><input type="radio" name="necessidade" value="Cirurgia"><span>Cirurgia</span></label>
+          <label class="option"><input type="radio" name="necessidade" value="Castração"><span>Castração</span></label>
+          <label class="option"><input type="radio" name="necessidade" value="Limpeza de tártaro"><span>Limpeza de tártaro</span></label>
+          <label class="option"><input type="radio" name="necessidade" value="Day Care / Hotel"><span>Day Care / Hotel</span></label>
+          <label class="option"><input type="radio" name="necessidade" value="Natação"><span>Natação</span></label>
+          <label class="option"><input type="radio" name="necessidade" value="Banho e tosa"><span>Banho e tosa</span></label>
+        </div>
+      </fieldset>
+      <div class="field">
+        <label for="f-email">E-mail <small>(opcional)</small></label>
+        <input id="f-email" name="email" type="email" autocomplete="email">
+      </div>
+      <div class="field">
+        <label for="f-mensagem">Mais detalhes <small>(opcional)</small></label>
+        <textarea id="f-mensagem" name="mensagem" placeholder="Conte o que está acontecendo ou o melhor dia e horário para você."></textarea>
+      </div>
+      <label class="consent">
+        <input type="checkbox" name="consentimento" id="f-consentimento" required aria-describedby="f-consentimento-erro">
+        <span>Concordo em enviar estes dados à Ventura Vet para receber atendimento, conforme a <a href="/politica-de-privacidade/">política de privacidade</a>.</span>
+      </label>
+      <p class="field__error" id="f-consentimento-erro" aria-live="polite"></p>
+      <div class="form__actions">
+        <button class="btn" type="submit" value="whatsapp"><x-icon name="whatsapp"></x-icon>Enviar pelo WhatsApp</button>
+        <button class="btn btn--ghost" type="submit" value="email"><x-icon name="mail"></x-icon>Enviar por e-mail</button>
+      </div>
+      <p class="form__status" data-form-status role="status"></p>
+      <p class="form__hint">Os dados não ficam salvos no site: vão direto para o WhatsApp ou o e-mail da clínica.</p>
+    </form>
+
+    <aside class="contact__aside">
+      <div class="contact__card">
+        <h2>Visite a clínica</h2>
+        <x-nap></x-nap>
+      </div>
+      <div class="contact__card">
+        <h2>Horários</h2>
+        <x-hours></x-hours>
+      </div>
+      <x-map></x-map>
+    </aside>
+  </div>
+</section>
+
+<section class="section section--nevoa" id="trabalhe-conosco" aria-labelledby="trabalhe-titulo">
+  <div class="wrap split">
+    <div>
+      <h2 id="trabalhe-titulo" data-reveal>Trabalhe conosco</h2>
+      <p class="prose" data-reveal style="--i:1">Veterinários, auxiliares, monitores de day care e profissionais de banho e tosa: envie seu currículo para <a href="mailto:{{site.email}}?subject=Trabalhe%20conosco">{{site.email}}</a> com a área de interesse no assunto.</p>
+    </div>
+    <div>
+      <a class="btn btn--dark" href="mailto:{{site.email}}?subject=Trabalhe%20conosco"><x-icon name="mail"></x-icon>Enviar currículo</a>
+    </div>
+  </div>
+</section>
+
+<section class="section faq" id="perguntas" aria-labelledby="faq-titulo">
+  <div class="wrap faq__grid">
+    <header class="faq__head"><h2 id="faq-titulo">Antes de vir</h2></header>
+    <div class="faq__list">
+      <details class="faq__item" name="faq-contato"><summary>Onde fica a Ventura Vet?</summary><div class="faq__answer"><p>{{site.address.full}}. É no bairro Paraíso, zona sul de São Paulo.</p></div></details>
+      <details class="faq__item" name="faq-contato"><summary>Qual o jeito mais rápido de agendar?</summary><div class="faq__answer"><p>Pelo WhatsApp {{site.whatsapp.display}}. Você também pode ligar para {{site.phone.display}} ou mandar um e-mail para {{site.email}}.</p></div></details>
+      <details class="faq__item" name="faq-contato"><summary>O que levar na primeira visita?</summary><div class="faq__answer"><p>A carteira de vacinação do pet e, se houver, exames e receitas anteriores. Para day care, hotel e natação, a carteira atualizada é obrigatória.</p></div></details>
+    </div>
+  </div>
+</section>

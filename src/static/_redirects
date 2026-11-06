@@ -1,0 +1,17 @@
+# Cloudflare Workers (Static Assets) / Pages / Netlify — URLs antigas do WordPress → novas (301)
+/banho-e-tosa-2/            /banho-e-tosa/               301
+/banho-e-tosa-2             /banho-e-tosa/               301
+/feed/                      /feed.xml                    301
+/feed                       /feed.xml                    301
+/comments/feed/             /feed.xml                    301
+/sitemap_index.xml          /sitemap.xml                 301
+/post-sitemap.xml           /sitemap.xml                 301
+/page-sitemap.xml           /sitemap.xml                 301
+/category-sitemap.xml       /sitemap.xml                 301
+/post_tag-sitemap.xml       /sitemap.xml                 301
+/regras-day-care-ventura-2022.pdf  /day-care-e-hotel/#perguntas  301
+/blog/page/*                /blog/                       301
+/category/:cat/page/*       /category/:cat/              301
+/category/:cat/feed/        /feed.xml                    301
+/tag/*                      /blog/                       301
+/author/*                   /quem-somos/                 301

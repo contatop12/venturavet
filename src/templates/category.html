@@ -1,0 +1,13 @@
+<section class="page-hero page-hero--plain">
+  <div class="wrap">
+    <x-breadcrumbs></x-breadcrumbs>
+    <h1>{{category.name}}</h1>
+    <p class="page-hero__lede">{{category.count}} artigos da equipe Ventura Vet sobre saúde, comportamento e bem-estar de cães e gatos.</p>
+  </div>
+</section>
+<section class="section section--tight blog-list">
+  <div class="wrap">
+    <x-blog-grid category="{{category.slug}}"></x-blog-grid>
+  </div>
+</section>
+<x-include src="cta-final"></x-include>

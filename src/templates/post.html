@@ -1,0 +1,63 @@
+<article class="article">
+  <header class="article__head">
+    <div class="wrap wrap--article">
+      <x-breadcrumbs></x-breadcrumbs>
+      <a class="article__cat" href="{{postCategoryUrl}}">{{postCategory}}</a>
+      <h1>{{post.title}}</h1>
+      <p class="article__lede">{{post.description}}</p>
+      <p class="article__meta">
+        <span>Por <a href="/quem-somos/">Equipe Ventura Vet</a></span>
+        <time datetime="{{post.datePublished}}">{{postDate}}</time>
+        <span>{{post.readingMinutes}} min de leitura</span>
+        <span>{{postUpdated}}</span>
+      </p>
+    </div>
+  </header>
+  <div class="wrap wrap--article">
+    {{{postImage}}}
+  </div>
+  <div class="wrap article__layout">
+    <aside class="article__aside">
+      {{{toc}}}
+      <div class="share" aria-label="Compartilhar">
+        <p class="share__title">Compartilhar</p>
+        <a class="share__btn" href="https://wa.me/?text={{shareText}}" target="_blank" rel="noopener" aria-label="Compartilhar no WhatsApp"><x-icon name="whatsapp"></x-icon></a>
+        <a class="share__btn" href="https://www.facebook.com/sharer/sharer.php?u={{shareUrl}}" target="_blank" rel="noopener" aria-label="Compartilhar no Facebook"><x-icon name="facebook"></x-icon></a>
+        <button class="share__btn" type="button" data-copy-link aria-label="Copiar link do artigo"><x-icon name="link"></x-icon></button>
+      </div>
+    </aside>
+    <div class="prose article__body" data-article>
+      {{{post.content}}}
+      <aside class="article__note" data-llms-skip>
+        <x-icon name="stethoscope"></x-icon>
+        <p>Este conteúdo é informativo e não substitui a avaliação de um médico-veterinário. Notou algum sintoma no seu pet? <a data-wa="Olá! Li um artigo no blog e quero agendar uma avaliação para o meu pet.">Fale com a equipe da Ventura</a>.</p>
+      </aside>
+    </div>
+  </div>
+</article>
+
+<section class="section article-cta" aria-labelledby="cta-post">
+  <div class="wrap">
+    <div class="article-cta__box">
+      <x-icon name="{{ctaService.icon}}" class="article-cta__icon"></x-icon>
+      <div>
+        <h2 id="cta-post">{{ctaService.name}} no Paraíso</h2>
+        <p>{{ctaService.short}}</p>
+      </div>
+      <div class="article-cta__actions">
+        <a class="btn" data-wa="{{ctaService.waMessage}}"><x-icon name="whatsapp"></x-icon>Agendar pelo WhatsApp</a>
+        <a class="btn btn--ghost" href="{{ctaService.path}}">Saiba mais</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section related" aria-labelledby="relacionados">
+  <div class="wrap">
+    <header class="section-head section-head--row">
+      <h2 id="relacionados">Continue lendo</h2>
+      <a class="link-more" href="/blog/">Todos os artigos</a>
+    </header>
+    <div class="post-grid">{{{related}}}</div>
+  </div>
+</section>

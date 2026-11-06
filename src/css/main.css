@@ -1,0 +1,11 @@
+/* =====================================================================
+   CSS principal (carregado de forma assíncrona). Tokens em critical.css.
+   ===================================================================== */
+@import './components/nav.css';
+@import './components/sections.css';
+@import './components/home.css';
+@import './components/services.css';
+@import './components/blog.css';
+@import './components/forms.css';
+@import './components/footer.css';
+@import './components/motion.css';

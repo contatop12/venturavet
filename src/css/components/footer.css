@@ -1,0 +1,18 @@
+/* ---------- Rodapé ---------- */
+.footer { padding-block: clamp(3rem, 2rem + 4vw, 5rem) 1.5rem; background: var(--nevoa); }
+.footer__grid { display: grid; grid-template-columns: 1.3fr 0.8fr 0.8fr 1.4fr; gap: clamp(1.5rem, 4vw, 3.5rem); }
+.footer__logo { display: inline-block; width: 10rem; padding: 0.75rem 1rem; border-radius: var(--r-md); background: var(--branco); }
+.footer__brand p { margin-top: 1.25rem; color: var(--tinta-2); font-size: 0.95rem; max-width: 22rem; }
+.footer__social { display: flex; gap: 0.5rem; margin-top: 1.25rem; a { display: grid; place-items: center; width: 2.75rem; height: 2.75rem; border-radius: 999px; background: var(--branco); transition: background-color 0.2s, color 0.2s; &:hover { background: var(--tinta); color: var(--branco); } } }
+.footer__title { font-family: var(--f-display); font-weight: 850; font-size: 1.1rem; margin-bottom: 0.75rem; }
+.footer__col ul { display: grid; gap: 0.1rem; }
+.footer__col a:not(.nap a) { display: inline-flex; min-height: 2.5rem; align-items: center; text-decoration: none; color: var(--tinta-2); &:hover, &[aria-current='page'] { color: var(--tinta); text-decoration: underline; } }
+.footer__contact { display: grid; gap: 0.5rem; align-content: start; }
+.footer__legal {
+  display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0.5rem 2rem; margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid var(--linha);
+  font-size: 0.85rem; color: var(--tinta-2);
+  ul { display: flex; flex-wrap: wrap; gap: 0.25rem 1.25rem; }
+  a { color: inherit; &:hover { color: var(--tinta); } }
+}
+@media (max-width: 1000px) { .footer__grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 560px) { .footer__grid { grid-template-columns: 1fr; } .footer { padding-bottom: 6rem; } }

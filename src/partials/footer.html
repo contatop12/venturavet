@@ -1,0 +1,50 @@
+<footer class="footer">
+  <div class="wrap footer__grid">
+    <div class="footer__brand">
+      <a class="footer__logo" href="/" aria-label="Ventura Vet — página inicial">
+        <x-img src="logo-ventura.png" alt="Ventura Veterinária &amp; Pet Shop" widths="280,420" sizes="160px"></x-img>
+      </a>
+      <p>Clínica veterinária e pet shop no Paraíso, em São Paulo, desde {{site.foundingYear}}. Saúde, cuidado e diversão para cães e gatos em um só endereço.</p>
+      <ul class="footer__social">
+        <li><a href="{{site.social.instagram}}" target="_blank" rel="noopener" aria-label="Instagram"><x-icon name="instagram"></x-icon></a></li>
+        <li><a href="{{site.social.facebook}}" target="_blank" rel="noopener" aria-label="Facebook"><x-icon name="facebook"></x-icon></a></li>
+        <li><a href="{{site.social.youtube}}" target="_blank" rel="noopener" aria-label="YouTube"><x-icon name="youtube"></x-icon></a></li>
+        <li><a href="{{site.social.linkedin}}" target="_blank" rel="noopener" aria-label="LinkedIn"><x-icon name="linkedin"></x-icon></a></li>
+      </ul>
+    </div>
+    <nav class="footer__col" aria-label="Serviços">
+      <p class="footer__title">Serviços</p>
+      <ul>
+        <li><a href="/clinica-veterinaria/">Clínica Veterinária</a></li>
+        <li><a href="/laboratorio/">Laboratório e exames</a></li>
+        <li><a href="/day-care-e-hotel/">Day Care e Hotel</a></li>
+        <li><a href="/natacao/">Natação para cães</a></li>
+        <li><a href="/banho-e-tosa/">Banho e Tosa</a></li>
+      </ul>
+    </nav>
+    <nav class="footer__col" aria-label="Institucional">
+      <p class="footer__title">Ventura</p>
+      <ul>
+        <li><a href="/quem-somos/">Quem somos</a></li>
+        <li><a href="/servicos/">Todos os serviços</a></li>
+        <li><a href="/blog/">Blog</a></li>
+        <li><a href="/contato/">Contato</a></li>
+        <li><a href="/contato/#trabalhe-conosco">Trabalhe conosco</a></li>
+      </ul>
+    </nav>
+    <div class="footer__col footer__contact">
+      <p class="footer__title">Visite ou fale com a gente</p>
+      <x-nap></x-nap>
+      <x-hours></x-hours>
+    </div>
+  </div>
+  <div class="wrap footer__legal">
+    <p>© {{year}} {{site.name}}. Todos os direitos reservados.</p>
+    <ul>
+      <li><a href="/politica-de-privacidade/">Política de privacidade</a></li>
+      <li><a href="/termos-de-uso/">Termos de uso</a></li>
+      <li><a href="/sitemap.xml">Mapa do site</a></li>
+    </ul>
+    <p>Desenvolvido por <a href="{{site.credits.url}}" target="_blank" rel="noopener">{{site.credits.name}}</a></p>
+  </div>
+</footer>

@@ -1,0 +1,58 @@
+/* ---------- Submenu de serviços (desktop) ---------- */
+@media (min-width: 961px) {
+  .nav__sub {
+    display: block; left: 50%; top: calc(100% + 0.75rem);
+    width: min(34rem, 80vw); padding: 0.75rem;
+    background: var(--branco); border: 1px solid var(--linha); border-radius: var(--r-md);
+    box-shadow: var(--shadow);
+    opacity: 0; visibility: hidden; transform: translate(-50%, 0.5rem);
+    transition: opacity 0.25s, transform 0.35s var(--ease-out), visibility 0.25s;
+    &::before { content: ''; position: absolute; inset: -0.85rem 0 auto; height: 0.85rem; }
+    ul { display: grid; grid-template-columns: 1fr 1fr; gap: 0.25rem; padding: 0; list-style: none; }
+    a {
+      display: flex; gap: 0.75rem; padding: 0.75rem; border-radius: var(--r-sm); text-decoration: none;
+      transition: background-color 0.2s;
+      &:hover, &:focus-visible { background: var(--nevoa); }
+      &[aria-current='page'] { background: var(--laranja-suave); }
+    }
+    .icon { width: 1.5rem; height: 1.5rem; color: var(--laranja-texto); margin-top: 0.1rem; }
+    strong { display: block; font-family: var(--f-display); font-size: 1rem; }
+    small { display: block; font-size: 0.82rem; line-height: 1.35; color: var(--tinta-2); margin-top: 0.15rem; }
+  }
+  .nav__has-sub:hover .nav__sub,
+  .nav__has-sub:focus-within .nav__sub,
+  .nav__has-sub.is-open .nav__sub { opacity: 1; visibility: visible; transform: translate(-50%, 0); }
+  .nav__has-sub:hover .nav__toggle .icon, .nav__has-sub.is-open .nav__toggle .icon { transform: rotate(180deg); }
+  .nav__extra { display: none; }
+}
+
+/* ---------- Painel do menu (mobile) ---------- */
+@media (max-width: 960px) {
+  .nav {
+    display: flex; flex-direction: column; gap: 1.5rem;
+    padding: 1.5rem var(--gutter) calc(2rem + env(safe-area-inset-bottom));
+    background: var(--branco); overflow-y: auto; overscroll-behavior: contain;
+    transform: translateY(-1rem);
+    transition: opacity 0.3s, transform 0.4s var(--ease-out), visibility 0.3s;
+  }
+  .nav > ul { flex-direction: column; align-items: stretch; gap: 0; }
+  .nav > ul > li { border-bottom: 1px solid var(--linha); }
+  .nav__link { min-height: 3.5rem; padding-inline: 0; font-family: var(--f-display); font-size: 1.5rem; font-weight: 800; border-radius: 0; &:hover { background: none; } }
+  .nav__has-sub { flex-wrap: wrap; justify-content: space-between; }
+  .nav__toggle { width: 3rem; height: 3rem; margin: 0; background: var(--nevoa); .icon { width: 1.25rem; height: 1.25rem; } }
+  .nav__sub { position: static; flex-basis: 100%; }
+  .nav__has-sub.is-open .nav__sub { display: block; }
+  .nav__has-sub.is-open .nav__toggle .icon { transform: rotate(180deg); }
+  .nav__sub ul { padding: 0 0 1rem; list-style: none; }
+  .nav__sub a { display: flex; align-items: center; gap: 0.75rem; min-height: 3rem; text-decoration: none; font-weight: 600; small { display: none; } .icon { color: var(--laranja-texto); } }
+  .nav__extra { display: grid; gap: 0.75rem; margin-top: auto; p { font-size: 0.9rem; color: var(--tinta-2); } }
+  .menu-open .nav { visibility: visible; opacity: 1; transform: none; }
+  .menu-open .menu-btn .icon-menu { display: none; }
+  .menu-open .menu-btn .icon-x { display: block; }
+  .menu-open { overflow: hidden; }
+  .menu-open .header { transform: none !important; }
+}
+
+/* Barra de progresso de leitura */
+.progress { position: absolute; inset: auto 0 -1px; height: 3px; pointer-events: none; }
+.progress span { display: block; height: 100%; background: var(--laranja); transform-origin: left; transform: scaleX(var(--p, 0)); }

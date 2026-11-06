@@ -1,0 +1,36 @@
+<div class="topbar">
+  <div class="wrap">
+    <a class="topbar__item" href="{{site.google.mapsUrl}}" target="_blank" rel="noopener"><x-icon name="map-pin"></x-icon>{{site.address.street}} – {{site.address.district}}, São Paulo</a>
+    <a class="topbar__item" href="tel:{{site.phone.e164}}" data-track="phone"><x-icon name="phone"></x-icon>{{site.phone.display}}</a>
+    <span class="topbar__item"><x-icon name="clock"></x-icon>Banho e Tosa: {{site.hours.groomingDisplay}}</span>
+    <span class="topbar__social">
+      <a href="{{site.social.instagram}}" target="_blank" rel="noopener" aria-label="Instagram da Ventura Vet"><x-icon name="instagram"></x-icon></a>
+      <a href="{{site.social.facebook}}" target="_blank" rel="noopener" aria-label="Facebook da Ventura Vet"><x-icon name="facebook"></x-icon></a>
+      <a href="{{site.social.youtube}}" target="_blank" rel="noopener" aria-label="Canal da Ventura Vet no YouTube"><x-icon name="youtube"></x-icon></a>
+      <a href="{{site.social.linkedin}}" target="_blank" rel="noopener" aria-label="LinkedIn da Ventura Vet"><x-icon name="linkedin"></x-icon></a>
+    </span>
+  </div>
+</div>
+<header class="header" data-header>
+  <div class="wrap">
+    <a class="logo" href="/" aria-label="Ventura Veterinária &amp; Pet Shop — página inicial">
+      <x-img src="logo-ventura.png" alt="Ventura Veterinária &amp; Pet Shop" widths="280,420" sizes="140px" eager></x-img>
+    </a>
+    <nav class="nav" id="menu" aria-label="Principal" data-nav>
+      <ul>{{{nav}}}</ul>
+      <div class="nav__extra">
+        <a class="btn" data-wa=""><x-icon name="whatsapp"></x-icon>Agendar pelo WhatsApp</a>
+        <a class="btn btn--ghost" href="tel:{{site.phone.e164}}" data-track="phone"><x-icon name="phone"></x-icon>Ligar {{site.phone.display}}</a>
+        <p>{{site.address.full}}</p>
+      </div>
+    </nav>
+    <div class="header__cta">
+      <a class="header__phone" href="tel:{{site.phone.e164}}" data-track="phone"><x-icon name="phone"></x-icon><span>{{site.phone.display}}</span></a>
+      <a class="btn btn--sm" data-wa="" aria-label="Agendar pelo WhatsApp"><x-icon name="whatsapp"></x-icon><span>Agendar</span></a>
+      <button class="menu-btn" type="button" aria-controls="menu" aria-expanded="false" data-menu-btn>
+        <span class="sr-only">Abrir menu</span><x-icon name="menu" class="icon-menu"></x-icon><x-icon name="x" class="icon-x"></x-icon>
+      </button>
+    </div>
+  </div>
+  <div class="progress" aria-hidden="true"><span data-progress></span></div>
+</header>

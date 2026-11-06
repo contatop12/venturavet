@@ -1,0 +1,28 @@
+/* ---------- Movimento: transições de página e ajustes de acessibilidade ---------- */
+::view-transition-old(root), ::view-transition-new(root) { animation-duration: 0.35s; animation-timing-function: var(--ease-out); }
+::view-transition-old(root) { animation-name: vt-out; }
+::view-transition-new(root) { animation-name: vt-in; }
+@keyframes vt-out { to { opacity: 0; transform: translateY(-8px); } }
+@keyframes vt-in { from { opacity: 0; transform: translateY(12px); } }
+.header { view-transition-name: header; }
+.wa-float { view-transition-name: wa; }
+
+/* Parallax e faixa só quando o movimento é permitido (JS define as variáveis) */
+@media (prefers-reduced-motion: no-preference) {
+  [data-parallax] { transform: translate3d(0, var(--py, 0), 0); will-change: transform; }
+  .js .day__fio path, .js [data-draw-scroll] { stroke-dasharray: 1; stroke-dashoffset: calc(1 - var(--p, 0)); }
+  .bento__item, .svc-nav a, .exam, .card { transition: transform 0.6s var(--ease-out), border-color 0.3s; }
+  .bento__item:hover { transform: translateY(-4px); }
+  .btn[data-magnetic] { transition: transform 0.25s var(--ease-out), box-shadow 0.35s var(--ease-out); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
+  ::view-transition-group(*), ::view-transition-old(*), ::view-transition-new(*) { animation: none !important; }
+}
+
+@media print {
+  .topbar, .header, .wa-float, .cta-final, .footer__social, .share, .svc-nav, .ticker { display: none !important; }
+  body { font-size: 11pt; }
+  a[href^='http']::after { content: ' (' attr(href) ')'; font-size: 0.8em; }
+}
