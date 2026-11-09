@@ -6,7 +6,7 @@ import { minify } from 'html-minifier-terser';
 import { components, componentNames, interpolate, partial, type RenderCtx } from './components.ts';
 import { head, type PageMeta } from './seo.ts';
 import { sprite, icon } from './icons.ts';
-import { site, services, nav, waLink } from './site.ts';
+import { site, services, nav, waLink, svc } from './site.ts';
 
 export type Assets = { criticalCss: string; mainCss: string; mainJs: string; fonts: string[] };
 
@@ -37,7 +37,13 @@ function navHtml(ctx: RenderCtx) {
   <a class="nav__link" href="${item.href}">${item.label}</a>
   <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="sub-servicos"><span class="sr-only">Abrir submenu de serviços</span>${icon('chevron-down')}</button>
   <div class="nav__sub" id="sub-servicos"><ul>${item.children
+    .filter((c) => c.group === 'principal')
     .map((c) => `<li><a href="${c.href}">${icon(c.icon)}<span><strong>${c.label}</strong><small>${c.short}</small></span></a></li>`)
+    .join('')}</ul>
+    <p class="nav__sub-title">Outros serviços <small>(vagas limitadas)</small></p>
+    <ul class="nav__sub-mini">${item.children
+    .filter((c) => c.group === 'outros')
+    .map((c) => `<li><a href="${c.href}">${icon(c.icon)}<span>${c.label}</span></a></li>`)
     .join('')}</ul></div>
 </li>`;
     })
@@ -51,7 +57,7 @@ export async function renderPage(meta: PageMeta, body: string, assets: Assets, e
     page: meta,
     year: new Date().getFullYear(),
     wa: waLink(),
-    waDayCare: waLink(services[2].waMessage),
+    waDayCare: waLink(svc('day-care-e-hotel').waMessage),
     nav: navHtml(ctx),
     ...extraVars,
   };

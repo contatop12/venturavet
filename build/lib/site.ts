@@ -15,7 +15,7 @@ export const site = {
   cnpj: '', // TODO: CNPJ
   foundingYear: 2007,
   description:
-    'Clínica veterinária e pet shop no Paraíso, em São Paulo, desde 2007: consultas e especialidades, cirurgias, laboratório com exames em até 15 minutos, day care e hotel, natação e banho e tosa para cães e gatos.',
+    'Clínica veterinária particular no Paraíso, em São Paulo, desde 2007, com selo Cat Friendly Practice: consultas e especialidades, cirurgias e castração, laboratório próprio com exames em até 15 minutos e hotel para gatos. Também oferece day care e hotel para cães, natação e banho e tosa, com vagas limitadas.',
   locale: 'pt_BR',
   lang: 'pt-BR',
   themeColor: '#FF6600',
@@ -34,7 +34,18 @@ export const site = {
     full: 'Rua Otávio Nébias, 190 – Paraíso, São Paulo – SP, 04002-011',
   },
   geo: { lat: -23.5732, lng: -46.65257 },
-  areaServed: ['Paraíso', 'Vila Mariana', 'Bela Vista', 'Jardim Paulista', 'Ibirapuera', 'Aclimação', 'São Paulo'],
+  /** Bairros atendidos (SEO local): o Paraíso e os bairros vizinhos da Zona Sul/Centro-Sul. */
+  areaServed: [
+    'Paraíso', 'Vila Mariana', 'Ibirapuera', 'Moema', 'Vila Nova Conceição', 'Jardim Paulista', 'Jardins',
+    'Cerqueira César', 'Bela Vista', 'Aclimação', 'Vila Clementino', 'Liberdade', 'São Paulo',
+  ],
+
+  /** Diferenciais institucionais destacados no site e nos dados estruturados. */
+  credentials: {
+    catFriendly: 'Cat Friendly Practice',
+  },
+  /** Clínica particular: não trabalha com convênios / planos de saúde pet. */
+  paymentNote: 'Clínica particular: não atendemos convênios nem planos de saúde pet.',
 
   google: {
     placeId: 'ChIJa05YW5VZzpQRLMvtUmyE_Gs',
@@ -55,18 +66,21 @@ export const site = {
 
   founder: {
     name: 'Dra. Ana Luiza Mazorra',
-    jobTitle: 'Médica-veterinária e diretora clínica',
+    jobTitle: 'Médica-veterinária, proprietária e responsável técnica',
     alumniOf: 'Faculdade de Medicina Veterinária e Zootecnia da Universidade de São Paulo (FMVZ-USP)',
-    crmv: '', // TODO: CRMV-SP da responsável técnica (exigência do CFMV para publicidade)
+    crmv: 'CRMV-SP 15.768',
   },
 
   /**
-   * Horários publicados no site atual. O horário geral da clínica não
-   * aparece em nenhuma página — TODO: preencher a partir do Google.
-   * Formato schema.org: dias em inglês, horas HH:MM.
+   * Horários (briefing do cliente, nov/2026). Formato schema.org: dias em inglês, horas HH:MM.
+   * Domingo: fechado.
    */
   hours: {
-    clinic: [] as { days: string[]; opens: string; closes: string }[],
+    clinic: [
+      { days: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'], opens: '09:00', closes: '18:00' },
+      { days: ['Saturday'], opens: '09:00', closes: '16:00' },
+    ] as { days: string[]; opens: string; closes: string }[],
+    clinicDisplay: 'Seg. a sex., 9h às 18h · Sáb., 9h às 16h · Dom., fechado',
     grooming: [
       { days: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'], opens: '09:00', closes: '17:00' },
       { days: ['Saturday'], opens: '09:00', closes: '15:00' },
@@ -91,6 +105,9 @@ export type Service = {
   imageAlt: string;
   serviceType: string;
   waMessage: string;
+  /** principal = foco do site (destaque); outros = poucas vagas, menos destaque. */
+  group: 'principal' | 'outros';
+  audience?: string;
 };
 
 export const services: Service[] = [
@@ -105,42 +122,74 @@ export const services: Service[] = [
     imageAlt: 'Filhote sendo examinado com estetoscópio por veterinária da Ventura',
     serviceType: 'Clínica veterinária',
     waMessage: 'Olá! Vim pelo site e quero agendar uma consulta veterinária.',
+    group: 'principal',
   },
   {
     slug: 'laboratorio',
     path: '/laboratorio/',
     name: 'Laboratório e Exames de Imagem',
     navName: 'Laboratório',
-    short: 'Hemograma e perfis bioquímicos em até 15 minutos; raio-X, ultrassom, eco e eletrocardiograma.',
+    short: 'Hemograma, SDMA e FIV/FeLV com resultado em até 15 minutos; raio-X e ultrassom com hora marcada.',
     icon: 'microscope',
     image: 'veterinaria-examinando-yorkshire.webp',
     imageAlt: 'Veterinária sorrindo enquanto examina um yorkshire',
     serviceType: 'Laboratório veterinário e diagnóstico por imagem',
     waMessage: 'Olá! Vim pelo site e quero agendar um exame para o meu pet.',
+    group: 'principal',
+  },
+  {
+    slug: 'castracao',
+    path: '/castracao/',
+    name: 'Castração de Cães e Gatos',
+    navName: 'Castração',
+    short: 'Castração com anestesia inalatória, monitoramento contínuo e acompanhamento do pré ao pós-operatório.',
+    icon: 'heart-pulse',
+    image: 'cirurgia-monitoramento-anestesico.jpg',
+    imageAlt: 'Profissional ao lado do aparelho de anestesia e do monitor do centro cirúrgico',
+    serviceType: 'Castração de cães e gatos',
+    waMessage: 'Olá! Vim pelo site e quero agendar a castração do meu pet.',
+    group: 'principal',
+    audience: 'Tutores de cães e gatos',
+  },
+  {
+    slug: 'hotel-para-gatos',
+    path: '/hotel-para-gatos/',
+    name: 'Hotel para Gatos',
+    navName: 'Hotel para Gatos',
+    short: 'Hospedagem exclusiva para gatos, sem contato com outros animais, numa clínica com selo Cat Friendly.',
+    icon: 'cat',
+    image: 'hotel-para-gatos-gato-descansando.jpg',
+    imageAlt: 'Gato siamês relaxando em uma plataforma alta no espaço telado do hotel para gatos',
+    serviceType: 'Hotel para gatos',
+    waMessage: 'Olá! Vim pelo site e quero reservar o Hotel para Gatos.',
+    group: 'principal',
+    audience: 'Tutores de gatos',
   },
   {
     slug: 'day-care-e-hotel',
     path: '/day-care-e-hotel/',
-    name: 'Day Care e Hotel',
-    navName: 'Day Care e Hotel',
-    short: 'Dia inteiro de atividades, socialização e descanso, com câmeras 24h e pernoite.',
+    name: 'Day Care e Hotel para Cães',
+    navName: 'Day Care e Hotel para Cães',
+    short: 'Dia de atividades, socialização e descanso, com pernoite. Só para cães castrados e vacinados; vagas limitadas.',
     icon: 'moon-star',
-    image: 'lulu-da-pomerania.webp',
-    imageAlt: 'Lulu-da-pomerânia sorrindo, aluno do day care',
+    image: 'day-care-area-de-recreacao-caes.jpg',
+    imageAlt: 'Cães pequenos brincando na área de recreação do day care da Ventura',
     serviceType: 'Creche e hotel para cães',
-    waMessage: 'Olá! Vim pelo site e quero saber sobre o Day Care e o Hotel.',
+    waMessage: 'Olá! Vim pelo site e quero saber se há vaga no Day Care ou no Hotel para cães.',
+    group: 'outros',
   },
   {
     slug: 'natacao',
     path: '/natacao/',
     name: 'Natação para Cães',
     navName: 'Natação',
-    short: 'Aulas de 1 hora com ducha e secagem inclusas, para gastar energia ou reabilitar.',
+    short: 'Aulas de 40 minutos em piscina coberta e aquecida, para gastar energia ou reabilitar. Vagas limitadas.',
     icon: 'waves',
-    image: 'pug-nadando.webp',
-    imageAlt: 'Pug nadando na piscina com um brinquedo na boca',
+    image: 'natacao-cao-nadando-close.jpg',
+    imageAlt: 'Cão nadando com a cabeça fora da água e respingos ao redor, na piscina de natação',
     serviceType: 'Natação e hidroterapia para cães',
-    waMessage: 'Olá! Vim pelo site e quero agendar uma aula experimental de natação.',
+    waMessage: 'Olá! Vim pelo site e quero saber se há vaga para natação.',
+    group: 'outros',
   },
   {
     slug: 'banho-e-tosa',
@@ -152,13 +201,23 @@ export const services: Service[] = [
     image: 'yorkshire-pos-banho.webp',
     imageAlt: 'Yorkshire enrolado em toalhas após o banho, com patinho de borracha',
     serviceType: 'Banho e tosa',
-    waMessage: 'Olá! Vim pelo site e quero agendar banho e tosa.',
+    waMessage: 'Olá! Vim pelo site e quero saber se há horário para banho e tosa.',
+    group: 'outros',
   },
 ];
 
+/** Serviço por slug (evita depender da ordem do array). */
+export function svc(slug: string): Service {
+  const s = services.find((x) => x.slug === slug);
+  if (!s) throw new Error(`Serviço inexistente: ${slug}`);
+  return s;
+}
+export const mainServices = services.filter((s) => s.group === 'principal');
+export const otherServices = services.filter((s) => s.group === 'outros');
+
 export const nav = [
   { label: 'Quem somos', href: '/quem-somos/' },
-  { label: 'Serviços', href: '/servicos/', children: services.map((s) => ({ label: s.navName, href: s.path, icon: s.icon, short: s.short })) },
+  { label: 'Serviços', href: '/servicos/', children: services.map((s) => ({ label: s.navName, href: s.path, icon: s.icon, short: s.short, group: s.group })) },
   { label: 'Blog', href: '/blog/' },
   { label: 'Contato', href: '/contato/' },
 ];

@@ -132,9 +132,10 @@ Depois de mudar bindings em `wrangler.jsonc`, regenere os tipos com `npm run cf:
 
 ## Pendências (dados que não estão no site atual — não foram inventados)
 
-1. **Horário da clínica**: preencher `hours.clinic` em `build/lib/site.ts` (hoje aparece "Consulte pelo WhatsApp"). Entra automaticamente no schema e no rodapé.
-2. **CRMV-SP da responsável técnica** (`founder.crmv`) — exigência do CFMV para publicidade veterinária — e **CNPJ/razão social** (`cnpj`, `legalName`).
-3. **Robots do Cloudflare**: o domínio usa o "robots.txt gerenciado" da Cloudflare, que bloqueia GPTBot, ClaudeBot, Google-Extended etc. e sobrepõe o arquivo do site. Para o GEO funcionar, desative em *Security → Bots → Manage robots.txt* (ou ajuste o `robots.txt` deste projeto se preferir manter o bloqueio de treinamento).
-4. **Google Search Console**: adicionar o código em `verification.google` e reenviar o `sitemap.xml` após a publicação.
-5. **Fotos reais**: várias imagens herdadas são de banco de imagens. Fotos da equipe e do espaço aumentam a confiança.
-6. **Regras do Day Care em PDF**: o link antigo (`regras-day-care-ventura-2022.pdf`) já estava quebrado; as regras agora estão na própria página e o endereço redireciona para elas.
+1. **CNPJ/razão social** (`cnpj`, `legalName` em `build/lib/site.ts`). CRMV-SP 15.768 e horário da clínica já preenchidos (briefing de nov/2026).
+2. **Hotel para Gatos — gaiolas**: a página antiga dizia "não possuímos gaiolas", o PDF de regras diz que o gato pode ficar em gaiola em alguns períodos. O site não afirma nenhum dos dois (comentário `CONFIRMAR COM CLIENTE` em `src/pages/hotel-para-gatos.html`).
+3. **Preços e telefones extras** dos PDFs (natação, day care, telefones do day care) ficaram fora do site de propósito; publique só se o cliente quiser mantê-los atualizados.
+4. **Robots do Cloudflare**: o domínio usa o "robots.txt gerenciado" da Cloudflare, que bloqueia GPTBot, ClaudeBot, Google-Extended etc. e sobrepõe o arquivo do site. Para o GEO funcionar, desative em *Security → Bots → Manage robots.txt*.
+5. **Google Search Console**: adicionar o código em `verification.google` e reenviar o `sitemap.xml` após a publicação.
+6. **Google Business Profile**: manter horário, categoria ("Clínica veterinária"), atributos e fotos iguais aos do site (consistência de NAP para SEO local).
+7. **Regras do Day Care em PDF**: o link antigo (`regras-day-care-ventura-2022.pdf`) já estava quebrado; as regras agora estão na própria página e o endereço redireciona para elas.

@@ -11,7 +11,7 @@ import { bundleAsync, browserslistToTargets, Features } from 'lightningcss';
 import sharp from 'sharp';
 import * as cheerio from 'cheerio';
 import { paths } from './lib/paths.ts';
-import { site, services, categories } from './lib/site.ts';
+import { site, services, categories, svc } from './lib/site.ts';
 import { getPosts, resetPosts, relatedPosts, categoryName, formatDate } from './lib/posts.ts';
 import { renderPage, parsePage, type Assets } from './lib/render.ts';
 import { getImage, makeOgImage, makeAppIcons } from './lib/images.ts';
@@ -141,7 +141,12 @@ async function buildPosts(assets: Assets) {
     $c('table').each((_, t) => { $c(t).wrap('<div class="table-wrap" tabindex="0"></div>'); });
 
     const mainCat = post.categories.find((c) => c !== 'dicas-e-curiosidades') ?? post.categories[0];
-    const service = mainCat === 'hotel' || mainCat === 'day-use' ? services[2] : mainCat === 'pet-shop' ? services[4] : services[0];
+    const service =
+      mainCat === 'hotel' || mainCat === 'day-use' ? svc('day-care-e-hotel')
+      : mainCat === 'pet-shop' ? svc('banho-e-tosa')
+      : /castra/.test(post.slug) ? svc('castracao')
+      : /exame|check-up|hemograma/.test(post.slug) ? svc('laboratorio')
+      : svc('clinica-veterinaria');
     const ctx = { meta: {} as PageMeta, icons: new Set<string>(), vars: {} } as RenderCtx;
     const related = relatedPosts(post).map((p) => postCard(p, ctx)).join('');
     const image = post.image ? await getImage(post.image) : null;
@@ -293,15 +298,19 @@ Sitemap: ${site.url}/sitemap.xml
 > ${site.description}
 
 Fatos principais (fonte: este site oficial):
-- Endereço: ${site.address.full} (bairro Paraíso, zona sul de São Paulo).
+- Clínica veterinária particular no bairro Paraíso, zona sul de São Paulo: ${site.address.full}.
+- Selo ${site.credentials.catFriendly}: consultório exclusivo para gatos, separado dos cães, com Feliway® e manejo de baixo estresse.
+- Proprietária e responsável técnica: ${site.founder.name} (${site.founder.crmv}), médica-veterinária formada pela FMVZ-USP. Na região desde ${site.foundingYear}.
+- Horário: ${site.hours.clinicDisplay}.
+- ${site.paymentNote}
 - Telefone: ${site.phone.display} · WhatsApp: ${site.whatsapp.display} (${`https://wa.me/${site.whatsapp.number}`}) · E-mail: ${site.email}
-- Na região desde ${site.foundingYear}; direção clínica da ${site.founder.name}, médica-veterinária formada pela FMVZ-USP.
-- Estrutura: quatro consultórios (um exclusivo para gatos, com sala de espera separada e Feliway®), centro cirúrgico com anestesia inalatória, internação dia com oxigenioterapia, laboratório próprio Idexx® e farmácia veterinária.
+- Bairros atendidos: ${site.areaServed.filter((n) => n !== 'São Paulo').join(', ')}.
+- Serviços principais: clínica veterinária (oito especialidades, cirurgias), castração de cães e gatos, laboratório próprio e hotel para gatos.
+- Laboratório: aparelhos Idexx®; hemograma, SDMA e teste de FIV/FeLV com resultado em até 15 minutos; raio-X e ultrassom com hora marcada.
+- Castração: consulta com exames de sangue e eletrocardiograma, anestesia inalatória com monitorização contínua e suturas absorvíveis (sem cone ou roupinha).
+- Estrutura: quatro consultórios (um exclusivo para gatos), centro cirúrgico com anestesia inalatória, monitor multiparamétrico e colchão térmico, internação dia com oxigenioterapia.
 - Especialidades: ortopedia, oftalmologia, dermatologia, endocrinologia, odontologia, neurologia, cardiologia e oncologia.
-- Laboratório: hemograma e perfis bioquímicos com resultado em até 15 minutos; raio-X, ultrassom, ecocardiograma e eletrocardiograma com hora marcada.
-- Day Care para cães e Hotel para cães e gatos, com rotina das 7h às 21h, turmas separadas por porte e câmeras 24h para os tutores.
-- Natação para cães: aulas de 1 hora com ducha e secagem inclusas; aula experimental disponível.
-- Banho e Tosa: ${site.hours.groomingDisplay}; produtos EcoDog e Perigot; atende cães e gatos.
+- Outros serviços, com vagas limitadas: Day Care e Hotel para cães (somente cães castrados e vacinados), natação para cães e banho e tosa (${site.hours.groomingDisplay}).
 - Avaliações: ${site.google.reviewCount} avaliações no Google (${site.google.reviewsUrl}).
 
 ## Páginas principais

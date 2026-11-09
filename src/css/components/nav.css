@@ -18,6 +18,9 @@
     .icon { width: 1.5rem; height: 1.5rem; color: var(--laranja-texto); margin-top: 0.1rem; }
     strong { display: block; font-family: var(--f-display); font-size: 1rem; }
     small { display: block; font-size: 0.82rem; line-height: 1.35; color: var(--tinta-2); margin-top: 0.15rem; }
+    /* "Outros serviços": linha compacta, sem descrição */
+    .nav__sub-title { margin: 0.5rem 0.75rem 0.25rem; padding-top: 0.75rem; border-top: 1px solid var(--linha); font-size: 0.8rem; font-weight: 700; color: var(--tinta-2); text-transform: uppercase; letter-spacing: 0.04em; small { display: inline; text-transform: none; letter-spacing: 0; font-weight: 500; } }
+    .nav__sub-mini { grid-template-columns: repeat(4, auto); justify-content: start; a { padding: 0.5rem 0.75rem; font-size: 0.88rem; font-weight: 600; align-items: center; gap: 0.4rem; } .icon { width: 1.1rem; height: 1.1rem; margin: 0; } }
   }
   .nav__has-sub:hover .nav__sub,
   .nav__has-sub:focus-within .nav__sub,
@@ -44,6 +47,7 @@
   .nav__has-sub.is-open .nav__sub { display: block; }
   .nav__has-sub.is-open .nav__toggle .icon { transform: rotate(180deg); }
   .nav__sub ul { padding: 0 0 1rem; list-style: none; }
+  .nav__sub-title { font-size: 0.8rem; font-weight: 700; color: var(--tinta-2); text-transform: uppercase; letter-spacing: 0.04em; small { text-transform: none; font-weight: 500; } }
   .nav__sub a { display: flex; align-items: center; gap: 0.75rem; min-height: 3rem; text-decoration: none; font-weight: 600; small { display: none; } .icon { color: var(--laranja-texto); } }
   .nav__extra { display: grid; gap: 0.75rem; margin-top: auto; p { font-size: 0.9rem; color: var(--tinta-2); } }
   .menu-open .nav { visibility: visible; opacity: 1; transform: none; }

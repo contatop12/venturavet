@@ -75,6 +75,9 @@ html {
   text-size-adjust: 100%;
   scroll-padding-top: calc(var(--header-h) + 1rem);
   interpolate-size: allow-keywords;
+  /* Corta vazamentos horizontais (ex.: faixa inclinada com margens em vw, que incluem a barra de rolagem).
+     clip não cria contêiner de rolagem, então position: sticky continua funcionando. */
+  overflow-x: clip;
 }
 @media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
 body {

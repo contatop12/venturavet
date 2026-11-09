@@ -2,7 +2,8 @@
   <div class="wrap">
     <a class="topbar__item" href="{{site.google.mapsUrl}}" target="_blank" rel="noopener"><x-icon name="map-pin"></x-icon>{{site.address.street}} – {{site.address.district}}, São Paulo</a>
     <a class="topbar__item" href="tel:{{site.phone.e164}}" data-track="phone"><x-icon name="phone"></x-icon>{{site.phone.display}}</a>
-    <span class="topbar__item"><x-icon name="clock"></x-icon>Banho e Tosa: {{site.hours.groomingDisplay}}</span>
+    <span class="topbar__item"><x-icon name="clock"></x-icon>{{site.hours.clinicDisplay}}</span>
+    <span class="topbar__item"><x-icon name="cat"></x-icon>Clínica {{site.credentials.catFriendly}}</span>
     <span class="topbar__social">
       <a href="{{site.social.instagram}}" target="_blank" rel="noopener" aria-label="Instagram da Ventura Vet"><x-icon name="instagram"></x-icon></a>
       <a href="{{site.social.facebook}}" target="_blank" rel="noopener" aria-label="Facebook da Ventura Vet"><x-icon name="facebook"></x-icon></a>

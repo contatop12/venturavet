@@ -70,13 +70,25 @@ function organization() {
       { '@type': 'ContactPoint', contactType: 'reservations', telephone: `+${site.whatsapp.number}`, url: waLink(), areaServed: 'BR', availableLanguage: 'Portuguese' },
     ],
     sameAs: [...Object.values(site.social), site.google.mapsUrl],
-    knowsAbout: ['Clínica veterinária', 'Ortopedia veterinária', 'Oftalmologia veterinária', 'Dermatologia veterinária', 'Endocrinologia veterinária', 'Odontologia veterinária', 'Neurologia veterinária', 'Cardiologia veterinária', 'Oncologia veterinária', 'Medicina felina', 'Day care para cães', 'Hotel para cães', 'Natação para cães', 'Banho e tosa'],
+    knowsAbout: ['Clínica veterinária', 'Ortopedia veterinária', 'Oftalmologia veterinária', 'Dermatologia veterinária', 'Endocrinologia veterinária', 'Odontologia veterinária', 'Neurologia veterinária', 'Cardiologia veterinária', 'Oncologia veterinária', 'Medicina felina', 'Cat Friendly Practice', 'Castração de cães e gatos', 'Laboratório veterinário', 'Hotel para gatos', 'Day care para cães', 'Hotel para cães', 'Natação para cães', 'Banho e tosa'],
     hasOfferCatalog: {
       '@type': 'OfferCatalog',
       name: 'Serviços da Ventura Vet',
       itemListElement: services.map((s) => ({ '@type': 'Offer', itemOffered: { '@id': `${site.url}${s.path}#servico` } })),
     },
     currenciesAccepted: 'BRL',
+    paymentAccepted: 'Atendimento particular (não aceita convênios ou planos de saúde pet)',
+    award: `Selo ${site.credentials.catFriendly}`,
+    hasCredential: {
+      '@type': 'EducationalOccupationalCredential',
+      name: site.credentials.catFriendly,
+      credentialCategory: 'Certificação de clínica amiga dos gatos',
+    },
+    amenityFeature: [
+      { '@type': 'LocationFeatureSpecification', name: 'Consultório exclusivo para gatos', value: true },
+      { '@type': 'LocationFeatureSpecification', name: 'Laboratório próprio com resultados em até 15 minutos', value: true },
+      { '@type': 'LocationFeatureSpecification', name: 'Hotel para gatos', value: true },
+    ],
   };
   if (site.hours.clinic.length) org.openingHoursSpecification = openingHours(site.hours.clinic);
   if (site.cnpj) org.taxID = site.cnpj;
@@ -92,7 +104,8 @@ function founder() {
     jobTitle: site.founder.jobTitle,
     worksFor: { '@id': ORG },
     alumniOf: { '@type': 'CollegeOrUniversity', name: site.founder.alumniOf },
-    knowsAbout: ['Medicina veterinária', 'Clínica de pequenos animais'],
+    knowsAbout: ['Medicina veterinária', 'Clínica de pequenos animais', 'Medicina felina', 'Castração de cães e gatos'],
+    description: `Proprietária e responsável técnica da Ventura Vet (${site.founder.crmv}), formada pela FMVZ-USP.`,
     url: `${site.url}/quem-somos/`,
     image: `${site.url}/og/og-quem-somos.jpg`,
   };
@@ -109,7 +122,7 @@ function serviceNode(s: Service, image?: string) {
     description: s.short,
     url: site.url + s.path,
     provider: { '@id': ORG },
-    areaServed: { '@type': 'City', name: 'São Paulo' },
+    areaServed: site.areaServed.map((name) => ({ '@type': name === 'São Paulo' ? 'City' : 'Place', name: name === 'São Paulo' ? name : `${name}, São Paulo - SP` })),
     availableChannel: [
       { '@type': 'ServiceChannel', name: 'WhatsApp', serviceUrl: waLink(s.waMessage) },
       { '@type': 'ServiceChannel', name: 'Presencial', serviceLocation: { '@id': ORG } },
@@ -117,6 +130,8 @@ function serviceNode(s: Service, image?: string) {
   };
   if (image) node.image = abs(image);
   if (s.slug === 'banho-e-tosa') node.hoursAvailable = openingHours(site.hours.grooming);
+  else if (['clinica-veterinaria', 'laboratorio', 'castracao'].includes(s.slug)) node.hoursAvailable = openingHours(site.hours.clinic);
+  if (s.audience) node.audience = { '@type': 'Audience', audienceType: s.audience };
   return node;
 }
 

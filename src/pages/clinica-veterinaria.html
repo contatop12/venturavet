@@ -1,6 +1,6 @@
 <!---
 title: Clínica Veterinária no Paraíso, SP | 8 especialidades — Ventura Vet
-description: Clínica veterinária no Paraíso (SP) com 8 especialidades, consultório só para gatos, cirurgias com anestesia inalatória, vacinas importadas e exames em 15 min.
+description: Clínica veterinária particular no Paraíso (SP) com selo Cat Friendly, 8 especialidades, castração com anestesia inalatória e exames em até 15 min.
 path: /clinica-veterinaria/
 type: service
 service: clinica-veterinaria
@@ -31,7 +31,7 @@ priority: 0.9
 
 <section class="section section--tight">
   <div class="wrap">
-    <p class="answer">A clínica veterinária da Ventura, na Rua Otávio Nébias, 190, no Paraíso (SP), atende cães e gatos com veterinários especializados em ortopedia, oftalmologia, dermatologia, endocrinologia, odontologia, neurologia, cardiologia e oncologia. Oferece consultas, vacinas importadas, cirurgias e castração com anestesia inalatória, internação dia, exames em até 15 minutos e consultório exclusivo para felinos.</p>
+    <p class="answer">A clínica veterinária da Ventura, na Rua Otávio Nébias, 190, no Paraíso (SP), atende cães e gatos com veterinários especializados em ortopedia, oftalmologia, dermatologia, endocrinologia, odontologia, neurologia, cardiologia e oncologia. Oferece consultas, vacinas importadas, cirurgias e <a href="/castracao/">castração</a> com anestesia inalatória, internação dia, exames em até 15 minutos e consultório exclusivo para felinos, com selo {{site.credentials.catFriendly}}. Clínica particular: não atendemos convênios. Responsável técnica: {{site.founder.name}} ({{site.founder.crmv}}).</p>
   </div>
 </section>
 
@@ -119,8 +119,23 @@ priority: 0.9
         <li><x-icon name="check"></x-icon>Desinfecção com vassoura de fogo</li>
       </ul>
     </div>
+    <div class="gallery" data-reveal style="--i:2">
+      <x-img src="consultorio-clinico-ventura.jpg" alt="Consultório da Ventura Vet com mesa de atendimento em inox, mesa de trabalho e diplomas na parede" widths="360,540,720" sizes="(min-width: 860px) 24vw, 55vw"></x-img>
+      <x-img src="cirurgia-sala-cirurgica-foco.jpg" alt="Sala cirúrgica equipada com foco, monitor e veterinária em procedimento" widths="360,540" sizes="(min-width: 860px) 16vw, 40vw" data-parallax="0.06"></x-img>
+      <x-img src="recepcao-clinica-ventura.jpg" alt="Recepção da clínica Ventura com parede verde, poltronas e sofá aconchegante" widths="360,540,720" sizes="(min-width: 860px) 24vw, 55vw"></x-img>
+      <x-img src="recepcao-clinica-ventura-sala-de-espera.jpg" alt="Sala de espera da Ventura Vet com sofá, poltrona e parede de folhagens" widths="360,540" sizes="(min-width: 860px) 16vw, 40vw"></x-img>
+    </div>
+  </div>
+</section>
+
+<section class="section section--tight section--nevoa" aria-labelledby="catfriendly-titulo">
+  <div class="wrap split split--rev">
+    <div>
+      <h2 id="catfriendly-titulo" data-reveal>Consultório felino com selo {{site.credentials.catFriendly}}</h2>
+      <p class="prose" data-reveal style="--i:1">Consultório exclusivo para felinos, com sala de espera separada e Feliway®.</p>
+    </div>
     <div class="split__media split__media--blob" data-reveal>
-      <x-img src="equipe-atendendo-gato.webp" alt="Duas veterinárias atendendo um gato branco no centro de tratamento" widths="360,540,720" sizes="(min-width: 860px) 40vw, 85vw"></x-img>
+      <x-img src="cat-friendly-practice-certificado-prata.jpg" alt="Gato sobre o certificado Cat Friendly Practice Silver da Ventura Veterinária" widths="360,540,720" sizes="(min-width: 860px) 30vw, 70vw"></x-img>
     </div>
   </div>
 </section>
@@ -129,7 +144,9 @@ priority: 0.9
   <div class="wrap faq__grid">
     <header class="faq__head"><h2 id="faq-titulo">Dúvidas sobre a clínica</h2></header>
     <div class="faq__list">
-      <details class="faq__item" name="faq-clinica"><summary>A clínica atende gatos separadamente dos cães?</summary><div class="faq__answer"><p>Sim. Temos um consultório exclusivo para felinos, com sala de espera separada, em que usamos difusor e spray com Feliway® para deixar os gatos mais tranquilos durante a visita.</p></div></details>
+      <details class="faq__item" name="faq-clinica"><summary>A clínica atende gatos separadamente dos cães?</summary><div class="faq__answer"><p>Sim. Temos um consultório exclusivo para felinos, com sala de espera separada, em que usamos difusor e spray com Feliway® para deixar os gatos mais tranquilos durante a visita. A Ventura tem o selo {{site.credentials.catFriendly}}.</p></div></details>
+      <details class="faq__item" name="faq-clinica"><summary>Qual o horário de atendimento da clínica?</summary><div class="faq__answer"><p>{{site.hours.clinicDisplay}}.</p></div></details>
+      <details class="faq__item" name="faq-clinica"><summary>Vocês aceitam convênio ou plano de saúde pet?</summary><div class="faq__answer"><p>Não. Somos uma clínica particular e não trabalhamos com convênios nem planos de saúde pet.</p></div></details>
       <details class="faq__item" name="faq-clinica"><summary>Quais vacinas vocês aplicam?</summary><div class="faq__answer"><p>Utilizamos somente vacinas importadas, mantidas sob temperatura controlada. O protocolo de cada pet é definido pelo veterinário na consulta, de acordo com idade, histórico e estilo de vida.</p></div></details>
       <details class="faq__item" name="faq-clinica"><summary>Como é a anestesia nas cirurgias e castrações?</summary><div class="faq__answer"><p>Os procedimentos anestésicos são feitos por veterinários especializados em anestesiologia. Em cães, a castração é sempre feita com anestesia inalatória, e o centro cirúrgico conta com monitor multiparamétrico e colchão térmico.</p></div></details>
       <details class="faq__item" name="faq-clinica"><summary>Preciso levar o pet a outro lugar para fazer exames?</summary><div class="faq__answer"><p>Não. Os exames laboratoriais são feitos no nosso laboratório durante a consulta, com resultados em até 15 minutos, e os exames de imagem são agendados no mesmo endereço.</p></div></details>

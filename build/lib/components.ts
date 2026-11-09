@@ -111,7 +111,16 @@ export const components: Record<string, Component> = {
 
   'x-services-index': ($, el, ctx) => {
     ctx.icons.add('arrow-up-right');
+    // group="outros": serviços com poucas vagas, em cartões compactos (menos destaque)
+    if (el.attr('group') === 'outros') {
+      const list = services.filter((s) => s.group === 'outros');
+      list.forEach((s) => ctx.icons.add(s.icon));
+      return `<ul class="svc-mini">${list
+        .map((s) => `<li><a class="svc-mini__link" href="${s.path}">${icon(s.icon)}<span><strong>${esc(s.navName)}</strong><small>${esc(s.short)}</small></span></a></li>`)
+        .join('')}</ul>`;
+    }
     return `<ul class="svc-index" data-svc-index>${services
+      .filter((s) => s.group === 'principal')
       .map(
         (s) => `<li class="svc-index__item">
   <a class="svc-index__link" href="${s.path}">
@@ -217,13 +226,17 @@ export const components: Record<string, Component> = {
 </address>`;
   },
 
+  /** Bairros atendidos (SEO local) — mesma lista do areaServed do JSON-LD. */
+  'x-areas': ($, el, ctx) => {
+    ctx.icons.add('map-pin');
+    const list = site.areaServed.filter((n) => n !== 'São Paulo');
+    return `<ul class="areas" aria-label="Bairros atendidos">${list.map((n) => `<li>${icon('map-pin')}${esc(n)}</li>`).join('')}</ul>`;
+  },
+
   'x-hours': ($, el, ctx) => {
     ctx.icons.add('clock');
-    const clinic = site.hours.clinic.length
-      ? site.hours.clinic.map((h) => `${h.days.length > 1 ? 'Seg. a sex.' : 'Sáb.'}, ${h.opens.replace(':00', 'h')} às ${h.closes.replace(':00', 'h')}`).join(' · ')
-      : 'Consulte pelo WhatsApp';
     return `<dl class="hours">
-  <div><dt>Clínica</dt><dd>${esc(clinic)}</dd></div>
+  <div><dt>Clínica e Laboratório</dt><dd>${esc(site.hours.clinicDisplay)}</dd></div>
   <div><dt>Banho e Tosa</dt><dd>${esc(site.hours.groomingDisplay)}</dd></div>
   <div><dt>Day Care</dt><dd>${esc(site.hours.daycareDisplay)}</dd></div>
 </dl>`;
