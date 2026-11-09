@@ -1,12 +1,16 @@
 import { $ } from './dom';
+import { getAttribution } from './attribution';
 
 /**
- * Formulário de contato sem servidor: valida, monta a mensagem e abre o
- * WhatsApp da clínica já preenchido (ou o e-mail, se o tutor preferir).
+ * Formulário de contato: valida, registra o lead (POST /api/contato → Worker → n8n)
+ * e abre o WhatsApp da clínica já preenchido (ou o e-mail, se o tutor preferir).
+ * O registro é "dispare e esqueça" (keepalive): não atrasa nem bloqueia a abertura do
+ * WhatsApp, e se falhar a mensagem ainda chega à clínica pelo canal escolhido.
  */
 export default function initContact() {
   const form = $<HTMLFormElement>('[data-contact-form]');
   if (!form) return;
+  const startedAt = performance.now();
   const number = form.dataset.whatsapp!;
   const email = form.dataset.email!;
   const status = $('[data-form-status]', form);
@@ -58,10 +62,29 @@ export default function initContact() {
     return ['Olá! Vim pelo site e gostaria de atendimento.', fields.join('\n'), msg].filter(Boolean).join('\n\n');
   };
 
+  const sendLead = (via: string) => {
+    const data = Object.fromEntries(new FormData(form)) as Record<string, string>;
+    const body = JSON.stringify({
+      ...getAttribution(),
+      ...data,
+      consentimento: (form.elements.namedItem('consentimento') as HTMLInputElement | null)?.checked === true,
+      canal: via,
+      tempo: Math.round(performance.now() - startedAt),
+      pagina: location.pathname,
+      referrer: document.referrer,
+    });
+    try {
+      fetch('/api/contato', { method: 'POST', headers: { 'content-type': 'application/json' }, body, keepalive: true }).catch(() => {});
+    } catch {
+      /* navegador sem fetch/keepalive: segue só com WhatsApp/e-mail */
+    }
+  };
+
   form.addEventListener('submit', (e) => {
     e.preventDefault();
     if (!validate()) return;
     const via = (e as SubmitEvent).submitter?.getAttribute('value') ?? 'whatsapp';
+    sendLead(via);
     const text = compose();
     const url = via === 'email'
       ? `mailto:${email}?subject=${encodeURIComponent('Contato pelo site — ' + (new FormData(form).get('necessidade') || 'Atendimento'))}&body=${encodeURIComponent(text.replace(/\*/g, ''))}`

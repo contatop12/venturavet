@@ -43,6 +43,10 @@ for (const file of files) {
     descs.set(desc, rel);
   }
   if (!$('link[rel=canonical]').attr('href')) errors.push(`${rel}: sem canonical`);
+  // Todo HTML precisa carregar o JS principal (e só ele) como módulo; os chunks vêm por import()
+  const mods = $('script[type="module"][src]').map((_, s) => $(s).attr('src')!).get();
+  if (mods.length !== 1 || !/^\/assets\/main\.[\w-]+\.js$/.test(mods[0])) errors.push(`${rel}: script principal errado → ${mods.join(', ') || 'nenhum'}`);
+  else if (!existsSync(join(paths.dist, mods[0]))) errors.push(`${rel}: script principal não existe → ${mods[0]}`);
   $('script[type="application/ld+json"]').each((_, s) => {
     try { JSON.parse($(s).html() ?? ''); } catch { errors.push(`${rel}: JSON-LD inválido`); }
   });

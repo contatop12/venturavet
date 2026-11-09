@@ -1,0 +1,7 @@
+# Copie para .dev.vars (ignorado pelo git) para testar o formulário com `npm run cf:dev`.
+# Em produção, cadastre os mesmos nomes como SEGREDOS:
+#   npx wrangler secret put N8N_WEBHOOK_URL
+#   npx wrangler secret put N8N_WEBHOOK_TOKEN
+# ou no painel: Workers e Pages → venturavet → Configurações → Variáveis e segredos → tipo "Segredo".
+N8N_WEBHOOK_URL=https://seu-n8n.exemplo.com/webhook/venturavet-contato
+N8N_WEBHOOK_TOKEN=troque-por-um-token-longo-e-aleatorio

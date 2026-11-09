@@ -1,14 +1,21 @@
 /**
- * Cloudflare Workers — site 100% estático (Workers Static Assets, sem código de Worker).
- * Requisições a arquivos estáticos não contam como invocações do Worker (grátis e ilimitadas).
+ * Cloudflare Workers — site estático (Workers Static Assets) + um Worker mínimo para /api/*.
+ * Só /api/* executa código (run_worker_first); páginas, CSS, JS e imagens saem direto dos
+ * arquivos estáticos, sem invocar o Worker (grátis e ilimitado).
  *
  * Deploy: npx wrangler deploy  → roda o build (npm run build → ./dist) e publica.
  * No Workers Builds (GitHub) basta o comando de implantação `npx wrangler deploy`;
  * o comando de build do painel pode ficar vazio.
+ *
+ * Segredos (NÃO vão para o git) — formulário de contato → n8n:
+ *   npx wrangler secret put N8N_WEBHOOK_URL     URL de produção do nó Webhook do n8n
+ *   npx wrangler secret put N8N_WEBHOOK_TOKEN   token do Header Auth (enviado como "Authorization: Bearer <token>")
+ * Local: copie .dev.vars.example para .dev.vars.
  */
 {
   "$schema": "./node_modules/wrangler/config-schema.json",
   "name": "venturavet",
+  "main": "worker/index.ts",
   "compatibility_date": "2026-11-04",
 
   // Executado automaticamente antes de `wrangler deploy`, `versions upload` e `dev`
@@ -18,11 +25,25 @@
 
   "assets": {
     "directory": "./dist",
+    "binding": "ASSETS",
+    // Só estas rotas passam pelo Worker; todo o resto é arquivo estático
+    "run_worker_first": ["/api/*"],
     // /quem-somos → /quem-somos/ (as páginas são pasta/index.html, como no WordPress)
     "html_handling": "auto-trailing-slash",
     // URL inexistente → dist/404.html com status 404
     "not_found_handling": "404-page"
   },
+
+  // Anti-spam do formulário: no máximo 5 envios por minuto por IP
+  "ratelimits": [
+    { "name": "LEAD_LIMITER", "namespace_id": "1001", "simple": { "limit": 5, "period": 60 } }
+  ],
+
+  // Logs do Worker no painel (falhas ao chamar o n8n aparecem aqui; nenhum dado pessoal é logado)
+  "observability": { "enabled": true },
+
+  // Não apaga variáveis criadas pelo painel a cada deploy
+  "keep_vars": true,
 
   // URL de teste <nome>.<subdominio>.workers.dev e URLs de prévia por versão.
   // Depois que o domínio próprio estiver no ar, mude para false para não haver cópia indexável.

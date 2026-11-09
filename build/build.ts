@@ -55,8 +55,15 @@ async function buildJs() {
     define: { __GTM_ID__: JSON.stringify(site.analytics.gtm), __DEV__: String(isDev) },
     legalComments: 'none',
   });
-  const entry = Object.entries(res.metafile!.outputs).find(([, o]) => o.entryPoint)!;
-  return '/' + entry[0].replace(/^dist\//, '').replace(/\\/g, '/');
+  // Com code splitting, os import() dinâmicos também aparecem com entryPoint no metafile
+  // (e a ordem varia entre Windows e Linux): procura explicitamente a saída de main.ts.
+  const entry = Object.entries(res.metafile!.outputs).find(
+    ([file, o]) => o.entryPoint?.replace(/\\/g, '/').endsWith('src/ts/main.ts') && file.endsWith('.js'),
+  );
+  if (!entry) throw new Error('Build JS: saída de src/ts/main.ts não encontrada no metafile');
+  const url = '/' + entry[0].replace(/\\/g, '/').replace(/^dist\//, '');
+  if (!/^\/assets\/main\.[\w-]+\.js$/.test(url)) throw new Error(`Build JS: entrada principal inesperada: ${url}`);
+  return url;
 }
 
 async function copyFonts() {

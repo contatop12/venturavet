@@ -1,0 +1,54 @@
+{
+  "name": "Ventura Vet — Formulário de contato do site",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "venturavet-contato",
+        "authentication": "headerAuth",
+        "responseMode": "onReceived",
+        "options": {}
+      },
+      "name": "Webhook do site",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [0, 0],
+      "webhookId": "33e54720-e3e7-4a3f-bc1b-1e89ce17351f"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            { "id": "a1", "name": "recebidoEm", "value": "={{ $json.body.recebidoEm }}", "type": "string" },
+            { "id": "a2", "name": "nome", "value": "={{ $json.body.lead.nome }}", "type": "string" },
+            { "id": "a3", "name": "telefone", "value": "={{ $json.body.lead.telefone }}", "type": "string" },
+            { "id": "a4", "name": "whatsapp", "value": "={{ $json.body.lead.telefoneE164.replace('+', '') }}", "type": "string" },
+            { "id": "a5", "name": "email", "value": "={{ $json.body.lead.email }}", "type": "string" },
+            { "id": "a6", "name": "pet", "value": "={{ $json.body.lead.pet }}", "type": "string" },
+            { "id": "a7", "name": "especie", "value": "={{ $json.body.lead.especie }}", "type": "string" },
+            { "id": "a8", "name": "raca", "value": "={{ $json.body.lead.raca }}", "type": "string" },
+            { "id": "a9", "name": "idade", "value": "={{ $json.body.lead.idade }}", "type": "string" },
+            { "id": "a10", "name": "necessidade", "value": "={{ $json.body.lead.necessidade }}", "type": "string" },
+            { "id": "a11", "name": "mensagem", "value": "={{ $json.body.lead.mensagem }}", "type": "string" },
+            { "id": "a12", "name": "canal", "value": "={{ $json.body.canal }}", "type": "string" },
+            { "id": "a13", "name": "pagina", "value": "={{ $json.body.origem.pagina }}", "type": "string" },
+            { "id": "a14", "name": "origem", "value": "={{ [$json.body.origem.utm_source, $json.body.origem.utm_medium, $json.body.origem.utm_campaign].filter(Boolean).join(' / ') || ($json.body.origem.gclid ? 'google ads' : '') || ($json.body.origem.firstReferrer || 'direto') }}", "type": "string" },
+            { "id": "a15", "name": "resumo", "value": "=Novo contato pelo site 🐾\n\nTutor(a): {{ $json.body.lead.nome }}\nTelefone: {{ $json.body.lead.telefone }}{{ $json.body.lead.email ? '\\nE-mail: ' + $json.body.lead.email : '' }}\nPet: {{ $json.body.lead.pet }} ({{ $json.body.lead.especie }}){{ $json.body.lead.raca ? ' — ' + $json.body.lead.raca : '' }}{{ $json.body.lead.idade ? ', ' + $json.body.lead.idade : '' }}\nPrecisa de: {{ $json.body.lead.necessidade }}{{ $json.body.lead.mensagem ? '\\n\\n' + $json.body.lead.mensagem : '' }}", "type": "string" }
+          ]
+        },
+        "options": {}
+      },
+      "name": "Dados do lead",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [240, 0]
+    }
+  ],
+  "connections": {
+    "Webhook do site": {
+      "main": [[{ "node": "Dados do lead", "type": "main", "index": 0 }]]
+    }
+  },
+  "settings": { "executionOrder": "v1" },
+  "pinData": {}
+}

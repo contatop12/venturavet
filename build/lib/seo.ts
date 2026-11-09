@@ -228,7 +228,9 @@ export function head(m: PageMeta, assets: { criticalCss: string; mainCss: string
     m.preloadImage ? `<link rel="preload" as="image" type="image/avif" imagesrcset="${m.preloadImage.avif}" imagesizes="${m.preloadImage.sizes}" fetchpriority="high">` : '',
     m.hasMap ? '<link rel="dns-prefetch" href="https://www.google.com"><link rel="dns-prefetch" href="https://maps.gstatic.com">' : '',
     '<link rel="dns-prefetch" href="https://www.googletagmanager.com">',
-    `<script>document.documentElement.classList.add('js')</script>`,
+    // .js habilita as animações de entrada (conteúdo começa invisível). Failsafe: se o JS principal
+    // não sinalizar que rodou em 4 s (falha de rede, navegador antigo, erro), remove .js e mostra tudo.
+    `<script>(function(d){d.classList.add('js');setTimeout(function(){if(!window.__vvReady)d.classList.remove('js')},4000)})(document.documentElement)</script>`,
     `<style>${assets.criticalCss}</style>`,
     `<link rel="preload" href="${assets.mainCss}" as="style">`,
     `<link rel="stylesheet" href="${assets.mainCss}" media="print" onload="this.media='all'">`,

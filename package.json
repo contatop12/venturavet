@@ -8,13 +8,14 @@
     "dev": "tsx build/dev.ts",
     "build": "tsx build/build.ts",
     "preview": "tsx build/dev.ts --preview",
-    "typecheck": "tsc --noEmit",
+    "typecheck": "tsc --noEmit && tsc --noEmit -p worker",
     "import:wp": "tsx tools/import-wp.ts",
     "media:video": "tsx tools/optimize-video.ts",
     "check": "tsx build/check.ts",
     "cf:dev": "wrangler dev",
     "deploy": "wrangler deploy",
-    "deploy:check": "wrangler deploy --dry-run && npm run check"
+    "deploy:check": "wrangler deploy --dry-run && npm run check",
+    "cf:types": "wrangler types worker/worker-configuration.d.ts"
   },
   "engines": {
     "node": ">=24"

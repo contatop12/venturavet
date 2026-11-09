@@ -86,6 +86,49 @@ Para voltar atrás, *Workers & Pages → venturavet → Deployments* permite rev
 O conteúdo de `dist/` funciona em qualquer hospedagem estática:
 - **Cloudflare Pages / Netlify**: build `npm run build`, pasta `dist`. Usam `_headers` e `_redirects`.
 - **Apache/LiteSpeed (hospedagem comum)**: envie o conteúdo de `dist/`, incluindo o `.htaccess`.
+  Nessas hospedagens o formulário continua abrindo WhatsApp/e-mail, mas o envio ao n8n (que depende do Worker) não funciona.
+
+## Formulário de contato → n8n
+
+Ao enviar o formulário de `/contato/`, o site faz duas coisas ao mesmo tempo:
+1. registra o lead: `POST /api/contato` → Worker (`worker/index.ts`) → webhook do n8n;
+2. abre o WhatsApp (ou o e-mail) da clínica com a mensagem pronta, como antes.
+
+Se o n8n estiver fora do ar ou não configurado, o passo 2 acontece normalmente (nenhum contato se perde).
+
+**Proteções no Worker:** só aceita envios do próprio domínio, limite de 5 envios/min por IP, campo invisível
+anti-robô, tempo mínimo de preenchimento (2,5 s), validação dos campos e corpo de até 16 KB. Nenhum dado pessoal vai para os logs.
+
+**Configurar (uma vez):**
+1. No n8n, importe `tools/n8n/venturavet-formulario-contato.json` (*Workflows → Import from file*).
+2. No nó **Webhook do site**, crie a credencial *Header Auth*: **Name** `Authorization`, **Value** `Bearer <token>`
+   (gere um token longo e aleatório). Ligue a continuação do fluxo (planilha, CRM, WhatsApp, e-mail…) depois do nó **Dados do lead** e **ative** o workflow.
+3. Copie a **Production URL** do webhook (`https://<seu-n8n>/webhook/venturavet-contato`).
+4. Na Cloudflare, cadastre os dois valores como **segredos** do Worker — pelo painel
+   (*Workers e Pages → venturavet → Configurações → Variáveis e segredos → Adicionar → tipo Segredo*) ou pelo terminal:
+   ```
+   npx wrangler secret put N8N_WEBHOOK_URL
+   npx wrangler secret put N8N_WEBHOOK_TOKEN
+   ```
+   Use o mesmo token do passo 2, só o valor (sem `Bearer`). Segredos valem na hora e não são apagados pelos deploys.
+
+**Dados enviados ao n8n** (JSON):
+```json
+{
+  "evento": "lead", "formulario": "contato", "site": "venturavet.com.br",
+  "recebidoEm": "2026-11-06T21:27:53.164Z", "canal": "whatsapp",
+  "lead": { "nome": "", "telefone": "(11) 98765-4321", "telefoneE164": "+5511987654321", "email": "",
+            "pet": "", "especie": "cão", "raca": "", "idade": "", "necessidade": "Vacina", "mensagem": "",
+            "consentimento": true, "consentimentoEm": "…" },
+  "origem": { "pagina": "/contato/", "referrer": "", "landing": "/", "firstReferrer": "https://www.google.com/",
+              "utm_source": "google", "utm_medium": "cpc", "utm_campaign": "…", "gclid": "…" },
+  "contexto": { "pais": "BR", "cidade": "São Paulo", "userAgent": "…" }
+}
+```
+`origem` traz UTMs e IDs de clique (gclid, fbclid…) da entrada no site, guardados só durante a sessão.
+
+**Testar localmente:** copie `.dev.vars.example` para `.dev.vars`, aponte para o webhook de teste do n8n e rode `npm run cf:dev`.
+Depois de mudar bindings em `wrangler.jsonc`, regenere os tipos com `npm run cf:types`.
 
 ## Pendências (dados que não estão no site atual — não foram inventados)
 

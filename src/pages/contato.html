@@ -86,8 +86,12 @@ priority: 0.8
         <button class="btn" type="submit" value="whatsapp"><x-icon name="whatsapp"></x-icon>Enviar pelo WhatsApp</button>
         <button class="btn btn--ghost" type="submit" value="email"><x-icon name="mail"></x-icon>Enviar por e-mail</button>
       </div>
+      <div class="form__hp" aria-hidden="true">
+        <label for="f-empresa">Deixe este campo em branco</label>
+        <input id="f-empresa" name="empresa" tabindex="-1" autocomplete="off">
+      </div>
       <p class="form__status" data-form-status role="status"></p>
-      <p class="form__hint">Os dados não ficam salvos no site: vão direto para o WhatsApp ou o e-mail da clínica.</p>
+      <p class="form__hint">Seus dados vão para a equipe da Ventura Vet, que retorna o contato, e abrimos o WhatsApp (ou o e-mail) com a mensagem pronta.</p>
     </form>
 
     <aside class="contact__aside">
