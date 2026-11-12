@@ -8,7 +8,7 @@ import type { CheerioAPI } from 'cheerio';
 import { getImage } from './images.ts';
 import { icon } from './icons.ts';
 import { paths } from './paths.ts';
-import { site, services, reviews, categories, waLink } from './site.ts';
+import { site, services, reviews, categories, waLink, areas } from './site.ts';
 import { getPosts, formatDate, categoryName, type Post } from './posts.ts';
 import { esc, type PageMeta } from './seo.ts';
 
@@ -19,6 +19,7 @@ export type RenderCtx = {
 };
 
 const attr = (v: string | undefined) => (v == null ? '' : esc(v));
+const slug = (s: string) => s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 
 export function interpolate(tpl: string, vars: Record<string, unknown>): string {
   const lookup = (key: string) => key.split('.').reduce<unknown>((o, k) => (o as Record<string, unknown>)?.[k], vars);
@@ -137,7 +138,7 @@ export const components: Record<string, Component> = {
   'x-service-nav': ($, el, ctx) => {
     const current = el.attr('current');
     services.forEach((s) => ctx.icons.add(s.icon));
-    return `<nav class="svc-nav" aria-label="Outros serviços"><p class="svc-nav__title">Também no Ventura</p><ul>${services
+    return `<nav class="svc-nav" aria-label="Outros serviços"><p class="svc-nav__title">Também na Ventura</p><ul>${services
       .filter((s) => s.slug !== current)
       .map((s) => `<li><a href="${s.path}">${icon(s.icon)}<span><strong>${esc(s.navName)}</strong><small>${esc(s.short)}</small></span></a></li>`)
       .join('')}</ul></nav>`;
@@ -229,8 +230,25 @@ export const components: Record<string, Component> = {
   /** Bairros atendidos (SEO local) — mesma lista do areaServed do JSON-LD. */
   'x-areas': ($, el, ctx) => {
     ctx.icons.add('map-pin');
-    const list = site.areaServed.filter((n) => n !== 'São Paulo');
-    return `<ul class="areas" aria-label="Bairros atendidos">${list.map((n) => `<li>${icon('map-pin')}${esc(n)}</li>`).join('')}</ul>`;
+    // detailed: um cartão por bairro, com distância aproximada e link de rota (página "Onde estamos")
+    if (el.attr('detailed') !== undefined) {
+      ctx.icons.add('navigation');
+      const destination = encodeURIComponent(`${site.name}, ${site.address.full}`);
+      return `<ul class="area-cards">${areas
+        .map((a) => {
+          const km = a.km.toLocaleString('pt-BR');
+          const text = a.km === 0
+            ? `É o nosso bairro: a clínica fica na ${esc(site.address.street)}, ${site.landmarks.metro}.`
+            : `Para quem vem ${esc(a.from)}, a clínica fica a cerca de ${km} km de carro.`;
+          const route = `https://www.google.com/maps/dir/?api=1&origin=${encodeURIComponent(`${a.name}, São Paulo - SP`)}&destination=${destination}&destination_place_id=${site.google.placeId}`;
+          const link = a.km === 0
+            ? `<a href="${site.google.mapsUrl}" target="_blank" rel="noopener">${icon('navigation')}Ver a clínica no mapa</a>`
+            : `<a href="${route}" target="_blank" rel="noopener">${icon('navigation')}Traçar rota ${esc(a.from)}</a>`;
+          return `<li class="area-card" id="${slug(a.name)}"><h3>${icon('map-pin')}${esc(a.name)}</h3><p>${text}</p>${link}</li>`;
+        })
+        .join('')}</ul>`;
+    }
+    return `<ul class="areas" aria-label="Bairros atendidos">${areas.map((a) => `<li>${icon('map-pin')}${esc(a.name)}</li>`).join('')}</ul>`;
   },
 
   'x-hours': ($, el, ctx) => {

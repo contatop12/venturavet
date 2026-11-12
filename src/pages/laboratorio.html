@@ -15,8 +15,8 @@ priority: 0.9
     <x-breadcrumbs></x-breadcrumbs>
     <div class="page-hero__grid">
       <div>
-        <h1>Laboratório e exames de imagem <em>para pets</em></h1>
-        <p class="page-hero__lede">Exames laboratoriais e de imagem no mesmo local: seu pet não precisa sair da clínica, e hemograma, SDMA e teste de FIV/FeLV ficam prontos em até 15 minutos.</p>
+        <h1>Laboratório veterinário <em>no Paraíso</em>: exames em até 15 minutos</h1>
+        <p class="page-hero__lede">Exames laboratoriais e de imagem no mesmo endereço da clínica: seu pet não precisa ir a outro lugar, e hemograma, SDMA e teste de FIV/FeLV ficam prontos em até 15 minutos.</p>
         <div class="page-hero__actions">
           <a class="btn" data-wa="Olá! Vim pelo site e quero agendar um exame para o meu pet." data-magnetic><x-icon name="whatsapp"></x-icon>Agendar exame</a>
           <a class="btn btn--ghost" href="tel:{{site.phone.e164}}" data-track="phone"><x-icon name="phone"></x-icon>{{site.phone.display}}</a>
@@ -35,17 +35,43 @@ priority: 0.9
   </div>
 </section>
 
-<section class="section section--tight" aria-labelledby="imagem-titulo">
+<section class="section section--nevoa" id="exames-rapidos" aria-labelledby="rapidos-titulo">
   <div class="wrap">
     <header class="section-head">
-      <h2 id="imagem-titulo" data-reveal>Exames por imagem</h2>
+      <h2 id="rapidos-titulo" data-reveal>Resultado em até 15 minutos</h2>
+      <p data-reveal style="--i:1">Três exames ficam prontos durante a consulta. O veterinário já conversa com você sobre o resultado na mesma visita.</p>
+    </header>
+    <ul class="fast">
+      <li>
+        <span class="fast__time">Até 15 min</span>
+        <h3>Hemograma</h3>
+        <p>Avalia glóbulos vermelhos, glóbulos brancos e plaquetas. É o exame de sangue mais pedido: ajuda a investigar anemia, infecções e inflamações e faz parte da avaliação antes de cirurgias.</p>
+      </li>
+      <li>
+        <span class="fast__time">Até 15 min</span>
+        <h3>SDMA</h3>
+        <p>Marcador precoce da função renal. Ajuda a perceber alterações nos rins mais cedo, por isso é útil no check-up, principalmente de cães e gatos idosos.</p>
+      </li>
+      <li>
+        <span class="fast__time">Até 15 min</span>
+        <h3>Teste de FIV e FeLV</h3>
+        <p>Teste de ELISA que detecta os vírus da imunodeficiência felina (FIV) e da leucemia felina (FeLV). É exigido para a hospedagem no nosso <a href="/hotel-para-gatos/">Hotel para Gatos</a>.</p>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<section class="section" aria-labelledby="imagem-titulo">
+  <div class="wrap">
+    <header class="section-head">
+      <h2 id="imagem-titulo" data-reveal>Exames de imagem: ultrassom, raio-X e ecocardiograma veterinário</h2>
       <p data-reveal style="--i:1">Raio-X, ultrassom e ecocardiograma são feitos com hora marcada, por veterinários especialistas na área.</p>
     </header>
     <ul class="exams">
       <li class="exam"><x-img src="exame-ecocardiograma.png" alt="Golden retriever deitado durante exame de ecocardiograma" widths="360,540" sizes="(min-width: 960px) 22vw, (min-width: 520px) 45vw, 90vw"></x-img><h3>Ecocardiograma</h3><p>Avalia a estrutura e o funcionamento do coração, feito pelo cardiologista da clínica.</p></li>
       <li class="exam"><x-img src="exame-eletrocardiograma.png" alt="Cão durante exame de eletrocardiograma" widths="360,540" sizes="(min-width: 960px) 22vw, (min-width: 520px) 45vw, 90vw"></x-img><h3>Eletrocardiograma</h3><p>Registra a atividade elétrica e o ritmo cardíaco. Feito na clínica e laudado por cardiologista via telemedicina.</p></li>
-      <li class="exam"><x-img src="exame-raio-x.png" alt="Pet posicionado para exame de raio-X" widths="360,540" sizes="(min-width: 960px) 22vw, (min-width: 520px) 45vw, 90vw"></x-img><h3>Raio-X</h3><p>Imagens de ossos, articulações, tórax e abdômen.</p></li>
-      <li class="exam"><x-img src="exame-ultrassom.png" alt="Veterinária fazendo ultrassom abdominal em um buldogue francês" widths="360,540" sizes="(min-width: 960px) 22vw, (min-width: 520px) 45vw, 90vw"></x-img><h3>Ultrassom</h3><p>Avaliação dos órgãos abdominais em tempo real.</p></li>
+      <li class="exam"><x-img src="exame-raio-x.png" alt="Pet posicionado para exame de raio-X" widths="360,540" sizes="(min-width: 960px) 22vw, (min-width: 520px) 45vw, 90vw"></x-img><h3>Raio-X veterinário</h3><p>Imagens de ossos, articulações, tórax e abdômen, com hora marcada.</p></li>
+      <li class="exam"><x-img src="exame-ultrassom.png" alt="Veterinária fazendo ultrassom abdominal em um buldogue francês" widths="360,540" sizes="(min-width: 960px) 22vw, (min-width: 520px) 45vw, 90vw"></x-img><h3>Ultrassom veterinário</h3><p>Avaliação dos órgãos abdominais em tempo real, com hora marcada.</p></li>
     </ul>
   </div>
 </section>
@@ -53,43 +79,57 @@ priority: 0.9
 <section class="section section--nevoa" aria-labelledby="lab-titulo">
   <div class="wrap">
     <header class="section-head">
-      <h2 id="lab-titulo" data-reveal>Exames laboratoriais</h2>
-      <p data-reveal style="--i:1">Aparelhos Idexx® na própria clínica: o seu pet não precisa ir a outro lugar.</p>
+      <h2 id="lab-titulo" data-reveal>Outros exames veterinários de laboratório</h2>
+      <p data-reveal style="--i:1">Também feitos com os aparelhos Idexx® da clínica. O prazo de cada um é informado pela equipe.</p>
     </header>
-    <div class="highlight" data-reveal>
-      <h3>Resultado em até 15 minutos</h3>
-      <ul class="checklist">
-        <li><x-icon name="check"></x-icon>Hemograma</li>
-        <li><x-icon name="check"></x-icon>SDMA</li>
-        <li><x-icon name="check"></x-icon>Teste de ELISA para FIV e FeLV</li>
-      </ul>
-    </div>
     <div class="lab-groups">
       <div class="lab-group lab-group--wide">
-        <h3>Outros exames oferecidos</h3>
+        <h3>Sangue, urina e fezes</h3>
         <ul><li>Função renal</li><li>Função hepática</li><li>Glicemia</li><li>Colesterol</li><li>Triglicérides</li><li>Exame de urina</li><li>Exame de fezes</li><li>Sorologia</li><li>Cultura e antibiograma</li></ul>
       </div>
       <div class="lab-group"><h3>Perfil hormonal</h3><ul><li>T4</li><li>T4 livre</li><li>TSH</li><li>Cortisol</li></ul></div>
       <div class="lab-group"><h3>Pressão arterial</h3><ul><li>Aferição com doppler</li></ul></div>
-      <div class="lab-group"><h3>Não realizamos</h3><ul><li>Teste de estimulação com ACTH</li></ul></div>
+    </div>
+    <p class="lab-note" data-reveal><strong>Exame que não realizamos:</strong> teste de estimulação com ACTH.</p>
+  </div>
+</section>
+
+<section class="section section--tight" aria-labelledby="quando-titulo">
+  <div class="wrap">
+    <header class="section-head">
+      <h2 id="quando-titulo" data-reveal>Quando o exame na hora faz diferença</h2>
+    </header>
+    <div class="duo">
+      <div data-reveal>
+        <h3>Antes da castração e de outras cirurgias</h3>
+        <p>Os exames de sangue pré-cirúrgicos e o eletrocardiograma são feitos na consulta inicial, e o resultado do sangue sai em até 15 minutos. Assim, a cirurgia é planejada com os resultados em mãos.</p>
+        <p><a class="link-more" href="/castracao/">Como funciona a castração na Ventura</a></p>
+      </div>
+      <div data-reveal style="--i:1">
+        <h3>Antes da hospedagem do seu gato</h3>
+        <p>O Hotel para Gatos só recebe gatos com teste de FIV e FeLV negativo. Se você não tiver o exame, a equipe faz o teste aqui, antes da hospedagem.</p>
+        <p><a class="link-more" href="/hotel-para-gatos/">Conhecer o Hotel para Gatos</a></p>
+      </div>
     </div>
   </div>
 </section>
 
-<section class="section faq" id="perguntas" aria-labelledby="faq-titulo">
+<section class="section faq section--nevoa" id="perguntas" aria-labelledby="faq-titulo">
   <div class="wrap faq__grid">
     <header class="faq__head"><h2 id="faq-titulo">Perguntas mais frequentes</h2></header>
     <div class="faq__list">
-      <details class="faq__item" name="faq-lab"><summary>O exame fica pronto na hora?</summary><div class="faq__answer"><p>Hemograma, SDMA e o teste de ELISA para FIV e FeLV ficam prontos em até 15 minutos, ainda durante a consulta. Os outros exames laboratoriais têm prazo próprio, informado pela equipe.</p></div></details>
-      <details class="faq__item" name="faq-lab"><summary>A Ventura possui laboratório próprio?</summary><div class="faq__answer"><p>Sim. Contamos com aparelhos Idexx® na própria clínica, no Paraíso.</p></div></details>
+      <details class="faq__item" name="faq-lab"><summary>Quais exames ficam prontos em 15 minutos?</summary><div class="faq__answer"><p>Hemograma, SDMA e o teste de ELISA para FIV e FeLV ficam prontos em até 15 minutos, ainda durante a consulta. Os outros exames laboratoriais têm prazo próprio, informado pela equipe.</p></div></details>
+      <details class="faq__item" name="faq-lab"><summary>A Ventura possui laboratório próprio?</summary><div class="faq__answer"><p>Sim. Contamos com aparelhos Idexx® na própria clínica, na Rua Otávio Nébias, 190, no Paraíso.</p></div></details>
+      <details class="faq__item" name="faq-lab"><summary>O que é o exame SDMA?</summary><div class="faq__answer"><p>É um marcador precoce da função renal, medido no sangue. Ele ajuda o veterinário a perceber alterações nos rins mais cedo e costuma fazer parte do check-up de cães e gatos.</p></div></details>
       <details class="faq__item" name="faq-lab"><summary>Os exames de imagem precisam de agendamento?</summary><div class="faq__answer"><p>Sim. Raio-X, ultrassom e ecocardiograma são feitos com hora marcada por veterinários especialistas. O eletrocardiograma é feito na clínica e interpretado por um cardiologista via telemedicina. Agende pelo WhatsApp {{site.whatsapp.display}}.</p></div></details>
-      <details class="faq__item" name="faq-lab"><summary>Vocês fazem o teste de FIV e FeLV em gatos?</summary><div class="faq__answer"><p>Sim. O teste de ELISA para FIV e FeLV é feito no nosso laboratório e o resultado sai em até 15 minutos.</p></div></details>
+      <details class="faq__item" name="faq-lab"><summary>Vocês fazem o teste rápido de FIV e FeLV em gatos?</summary><div class="faq__answer"><p>Sim. O teste de ELISA para FIV e FeLV é feito no nosso laboratório e o resultado sai em até 15 minutos.</p></div></details>
       <details class="faq__item" name="faq-lab"><summary>Vocês fazem o teste de estimulação com ACTH?</summary><div class="faq__answer"><p>Não. Esse exame não é realizado na clínica. Para investigar o cortisol, fazemos a dosagem de cortisol no laboratório; o veterinário indica o exame adequado a cada caso.</p></div></details>
+      <details class="faq__item" name="faq-lab"><summary>O laboratório aceita convênio ou plano de saúde pet?</summary><div class="faq__answer"><p>Não. A Ventura é uma clínica particular e não trabalha com convênios nem planos de saúde pet. Os valores são informados no agendamento.</p></div></details>
     </div>
   </div>
 </section>
 
-<section class="section section--tight section--nevoa">
+<section class="section section--tight">
   <div class="wrap"><x-service-nav current="laboratorio"></x-service-nav></div>
 </section>
 

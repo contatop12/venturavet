@@ -15,7 +15,9 @@
   display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0.5rem 2rem; margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid var(--linha);
   font-size: 0.85rem; color: var(--tinta-2);
   ul { display: flex; flex-wrap: wrap; gap: 0.25rem 1.25rem; }
-  a { color: inherit; &:hover { color: var(--tinta); } }
+  /* Área de toque confortável mesmo com o texto pequeno */
+  a { display: inline-flex; align-items: center; min-height: 2.75rem; color: inherit; &:hover { color: var(--tinta); } }
+  p { display: flex; align-items: center; flex-wrap: wrap; gap: 0 0.3rem; }
 }
 @media (max-width: 1000px) { .footer__grid { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 560px) { .footer__grid { grid-template-columns: 1fr; } }

@@ -4,7 +4,7 @@ import { $$, onVisible, reducedMotion } from './dom';
  * Revelação ao rolar. Além dos [data-reveal] escritos no HTML, aplica
  * automaticamente em grupos repetidos (cards, etapas) com atraso escalonado.
  */
-const AUTO = ['.card', '.exam', '.lab-group', '.svc-nav li', '.post-card', '.steps > li', '.svc-row', '.mvv > div', '.review', '.checklist li', '.pills li', '.timeline__item'];
+const AUTO = ['.card', '.exam', '.lab-group', '.fast > li', '.area-card','.svc-nav li', '.post-card', '.steps > li', '.svc-row', '.mvv > div', '.review', '.checklist li', '.pills li', '.timeline__item'];
 
 export function initReveal() {
   if (reducedMotion()) return;

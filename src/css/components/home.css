@@ -63,6 +63,7 @@
 }
 .svc-others { margin-top: clamp(2rem, 4vw, 3rem); }
 .svc-others__title { font-family: var(--f-display); font-size: var(--step-1); font-weight: 850; letter-spacing: -0.01em; small { font-family: var(--f-text); font-size: 0.9rem; font-weight: 500; color: var(--tinta-2); } }
+@media (max-width: 600px) { .svc-others__title small { display: block; margin-top: 0.2rem; } }
 
 /* ---------- Destaque da castração (faixa escura) ---------- */
 .castra { background: var(--tinta); color: var(--branco); overflow: clip; }
@@ -126,7 +127,8 @@
 .about { background: var(--tinta); color: var(--branco); overflow: clip; }
 .about__grid { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: clamp(2rem, 6vw, 6rem); align-items: center; }
 .about__media { position: relative; padding: 0 12% 12% 0; }
-.about__main img { filter: drop-shadow(0 30px 40px rgb(0 0 0 / 25%)); }
+.about__main { display: block; filter: drop-shadow(0 30px 40px rgb(0 0 0 / 25%)); }
+.about__main img { aspect-ratio: 1; object-fit: cover; object-position: 50% 18%; border-radius: var(--blob); }
 .about__side { position: absolute; right: 0; bottom: 0; width: 46%; }
 .about__copy h2 { font-size: var(--step-4); letter-spacing: -0.03em; }
 .about__copy > p { margin-top: 1.25rem; font-size: var(--step-1); line-height: 1.6; color: #d3dfe9; strong { color: var(--branco); } }
@@ -138,23 +140,37 @@
 @media (max-width: 860px) { .about__grid { grid-template-columns: 1fr; } .about__media { max-width: 26rem; } }
 @media (max-width: 480px) { .facts { grid-template-columns: 1fr 1fr; } }
 
-/* ---------- Um dia de day care (linha do tempo horizontal) ---------- */
-.day { background: var(--nevoa); overflow: clip; }
-.day__scroller {
-  position: relative; overflow-x: auto; scroll-snap-type: x proximity; scroll-padding-inline: max(var(--gutter), calc((100vw - var(--max)) / 2)); scrollbar-width: thin; scrollbar-color: var(--laranja) transparent;
-  padding-block: 1rem 2rem;
+/* ---------- Laboratório na home: exames em até 15 minutos ---------- */
+.lab15__grid { display: grid; grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr); gap: clamp(2rem, 6vw, 5rem); align-items: center; }
+.lab15__copy h2 { margin-top: 1rem; font-size: var(--step-4); letter-spacing: -0.03em; em { font-style: italic; font-weight: 900; color: var(--laranja-texto); } }
+.lab15__copy > p:not(.castra__kicker) { margin-top: 1.1rem; font-size: var(--step-1); line-height: 1.6; color: var(--tinta-2); }
+.lab15__list { display: grid; gap: 0.85rem; padding: 0; list-style: none; }
+.lab15__list li {
+  display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 1.1rem; align-items: center;
+  padding: 1.15rem 1.25rem; border-radius: var(--r-md); background: var(--branco); box-shadow: var(--shadow);
+  h3 { font-size: 1.2rem; letter-spacing: -0.01em; }
+  p { margin-top: 0.25rem; color: var(--tinta-2); line-height: 1.5; font-size: 0.98rem; }
 }
-.day__inner { position: relative; width: max-content; }
-.day__fio { position: absolute; left: max(var(--gutter), calc((100vw - var(--max)) / 2)); right: 0; top: 3.1rem; width: auto; height: 2rem; z-index: 0; color: var(--laranja); stroke-width: 3; }
-.day__track {
-  position: relative; z-index: 1; display: flex; gap: 1rem; width: max-content;
-  padding-inline: max(var(--gutter), calc((100vw - var(--max)) / 2));
-  li { width: 13.5rem; flex: none; scroll-snap-align: start; padding-top: 4.75rem; position: relative; }
-  li::before { content: ''; position: absolute; top: 3.6rem; left: 0.15rem; width: 1rem; height: 1rem; border-radius: 999px; background: var(--branco); border: 3px solid var(--tinta); }
-  time { display: block; font-family: var(--f-display); font-style: italic; font-weight: 900; font-size: var(--step-3); line-height: 1; letter-spacing: -0.03em; position: absolute; top: 0; }
-  p { padding: 1rem 1.1rem; border-radius: var(--r-md); background: var(--branco); line-height: 1.45; font-size: 0.97rem; box-shadow: var(--shadow); }
+.lab15__time {
+  display: grid; place-items: center; width: 4.25rem; height: 4.25rem; border-radius: var(--blob); background: var(--laranja);
+  font-family: var(--f-display); font-style: italic; font-weight: 900; font-size: 1.05rem; line-height: 1; text-align: center;
 }
-.day__cta { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1.5rem; }
+@media (max-width: 860px) { .lab15__grid { grid-template-columns: 1fr; } }
+
+/* ---------- Onde estamos: cartões por bairro ---------- */
+.area-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 17rem), 1fr)); gap: 1rem; padding: 0; list-style: none; }
+.area-card {
+  display: flex; flex-direction: column; gap: 0.5rem; padding: 1.35rem 1.5rem; border-radius: var(--r-md); background: var(--branco); border: 1px solid var(--linha);
+  scroll-margin-top: calc(var(--header-h) + 1.5rem);
+  h3 { display: flex; align-items: center; gap: 0.45rem; font-size: 1.2rem; letter-spacing: -0.01em; .icon { width: 1.15rem; height: 1.15rem; color: var(--laranja-texto); } }
+  p { color: var(--tinta-2); line-height: 1.55; font-size: 0.98rem; }
+  a { display: inline-flex; align-items: center; gap: 0.4rem; min-height: 2.75rem; margin-top: auto; font-weight: 700; color: var(--laranja-texto); .icon { width: 1rem; height: 1rem; } &:hover { color: var(--tinta); } }
+}
+.section--nevoa .area-card { border-color: transparent; }
+.split--top { align-items: start; }
+.facts-list + .contact__card { margin-top: 1.75rem; h3 { font-size: var(--step-1); margin-bottom: 0.5rem; } }
+.facts-list { display: grid; gap: 0.75rem; margin-top: 1.5rem; padding: 0; list-style: none; }
+.facts-list li { display: flex; gap: 0.75rem; align-items: flex-start; .icon { flex: none; width: 1.6rem; height: 1.6rem; padding: 0.3rem; border-radius: 999px; background: var(--laranja-suave); color: var(--laranja-texto); margin-top: 0.05rem; } }
 
 /* ---------- Grade de posts ---------- */
 .post-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 19rem), 1fr)); gap: clamp(1rem, 2vw, 1.75rem); }

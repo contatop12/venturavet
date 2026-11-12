@@ -63,8 +63,9 @@ priority: 0.8
           <label class="option"><input type="radio" name="necessidade" value="Vacina"><span>Vacina</span></label>
           <label class="option"><input type="radio" name="necessidade" value="Cirurgia"><span>Cirurgia</span></label>
           <label class="option"><input type="radio" name="necessidade" value="Castração"><span>Castração</span></label>
+          <label class="option"><input type="radio" name="necessidade" value="Hotel para Gatos"><span>Hotel para Gatos</span></label>
           <label class="option"><input type="radio" name="necessidade" value="Limpeza de tártaro"><span>Limpeza de tártaro</span></label>
-          <label class="option"><input type="radio" name="necessidade" value="Day Care / Hotel"><span>Day Care / Hotel</span></label>
+          <label class="option"><input type="radio" name="necessidade" value="Day Care / Hotel para Cães"><span>Day Care / Hotel para Cães</span></label>
           <label class="option"><input type="radio" name="necessidade" value="Natação"><span>Natação</span></label>
           <label class="option"><input type="radio" name="necessidade" value="Banho e tosa"><span>Banho e tosa</span></label>
         </div>
@@ -124,7 +125,9 @@ priority: 0.8
   <div class="wrap faq__grid">
     <header class="faq__head"><h2 id="faq-titulo">Antes de vir</h2></header>
     <div class="faq__list">
-      <details class="faq__item" name="faq-contato"><summary>Onde fica a Ventura Vet?</summary><div class="faq__answer"><p>{{site.address.full}}. É no bairro Paraíso, zona sul de São Paulo.</p></div></details>
+      <details class="faq__item" name="faq-contato"><summary>Onde fica a Ventura Vet?</summary><div class="faq__answer"><p>{{site.address.full}}. É no bairro Paraíso, zona sul de São Paulo, {{site.landmarks.metro}}. Veja <a href="/onde-estamos/">como chegar do seu bairro</a>.</p></div></details>
+      <details class="faq__item" name="faq-contato"><summary>Qual o horário de atendimento?</summary><div class="faq__answer"><p>{{site.hours.clinicDisplay}}.</p></div></details>
+      <details class="faq__item" name="faq-contato"><summary>A Ventura aceita convênio ou plano de saúde pet?</summary><div class="faq__answer"><p>Não. A Ventura é uma clínica particular e não trabalha com convênios nem planos de saúde pet.</p></div></details>
       <details class="faq__item" name="faq-contato"><summary>Qual o jeito mais rápido de agendar?</summary><div class="faq__answer"><p>Pelo WhatsApp {{site.whatsapp.display}}. Você também pode ligar para {{site.phone.display}} ou mandar um e-mail para {{site.email}}.</p></div></details>
       <details class="faq__item" name="faq-contato"><summary>O que levar na primeira visita?</summary><div class="faq__answer"><p>A carteira de vacinação do pet e, se houver, exames e receitas anteriores. Para day care, hotel e natação, a carteira atualizada é obrigatória.</p></div></details>
     </div>

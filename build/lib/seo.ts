@@ -56,7 +56,8 @@ function organization() {
     founder: { '@id': FOUNDER },
     address: {
       '@type': 'PostalAddress',
-      streetAddress: site.address.street,
+      // Com o bairro, como no Google Business Profile ("R. Otávio Nébias, 190 - Paraíso")
+      streetAddress: `${site.address.street} - ${site.address.district}`,
       addressLocality: site.address.city,
       addressRegion: site.address.region,
       postalCode: site.address.postalCode,

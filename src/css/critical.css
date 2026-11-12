@@ -120,7 +120,7 @@ main:focus { outline: none; }
   --bg: var(--laranja);
   --fg: var(--tinta);
   display: inline-flex; align-items: center; justify-content: center; gap: 0.6rem;
-  min-height: 3.25rem; padding: 0.8rem 1.5rem;
+  min-height: 3.25rem; max-width: 100%; padding: 0.8rem 1.5rem;
   border-radius: 999px; border: 2px solid var(--bg);
   background: var(--bg); color: var(--fg);
   font-family: var(--f-display); font-weight: 800; font-size: 1.0625rem; line-height: 1.1;
@@ -134,6 +134,8 @@ main:focus { outline: none; }
 .btn--dark { --bg: var(--tinta); --fg: var(--branco); &:hover { box-shadow: 0 10px 24px -10px rgb(19 41 61 / 60%); } }
 .btn--light { --bg: var(--branco); --fg: var(--tinta); }
 .btn--sm { min-height: 2.75rem; padding: 0.55rem 1.1rem; font-size: 0.95rem; }
+/* Rótulos longos quebram linha em telas estreitas em vez de estourar a largura da página */
+@media (max-width: 520px) { .btn { white-space: normal; text-align: center; border-radius: 1.75rem; } }
 
 /* ---------- Cabeçalho ---------- */
 .topbar {
@@ -216,10 +218,11 @@ main:focus { outline: none; }
 .stars { display: inline-flex; gap: 1px; color: #f5a400; .icon { width: 1rem; height: 1rem; fill: currentColor; stroke: none; } }
 .hero__art { position: relative; aspect-ratio: 1; max-width: 36rem; justify-self: end; width: 100%; }
 .hero__blob {
-  position: absolute; inset: 6% 2% 4% 8%; z-index: -1;
+  position: absolute; inset: 9% -4% -5% 12%; z-index: -1; rotate: 8deg;
   background: var(--laranja); border-radius: var(--blob);
 }
-.hero__photo { position: relative; img { width: 100%; height: auto; } }
+/* Foto real (retangular) recortada na mesma forma orgânica da marca */
+.hero__photo { position: relative; display: block; img { width: 100%; height: auto; aspect-ratio: 1; object-fit: cover; object-position: 50% 30%; border-radius: var(--blob); } }
 .hero__ball { position: absolute; width: 18%; z-index: 2; }
 .hero__ball--a { left: -2%; top: 8%; }
 .hero__ball--b { right: 0; bottom: 6%; width: 13%; }
@@ -245,6 +248,9 @@ main:focus { outline: none; }
 .page-hero__actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1.75rem; }
 .page-hero__art { position: relative; justify-self: end; width: 100%; max-width: 30rem; }
 .page-hero__art::before { content: ''; position: absolute; inset: 8% 6% 4% 10%; z-index: -1; background: var(--laranja-suave); border-radius: var(--blob); }
+/* Variante para fotos reais (sem recorte): ganham a forma orgânica e o fundo aparece deslocado */
+.page-hero__art--photo picture { display: block; aspect-ratio: 1; overflow: hidden; border-radius: var(--blob); img { height: 100%; object-fit: cover; } }
+.page-hero__art--photo::before { inset: 6% -5% -5% 10%; rotate: 8deg; }
 .page-hero--plain { background: var(--branco); padding-bottom: 1rem; }
 .crumbs ol { display: flex; flex-wrap: wrap; gap: 0.25rem 0.5rem; padding: 0; list-style: none; margin-bottom: 1.5rem; font-size: 0.9rem; color: var(--tinta-2); }
 .crumbs li + li::before { content: '/'; margin-right: 0.5rem; color: var(--traco); }

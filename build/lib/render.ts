@@ -111,7 +111,9 @@ export async function renderPage(meta: PageMeta, body: string, assets: Assets, e
     const href = $(a).attr('href');
     if (href === meta.path) $(a).attr('aria-current', 'page');
   });
-  if (services.some((s) => s.path === meta.path) || meta.path === '/servicos/') $('.nav__has-sub > .nav__link').addClass('is-active');
+  // "Serviços" fica ativo nas páginas de serviço — menos na Castração, que tem item próprio no menu
+  const ownNavItem = nav.some((item) => !item.children && item.href === meta.path);
+  if ((services.some((s) => s.path === meta.path) && !ownNavItem) || meta.path === '/servicos/') $('.nav__has-sub > .nav__link').addClass('is-active');
   if (meta.type === 'post' || meta.type === 'category') $('.nav a[href="/blog/"]').addClass('is-active');
 
   // Auditoria leve de semântica

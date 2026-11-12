@@ -102,6 +102,7 @@
 }
 .cta-final__pets { position: absolute; left: 50%; bottom: 100%; width: min(40rem, 86%); transform: translate(-50%, 9%); pointer-events: none; }
 .cta-final__copy { align-self: center; h2 { font-size: var(--step-4); letter-spacing: -0.035em; font-style: italic; font-weight: 900; } p { margin-top: 1rem; font-size: var(--step-1); line-height: 1.5; max-width: 32rem; } }
+.cta-final__copy p a { font-weight: 700; white-space: nowrap; }
 .cta-final__actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 2rem; }
 .cta-final__visit { display: grid; gap: 1rem; padding: 0.75rem; border-radius: var(--r-lg); background: var(--branco); }
 .cta-final__info { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; padding: 0.5rem 0.75rem 0.75rem; }

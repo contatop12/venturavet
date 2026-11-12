@@ -89,7 +89,8 @@ async function processImage(src: string, widths = DEFAULT_WIDTHS): Promise<Image
 export async function makeOgImage(src: string, slug: string): Promise<string> {
   const file = `og-${slug}.jpg`;
   const out = join(paths.dist, 'og', file);
-  const cached = join(paths.imgCache, `og-${slug}-${(await hashFile(await readFile(join(paths.img, src)))).slice(0, 6)}.jpg`);
+  // "v2" no nome invalida o cache quando a composição muda (o hash só cobre a foto de origem)
+  const cached = join(paths.imgCache, `og-${slug}-${(await hashFile(await readFile(join(paths.img, src)))).slice(0, 6)}-v2.jpg`);
   await mkdir(join(paths.dist, 'og'), { recursive: true });
   await mkdir(paths.imgCache, { recursive: true });
   if (!(await exists(cached))) {
@@ -101,7 +102,13 @@ export async function makeOgImage(src: string, slug: string): Promise<string> {
         <path d="M40 560c120-60 260 40 420-10s180-150 300-120" fill="none" stroke="#9AA3A8" stroke-width="5" stroke-linecap="round"/>
       </svg>`,
     );
-    const photo = await sharp(join(paths.img, src)).resize({ width: 560, height: 540, fit: 'contain', background: { r: 0, g: 0, b: 0, alpha: 0 } }).png().toBuffer();
+    // Recortes com transparência entram inteiros; fotos retangulares preenchem a área com cantos arredondados
+    const cutout = (await sharp(join(paths.img, src)).metadata()).hasAlpha;
+    let photo = await sharp(join(paths.img, src)).resize({ width: 560, height: 540, fit: cutout ? 'contain' : 'cover', background: { r: 0, g: 0, b: 0, alpha: 0 } }).png().toBuffer();
+    if (!cutout) {
+      const mask = Buffer.from('<svg width="560" height="540" xmlns="http://www.w3.org/2000/svg"><rect width="560" height="540" rx="72"/></svg>');
+      photo = await sharp(photo).ensureAlpha().composite([{ input: mask, blend: 'dest-in' }]).png().toBuffer();
+    }
     const logo = await sharp(join(paths.img, 'logo-ventura.png')).resize({ width: 460 }).png().toBuffer();
     await sharp(blob)
       .composite([

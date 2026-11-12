@@ -7,6 +7,26 @@
  * inventados: preencha com os dados do Google Business Profile.
  */
 
+/**
+ * Bairros atendidos (SEO local): o Paraíso e os bairros vizinhos.
+ * `km` = distância aproximada de carro do centro do bairro até a clínica (OpenStreetMap/OSRM, nov/2026);
+ * `from` = forma usada em frases ("a partir da Vila Mariana"). Alimenta o HTML, o JSON-LD e o llms.txt.
+ */
+export const areas: { name: string; from: string; km: number }[] = [
+  { name: 'Paraíso', from: 'do Paraíso', km: 0 },
+  { name: 'Jardim Paulista', from: 'do Jardim Paulista', km: 2.5 },
+  { name: 'Bela Vista', from: 'da Bela Vista', km: 2.5 },
+  { name: 'Ibirapuera', from: 'do Ibirapuera', km: 2.5 },
+  { name: 'Cerqueira César', from: 'de Cerqueira César', km: 3 },
+  { name: 'Jardins', from: 'dos Jardins', km: 3.5 },
+  { name: 'Vila Nova Conceição', from: 'da Vila Nova Conceição', km: 3.5 },
+  { name: 'Vila Mariana', from: 'da Vila Mariana', km: 3.5 },
+  { name: 'Moema', from: 'de Moema', km: 4 },
+  { name: 'Vila Clementino', from: 'da Vila Clementino', km: 4 },
+  { name: 'Aclimação', from: 'da Aclimação', km: 4 },
+  { name: 'Liberdade', from: 'da Liberdade', km: 4 },
+];
+
 export const site = {
   url: 'https://venturavet.com.br',
   name: 'Ventura Veterinária & Pet Shop',
@@ -34,11 +54,17 @@ export const site = {
     full: 'Rua Otávio Nébias, 190 – Paraíso, São Paulo – SP, 04002-011',
   },
   geo: { lat: -23.5732, lng: -46.65257 },
-  /** Bairros atendidos (SEO local): o Paraíso e os bairros vizinhos da Zona Sul/Centro-Sul. */
-  areaServed: [
-    'Paraíso', 'Vila Mariana', 'Ibirapuera', 'Moema', 'Vila Nova Conceição', 'Jardim Paulista', 'Jardins',
-    'Cerqueira César', 'Bela Vista', 'Aclimação', 'Vila Clementino', 'Liberdade', 'São Paulo',
-  ],
+  /** Bairros atendidos + a cidade (mesma lista de `areas`, usada no JSON-LD). */
+  areaServed: [...areas.map((a) => a.name), 'São Paulo'],
+  /** Bairros citados em frases curtas (os mais próximos e mais buscados). */
+  areasShort: 'Paraíso, Vila Mariana, Jardins, Jardim Paulista, Bela Vista, Ibirapuera, Moema e Vila Nova Conceição',
+  /** Pontos de referência (distâncias a pé aproximadas, OpenStreetMap, nov/2026). */
+  landmarks: {
+    metro: 'a cerca de 900 m da estação Brigadeiro do metrô (Linha 2-Verde)',
+    avenue: 'a cerca de 300 m da Avenida Brigadeiro Luís Antônio',
+    paulista: 'a cerca de 1 km da Avenida Paulista',
+    park: 'a cerca de 2,5 km do Parque Ibirapuera',
+  },
 
   /** Diferenciais institucionais destacados no site e nos dados estruturados. */
   credentials: {
@@ -142,7 +168,7 @@ export const services: Service[] = [
     path: '/castracao/',
     name: 'Castração de Cães e Gatos',
     navName: 'Castração',
-    short: 'Castração com anestesia inalatória, monitoramento contínuo e acompanhamento do pré ao pós-operatório.',
+    short: 'Castração com anestesia feita por anestesiologistas, monitorização contínua e suturas absorvíveis, sem cone nem roupinha.',
     icon: 'heart-pulse',
     image: 'cirurgia-monitoramento-anestesico.jpg',
     imageAlt: 'Profissional ao lado do aparelho de anestesia e do monitor do centro cirúrgico',
@@ -156,7 +182,7 @@ export const services: Service[] = [
     path: '/hotel-para-gatos/',
     name: 'Hotel para Gatos',
     navName: 'Hotel para Gatos',
-    short: 'Hospedagem exclusiva para gatos, sem contato com outros animais, numa clínica com selo Cat Friendly.',
+    short: 'Hospedagem só para gatos em gatil telado, sem contato com outros animais, numa clínica com selo Cat Friendly.',
     icon: 'cat',
     image: 'hotel-para-gatos-gato-descansando.jpg',
     imageAlt: 'Gato siamês relaxando em uma plataforma alta no espaço telado do hotel para gatos',
@@ -218,18 +244,24 @@ export const otherServices = services.filter((s) => s.group === 'outros');
 export const nav = [
   { label: 'Quem somos', href: '/quem-somos/' },
   { label: 'Serviços', href: '/servicos/', children: services.map((s) => ({ label: s.navName, href: s.path, icon: s.icon, short: s.short, group: s.group })) },
+  // Castração tem destaque próprio no menu (pedido do briefing), além de estar em Serviços.
+  { label: 'Castração', href: '/castracao/' },
   { label: 'Blog', href: '/blog/' },
   { label: 'Contato', href: '/contato/' },
 ];
 
-/** Avaliações reais publicadas no Google (exibidas no site atual via Trustindex). */
+/**
+ * Avaliações reais publicadas no Google (exibidas no site antigo via Trustindex).
+ * Ordem: primeiro as que falam da clínica e da estrutura como um todo (foco do site), depois as de banho e tosa.
+ * Para trocar por avaliações de consultas, castração ou hotel para gatos, copie o texto exato do Google.
+ */
 export const reviews = [
-  { author: 'Renata Malachias', date: '2025-11-06', rating: 5, text: 'Adorei. Pontuais, organizados, carinhosos e atenciosos. A Michelle cuidou super bem da minha cachorrinha que é super medrosa. Pepé saiu de lá feliz, limpinha e com cara de ter sido bem cuidada.' },
-  { author: 'Ivonete Gonçalves', date: '2025-09-25', rating: 5, text: 'Gostei demais do banho, tosa e o atendimento muito agradável!' },
-  { author: 'Renata Balerine', date: '2025-07-16', rating: 5, text: 'Foi uma experiência ótima! Minhas cachorras tomaram banho lá e voltaram lindas e cheirosas! AMEI o atendimento e o serviço. Super recomendo!' },
   { author: 'MZ Serviços', date: '2025-02-09', rating: 5, text: 'Espaço espetacular, com ótima estrutura e padrão 5 estrelas no atendimento e cuidado com seu pet. Super recomendo.' },
   { author: 'Karin Deguirmendjan Rosa Campos', date: '2024-09-12', rating: 5, text: 'Excelente atendimento, equipe atenciosa e competente! Agradecimento especial à Michele!' },
   { author: 'Patricia Biembenguti', date: '2025-05-18', rating: 5, text: 'Excelente atendimento, em todos aspectos! 👏👏👏👏' },
+  { author: 'Renata Malachias', date: '2025-11-06', rating: 5, text: 'Adorei. Pontuais, organizados, carinhosos e atenciosos. A Michelle cuidou super bem da minha cachorrinha que é super medrosa. Pepé saiu de lá feliz, limpinha e com cara de ter sido bem cuidada.' },
+  { author: 'Renata Balerine', date: '2025-07-16', rating: 5, text: 'Foi uma experiência ótima! Minhas cachorras tomaram banho lá e voltaram lindas e cheirosas! AMEI o atendimento e o serviço. Super recomendo!' },
+  { author: 'Ivonete Gonçalves', date: '2025-09-25', rating: 5, text: 'Gostei demais do banho, tosa e o atendimento muito agradável!' },
   { author: 'Ana Lucia Abrahão', date: '2025-08-04', rating: 5, text: 'Excelente.' },
 ];
 

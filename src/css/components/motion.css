@@ -10,7 +10,7 @@
 /* Parallax e faixa só quando o movimento é permitido (JS define as variáveis) */
 @media (prefers-reduced-motion: no-preference) {
   [data-parallax] { transform: translate3d(0, var(--py, 0), 0); will-change: transform; }
-  .js .day__fio path, .js [data-draw-scroll] { stroke-dasharray: 1; stroke-dashoffset: calc(1 - var(--p, 0)); }
+  .js [data-draw-scroll] { stroke-dasharray: 1; stroke-dashoffset: calc(1 - var(--p, 0)); }
   .bento__item, .svc-nav a, .exam, .card { transition: transform 0.6s var(--ease-out), border-color 0.3s; }
   .bento__item:hover { transform: translateY(-4px); }
   .btn[data-magnetic] { transition: transform 0.25s var(--ease-out), box-shadow 0.35s var(--ease-out); }

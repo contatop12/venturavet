@@ -16,7 +16,7 @@ priority: 0.8
     <div class="page-hero__grid">
       <div>
         <h1>Quem somos: <em>a Ventura</em>, no Paraíso desde 2007</h1>
-        <p class="page-hero__lede">Uma clínica com várias especialidades que também oferece day care, hotel, natação e banho e tosa — para que seu pet tenha tudo o que precisa sob os cuidados de uma mesma equipe.</p>
+        <p class="page-hero__lede">Uma clínica veterinária particular, com selo {{site.credentials.catFriendly}}, laboratório próprio e hotel para gatos — para que seu pet tenha consulta, exames e cirurgia sob os cuidados de uma mesma equipe.</p>
         <div class="page-hero__actions">
           <a class="btn" data-wa=""><x-icon name="whatsapp"></x-icon>Falar com a equipe</a>
           <a class="btn btn--ghost" href="/servicos/">Ver os serviços</a>
@@ -39,13 +39,13 @@ priority: 0.8
         <p>Contamos com um amplo espaço para atender todos os clientes com conforto e segurança. Para a limpeza, usamos uma técnica de desinfecção potente e eficaz chamada <strong>vassoura de fogo</strong>, que elimina agentes microbiológicos e também endoparasitas, hemoparasitas e ectoparasitas.</p>
       </div>
     </div>
-    <div class="gallery" data-reveal style="--i:2">
-      <x-img src="recepcao-clinica-ventura.jpg" alt="Recepção da clínica Ventura com parede verde, poltronas e sofá aconchegante" widths="360,540,720" sizes="(min-width: 860px) 26vw, 55vw"></x-img>
-      <x-img src="consultorio-clinico-ventura.jpg" alt="Consultório da Ventura Vet com mesa de atendimento em inox, mesa de trabalho e diplomas na parede" widths="360,540" sizes="(min-width: 860px) 18vw, 40vw" data-parallax="0.06"></x-img>
-      <x-img src="recepcao-clinica-ventura-sala-de-espera.jpg" alt="Sala de espera da Ventura Vet com sofá, poltrona e parede de folhagens" widths="360,540,720" sizes="(min-width: 860px) 26vw, 55vw"></x-img>
-      <x-img src="corredor-clinica-ventura.jpg" alt="Corredor da clínica Ventura com escada de madeira e quadros de cães na parede" widths="360,540" sizes="(min-width: 860px) 18vw, 40vw"></x-img>
-      <x-img src="fachada-clinica-ventura-paraiso.jpg" alt="Fachada da Ventura Veterinária &amp; Pet Shop no Paraíso, em São Paulo, com letreiro de serviços" widths="360,540,720" sizes="(min-width: 860px) 26vw, 55vw"></x-img>
-      <x-img src="hotel-para-gatos-corredor-com-nichos.jpg" alt="Corredor do hotel para gatos com nichos elevados e mural ilustrado, com um gato no nicho" widths="360,540" sizes="(min-width: 860px) 18vw, 40vw"></x-img>
+    <div class="gallery gallery--grid gallery--two" data-reveal style="--i:2">
+      <x-img src="fachada-clinica-ventura-paraiso.jpg" alt="Fachada da Ventura Veterinária &amp; Pet Shop no Paraíso, em São Paulo, com letreiro de serviços" widths="360,540,720" sizes="(min-width: 860px) 22vw, 45vw"></x-img>
+      <x-img src="recepcao-clinica-ventura.jpg" alt="Recepção da clínica Ventura com parede verde, poltronas e sofá aconchegante" widths="360,540,720" sizes="(min-width: 860px) 22vw, 45vw"></x-img>
+      <x-img src="consultorio-clinico-ventura.jpg" alt="Consultório da Ventura Vet com mesa de atendimento em inox, mesa de trabalho e diplomas na parede" widths="360,540,720" sizes="(min-width: 860px) 22vw, 45vw"></x-img>
+      <x-img src="recepcao-clinica-ventura-sala-de-espera.jpg" alt="Sala de espera da Ventura Vet com sofá, poltrona e parede de folhagens" widths="360,540,720" sizes="(min-width: 860px) 22vw, 45vw"></x-img>
+      <x-img src="corredor-clinica-ventura.jpg" alt="Corredor da clínica Ventura com escada de madeira e quadros de cães na parede" widths="360,540,720" sizes="(min-width: 860px) 22vw, 45vw"></x-img>
+      <x-img src="hotel-para-gatos-corredor-com-nichos.jpg" alt="Corredor do hotel para gatos com nichos elevados e mural ilustrado, com um gato no nicho" widths="360,540,720" sizes="(min-width: 860px) 22vw, 45vw"></x-img>
     </div>
   </div>
 </section>
@@ -74,10 +74,11 @@ priority: 0.8
   <div class="wrap split">
     <div>
       <h2 id="equipe-titulo" data-reveal>Nossa equipe</h2>
-      <x-video src="equipe-ventura-fachada-video" alt="Equipe da Ventura Vet acenando em frente à fachada da clínica"></x-video>
+      <p class="prose" data-reveal style="--i:1">Nossa equipe de veterinários é formada nas melhores universidades do Brasil e acompanha o seu pet da consulta ao retorno.</p>
+      <x-video class="team-video" src="equipe-ventura-fachada-video" alt="Equipe da Ventura Vet acenando em frente à fachada da clínica"></x-video>
     </div>
-    <div class="split__media split__media--blob" data-reveal>
-      <x-img src="equipe-ventura-na-fachada.jpg" alt="Equipe da Ventura Vet reunida em frente à fachada da clínica" widths="360,540,720,960" sizes="(min-width: 860px) 40vw, 85vw"></x-img>
+    <div class="split__media" data-reveal>
+      <x-img class="rounded" src="equipe-ventura-parede-verde.jpg" alt="Equipe da Ventura Vet reunida em frente à parede verde da recepção da clínica" widths="360,540,720,960" sizes="(min-width: 860px) 40vw, 85vw"></x-img>
     </div>
   </div>
 </section>
@@ -89,7 +90,7 @@ priority: 0.8
       <p data-reveal style="--i:1">Tudo no mesmo endereço, para o pet não precisar sair da clínica entre uma etapa e outra do cuidado.</p>
     </header>
     <ul class="cards">
-      <li class="card"><x-icon name="stethoscope"></x-icon><h3>Quatro consultórios</h3><p>Dois para cães, um exclusivo para felinos com sala de espera separada e Feliway®, e mais um de apoio.</p></li>
+      <li class="card"><x-icon name="stethoscope"></x-icon><h3>Quatro consultórios</h3><p>Um deles é exclusivo para felinos, com sala de espera separada e Feliway®. A clínica conta ainda com sala de fisioterapia.</p></li>
       <li class="card"><x-icon name="heart-pulse"></x-icon><h3>Centro cirúrgico</h3><p>Anestesia inalatória, monitor multiparamétrico, colchão térmico e instrumental esterilizado em autoclave.</p></li>
       <li class="card"><x-icon name="bed"></x-icon><h3>Internação dia</h3><p>Baias confortáveis e espaçosas, aparelhos de última geração e oxigenioterapia.</p></li>
       <li class="card"><x-icon name="microscope"></x-icon><h3>Laboratório próprio</h3><p>Aparelhos Idexx® com resultados de hemograma, SDMA e FIV/FeLV em até 15 minutos.</p></li>

@@ -6,12 +6,13 @@ import { readFile, writeFile, mkdir, rm, readdir, copyFile, stat, cp } from 'nod
 import { existsSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { createHash } from 'node:crypto';
+import { execFileSync } from 'node:child_process';
 import * as esbuild from 'esbuild';
 import { bundleAsync, browserslistToTargets, Features } from 'lightningcss';
 import sharp from 'sharp';
 import * as cheerio from 'cheerio';
 import { paths } from './lib/paths.ts';
-import { site, services, categories, svc } from './lib/site.ts';
+import { site, services, categories, svc, areas } from './lib/site.ts';
 import { getPosts, resetPosts, relatedPosts, categoryName, formatDate } from './lib/posts.ts';
 import { renderPage, parsePage, type Assets } from './lib/render.ts';
 import { getImage, makeOgImage, makeAppIcons } from './lib/images.ts';
@@ -75,6 +76,25 @@ async function copyFonts() {
 
 type BuiltPage = { meta: PageMeta; html: string; lastmod: string; images: string[] };
 
+/**
+ * Data da última alteração real da página, para o <lastmod> do sitemap: data do último commit
+ * que tocou o arquivo. A data do arquivo em disco não serve — num clone novo (deploy pelo Git)
+ * todos os arquivos ganham a data do clone e o sitemap diria que o site inteiro mudou a cada deploy.
+ * Arquivo com alterações ainda não commitadas (ou fora do git) usa a data em disco.
+ */
+function lastModified(file: string, mtime: Date) {
+  const git = (...args: string[]) => execFileSync('git', args, { cwd: paths.root, encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'] }).trim();
+  try {
+    if (!git('status', '--porcelain', '--', file)) {
+      const iso = git('log', '-1', '--format=%cI', '--', file);
+      if (iso) return new Date(iso).toISOString();
+    }
+  } catch {
+    /* sem git no ambiente de build: usa a data do arquivo */
+  }
+  return mtime.toISOString();
+}
+
 async function buildPages(assets: Assets) {
   const built: BuiltPage[] = [];
   const files = (await readdir(paths.pages)).filter((f) => f.endsWith('.html'));
@@ -93,7 +113,7 @@ async function buildPages(assets: Assets) {
     }
     const html = await renderPage(meta, body, assets);
     await write(outFor(meta.path), html);
-    built.push({ meta, html, lastmod: (await stat(file)).mtime.toISOString(), images });
+    built.push({ meta, html, lastmod: lastModified(file, (await stat(file)).mtime), images });
   }
   return built;
 }
@@ -142,9 +162,9 @@ async function buildPosts(assets: Assets) {
 
     const mainCat = post.categories.find((c) => c !== 'dicas-e-curiosidades') ?? post.categories[0];
     const service =
-      mainCat === 'hotel' || mainCat === 'day-use' ? svc('day-care-e-hotel')
+      /castra/.test(post.slug) ? svc('castracao')
+      : mainCat === 'hotel' || mainCat === 'day-use' ? svc('day-care-e-hotel')
       : mainCat === 'pet-shop' ? svc('banho-e-tosa')
-      : /castra/.test(post.slug) ? svc('castracao')
       : /exame|check-up|hemograma/.test(post.slug) ? svc('laboratorio')
       : svc('clinica-veterinaria');
     const ctx = { meta: {} as PageMeta, icons: new Set<string>(), vars: {} } as RenderCtx;
@@ -304,17 +324,18 @@ Fatos principais (fonte: este site oficial):
 - Horário: ${site.hours.clinicDisplay}.
 - ${site.paymentNote}
 - Telefone: ${site.phone.display} · WhatsApp: ${site.whatsapp.display} (${`https://wa.me/${site.whatsapp.number}`}) · E-mail: ${site.email}
-- Bairros atendidos: ${site.areaServed.filter((n) => n !== 'São Paulo').join(', ')}.
+- Como chegar: ${site.landmarks.metro}, ${site.landmarks.avenue}, ${site.landmarks.paulista} e ${site.landmarks.park}.
+- Bairros atendidos (distância aproximada de carro): ${areas.map((a) => (a.km ? `${a.name} (${a.km.toLocaleString('pt-BR')} km)` : `${a.name} (onde fica a clínica)`)).join(', ')}.
 - Serviços principais: clínica veterinária (oito especialidades, cirurgias), castração de cães e gatos, laboratório próprio e hotel para gatos.
 - Laboratório: aparelhos Idexx®; hemograma, SDMA e teste de FIV/FeLV com resultado em até 15 minutos; raio-X e ultrassom com hora marcada.
-- Castração: consulta com exames de sangue e eletrocardiograma, anestesia inalatória com monitorização contínua e suturas absorvíveis (sem cone ou roupinha).
+- Castração: consulta com exames de sangue e eletrocardiograma, anestesia feita por veterinários anestesiologistas com monitorização contínua (em cães, sempre inalatória) e suturas absorvíveis (sem cone ou roupinha).
 - Estrutura: quatro consultórios (um exclusivo para gatos), centro cirúrgico com anestesia inalatória, monitor multiparamétrico e colchão térmico, internação dia com oxigenioterapia.
 - Especialidades: ortopedia, oftalmologia, dermatologia, endocrinologia, odontologia, neurologia, cardiologia e oncologia.
 - Outros serviços, com vagas limitadas: Day Care e Hotel para cães (somente cães castrados e vacinados), natação para cães e banho e tosa (${site.hours.groomingDisplay}).
 - Avaliações: ${site.google.reviewCount} avaliações no Google (${site.google.reviewsUrl}).
 
 ## Páginas principais
-${['/', '/quem-somos/', '/servicos/', '/contato/'].map((p) => line(byPath(p))).filter(Boolean).join('\n')}
+${['/', '/quem-somos/', '/servicos/', '/onde-estamos/', '/contato/'].map((p) => line(byPath(p))).filter(Boolean).join('\n')}
 
 ## Serviços
 ${services.map((s) => line(byPath(s.path))).filter(Boolean).join('\n')}
@@ -360,9 +381,11 @@ ${posts.slice(0, 30).map((p) => `- [${p.meta.post!.title}](${abs(p.meta.path)}):
         { src: '/icon-512.png', sizes: '512x512', type: 'image/png' },
         { src: '/icon-maskable-512.png', sizes: '512x512', type: 'image/png', purpose: 'maskable' },
       ],
+      // Atalhos precisam estar dentro do escopo do app (URL externa, como wa.me, é ignorada pelo navegador)
       shortcuts: [
-        { name: 'Agendar pelo WhatsApp', url: `https://wa.me/${site.whatsapp.number}` },
+        { name: 'Agendar atendimento', url: '/contato/' },
         { name: 'Serviços', url: '/servicos/' },
+        { name: 'Castração', url: '/castracao/' },
       ],
     }, null, 2),
   );
