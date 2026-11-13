@@ -13,5 +13,9 @@ export default function initVideo() {
       } else v.pause();
     }
   }, { rootMargin: '200px 0px' });
-  videos.forEach((v) => io.observe(v));
+  videos.forEach((v) => {
+    io.observe(v);
+    // Toque ou clique pausa e retoma (os vídeos tocam sozinhos e em loop)
+    v.addEventListener('click', () => { if (v.paused) v.play().catch(() => {}); else v.pause(); });
+  });
 }

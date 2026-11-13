@@ -2,7 +2,7 @@
  * <head> e dados estruturados (JSON-LD em grafo com @id estáveis).
  * Regra: o schema só descreve o que está visível na página.
  */
-import { site, services, waLink, type Service } from './site.ts';
+import { site, services, team, waLink, type Service } from './site.ts';
 import type { Post } from './posts.ts';
 import { categoryName } from './posts.ts';
 
@@ -169,6 +169,16 @@ export function jsonLd(m: PageMeta): string {
       itemListElement: items.map(([name, href], i) => ({ '@type': 'ListItem', position: i + 1, name, ...(href || i === items.length - 1 ? { item: abs(href ?? m.path) } : {}) })),
     });
     page.breadcrumb = { '@id': `${url}#trilha` };
+  }
+
+  // Página de especialistas: um nó Person por profissional (a proprietária já está no grafo como FOUNDER)
+  if (m.path === '/especialistas/') {
+    for (const t of team) {
+      if (t.founder) continue;
+      const p: Record<string, unknown> = { '@type': 'Person', '@id': `${url}#${t.slug}`, name: t.name, jobTitle: t.role, worksFor: { '@id': ORG }, knowsAbout: t.knowsAbout, url: `${url}#${t.slug}` };
+      if (t.crmv) p.identifier = { '@type': 'PropertyValue', propertyID: t.crmv.split(' ')[0], value: t.crmv };
+      graph.push(p);
+    }
   }
 
   if (m.type === 'service' && m.service) {

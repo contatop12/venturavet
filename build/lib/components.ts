@@ -8,7 +8,7 @@ import type { CheerioAPI } from 'cheerio';
 import { getImage } from './images.ts';
 import { icon } from './icons.ts';
 import { paths } from './paths.ts';
-import { site, services, reviews, categories, waLink, areas } from './site.ts';
+import { site, services, reviews, categories, waLink, areas, team } from './site.ts';
 import { getPosts, formatDate, categoryName, type Post } from './posts.ts';
 import { esc, type PageMeta } from './seo.ts';
 
@@ -210,10 +210,25 @@ export const components: Record<string, Component> = {
     return `<video${cls ? ` class="${cls}"` : ''} data-autoplay muted loop playsinline preload="none" poster="/video/${name}.jpg" aria-label="${attr(alt)}"><source src="/video/${name}.webm" type="video/webm"><source src="/video/${name}.mp4" type="video/mp4"></video>`;
   },
 
+  // Cartões dos especialistas (dados em `team`, site.ts). O CRMV só aparece quando está preenchido.
+  'x-team': () => `<ul class="team">${team.map((t) => `<li class="team__card" id="${t.slug}">
+  <x-img class="team__photo" src="${t.image}" alt="${attr(t.imageAlt)}" widths="360,540,720" sizes="(min-width: 1000px) 280px, (min-width: 640px) 30vw, 46vw"></x-img>
+  <div class="team__body">
+    <h3>${esc(t.name)}</h3>
+    <p class="team__role">${esc(t.role)}</p>
+    <p class="team__about">${esc(t.about)}</p>
+    ${t.crmv ? `<p class="team__crmv">${esc(t.crmv)}</p>` : ''}
+  </div>
+</li>`).join('')}</ul>`,
+
   'x-youtube': ($, el, ctx) => {
     const id = el.attr('id')!;
     const title = el.attr('title') ?? 'Vídeo da Ventura Vet';
     ctx.icons.add('play-fill');
+    // Shorts (vídeo vertical): usa a miniatura em retrato e a variante .yt--short
+    if (el.attr('short') !== undefined) {
+      return `<a class="yt yt--short" href="https://www.youtube.com/watch?v=${id}" data-yt="${id}" target="_blank" rel="noopener"><img src="https://i.ytimg.com/vi/${id}/oar2.jpg" alt="${attr(title)}" width="405" height="720" loading="lazy" decoding="async"><span class="yt__play">${icon('play-fill')}<span class="sr-only">Assistir: ${esc(title)}</span></span></a>`;
+    }
     return `<a class="yt" href="https://www.youtube.com/watch?v=${id}" data-yt="${id}" target="_blank" rel="noopener"><img src="https://i.ytimg.com/vi/${id}/hqdefault.jpg" alt="${attr(title)}" width="480" height="360" loading="lazy" decoding="async"><span class="yt__play">${icon('play-fill')}<span class="sr-only">Assistir: ${esc(title)}</span></span></a>`;
   },
 

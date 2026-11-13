@@ -27,6 +27,69 @@ export const areas: { name: string; from: string; km: number }[] = [
   { name: 'Liberdade', from: 'da Liberdade', km: 4 },
 ];
 
+/**
+ * Especialistas da página /especialistas/ (nomes, funções e fotos vindos do site anterior).
+ * `about` descreve a área de atuação, não o currículo da pessoa.
+ * `crmv` só entra quando o número foi confirmado em fonte verificável; sem isso, fica de fora.
+ */
+export interface TeamMember { slug: string; name: string; role: string; about: string; image: string; imageAlt: string; knowsAbout: string[]; crmv?: string; founder?: boolean }
+export const team: TeamMember[] = [
+  {
+    slug: 'ana-luiza-mazorra', name: 'Dra. Ana Luiza Mazorra', role: 'Médica-veterinária, proprietária e responsável técnica', founder: true, crmv: 'CRMV-SP 15.768',
+    about: 'Formada pela FMVZ-USP, está à frente da Ventura desde 2007 e acompanha de perto os atendimentos da clínica.',
+    image: 'dra-ana-luiza-mazorra-com-cao-e-gato.jpg', imageAlt: 'Dra. Ana Luiza Mazorra com um cavalier king charles e um gato preto no colo',
+    knowsAbout: ['Clínica de pequenos animais', 'Medicina felina'],
+  },
+  {
+    slug: 'cassia-garcia', name: 'Dra. Cássia Garcia', role: 'Ultrassonografista',
+    about: 'Faz os exames de ultrassom, que mostram os órgãos abdominais em tempo real e ajudam no diagnóstico sem precisar de cirurgia.',
+    image: 'especialista-cassia-garcia.jpg', imageAlt: 'Dra. Cássia Garcia, ultrassonografista veterinária, de jaleco estampado no consultório',
+    knowsAbout: ['Ultrassonografia veterinária', 'Diagnóstico por imagem'],
+  },
+  {
+    slug: 'flavia-ianiceli', name: 'Dra. Flávia Ianiceli', role: 'Dermatologista e endocrinologista',
+    about: 'Cuida de doenças de pele, alergias e otites, e de alterações hormonais como diabetes e problemas de tireoide.',
+    image: 'especialista-flavia-ianiceli.jpg', imageAlt: 'Dra. Flávia Ianiceli, dermatologista e endocrinologista veterinária, de jaleco branco',
+    knowsAbout: ['Dermatologia veterinária', 'Endocrinologia veterinária'],
+  },
+  {
+    slug: 'daniela-scatena', name: 'Dra. Daniela Scatena', role: 'Odontologia veterinária',
+    about: 'Trata dentes e gengivas: limpeza de tártaro, doença periodontal e extrações, que influenciam a saúde do pet como um todo.',
+    image: 'especialista-daniela-scatena.jpg', imageAlt: 'Dra. Daniela Scatena, da odontologia veterinária, com um cãozinho no colo',
+    knowsAbout: ['Odontologia veterinária'],
+  },
+  {
+    slug: 'felipe-alfaro', name: 'Dr. Felipe Alfaro', role: 'Cardiologista',
+    about: 'Avalia o coração com ecocardiograma e eletrocardiograma e acompanha cães e gatos com doenças cardíacas.',
+    image: 'especialista-felipe-alfaro.jpg', imageAlt: 'Dr. Felipe Alfaro, cardiologista veterinário, de jaleco branco',
+    knowsAbout: ['Cardiologia veterinária', 'Ecocardiograma', 'Eletrocardiograma'],
+  },
+  {
+    slug: 'luciana-moreno', name: 'Dra. Luciana Moreno', role: 'Anestesista',
+    about: 'Conduz a anestesia e monitora o paciente do início ao fim de cirurgias, castrações e outros procedimentos.',
+    image: 'especialista-luciana-moreno.jpg', imageAlt: 'Dra. Luciana Moreno, anestesista veterinária, segurando um gato siamês',
+    knowsAbout: ['Anestesiologia veterinária'],
+  },
+  {
+    slug: 'graziele-massae-shimamura', name: 'Dra. Graziele Massae Shimamura', role: 'Oftalmologista',
+    about: 'Cuida da saúde dos olhos: úlceras de córnea, catarata, glaucoma, olho seco e alterações das pálpebras.',
+    image: 'especialista-graziele-massae-shimamura.jpg', imageAlt: 'Dra. Graziele Massae Shimamura, oftalmologista veterinária, de jaleco branco',
+    knowsAbout: ['Oftalmologia veterinária'],
+  },
+  {
+    slug: 'amanda-oncins', name: 'Dra. Amanda Oncins', role: 'Especialista em medicina felina',
+    about: 'Dedica-se ao atendimento de gatos, do check-up às doenças crônicas da espécie, com o manejo gentil de uma clínica Cat Friendly.',
+    image: 'especialista-amanda-oncins.jpg', imageAlt: 'Dra. Amanda Oncins, especialista em medicina felina, com um gato no colo',
+    knowsAbout: ['Medicina felina'],
+  },
+  {
+    slug: 'lais-suda', name: 'Dra. Lais Suda', role: 'Fisioterapeuta e acupunturista',
+    about: 'Atua na reabilitação e no controle da dor, em pacientes idosos e na recuperação de cirurgias ortopédicas e neurológicas.',
+    image: 'especialista-lais-suda.jpg', imageAlt: 'Dra. Lais Suda, fisioterapeuta e acupunturista veterinária, ao lado de um buldogue francês',
+    knowsAbout: ['Fisioterapia veterinária', 'Acupuntura veterinária'],
+  },
+];
+
 export const site = {
   url: 'https://venturavet.com.br',
   name: 'Ventura Veterinária & Pet Shop',
@@ -144,8 +207,8 @@ export const services: Service[] = [
     navName: 'Clínica Veterinária',
     short: 'Consultas, vacinas, cirurgias e oito especialidades, com consultório exclusivo para gatos.',
     icon: 'stethoscope',
-    image: 'filhote-em-consulta.webp',
-    imageAlt: 'Filhote sendo examinado com estetoscópio por veterinária da Ventura',
+    image: 'consulta-dra-ana-luiza-com-boston-terrier.jpg',
+    imageAlt: 'Dra. Ana Luiza Mazorra examinando um boston terrier no consultório da Ventura',
     serviceType: 'Clínica veterinária',
     waMessage: 'Olá! Vim pelo site e quero agendar uma consulta veterinária.',
     group: 'principal',

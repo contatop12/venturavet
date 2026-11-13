@@ -184,6 +184,28 @@
 .person span { color: var(--tinta-2); font-size: 0.95rem; }
 
 picture.rounded { display: block; border-radius: var(--r-lg); overflow: hidden; }
+/* Especialistas: cartões com foto em retrato, nome, função e área de atuação */
+.team { display: grid; grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr)); gap: clamp(0.75rem, 2vw, 1.5rem); padding: 0; list-style: none; }
+.team__card { display: flex; flex-direction: column; border-radius: var(--r-lg); overflow: hidden; background: var(--branco); scroll-margin-top: 6rem; }
+.team__photo { display: block; aspect-ratio: 4 / 5; background: var(--nevoa); img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 18%; } }
+.team__body { padding: 1.1rem 1.25rem 1.35rem; }
+.team__card h3 { font-size: 1.2rem; letter-spacing: -0.01em; line-height: 1.2; }
+.team__role { margin-top: 0.25rem; font-weight: 600; color: var(--laranja-texto); line-height: 1.3; }
+.team__about { margin-top: 0.6rem; color: var(--tinta-2); font-size: 0.95rem; line-height: 1.55; }
+.team__crmv { margin-top: 0.6rem; font-size: 0.85rem; font-weight: 600; color: var(--tinta-2); }
+@media (max-width: 560px) {
+  .team { grid-template-columns: 1fr 1fr; }
+  .team__body { padding: 0.85rem 0.9rem 1rem; }
+  .team__card h3 { font-size: 1.02rem; }
+  .team__role, .team__about { font-size: 0.86rem; }
+}
+/* Vídeos curtos gravados em retrato, lado a lado; no celular viram uma faixa com rolagem horizontal */
+.clips { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
+.clips video { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; border-radius: var(--r-md); background: var(--nevoa); cursor: pointer; }
+@media (max-width: 700px) {
+  .clips { grid-template-columns: repeat(3, 68%); overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 0.5rem; }
+  .clips video { scroll-snap-align: start; }
+}
 .team-video { width: 100%; height: auto; margin-top: 1.5rem; border-radius: var(--r-lg); background: var(--nevoa); }
 .subhead { font-size: var(--step-2); margin-top: 2rem; margin-bottom: 1rem; }
 .highlight--row { display: flex; gap: 1.5rem; align-items: center; h2 { font-size: var(--step-2); } p { margin-top: 0.4rem; } }

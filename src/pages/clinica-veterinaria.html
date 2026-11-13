@@ -5,8 +5,9 @@ path: /clinica-veterinaria/
 type: service
 service: clinica-veterinaria
 breadcrumb: [["Serviços", "/servicos/"], ["Clínica Veterinária"]]
-ogSource: filhote-em-consulta.webp
-imageSource: filhote-em-consulta.webp
+ogSource: consulta-dra-ana-luiza-com-boston-terrier.jpg
+ogImageAlt: Dra. Ana Luiza Mazorra examinando um boston terrier na mesa do consultório da Ventura Vet
+imageSource: consulta-dra-ana-luiza-com-boston-terrier.jpg
 priority: 0.9
 --->
 
@@ -22,8 +23,8 @@ priority: 0.9
           <a class="btn btn--ghost" href="tel:{{site.phone.e164}}" data-track="phone"><x-icon name="phone"></x-icon>{{site.phone.display}}</a>
         </div>
       </div>
-      <div class="page-hero__art">
-        <x-img src="filhote-em-consulta.webp" alt="Filhote preto e branco sendo examinado com estetoscópio por uma veterinária de luvas" priority widths="360,540,720" sizes="(min-width: 860px) 34vw, 80vw"></x-img>
+      <div class="page-hero__art page-hero__art--photo">
+        <x-img src="consulta-dra-ana-luiza-com-boston-terrier.jpg" alt="Dra. Ana Luiza Mazorra examinando um boston terrier na mesa do consultório da Ventura" priority widths="360,540,720" sizes="(min-width: 860px) 34vw, 80vw"></x-img>
       </div>
     </div>
   </div>
@@ -39,7 +40,7 @@ priority: 0.9
   <div class="wrap">
     <header class="section-head">
       <h2 id="especialidades-titulo" data-reveal>Veterinários especializados em</h2>
-      <p data-reveal style="--i:1">Consultas com hora marcada com ortopedista, oftalmologista, dermatologista, endocrinologista, odontologista, neurologista, cardiologista e oncologista veterinário.</p>
+      <p data-reveal style="--i:1">Consultas com hora marcada com ortopedista, oftalmologista, dermatologista, endocrinologista, odontologista, neurologista, cardiologista e oncologista veterinário. <a href="/especialistas/">Conheça os especialistas</a>.</p>
     </header>
     <ul class="pills">
       <li><x-icon name="bone"></x-icon>Ortopedia</li>
@@ -98,7 +99,7 @@ priority: 0.9
           <li class="card"><x-icon name="sparkles"></x-icon><h3>Acupuntura</h3><p>Tratamento complementar e integrativo muito eficaz na reabilitação animal, que trata e previne doenças.</p></li>
           <li class="card"><x-icon name="activity"></x-icon><h3>Fisioterapia</h3><p>Equipe especializada para oferecer ao seu pet o que há de mais moderno em recuperação e suporte.</p></li>
           <li class="card"><x-icon name="shield-check"></x-icon><h3>Quimioterapia</h3><p>Indicada para animais diagnosticados com alguns tipos de câncer, com o objetivo de eliminar células cancerígenas.</p></li>
-          <li class="card"><x-icon name="pill"></x-icon><h3>Farmácia veterinária</h3><p>Opções de medicamentos e suprimentos, com equipe experiente para orientar o tutor.</p></li>
+          <li class="card"><x-icon name="pill"></x-icon><h3>Farmácia veterinária</h3><p>Medicamentos veterinários (antibióticos, anti-inflamatórios, antipulgas e vermífugos), suplementos e xampus medicinais, com equipe experiente para orientar o tutor.</p></li>
         </ul>
       </div>
     </div>
@@ -148,6 +149,8 @@ priority: 0.9
       <details class="faq__item" name="faq-clinica"><summary>A clínica atende gatos separadamente dos cães?</summary><div class="faq__answer"><p>Sim. Temos um consultório exclusivo para felinos, com sala de espera separada, em que usamos difusor e spray com Feliway® para deixar os gatos mais tranquilos durante a visita. A Ventura tem o selo {{site.credentials.catFriendly}}.</p></div></details>
       <details class="faq__item" name="faq-clinica"><summary>Onde fica a clínica e quais bairros vocês atendem?</summary><div class="faq__answer"><p>Na Rua Otávio Nébias, 190, no Paraíso, em São Paulo, {{site.landmarks.metro}}. Atendemos tutores de {{site.areasShort}}, entre outros bairros. Veja <a href="/onde-estamos/">como chegar do seu bairro</a>.</p></div></details>
       <details class="faq__item" name="faq-clinica"><summary>Qual o horário de atendimento da clínica?</summary><div class="faq__answer"><p>{{site.hours.clinicDisplay}}.</p></div></details>
+      <details class="faq__item" name="faq-clinica"><summary>Quais formas de pagamento a clínica aceita?</summary><div class="faq__answer"><p>Dinheiro, cartões de crédito e de débito e PIX. O parcelamento depende do valor; consulte no atendimento.</p></div></details>
+      <details class="faq__item" name="faq-clinica"><summary>A Ventura atende emergências?</summary><div class="faq__answer"><p>Sim, durante o horário de funcionamento: de segunda a sexta, das 9h às 18h, e aos sábados, das 9h às 16h. Fora desse horário, procure um hospital veterinário 24 horas.</p></div></details>
       <details class="faq__item" name="faq-clinica"><summary>A Ventura é hospital veterinário ou atende 24 horas?</summary><div class="faq__answer"><p>Não. A Ventura é uma clínica veterinária, com internação dia e atendimento em horário marcado: {{site.hours.clinicDisplay}}. Fora desse horário, procure um hospital veterinário 24 horas.</p></div></details>
       <details class="faq__item" name="faq-clinica"><summary>Vocês aceitam convênio ou plano de saúde pet?</summary><div class="faq__answer"><p>Não. Somos uma clínica particular e não trabalhamos com convênios nem planos de saúde pet.</p></div></details>
       <details class="faq__item" name="faq-clinica"><summary>Quais vacinas vocês aplicam?</summary><div class="faq__answer"><p>Utilizamos somente vacinas importadas, mantidas sob temperatura controlada. O protocolo de cada pet é definido pelo veterinário na consulta, de acordo com idade, histórico e estilo de vida.</p></div></details>

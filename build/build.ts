@@ -335,7 +335,7 @@ Fatos principais (fonte: este site oficial):
 - Avaliações: ${site.google.reviewCount} avaliações no Google (${site.google.reviewsUrl}).
 
 ## Páginas principais
-${['/', '/quem-somos/', '/servicos/', '/onde-estamos/', '/contato/'].map((p) => line(byPath(p))).filter(Boolean).join('\n')}
+${['/', '/quem-somos/', '/servicos/', '/especialistas/', '/onde-estamos/', '/contato/'].map((p) => line(byPath(p))).filter(Boolean).join('\n')}
 
 ## Serviços
 ${services.map((s) => line(byPath(s.path))).filter(Boolean).join('\n')}
