@@ -118,15 +118,15 @@ async function buildPages(assets: Assets) {
   return built;
 }
 
-/** Title de até ~65 caracteres: usa a parte antes de ":" quando o título original é longo. */
+/**
+ * Title dos posts importados do WordPress: mantém o título original inteiro, sem cortar.
+ * É com esse texto que os posts ranqueiam hoje; encurtar (ou cortar no ":") tira do <title>
+ * termos que trazem busca. O Google abrevia sozinho na exibição. A marca só entra quando cabe.
+ */
 function seoTitle(raw: string) {
   const base = raw.replace(/\.+$/, '').trim();
   const brand = ' | Ventura Vet';
-  if ((base + brand).length <= 65) return base + brand;
-  if (base.length <= 65) return base;
-  const head = base.split(/:\s/)[0];
-  if (head.length >= 25 && head.length < base.length) return (head + brand).length <= 65 ? head + brand : head.slice(0, 65);
-  return base.slice(0, 62).replace(/\s+\S*$/, '') + '…';
+  return (base + brand).length <= 65 ? base + brand : base;
 }
 
 /** Description entre ~120 e ~160 caracteres, completando com o 1º parágrafo do texto. */

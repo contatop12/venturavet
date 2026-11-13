@@ -204,7 +204,7 @@ main:focus { outline: none; }
   font-family: var(--f-text); font-size: var(--step-0); font-weight: 600; letter-spacing: 0; line-height: 1.4; color: var(--tinta-2);
 }
 .hero__title {
-  display: block; font-size: var(--step-5); font-style: italic; font-weight: 900; letter-spacing: -0.035em; line-height: 0.94;
+  display: block; font-size: clamp(2.4rem, 1.5rem + 3.9vw, 4.5rem); font-style: italic; font-weight: 900; letter-spacing: -0.035em; line-height: 1;
   em { font-style: italic; color: var(--laranja-texto); }
 }
 .hero__lede { max-width: 34rem; margin-top: 1.5rem; font-size: var(--step-1); line-height: 1.5; color: var(--tinta-2); }

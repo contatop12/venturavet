@@ -75,11 +75,25 @@ Requisições a arquivos estáticos não são cobradas nem contam no limite do p
 
 ### Virar a chave do domínio (tira o WordPress do ar)
 
-1. No DNS da Cloudflare, apague os registros `A`/`AAAA`/`CNAME` de `venturavet.com.br` e de `www` que apontam para a hospedagem atual.
+Antes de começar, exporte do Search Console o relatório de *Desempenho* (páginas e consultas, 16 meses): é a linha de base para comparar depois.
+
+1. No DNS da Cloudflare, apague os registros `A`/`AAAA`/`CNAME` de `venturavet.com.br` e de `www` que apontam para a hospedagem atual. **Não apague os registros `TXT`**: os dois `google-site-verification` são a verificação do Search Console, e o `v=spf1` é do e-mail.
 2. Em `wrangler.jsonc`, descomente o bloco `routes` e rode `npm run deploy` (a Cloudflare cria o DNS e o certificado do domínio).
 3. **www → sem www:** crie o registro `www` (AAAA `100::`, proxied) e, em *Rules → Redirect Rules*, use o modelo *Redirect from WWW to root* (301, mantendo caminho e query string).
 4. Desative o *robots.txt gerenciado* (ver Pendências) e, já com o domínio funcionando, mude `workers_dev` e `preview_urls` para `false` em `wrangler.jsonc` e publique de novo, para não existir cópia do site em `*.workers.dev`.
-5. Search Console: reenvie `https://venturavet.com.br/sitemap.xml`.
+5. Search Console: envie `https://venturavet.com.br/sitemap.xml` (o `sitemap_index.xml` antigo redireciona para ele), peça a inspeção da home e das páginas de serviço e acompanhe o relatório *Páginas* por quatro semanas, corrigindo qualquer 404 que aparecer com uma linha em `src/static/_redirects`.
+
+### O que protege o tráfego orgânico na virada
+
+Conferido em 12/11/2026 contra o sitemap do WordPress (312 URLs: 13 páginas, 56 posts, 6 categorias, 237 tags):
+
+- **Mesmas URLs**: páginas, posts (`/AAAA/MM/DD/slug/`) e categorias respondem no mesmo endereço. Nenhuma URL do sitemap antigo dá 404.
+- **Títulos dos posts**: o `<title>` mantém o título original inteiro (`seoTitle` em `build/build.ts`), sem cortar.
+- **Tags**: o site novo não tem arquivos de tag. As 203 tags que listavam um único post redirecionam para esse post; 8 tags de tema amplo vão para a categoria ou o serviço equivalente; as demais vão para `/blog/` (`src/static/_redirects`).
+- **Medição**: o GTM é o mesmo contêiner (`GTM-MQ8G7B9`) e o Search Console é verificado por `TXT` no DNS, então os dois continuam valendo sem configuração nova.
+- **URL de teste**: `*.workers.dev` responde com `X-Robots-Tag: noindex` (`src/static/_headers`), para não competir com o domínio.
+
+Para refazer a conferência depois de mudar URLs, compare o sitemap antigo com as respostas do site novo (cada URL deve dar 200 ou um único 301).
 
 Para voltar atrás, *Workers & Pages → venturavet → Deployments* permite reverter versões; para voltar ao WordPress, remova o domínio do Worker e recrie os registros DNS antigos (anote-os antes do passo 1).
 
@@ -137,8 +151,8 @@ Depois de mudar bindings em `wrangler.jsonc`, regenere os tipos com `npm run cf:
 1. **CNPJ/razão social** (`cnpj`, `legalName` em `build/lib/site.ts`). CRMV-SP 15.768 e horário da clínica já preenchidos (briefing de nov/2026).
 2. **Hotel para Gatos — gaiolas**: a página antiga dizia "não possuímos gaiolas", o PDF de regras diz que o gato pode ficar em gaiola em alguns períodos. O site não afirma nenhum dos dois: descreve o gatil telado e diz que os hóspedes usam o espaço em alternância, sem contato entre si (comentário `CONFIRMAR COM CLIENTE` em `src/pages/hotel-para-gatos.html`).
 3. **Preços e telefones extras** dos PDFs (natação, day care, telefones do day care) ficaram fora do site de propósito; publique só se o cliente quiser mantê-los atualizados.
-4. **Robots do Cloudflare**: o domínio usa o "robots.txt gerenciado" da Cloudflare, que bloqueia GPTBot, ClaudeBot, Google-Extended etc. e sobrepõe o arquivo do site. Para o GEO funcionar, desative em *Security → Bots → Manage robots.txt*.
-5. **Google Search Console**: adicionar o código em `verification.google` e reenviar o `sitemap.xml` após a publicação.
+4. **Bots de IA bloqueados na Cloudflare**: o domínio usa o "robots.txt gerenciado", que proíbe GPTBot, ClaudeBot, Google-Extended etc. e se sobrepõe ao arquivo do site. Além disso, a borda responde **403** a GPTBot e ClaudeBot (testado em 12/11/2026); OAI-SearchBot, ChatGPT-User e PerplexityBot passam. É configuração da zona, então continua valendo depois da virada. Para o GEO, desative em *Security → Bots* as opções *Block AI bots* e *Manage robots.txt* (ou *AI Crawl Control*, conforme o painel).
+5. **Google Search Console**: a propriedade já é verificada por `TXT` no DNS, então `verification.google` pode ficar vazio. Falta só enviar o `sitemap.xml` novo depois da virada (passo 5 acima).
 6. **Google Business Profile**: manter horário, categoria ("Clínica veterinária"), atributos e fotos iguais aos do site (consistência de NAP para SEO local).
 7. **Regras do Day Care em PDF**: o link antigo (`regras-day-care-ventura-2022.pdf`) já estava quebrado; as regras agora estão na própria página e o endereço redireciona para elas.
 8. **Anestesia inalatória em gatos**: o texto do cliente só afirma anestesia inalatória na castração de **cães** (e que o centro cirúrgico tem o aparelho). O site segue essa redação. Se a castração de gatos também for sempre inalatória, dá para voltar a dizer "cães e gatos".

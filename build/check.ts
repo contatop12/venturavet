@@ -35,7 +35,9 @@ for (const file of files) {
   const title = $('title').text();
   const desc = $('meta[name=description]').attr('content') ?? '';
   if (!noindex) {
-    if (title.length < 25 || title.length > 70) warns.push(`${rel}: title com ${title.length} caracteres`);
+    // Posts mantêm o título original do WordPress (ver seoTitle no build): podem passar de 70
+    const isPost = /^\/20\d\d\/\d\d\/\d\d\//.test(rel);
+    if (title.length < 25 || (!isPost && title.length > 70)) warns.push(`${rel}: title com ${title.length} caracteres`);
     if (desc.length < 110 || desc.length > 170) warns.push(`${rel}: description com ${desc.length} caracteres`);
     if (titles.has(title)) errors.push(`${rel}: title duplicado de ${titles.get(title)}`);
     if (descs.has(desc)) errors.push(`${rel}: description duplicada de ${descs.get(desc)}`);
