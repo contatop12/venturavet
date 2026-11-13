@@ -55,7 +55,7 @@ const monthYear = (iso: string) => {
 export function postCard(p: Post, ctx: RenderCtx, opts: { sizes?: string; heading?: string } = {}) {
   const h = opts.heading ?? 'h3';
   ctx.icons.add('clock');
-  return `<article class="post-card" data-cats="${p.categories.join(' ')}" data-title="${attr(p.title.toLowerCase())}">
+  return `<article class="post-card" data-cats="${p.categories.join(' ')}" data-title="${attr(p.title.toLowerCase())}" data-date="${p.datePublished}">
   <a class="post-card__link" href="${p.path}">
     ${p.image ? `<x-img class="post-card__media" src="${p.image}" alt="" decorative widths="360,540,720" sizes="${opts.sizes ?? '(min-width: 1100px) 360px, (min-width: 700px) 45vw, 100vw'}"></x-img>` : ''}
     <span class="post-card__body">

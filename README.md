@@ -49,6 +49,24 @@ Links com `data-wa="mensagem"` viram links de WhatsApp com a mensagem já preenc
 - `sitemap.xml` (com imagens; `lastmod` vem da data do último commit de cada página), `robots.txt` (buscadores e assistentes de IA liberados), `llms.txt` e `llms-full.txt`, `feed.xml`, `manifest.webmanifest`, `humans.txt`.
 - URLs antigas preservadas; redirecionamentos 301 (`/banho-e-tosa-2/`, feeds, sitemaps do Yoast, paginação, tags) em `_redirects` e `.htaccess`.
 
+## Blog do Rankeando (recebimento de posts, contrato v3)
+
+O Rankeando escreve os posts novos e os envia, assinados, para `POST /api/p12/webhook` (Worker). Os 56 posts que vieram do WordPress continuam sendo arquivos do build (`content/posts/`); os do Rankeando ficam no D1 `venturavet-blog` e saem em `/blog/<slug>/`.
+
+| Peça | Onde |
+|---|---|
+| Recebimento, assinatura, eventos do contrato | `worker/p12/` (`webhook.ts`, `contrato.ts`, `store.ts`, `posts.ts`; `assinatura.ts` é a função do pacote, sem mudanças) |
+| Páginas: post, categoria `/blog/categoria/<slug>/`, `/blog/` mesclado, sitemap, feed, posts do site trocados | `worker/p12/site.ts` e `render.ts` (partem de páginas reais do site; o Worker só troca os campos) |
+| Dados do build para o Worker | `build/lib/p12-kit.ts` → `dist/p12-kit/` (modelo do post, índice, cartões e cada post do site como dado; o Worker responde 404 a visitantes ali) |
+| Banco | `migrations/` (`npx wrangler d1 migrations apply venturavet-blog --remote`) |
+| Chave | `npx wrangler secret put RANKEANDO_WEBHOOK_SECRET` (Worker `venturavet`); nunca no repositório |
+| Testes | `npm test` (assinatura, eventos, entrega repetida, troca/restauração, listagem, partes puras das páginas) |
+
+- O endereço de recebimento só responde no domínio que aponta para este Worker. Enquanto `venturavet.com.br` estiver no WordPress, o Rankeando deve usar o endereço `workers.dev` ou esperar a virada do domínio (ver "Virar a chave do domínio").
+- O que não é do Rankeando sai como o build fez (arquivo estático). Se o D1 ou o kit falharem, a página estática sai; só a página de um post do site cujo conteúdo o Rankeando trocou responde 503 (nunca mostra o texto antigo).
+- `post.substituir` nunca edita o post original: o conteúdo novo fica em `p12_substituicoes` e vale na página do post, nos cartões (home, `/blog/`, categorias, "Continue lendo"), no `<title>`/SEO/JSON-LD, no sitemap (`lastmod`) e no feed. `post.restaurar` apaga a linha.
+- Teste local das páginas (HTMLRewriter só existe no Worker): `npx wrangler d1 migrations apply venturavet-blog --local`, crie `.dev.vars` com `RANKEANDO_WEBHOOK_SECRET` de teste, `npm run cf:dev` e envie os exemplos do pacote.
+
 ## Publicação — Cloudflare Workers (recomendado)
 
 Configuração em `wrangler.jsonc`: Worker `venturavet` só com arquivos estáticos (Workers Static Assets, sem código).

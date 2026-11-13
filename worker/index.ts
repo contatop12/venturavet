@@ -9,6 +9,12 @@
  * Tipos de Env: worker/worker-configuration.d.ts (gerado por `npm run cf:types`).
  */
 
+import { segredoDoRankeando } from './p12/assinatura';
+import { categoriasDoSite, fonteDoSite, servirSite, slugDoSite } from './p12/site';
+import { D1Store } from './p12/store';
+import { limparCacheDeTrocas } from './p12/cache-trocas';
+import { handleP12Webhook, P12_WEBHOOK_PATH } from './p12/webhook';
+
 const MAX_BYTES = 16 * 1024;
 /** Envio mais rápido que isso (ms desde que o formulário abriu) é tratado como robô. */
 const MIN_FILL_MS = 2500;
@@ -134,10 +140,23 @@ async function contato(request: Request, env: Env, url: URL): Promise<Response> 
 }
 
 export default {
-  async fetch(request, env): Promise<Response> {
+  async fetch(request, env, ctx): Promise<Response> {
     const url = new URL(request.url);
     if (url.pathname === '/api/contato' || url.pathname === '/api/contato/') return contato(request, env, url);
+    // Recebimento dos posts do Rankeando (contrato v3): a assinatura é a autenticação e é conferida antes de qualquer outra coisa.
+    if (url.pathname === P12_WEBHOOK_PATH || url.pathname === `${P12_WEBHOOK_PATH}/`) {
+      return handleP12Webhook(request, {
+        segredo: segredoDoRankeando({ RANKEANDO_WEBHOOK_SECRET: env.RANKEANDO_WEBHOOK_SECRET, P12_WEBHOOK_SECRET: env.P12_WEBHOOK_SECRET }),
+        store: new D1Store(env.DB),
+        site: fonteDoSite(env, url.origin),
+        slugDoSite: (slug) => slugDoSite(env, url.origin, slug),
+        categoriasDoSite: () => categoriasDoSite(env, url.origin),
+        agora: Math.floor(Date.now() / 1000),
+        aoMudarTrocas: () => ctx.waitUntil(limparCacheDeTrocas()),
+      });
+    }
     if (url.pathname.startsWith('/api/')) return json({ ok: false, erro: 'nao_encontrado' }, 404);
-    return env.ASSETS.fetch(request);
+    // Páginas do blog (posts do Rankeando, categorias, sitemap, feed) e posts do site trocados; o resto sai como o build fez.
+    return servirSite(request, env);
   },
 } satisfies ExportedHandler<Env>;

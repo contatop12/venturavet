@@ -13,12 +13,13 @@ import sharp from 'sharp';
 import * as cheerio from 'cheerio';
 import { paths } from './lib/paths.ts';
 import { site, services, categories, svc, areas } from './lib/site.ts';
-import { getPosts, resetPosts, relatedPosts, categoryName, formatDate } from './lib/posts.ts';
+import { getPosts, resetPosts, relatedPosts, categoryName, formatDate, type Post } from './lib/posts.ts';
 import { renderPage, parsePage, type Assets } from './lib/render.ts';
 import { getImage, makeOgImage, makeAppIcons } from './lib/images.ts';
 import { postCard, type RenderCtx } from './lib/components.ts';
 import type { PageMeta } from './lib/seo.ts';
 import { esc, abs } from './lib/seo.ts';
+import { buildP12Kit, kitModelPost } from './lib/p12-kit.ts';
 
 const isDev = process.argv.includes('--dev');
 const hash = (b: string | Uint8Array) => createHash('sha1').update(b).digest('hex').slice(0, 10);
@@ -142,10 +143,10 @@ function slugify(s: string) {
   return s.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '').slice(0, 60);
 }
 
-async function buildPosts(assets: Assets) {
+async function buildPosts(assets: Assets, extra: Post[] = []) {
   const tpl = await readFile(join(paths.src, 'templates/post.html'), 'utf8');
   const built: BuiltPage[] = [];
-  const posts = getPosts();
+  const posts = [...getPosts(), ...extra];
   for (const post of posts) {
     // Sumário automático a partir dos H2 + ids estáveis
     const $c = cheerio.load(post.content, null, false);
@@ -411,11 +412,14 @@ export async function build() {
   await buildStatic();
   const assets: Assets = { ...css, mainJs, fonts };
   const pages = await buildPages(assets);
-  const posts = await buildPosts(assets);
+  const posts = await buildPosts(assets, [kitModelPost()]);
   const cats = await buildCategories(assets);
-  await buildSeoFiles([...pages, ...posts, ...cats]);
+  // O post-modelo do kit do Rankeando (/p12-kit/post/) foi renderizado com os posts reais: sai da lista pública.
+  const publicPosts = posts.filter((p) => p.meta.path !== kitModelPost().path);
+  await buildP12Kit(publicPosts, pages);
+  await buildSeoFiles([...pages, ...publicPosts, ...cats]);
   const ms = Math.round(performance.now() - t0);
-  console.log(`✓ ${pages.length} páginas, ${posts.length} posts, ${cats.length} categorias em ${ms} ms`);
+  console.log(`✓ ${pages.length} páginas, ${publicPosts.length} posts, ${cats.length} categorias em ${ms} ms`);
 }
 
 if (process.argv[1]?.replace(/\\/g, '/').endsWith('build/build.ts')) {

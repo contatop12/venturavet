@@ -10,7 +10,7 @@ import * as cheerio from 'cheerio';
 import { paths } from './lib/paths.ts';
 
 const files: string[] = [];
-const walk = (d: string) => readdirSync(d).forEach((f) => { const p = join(d, f); statSync(p).isDirectory() ? walk(p) : p.endsWith('.html') && files.push(p); });
+const walk = (d: string) => readdirSync(d).forEach((f) => { const p = join(d, f); if (statSync(p).isDirectory()) { if (p !== join(paths.dist, 'p12-kit')) walk(p); } else if (p.endsWith('.html')) files.push(p); });
 walk(paths.dist);
 
 const errors: string[] = [];

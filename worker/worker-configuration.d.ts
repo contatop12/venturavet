@@ -4,6 +4,9 @@
 interface __BaseEnv_Env {
 	LEAD_LIMITER: RateLimit;
 	ASSETS: Fetcher;
+	DB: D1Database;
+	RANKEANDO_WEBHOOK_SECRET?: string;
+	P12_WEBHOOK_SECRET?: string;
 	N8N_WEBHOOK_URL: string;
 	N8N_WEBHOOK_TOKEN: string;
 }

@@ -10,6 +10,7 @@
  * Segredos (NÃO vão para o git) — formulário de contato → n8n:
  *   npx wrangler secret put N8N_WEBHOOK_URL     URL de produção do nó Webhook do n8n
  *   npx wrangler secret put N8N_WEBHOOK_TOKEN   token do Header Auth (enviado como "Authorization: Bearer <token>")
+ * Segredo do Rankeando (recebimento dos posts do blog): npx wrangler secret put RANKEANDO_WEBHOOK_SECRET
  * Local: copie .dev.vars.example para .dev.vars.
  */
 {
@@ -26,8 +27,13 @@
   "assets": {
     "directory": "./dist",
     "binding": "ASSETS",
-    // Só estas rotas passam pelo Worker; todo o resto é arquivo estático
-    "run_worker_first": ["/api/*"],
+    // Só estas rotas passam pelo Worker; todo o resto é arquivo estático.
+    //   /api/*                 formulário de contato e recebimento dos posts do Rankeando
+    //   /blog, /blog/*         lista do blog, posts e categorias do Rankeando (D1)
+    //   /sitemap.xml, /feed.xml  os do site mais os posts do Rankeando
+    //   /p12-kit/*             dados do build para o Worker (nunca servidos a visitantes: o Worker responde 404)
+    //   /, /category/*, /2023/*, /2024/*  só aplicam a troca de conteúdo de um post (contrato v3); sem troca, saem como o arquivo estático
+    "run_worker_first": ["/api/*", "/blog", "/blog/*", "/sitemap.xml", "/feed.xml", "/p12-kit/*", "/", "/category/*", "/2023/*", "/2024/*"],
     // /quem-somos → /quem-somos/ (as páginas são pasta/index.html, como no WordPress)
     "html_handling": "auto-trailing-slash",
     // URL inexistente → dist/404.html com status 404
@@ -37,6 +43,12 @@
   // Anti-spam do formulário: no máximo 5 envios por minuto por IP
   "ratelimits": [
     { "name": "LEAD_LIMITER", "namespace_id": "1001", "simple": { "limit": 5, "period": 60 } }
+  ],
+
+  // Posts do Rankeando (migrations/: wrangler d1 migrations apply venturavet-blog --remote; contrato: CONTRATO.md do pacote do blog).
+  // Segredo (NÃO vai para o git): npx wrangler secret put RANKEANDO_WEBHOOK_SECRET
+  "d1_databases": [
+    { "binding": "DB", "database_name": "venturavet-blog", "database_id": "f7f05d37-279b-42f8-9fc1-8799d90b30c9", "migrations_dir": "migrations" }
   ],
 
   // Logs do Worker no painel (falhas ao chamar o n8n aparecem aqui; nenhum dado pessoal é logado)

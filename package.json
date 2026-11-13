@@ -15,7 +15,8 @@
     "cf:dev": "wrangler dev",
     "deploy": "wrangler deploy",
     "deploy:check": "wrangler deploy --dry-run && npm run check",
-    "cf:types": "wrangler types worker/worker-configuration.d.ts"
+    "cf:types": "wrangler types worker/worker-configuration.d.ts",
+    "test": "tsx --test tests/*.test.ts"
   },
   "engines": {
     "node": ">=24"

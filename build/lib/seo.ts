@@ -136,6 +136,15 @@ function serviceNode(s: Service, image?: string) {
   return node;
 }
 
+/** Nós comuns a todo o grafo JSON-LD (organização, fundadora e site): o Worker os repete nas páginas que monta (kit do Rankeando). */
+export function baseGraph(): Record<string, unknown>[] {
+  return [
+    organization(),
+    founder(),
+    { '@type': 'WebSite', '@id': WEBSITE, url: site.url + '/', name: site.shortName, alternateName: site.name, description: site.description, publisher: { '@id': ORG }, inLanguage: site.lang },
+  ];
+}
+
 export function jsonLd(m: PageMeta): string {
   const url = abs(m.path);
   const graph: Record<string, unknown>[] = [
