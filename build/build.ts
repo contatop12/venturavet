@@ -214,7 +214,7 @@ async function buildCategories(assets: Assets) {
     if (!posts.length) continue;
     const meta: PageMeta = {
       title: `${name}: artigos sobre pets | Blog Ventura Vet`,
-      description: `${posts.length} artigos de ${name.toLowerCase()} no blog da Ventura Vet, clínica veterinária no Paraíso (SP), com dicas de saúde e bem-estar para cães e gatos.`,
+      description: `${posts.length} artigos de ${name.toLowerCase()} no blog do Ventura Vet, clínica veterinária no Paraíso (SP), com dicas de saúde e bem-estar para cães e gatos.`,
       path: `/category/${slug}/`,
       type: 'category',
       breadcrumb: [['Blog', '/blog/'], [name]],
@@ -362,7 +362,7 @@ ${posts.slice(0, 30).map((p) => `- [${p.meta.post!.title}](${abs(p.meta.path)}):
     .slice(0, 30)
     .map((p) => `<item><title>${esc(p.meta.post!.title)}</title><link>${abs(p.meta.path)}</link><guid isPermaLink="true">${abs(p.meta.path)}</guid><pubDate>${new Date(p.meta.post!.datePublished).toUTCString()}</pubDate><description>${esc(p.meta.description)}</description>${p.meta.post!.categories.map((c) => `<category>${esc(categoryName(c))}</category>`).join('')}</item>`)
     .join('\n');
-  await write(join(paths.dist, 'feed.xml'), `<?xml version="1.0" encoding="UTF-8"?>\n<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Blog da Ventura Vet</title><link>${site.url}/blog/</link><atom:link href="${site.url}/feed.xml" rel="self" type="application/rss+xml"/><description>Dicas de saúde, comportamento e bem-estar para cães e gatos.</description><language>pt-BR</language>\n${items}\n</channel></rss>\n`);
+  await write(join(paths.dist, 'feed.xml'), `<?xml version="1.0" encoding="UTF-8"?>\n<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Blog do Ventura Vet</title><link>${site.url}/blog/</link><atom:link href="${site.url}/feed.xml" rel="self" type="application/rss+xml"/><description>Dicas de saúde, comportamento e bem-estar para cães e gatos.</description><language>pt-BR</language>\n${items}\n</channel></rss>\n`);
 
   // Manifest PWA
   await write(

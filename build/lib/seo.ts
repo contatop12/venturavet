@@ -74,7 +74,7 @@ function organization() {
     knowsAbout: ['Clínica veterinária', 'Ortopedia veterinária', 'Oftalmologia veterinária', 'Dermatologia veterinária', 'Endocrinologia veterinária', 'Odontologia veterinária', 'Neurologia veterinária', 'Cardiologia veterinária', 'Oncologia veterinária', 'Medicina felina', 'Cat Friendly Practice', 'Castração de cães e gatos', 'Laboratório veterinário', 'Hotel para gatos', 'Day care para cães', 'Hotel para cães', 'Natação para cães', 'Banho e tosa'],
     hasOfferCatalog: {
       '@type': 'OfferCatalog',
-      name: 'Serviços da Ventura Vet',
+      name: 'Serviços do Ventura Vet',
       itemListElement: services.map((s) => ({ '@type': 'Offer', itemOffered: { '@id': `${site.url}${s.path}#servico` } })),
     },
     currenciesAccepted: 'BRL',
@@ -106,7 +106,7 @@ function founder() {
     worksFor: { '@id': ORG },
     alumniOf: { '@type': 'CollegeOrUniversity', name: site.founder.alumniOf },
     knowsAbout: ['Medicina veterinária', 'Clínica de pequenos animais', 'Medicina felina', 'Castração de cães e gatos'],
-    description: `Proprietária e responsável técnica da Ventura Vet (${site.founder.crmv}), formada pela FMVZ-USP.`,
+    description: `Proprietária e responsável técnica do Ventura Vet (${site.founder.crmv}), formada pela FMVZ-USP.`,
     url: `${site.url}/quem-somos/`,
     image: `${site.url}/og/og-quem-somos.jpg`,
   };
@@ -220,7 +220,7 @@ export function jsonLd(m: PageMeta): string {
       '@id': `${url}#posts`,
       itemListElement: m.itemList.map((it, i) => ({ '@type': 'ListItem', position: i + 1, url: abs(it.url), name: it.name })),
     });
-    if (m.type === 'blog') graph.push({ '@type': 'Blog', '@id': `${site.url}/blog/#blog`, name: 'Blog da Ventura Vet', url: `${site.url}/blog/`, publisher: { '@id': ORG }, inLanguage: site.lang });
+    if (m.type === 'blog') graph.push({ '@type': 'Blog', '@id': `${site.url}/blog/#blog`, name: 'Blog do Ventura Vet', url: `${site.url}/blog/`, publisher: { '@id': ORG }, inLanguage: site.lang });
   }
 
   if (m.type === 'post' && m.post) {
@@ -278,7 +278,7 @@ export function head(m: PageMeta, assets: { criticalCss: string; mainCss: string
     '<link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">',
     '<link rel="apple-touch-icon" href="/apple-touch-icon.png">',
     '<link rel="manifest" href="/manifest.webmanifest">',
-    '<link rel="alternate" type="application/rss+xml" title="Blog da Ventura Vet" href="/feed.xml">',
+    '<link rel="alternate" type="application/rss+xml" title="Blog do Ventura Vet" href="/feed.xml">',
     '<link rel="author" href="/humans.txt">',
     // Open Graph / redes sociais
     `<meta property="og:locale" content="${site.locale}">`,

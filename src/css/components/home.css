@@ -99,7 +99,7 @@
 .local .hours { padding: clamp(1.25rem, 1rem + 1.5vw, 2rem); border-radius: var(--r-lg); background: var(--nevoa); }
 @media (max-width: 860px) { .local__grid { grid-template-columns: 1fr; } }
 
-/* ---------- Bento "Por dentro da Ventura" ---------- */
+/* ---------- Bento "Por dentro do Ventura" ---------- */
 .bento { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); grid-auto-rows: minmax(13rem, auto); gap: 1rem; }
 .bento__item {
   position: relative; display: flex; flex-direction: column; justify-content: flex-end; gap: 0.5rem;

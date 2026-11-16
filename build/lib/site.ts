@@ -36,7 +36,7 @@ export interface TeamMember { slug: string; name: string; role: string; about: s
 export const team: TeamMember[] = [
   {
     slug: 'ana-luiza-mazorra', name: 'Dra. Ana Luiza Mazorra', role: 'Médica-veterinária, proprietária e responsável técnica', founder: true, crmv: 'CRMV-SP 15.768',
-    about: 'Formada pela FMVZ-USP, está à frente da Ventura desde 2007 e acompanha de perto os atendimentos da clínica.',
+    about: 'Formada pela FMVZ-USP, está à frente do Ventura desde 2007 e acompanha de perto os atendimentos da clínica.',
     image: 'dra-ana-luiza-mazorra-com-cao-e-gato.jpg', imageAlt: 'Dra. Ana Luiza Mazorra com um cavalier king charles e um gato preto no colo',
     knowsAbout: ['Clínica de pequenos animais', 'Medicina felina'],
   },
@@ -215,7 +215,7 @@ export const services: Service[] = [
     short: 'Consultas, vacinas, cirurgias e oito especialidades, com consultório exclusivo para gatos.',
     icon: 'stethoscope',
     image: 'consulta-dra-ana-luiza-com-boston-terrier.jpg',
-    imageAlt: 'Dra. Ana Luiza Mazorra examinando um boston terrier no consultório da Ventura',
+    imageAlt: 'Dra. Ana Luiza Mazorra examinando um boston terrier no consultório do Ventura',
     serviceType: 'Clínica veterinária',
     waMessage: 'Olá! Vim pelo site e quero agendar uma consulta veterinária.',
     group: 'principal',
@@ -269,7 +269,7 @@ export const services: Service[] = [
     short: 'Dia de atividades, socialização e descanso, com pernoite. Só para cães castrados e vacinados; vagas limitadas.',
     icon: 'moon-star',
     image: 'day-care-area-de-recreacao-caes.jpg',
-    imageAlt: 'Cães pequenos brincando na área de recreação do day care da Ventura',
+    imageAlt: 'Cães pequenos brincando na área de recreação do day care do Ventura',
     serviceType: 'Creche e hotel para cães',
     waMessage: 'Olá! Vim pelo site e quero saber se há vaga no Day Care ou no Hotel para cães.',
     group: 'outros',

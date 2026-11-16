@@ -138,7 +138,7 @@ export const components: Record<string, Component> = {
   'x-service-nav': ($, el, ctx) => {
     const current = el.attr('current');
     services.forEach((s) => ctx.icons.add(s.icon));
-    return `<nav class="svc-nav" aria-label="Outros serviços"><p class="svc-nav__title">Também na Ventura</p><ul>${services
+    return `<nav class="svc-nav" aria-label="Outros serviços"><p class="svc-nav__title">Também no Ventura</p><ul>${services
       .filter((s) => s.slug !== current)
       .map((s) => `<li><a href="${s.path}">${icon(s.icon)}<span><strong>${esc(s.navName)}</strong><small>${esc(s.short)}</small></span></a></li>`)
       .join('')}</ul></nav>`;
@@ -158,7 +158,7 @@ export const components: Record<string, Component> = {
     return `<div class="reviews">
   <div class="reviews__summary">
     <p class="reviews__score">${icon('google', 'reviews__g')}<span>${stars(ctx)}<strong>${site.google.reviewCount} avaliações no Google</strong></span></p>
-    <p class="reviews__links"><a href="${site.google.reviewsUrl}" target="_blank" rel="noopener">Ler todas no Google</a><a href="${site.google.writeReviewUrl}" target="_blank" rel="noopener">Avaliar a Ventura</a></p>
+    <p class="reviews__links"><a href="${site.google.reviewsUrl}" target="_blank" rel="noopener">Ler todas no Google</a><a href="${site.google.writeReviewUrl}" target="_blank" rel="noopener">Avaliar o Ventura</a></p>
   </div>
   <div class="reviews__viewport" data-marquee tabindex="0" role="region" aria-label="Avaliações de clientes no Google">
     <ul class="reviews__track">${cards}</ul>
@@ -211,7 +211,13 @@ export const components: Record<string, Component> = {
   },
 
   // Cartões dos especialistas (dados em `team`, site.ts). O CRMV só aparece quando está preenchido.
-  'x-team': () => `<ul class="team">${team.map((t) => `<li class="team__card" id="${t.slug}">
+  // `compact`: foto, nome, função e CRMV, com link para o perfil completo em /especialistas/ (evita repetir os textos).
+  'x-team': ($, el) => el.attr('compact') !== undefined
+    ? `<ul class="team team--compact">${team.map((t) => `<li class="team__card"><a class="team__link" href="/especialistas/#${t.slug}">
+  <x-img class="team__photo" src="${t.image}" alt="${attr(t.imageAlt)}" widths="360,540" sizes="(min-width: 1000px) 230px, (min-width: 640px) 30vw, 46vw"></x-img>
+  <span class="team__body"><strong class="team__name">${esc(t.name)}</strong><span class="team__role">${esc(t.role)}</span>${t.crmv ? `<span class="team__crmv">${esc(t.crmv)}</span>` : ''}</span>
+</a></li>`).join('')}</ul>`
+    : `<ul class="team">${team.map((t) => `<li class="team__card" id="${t.slug}">
   <x-img class="team__photo" src="${t.image}" alt="${attr(t.imageAlt)}" widths="360,540,720" sizes="(min-width: 1000px) 280px, (min-width: 640px) 30vw, 46vw"></x-img>
   <div class="team__body">
     <h3>${esc(t.name)}</h3>
@@ -224,7 +230,7 @@ export const components: Record<string, Component> = {
 
   'x-youtube': ($, el, ctx) => {
     const id = el.attr('id')!;
-    const title = el.attr('title') ?? 'Vídeo da Ventura Vet';
+    const title = el.attr('title') ?? 'Vídeo do Ventura Vet';
     ctx.icons.add('play-fill');
     // Shorts (vídeo vertical): usa a miniatura em retrato e a variante .yt--short
     if (el.attr('short') !== undefined) {
