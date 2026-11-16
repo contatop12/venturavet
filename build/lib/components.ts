@@ -217,6 +217,7 @@ export const components: Record<string, Component> = {
     <h3>${esc(t.name)}</h3>
     <p class="team__role">${esc(t.role)}</p>
     <p class="team__about">${esc(t.about)}</p>
+    ${t.education ? `<p class="team__edu">${esc(t.education)}</p>` : ''}
     ${t.crmv ? `<p class="team__crmv">${esc(t.crmv)}</p>` : ''}
   </div>
 </li>`).join('')}</ul>`,

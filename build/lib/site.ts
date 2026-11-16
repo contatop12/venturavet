@@ -30,9 +30,9 @@ export const areas: { name: string; from: string; km: number }[] = [
 /**
  * Especialistas da página /especialistas/ (nomes, funções e fotos vindos do site anterior).
  * `about` descreve a área de atuação, não o currículo da pessoa.
- * `crmv` só entra quando o número foi confirmado em fonte verificável; sem isso, fica de fora.
+ * `crmv` e `education` só entram quando confirmados em fonte que nomeia a pessoa; sem isso, ficam de fora.
  */
-export interface TeamMember { slug: string; name: string; role: string; about: string; image: string; imageAlt: string; knowsAbout: string[]; crmv?: string; founder?: boolean }
+export interface TeamMember { slug: string; name: string; role: string; about: string; image: string; imageAlt: string; knowsAbout: string[]; crmv?: string; education?: string; founder?: boolean }
 export const team: TeamMember[] = [
   {
     slug: 'ana-luiza-mazorra', name: 'Dra. Ana Luiza Mazorra', role: 'Médica-veterinária, proprietária e responsável técnica', founder: true, crmv: 'CRMV-SP 15.768',
@@ -57,14 +57,17 @@ export const team: TeamMember[] = [
     about: 'Trata dentes e gengivas: limpeza de tártaro, doença periodontal e extrações, que influenciam a saúde do pet como um todo.',
     image: 'especialista-daniela-scatena.jpg', imageAlt: 'Dra. Daniela Scatena, da odontologia veterinária, com um cãozinho no colo',
     knowsAbout: ['Odontologia veterinária'],
-    // Fonte: página de Odontologia da Inova Veterinária, onde ela também atende (conferida em 16/11/2026).
+    // Fontes (conferidas em 16/11/2026): CRMV na página de Odontologia da Inova Veterinária; formação na bio da equipe da Mastercat.
     crmv: 'CRMV-SP 19.821',
+    education: 'Formada pela Universidade Metodista de São Paulo, com pós-graduação em odontologia veterinária pela Anclivepa-SP. Mestranda na FMVZ-USP.',
   },
   {
     slug: 'felipe-alfaro', name: 'Dr. Felipe Alfaro', role: 'Cardiologista',
     about: 'Avalia o coração com ecocardiograma e eletrocardiograma e acompanha cães e gatos com doenças cardíacas.',
     image: 'especialista-felipe-alfaro.jpg', imageAlt: 'Dr. Felipe Alfaro, cardiologista veterinário, de jaleco branco',
     knowsAbout: ['Cardiologia veterinária', 'Ecocardiograma', 'Eletrocardiograma'],
+    // Fonte: página da equipe da Maskovet, onde ele também atende como cardiologista (conferida em 16/11/2026).
+    crmv: 'CRMV-SP 42.817',
   },
   {
     slug: 'luciana-moreno', name: 'Dra. Luciana Moreno', role: 'Anestesista',
@@ -77,6 +80,8 @@ export const team: TeamMember[] = [
     about: 'Cuida da saúde dos olhos: úlceras de córnea, catarata, glaucoma, olho seco e alterações das pálpebras.',
     image: 'especialista-graziele-massae-shimamura.jpg', imageAlt: 'Dra. Graziele Massae Shimamura, oftalmologista veterinária, de jaleco branco',
     knowsAbout: ['Oftalmologia veterinária'],
+    // Fontes (conferidas em 16/11/2026): perfil na Biblioteca Virtual da FAPESP (resumo do Lattes) e dissertação no repositório de teses da USP.
+    education: 'Formada pela Unesp, com residência em clínica e cirurgia de pequenos animais na USP e mestrado pela FMVZ-USP, com pesquisa sobre os olhos de cães com diabetes.',
   },
   {
     slug: 'amanda-oncins', name: 'Dra. Amanda Oncins', role: 'Especialista em medicina felina',

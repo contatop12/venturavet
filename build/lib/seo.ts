@@ -185,6 +185,7 @@ export function jsonLd(m: PageMeta): string {
     for (const t of team) {
       if (t.founder) continue;
       const p: Record<string, unknown> = { '@type': 'Person', '@id': `${url}#${t.slug}`, name: t.name, jobTitle: t.role, worksFor: { '@id': ORG }, knowsAbout: t.knowsAbout, url: `${url}#${t.slug}` };
+      if (t.education) p.description = t.education;
       if (t.crmv) p.identifier = { '@type': 'PropertyValue', propertyID: t.crmv.split(' ')[0], value: t.crmv };
       graph.push(p);
     }

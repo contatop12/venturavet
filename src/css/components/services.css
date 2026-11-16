@@ -192,6 +192,7 @@ picture.rounded { display: block; border-radius: var(--r-lg); overflow: hidden; 
 .team__card h3 { font-size: 1.2rem; letter-spacing: -0.01em; line-height: 1.2; }
 .team__role { margin-top: 0.25rem; font-weight: 600; color: var(--laranja-texto); line-height: 1.3; }
 .team__about { margin-top: 0.6rem; color: var(--tinta-2); font-size: 0.95rem; line-height: 1.55; }
+.team__edu { margin-top: 0.6rem; padding-top: 0.6rem; border-top: 1px solid var(--linha); color: var(--tinta-2); font-size: 0.86rem; line-height: 1.5; }
 .team__crmv { margin-top: 0.6rem; font-size: 0.85rem; font-weight: 600; color: var(--tinta-2); }
 @media (max-width: 560px) {
   .team { grid-template-columns: 1fr 1fr; }
