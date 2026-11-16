@@ -57,6 +57,8 @@ export const team: TeamMember[] = [
     about: 'Trata dentes e gengivas: limpeza de tártaro, doença periodontal e extrações, que influenciam a saúde do pet como um todo.',
     image: 'especialista-daniela-scatena.jpg', imageAlt: 'Dra. Daniela Scatena, da odontologia veterinária, com um cãozinho no colo',
     knowsAbout: ['Odontologia veterinária'],
+    // Fonte: página de Odontologia da Inova Veterinária, onde ela também atende (conferida em 16/11/2026).
+    crmv: 'CRMV-SP 19.821',
   },
   {
     slug: 'felipe-alfaro', name: 'Dr. Felipe Alfaro', role: 'Cardiologista',
