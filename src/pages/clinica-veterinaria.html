@@ -69,8 +69,8 @@ priority: 0.9
       <div class="tabs__panel" id="prevencao" data-label="Prevenção">
         <h3 class="tabs__heading">Prevenção</h3>
         <ul class="cards">
-          <li class="card"><x-icon name="stethoscope"></x-icon><h3>Consultas</h3><p>Dois consultórios para cães e um exclusivo para felinos, com sala de espera separada, difusor e spray com Feliway® — tranquilidade e segurança para os gatinhos durante a visita.</p></li>
-          <li class="card"><x-icon name="syringe"></x-icon><h3>Vacinas</h3><p>Utilizamos somente vacinas importadas, sempre mantidas sob temperatura controlada.</p></li>
+          <li class="card" id="consultas"><x-icon name="stethoscope"></x-icon><h3>Consultas</h3><p>Dois consultórios para cães e um exclusivo para felinos, com sala de espera separada, difusor e spray com Feliway® — tranquilidade e segurança para os gatinhos durante a visita.</p></li>
+          <li class="card" id="vacinas"><x-icon name="syringe"></x-icon><h3>Vacinas</h3><p>Utilizamos somente vacinas importadas, sempre mantidas sob temperatura controlada.</p></li>
           <li class="card"><x-icon name="scan-line"></x-icon><h3>Microchip animal</h3><p>Identificação única, segura e inviolável, que facilita encontrar o pet em casos de perda ou roubo.</p></li>
           <li class="card"><x-icon name="gauge"></x-icon><h3>Pressão arterial</h3><p>Profissionais preparados para aferir a pressão do seu pet com dopplers de última geração, para resultados precisos.</p></li>
         </ul>
@@ -132,7 +132,7 @@ priority: 0.9
   </div>
 </section>
 
-<section class="section section--tight section--nevoa" aria-labelledby="catfriendly-titulo">
+<section class="section section--tight section--nevoa" id="consultorio-felino" aria-labelledby="catfriendly-titulo">
   <div class="wrap split split--rev">
     <div>
       <h2 id="catfriendly-titulo" data-reveal>Veterinário para gatos: consultório felino com selo {{site.credentials.catFriendly}}</h2>

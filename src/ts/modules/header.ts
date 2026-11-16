@@ -42,7 +42,7 @@ export function initHeader() {
   nav?.addEventListener('click', (e) => {
     if ((e.target as HTMLElement).closest('a')) setMenu(false);
   });
-  window.matchMedia('(min-width: 961px)').addEventListener('change', (m) => m.matches && setMenu(false));
+  window.matchMedia('(min-width: 1281px)').addEventListener('change', (m) => m.matches && setMenu(false));
 
   // Submenu (botão dedicado, funciona por toque e teclado)
   const closeSub = (li: Element) => {

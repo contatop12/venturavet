@@ -23,7 +23,7 @@ export default function initTabs() {
       list.appendChild(btn);
       return btn;
     });
-    const select = (i: number, focus = false) => {
+    const select = (i: number, focus = false, user = false) => {
       tabs.forEach((t, j) => {
         const on = i === j;
         t.setAttribute('aria-selected', String(on));
@@ -31,18 +31,33 @@ export default function initTabs() {
         panels[j].hidden = !on;
       });
       if (focus) tabs[i].focus();
-      tabs[i].scrollIntoView({ block: 'nearest', inline: 'nearest' });
+      // Só rola a lista de abas em interação do usuário (no carregamento, rolaria a página até as abas)
+      if (user) tabs[i].scrollIntoView({ block: 'nearest', inline: 'nearest' });
     };
+    // Links do menu com âncora (#terapias, #vacinas...) abrem a aba que contém o alvo e rolam até ele
+    const fromHash = () => {
+      const target = location.hash.length > 1 ? document.getElementById(decodeURIComponent(location.hash.slice(1))) : null;
+      const i = target ? panels.findIndex((p) => p === target || p.contains(target)) : -1;
+      return { i, target };
+    };
+    const openHash = () => {
+      const { i, target } = fromHash();
+      if (i < 0 || !target) return false;
+      select(i);
+      requestAnimationFrame(() => target.scrollIntoView({ block: 'start' }));
+      return true;
+    };
+    window.addEventListener('hashchange', openHash);
     tabs.forEach((t, i) => {
-      t.addEventListener('click', () => select(i));
+      t.addEventListener('click', () => select(i, false, true));
       t.addEventListener('keydown', (e) => {
         const k = e.key;
         const n = k === 'ArrowRight' ? i + 1 : k === 'ArrowLeft' ? i - 1 : k === 'Home' ? 0 : k === 'End' ? tabs.length - 1 : null;
         if (n === null) return;
         e.preventDefault();
-        select((n + tabs.length) % tabs.length, true);
+        select((n + tabs.length) % tabs.length, true, true);
       });
     });
-    select(0);
+    if (!openHash()) select(0);
   }
 }

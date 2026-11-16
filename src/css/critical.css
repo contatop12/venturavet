@@ -158,15 +158,15 @@ main:focus { outline: none; }
   transition: transform 0.45s var(--ease-out), border-color 0.3s, box-shadow 0.3s;
   &.is-scrolled { border-color: var(--linha); box-shadow: 0 6px 24px -18px rgb(19 41 61 / 40%); }
   &.is-hidden { transform: translateY(-100%); }
-  .wrap { display: flex; align-items: center; gap: 1.5rem; height: var(--header-h); }
+  .wrap { display: flex; align-items: center; gap: 1rem; height: var(--header-h); }
 }
 .logo { display: block; flex: none; width: 8.75rem; img { width: 100%; height: auto; } }
 .nav { margin-left: auto; }
 .nav ul { list-style: none; padding: 0; margin: 0; }
-.nav > ul { display: flex; align-items: center; gap: 0.25rem; }
+.nav > ul { display: flex; align-items: center; gap: 0.1rem; }
 .nav__link {
-  display: inline-flex; align-items: center; min-height: 2.75rem; padding: 0.5rem 0.85rem;
-  border-radius: 999px; font-weight: 600; font-size: 0.98rem; text-decoration: none;
+  display: inline-flex; align-items: center; min-height: 2.75rem; padding: 0.5rem 0.6rem;
+  border-radius: 999px; font-weight: 600; font-size: 0.94rem; white-space: nowrap; text-decoration: none;
   transition: background-color 0.2s;
   &:hover { background: var(--nevoa); }
   &[aria-current='page'], &.is-active { color: var(--laranja-texto); }
@@ -179,13 +179,17 @@ main:focus { outline: none; }
 .menu-btn { display: none; place-items: center; width: 3rem; height: 3rem; border-radius: 999px; background: var(--nevoa); .icon { width: 1.5rem; height: 1.5rem; } }
 .menu-btn .icon-x { display: none; }
 
-@media (max-width: 1120px) { .header__phone span { display: none; } }
-@media (max-width: 960px) {
-  :root { --header-h: 4rem; }
-  .logo { width: 7.25rem; }
+/* Menu completo (6 itens, 2 com submenu) só cabe a partir de 1281px; abaixo disso vira o painel do botão de menu */
+@media (max-width: 1440px) { .header__phone span { display: none; } }
+@media (max-width: 1280px) {
   .nav { position: fixed; inset: var(--header-h) 0 0; margin: 0; visibility: hidden; opacity: 0; }
   .menu-btn { display: grid; }
   .header__cta { margin-left: auto; }
+  .header__phone span { display: inline; }
+}
+@media (max-width: 960px) {
+  :root { --header-h: 4rem; }
+  .logo { width: 7.25rem; }
   .header__cta .btn span { display: none; }
   .header__cta .btn { width: 3rem; padding: 0; }
   .header__phone { display: none; }

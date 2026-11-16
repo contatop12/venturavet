@@ -29,22 +29,21 @@ const selfClosing = (html: string) => html.replace(/<(x-[a-z-]+)([^>]*?)\s*\/>/g
 
 function navHtml(ctx: RenderCtx) {
   ctx.icons.add('chevron-down');
-  services.forEach((s) => ctx.icons.add(s.icon));
+  const ic = (name: string) => { ctx.icons.add(name); return icon(name); };
   return nav
-    .map((item) => {
-      if (!item.children) return `<li><a class="nav__link" href="${item.href}">${item.label}</a></li>`;
+    .map((item, n) => {
+      if (!item.columns && !item.children) return `<li><a class="nav__link" href="${item.href}">${item.label}</a></li>`;
+      const id = `submenu-${n}`;
+      const body = item.columns
+        ? `<div class="nav__cols">${item.columns.map((col) => `<div class="nav__col">
+      <p class="nav__col-title">${ic(col.icon)}${col.title}</p>
+      <ul>${col.links.map((l) => `<li><a href="${l.href}">${l.label}</a></li>`).join('')}</ul>
+    </div>`).join('')}</div>`
+        : `<ul class="nav__list">${item.children!.map((l) => `<li><a href="${l.href}">${l.icon ? ic(l.icon) : ''}<span>${l.label}</span></a></li>`).join('')}</ul>`;
       return `<li class="nav__has-sub">
   <a class="nav__link" href="${item.href}">${item.label}</a>
-  <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="sub-servicos"><span class="sr-only">Abrir submenu de serviços</span>${icon('chevron-down')}</button>
-  <div class="nav__sub" id="sub-servicos"><ul>${item.children
-    .filter((c) => c.group === 'principal')
-    .map((c) => `<li><a href="${c.href}">${icon(c.icon)}<span><strong>${c.label}</strong><small>${c.short}</small></span></a></li>`)
-    .join('')}</ul>
-    <p class="nav__sub-title">Outros serviços <small>(vagas limitadas)</small></p>
-    <ul class="nav__sub-mini">${item.children
-    .filter((c) => c.group === 'outros')
-    .map((c) => `<li><a href="${c.href}">${icon(c.icon)}<span>${c.label}</span></a></li>`)
-    .join('')}</ul></div>
+  <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="${id}"><span class="sr-only">Abrir submenu ${item.label}</span>${icon('chevron-down')}</button>
+  <div class="nav__sub${item.columns ? ' nav__sub--cols' : ''}" id="${id}">${body}</div>
 </li>`;
     })
     .join('');
@@ -111,10 +110,11 @@ export async function renderPage(meta: PageMeta, body: string, assets: Assets, e
     const href = $(a).attr('href');
     if (href === meta.path) $(a).attr('aria-current', 'page');
   });
-  // "Serviços" fica ativo nas páginas de serviço — menos na Castração, que tem item próprio no menu
-  const ownNavItem = nav.some((item) => !item.children && item.href === meta.path);
-  if ((services.some((s) => s.path === meta.path) && !ownNavItem) || meta.path === '/servicos/') $('.nav__has-sub > .nav__link').addClass('is-active');
-  if (meta.type === 'post' || meta.type === 'category') $('.nav a[href="/blog/"]').addClass('is-active');
+  // Item com submenu fica ativo quando a página está entre os seus links (ex.: Laboratório e Castração → Clínica)
+  $('.nav__has-sub').each((_, li) => {
+    const paths = $(li).find('a').map((_, a) => ($(a).attr('href') ?? '').split('#')[0]).get();
+    if (paths.includes(meta.path)) $(li).children('.nav__link').addClass('is-active');
+  });
 
   // Auditoria leve de semântica
   const h1 = $('h1').length;

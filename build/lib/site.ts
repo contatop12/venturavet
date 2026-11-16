@@ -311,12 +311,48 @@ export function svc(slug: string): Service {
 export const mainServices = services.filter((s) => s.group === 'principal');
 export const otherServices = services.filter((s) => s.group === 'outros');
 
-export const nav = [
+/**
+ * Menu principal (estrutura definida pelo cliente em 16/11/2026).
+ * `columns`: submenu em colunas (Clínica: para cães / para gatos); `children`: submenu simples.
+ * Os links "para gatos" da Clínica levam às mesmas páginas, com âncoras quando há seção própria.
+ * Blog, Laboratório, Especialistas e Serviços saíram do menu, mas continuam no rodapé e nas páginas.
+ */
+export interface NavLink { label: string; href: string; icon?: string }
+export interface NavItem { label: string; href: string; columns?: { title: string; icon: string; links: NavLink[] }[]; children?: NavLink[] }
+export const nav: NavItem[] = [
   { label: 'Quem somos', href: '/quem-somos/' },
-  { label: 'Serviços', href: '/servicos/', children: services.map((s) => ({ label: s.navName, href: s.path, icon: s.icon, short: s.short, group: s.group })) },
-  // Castração tem destaque próprio no menu (pedido do briefing), além de estar em Serviços.
-  { label: 'Castração', href: '/castracao/' },
-  { label: 'Blog', href: '/blog/' },
+  {
+    label: 'Clínica Veterinária', href: '/clinica-veterinaria/',
+    columns: [
+      {
+        title: 'Para cães', icon: 'dog', links: [
+          { label: 'Consulta', href: '/clinica-veterinaria/#consultas' },
+          { label: 'Exames', href: '/laboratorio/' },
+          { label: 'Vacinas', href: '/clinica-veterinaria/#vacinas' },
+          { label: 'Castração sem dor', href: '/castracao/' },
+          { label: 'Tratamentos e terapias', href: '/clinica-veterinaria/#terapias' },
+        ],
+      },
+      {
+        title: 'Para gatos', icon: 'cat', links: [
+          { label: 'Consulta', href: '/clinica-veterinaria/#consultorio-felino' },
+          { label: 'Exames', href: '/laboratorio/' },
+          { label: 'Vacinas', href: '/clinica-veterinaria/#vacinas' },
+          { label: 'Castração sem dor', href: '/castracao/' },
+          { label: 'Tratamentos e terapias', href: '/clinica-veterinaria/#terapias' },
+        ],
+      },
+    ],
+  },
+  {
+    label: 'Day Care / Hotel', href: '/day-care-e-hotel/',
+    children: [
+      { label: 'Para cães', href: '/day-care-e-hotel/', icon: 'dog' },
+      { label: 'Para gatos', href: '/hotel-para-gatos/', icon: 'cat' },
+    ],
+  },
+  { label: 'Natação para cachorro', href: '/natacao/' },
+  { label: 'Banho e Tosa', href: '/banho-e-tosa/' },
   { label: 'Contato', href: '/contato/' },
 ];
 
