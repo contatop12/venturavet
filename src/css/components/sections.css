@@ -173,3 +173,28 @@
   &:hover:not(:disabled) { border-color: var(--tinta); background: var(--nevoa); }
   &:disabled { opacity: 0.35; cursor: default; }
 }
+
+/* Botão de disponibilidade nos cartões dos especialistas */
+.team__cta { margin-top: 0.75rem; }
+
+/* ---------- Galeria com ampliação (lightbox.ts) ---------- */
+.gallery [data-zoom] { cursor: zoom-in; }
+.gallery [data-zoom]:focus-visible { outline: 3px solid var(--paraiso); outline-offset: 3px; border-radius: var(--r-sm); }
+.lightbox {
+  width: 100vw; max-width: none; height: 100dvh; max-height: none; margin: 0; padding: 0; border: 0;
+  background: rgb(10 22 33 / 92%); color: var(--branco);
+  &::backdrop { background: transparent; }
+}
+.lightbox__stage { display: grid; place-items: center; width: 100%; height: 100%; padding: 4rem 1rem 5rem; touch-action: pan-y; }
+.lightbox__stage img { max-width: min(100%, 72rem); max-height: 100%; width: auto; height: auto; border-radius: var(--r-md); object-fit: contain; }
+.lightbox__cap { position: absolute; inset: auto 1rem 1.25rem; text-align: center; font-size: 0.95rem; color: #d3dce6; }
+.lightbox__btn {
+  position: absolute; display: grid; place-items: center; width: 3rem; height: 3rem; border: 0; border-radius: 999px;
+  background: rgb(255 255 255 / 14%); color: var(--branco); cursor: pointer;
+  .icon { width: 1.5rem; height: 1.5rem; }
+  &:hover, &:focus-visible { background: rgb(255 255 255 / 28%); }
+}
+.lightbox__close { top: 1rem; right: 1rem; }
+.lightbox__prev { left: 1rem; top: 50%; translate: 0 -50%; }
+.lightbox__next { right: 1rem; top: 50%; translate: 0 -50%; }
+@media (max-width: 600px) { .lightbox__prev, .lightbox__next { top: auto; bottom: 3.5rem; translate: none; } }

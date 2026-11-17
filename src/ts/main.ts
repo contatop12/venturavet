@@ -47,6 +47,7 @@ safe('analytics', initAnalytics);
 const lazy: [string, () => Promise<{ default: () => void }>][] = [
   ['[data-svc-index]', () => import('./modules/svc-preview')],
   ['[data-tabs]', () => import('./modules/tabs')],
+  ['.gallery', () => import('./modules/lightbox')],
   ['[data-map]', () => import('./modules/map')],
   ['[data-yt]', () => import('./modules/youtube')],
   ['video[data-autoplay]', () => import('./modules/video')],

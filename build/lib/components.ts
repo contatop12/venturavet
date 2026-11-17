@@ -154,7 +154,13 @@ export const components: Record<string, Component> = {
 
   'x-reviews': ($, el, ctx) => {
     ['google', 'chevron-left', 'chevron-right'].forEach((i) => ctx.icons.add(i));
-    const cards = reviews
+    // Banho e tosa: só os relatos de banho e tosa. Home: todos. Demais páginas: os relatos gerais,
+    // sem os de banho e tosa (as specs pedem relatos ligados ao serviço da página).
+    const svcSlug = ctx.meta.service;
+    const list = ctx.meta.type === 'home' ? reviews
+      : reviews.some((r) => r.service === svcSlug) ? reviews.filter((r) => r.service === svcSlug)
+      : reviews.filter((r) => !r.service);
+    const cards = list
       .map(
         (r) => `<li class="review"><figure>
   ${stars(ctx, r.rating)}
@@ -238,6 +244,7 @@ export const components: Record<string, Component> = {
     <p class="team__about">${esc(t.about)}</p>
     ${t.education ? `<p class="team__edu">${esc(t.education)}</p>` : ''}
     ${t.crmv ? `<p class="team__crmv">${esc(t.crmv)}</p>` : ''}
+    <p class="team__cta"><a class="btn btn--ghost btn--sm" data-wa="${attr(`Olá! Vim pelo site do Ventura Vet e gostaria de consultar a disponibilidade de atendimento com ${t.name} (${t.role.toLowerCase()}).`)}" data-service="especialistas" data-pos="equipe"><x-icon name="whatsapp"></x-icon>Consultar disponibilidade</a></p>
   </div>
 </li>`).join('')}</ul>`,
 

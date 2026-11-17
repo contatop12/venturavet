@@ -454,13 +454,14 @@ export const contactOptions: { label: string; icon: string; message: string; ser
  * Ordem: primeiro as que falam da clínica e da estrutura como um todo (foco do site), depois as de banho e tosa.
  * Para trocar por avaliações de consultas, castração ou hotel para gatos, copie o texto exato do Google.
  */
-export const reviews = [
+/** `service`: só quando o texto fala de um serviço específico (o componente filtra por página). */
+export const reviews: { author: string; date: string; rating: number; service?: string; text: string }[] = [
   { author: 'MZ Serviços', date: '2025-02-09', rating: 5, text: 'Espaço espetacular, com ótima estrutura e padrão 5 estrelas no atendimento e cuidado com seu pet. Super recomendo.' },
   { author: 'Karin Deguirmendjan Rosa Campos', date: '2024-09-12', rating: 5, text: 'Excelente atendimento, equipe atenciosa e competente! Agradecimento especial à Michele!' },
   { author: 'Patricia Biembenguti', date: '2025-05-18', rating: 5, text: 'Excelente atendimento, em todos aspectos! 👏👏👏👏' },
-  { author: 'Renata Malachias', date: '2025-11-06', rating: 5, text: 'Adorei. Pontuais, organizados, carinhosos e atenciosos. A Michelle cuidou super bem da minha cachorrinha que é super medrosa. Pepé saiu de lá feliz, limpinha e com cara de ter sido bem cuidada.' },
-  { author: 'Renata Balerine', date: '2025-07-16', rating: 5, text: 'Foi uma experiência ótima! Minhas cachorras tomaram banho lá e voltaram lindas e cheirosas! AMEI o atendimento e o serviço. Super recomendo!' },
-  { author: 'Ivonete Gonçalves', date: '2025-09-25', rating: 5, text: 'Gostei demais do banho, tosa e o atendimento muito agradável!' },
+  { author: 'Renata Malachias', date: '2025-11-06', rating: 5, service: 'banho-e-tosa', text: 'Adorei. Pontuais, organizados, carinhosos e atenciosos. A Michelle cuidou super bem da minha cachorrinha que é super medrosa. Pepé saiu de lá feliz, limpinha e com cara de ter sido bem cuidada.' },
+  { author: 'Renata Balerine', date: '2025-07-16', rating: 5, service: 'banho-e-tosa', text: 'Foi uma experiência ótima! Minhas cachorras tomaram banho lá e voltaram lindas e cheirosas! AMEI o atendimento e o serviço. Super recomendo!' },
+  { author: 'Ivonete Gonçalves', date: '2025-09-25', rating: 5, service: 'banho-e-tosa', text: 'Gostei demais do banho, tosa e o atendimento muito agradável!' },
   { author: 'Ana Lucia Abrahão', date: '2025-08-04', rating: 5, text: 'Excelente.' },
 ];
 
