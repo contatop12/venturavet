@@ -205,11 +205,13 @@ main:focus { outline: none; }
   position: relative; isolation: isolate; overflow: clip;
   background: var(--salmao);
 }
+/* Até 1199px: texto e lista à esquerda, pets à direita. A partir de 1200px: composição do site anterior,
+   com os pets no centro, o texto à esquerda e a lista de serviços à direita, sobrepostos às bordas da imagem. */
 .hero__grid {
-  display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.08fr); grid-template-areas: 'copy art';
+  display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); grid-template-areas: 'copy art' 'menu art';
   column-gap: clamp(1rem, 3vw, 3rem);
 }
-.hero__copy { grid-area: copy; align-self: center; padding-block: clamp(2.5rem, 1.5rem + 3vw, 4.5rem); }
+.hero__copy { grid-area: copy; position: relative; z-index: 2; align-self: end; padding-top: clamp(2.5rem, 1.5rem + 3vw, 4.5rem); }
 .hero__h1 { font-weight: 800; }
 /* Selo em pílula; continua dentro do H1 por SEO */
 .hero__kicker {
@@ -233,38 +235,47 @@ main:focus { outline: none; }
 .stars { display: inline-flex; gap: 1px; color: #f5a400; .icon { width: 1rem; height: 1rem; fill: currentColor; stroke: none; } }
 .hero .stars { color: #8a5a00; }
 
-/* Imagem com o arco (laranja da marca, #ff6600) encostada no rodapé da hero. Se o texto for mais alto que
-   a imagem, o ::before prolonga o arco até o topo: a borda de cima da imagem vai de 15,6% a 84,6% da largura. */
-.hero__art {
-  grid-area: art; position: relative; align-self: stretch; justify-self: center;
-  display: flex; align-items: flex-end; width: 100%; max-width: 42rem; container-type: inline-size;
-}
-.hero__art::before { content: ''; position: absolute; top: 0; left: 15.6%; right: 15.4%; bottom: calc(97.66cqw - 4px); background: var(--laranja); }
+/* Imagem com o arco (laranja da marca, #ff6600) encostada no rodapé da hero, como no site anterior:
+   o topo arredondado do arco aparece logo abaixo do cabeçalho e as patas tocam a base. */
+.hero__art { grid-area: art; position: relative; align-self: end; justify-self: center; width: 100%; max-width: 46rem; }
 .hero__pet { position: relative; display: block; width: 100%; img { width: 100%; height: auto; } }
 .hero__paw { position: absolute; top: 9%; right: 9%; width: 10%; color: var(--paraiso); rotate: 20deg; .icon { width: 100%; height: auto; stroke-width: 2.25; } }
 
-/* Menu de serviços sobre a imagem (no site anterior era texto branco direto na foto; aqui ganha fundo para ter contraste) */
+/* Lista de serviços: texto direto sobre o fundo, como no site anterior (em azul-escuro, para ter contraste no salmão) */
 .hero__menu {
-  grid-area: art; align-self: end; justify-self: end; z-index: 2; width: min(17.5rem, 44%); margin-bottom: clamp(1.5rem, 4vw, 3.5rem);
-  padding: 0.35rem 1.1rem; border-radius: var(--r-md); background: rgb(255 255 255 / 84%); box-shadow: var(--shadow);
-  -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
+  grid-area: menu; position: relative; z-index: 2; align-self: start; width: min(100%, 22rem); margin-block: 1.75rem clamp(2.5rem, 4vw, 3.5rem);
   a {
-    display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 0.8rem 0.1rem;
-    font-family: var(--f-display); font-size: 1.05rem; font-weight: 700; line-height: 1.2; color: var(--tinta); text-decoration: none;
-    transition: color 0.3s var(--ease-out);
+    display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 0.75rem 0.1rem;
+    font-family: var(--f-display); font-size: 1.1rem; font-weight: 700; line-height: 1.2; color: var(--tinta); text-decoration: none;
+    border-bottom: 1px solid rgb(19 41 61 / 22%);
+    transition: color 0.3s var(--ease-out), border-color 0.3s var(--ease-out);
   }
-  a + a { border-top: 1px solid rgb(19 41 61 / 12%); }
+  a:hover { border-color: currentColor; }
   .icon { flex: none; width: 1.15rem; height: 1.15rem; color: var(--laranja-texto); transition: transform 0.3s var(--ease-out); }
   a:hover { color: var(--laranja-texto); .icon { transform: translate(2px, -2px); } }
   a:focus-visible { outline: 3px solid var(--paraiso); outline-offset: 2px; border-radius: 0.4rem; }
 }
 
+/* Entre 961 e 1199px a lista de serviços não cabe sem esticar a hero (o menu do cabeçalho e a faixa logo abaixo já levam aos serviços) */
+@media (min-width: 961px) and (max-width: 1199px) {
+  .hero__grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); grid-template-areas: 'copy art'; }
+  .hero__copy { padding-bottom: clamp(2.5rem, 1.5rem + 3vw, 4.5rem); }
+  .hero__menu { display: none; }
+}
+@media (min-width: 1200px) {
+  .hero__grid { grid-template-columns: minmax(0, 1fr); grid-template-areas: 'stack'; }
+  .hero__copy, .hero__art, .hero__menu { grid-area: stack; }
+  .hero__copy { justify-self: start; align-self: center; width: 30rem; padding-block: 2rem; }
+  .hero__title { font-size: clamp(2.6rem, 1rem + 2.6vw, 3.4rem); }
+  /* Pets um pouco à direita do centro (56%), para o texto longo da esquerda não cobrir o rosto do cão */
+  .hero__art { justify-self: start; width: min(44rem, 56%); margin-left: calc(56% - min(22rem, 28%)); }
+  .hero__menu { justify-self: end; align-self: center; width: 16rem; margin: 0; }
+}
 @media (max-width: 960px) {
   .hero__grid { grid-template-columns: 1fr; grid-template-areas: 'art' 'copy' 'menu'; }
   .hero__art { max-width: 26rem; }
-  .hero__art::before { display: none; }
   .hero__copy { padding-block: 1.75rem 0; }
-  .hero__menu { grid-area: menu; justify-self: stretch; width: auto; margin-block: 1.75rem 2.5rem; }
+  .hero__menu { justify-self: stretch; width: auto; margin-block: 1.25rem 2.5rem; }
   .hero__actions .btn { flex: 1 1 100%; }
 }
 @media (max-width: 560px) {
