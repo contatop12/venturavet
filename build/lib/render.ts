@@ -36,7 +36,7 @@ function navHtml(ctx: RenderCtx) {
       const id = `submenu-${n}`;
       const body = item.columns
         ? `<div class="nav__cols">${item.columns.map((col) => `<div class="nav__col">
-      <p class="nav__col-title">${ic(col.icon)}${col.title}</p>
+      <p class="nav__col-title">${ic(col.icon)}${col.href ? `<a href="${col.href}">${col.title}</a>` : col.title}</p>
       <ul>${col.links.map((l) => `<li><a href="${l.href}">${l.label}</a></li>`).join('')}</ul>
     </div>`).join('')}</div>`
         : `<ul class="nav__list">${item.children!.map((l) => `<li><a href="${l.href}">${l.icon ? ic(l.icon) : ''}<span>${l.label}</span></a></li>`).join('')}</ul>`;

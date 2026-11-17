@@ -225,3 +225,11 @@ picture.rounded { display: block; border-radius: var(--r-lg); overflow: hidden; 
 .faq__art { width: 11rem; margin-top: 2rem; }
 @media (max-width: 860px) { .faq__art { display: none; } }
 .highlight .checklist .icon { background: var(--tinta); color: var(--laranja); }
+
+/* Páginas por espécie (veterinário para cachorro / para gatos) */
+.page-jump { margin-top: 1.5rem; }
+.page-jump .chip .icon { width: 1.1rem; height: 1.1rem; color: var(--laranja-texto); }
+.vac-note { margin-top: 1.5rem; }
+.highlight--row h3 { font-size: var(--step-2); }
+p:has(> .link-more + .link-more) { display: flex; flex-wrap: wrap; column-gap: 1.25rem; }
+@media (max-width: 640px) { .highlight--row { flex-direction: column; align-items: flex-start; gap: 1rem; } }

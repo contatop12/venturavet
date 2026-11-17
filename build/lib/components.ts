@@ -139,7 +139,7 @@ export const components: Record<string, Component> = {
     const current = el.attr('current');
     services.forEach((s) => ctx.icons.add(s.icon));
     return `<nav class="svc-nav" aria-label="Outros serviços"><p class="svc-nav__title">Também no Ventura</p><ul>${services
-      .filter((s) => s.slug !== current)
+      .filter((s) => s.slug !== current && s.group !== 'especie')
       .map((s) => `<li><a href="${s.path}">${icon(s.icon)}<span><strong>${esc(s.navName)}</strong><small>${esc(s.short)}</small></span></a></li>`)
       .join('')}</ul></nav>`;
   },

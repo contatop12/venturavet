@@ -179,8 +179,10 @@ main:focus { outline: none; }
 .menu-btn { display: none; place-items: center; width: 3rem; height: 3rem; border-radius: 999px; background: var(--nevoa); .icon { width: 1.5rem; height: 1.5rem; } }
 .menu-btn .icon-x { display: none; }
 
-/* Menu completo (6 itens, 2 com submenu) só cabe a partir de 1281px; abaixo disso vira o painel do botão de menu */
-@media (max-width: 1440px) { .header__phone span { display: none; } }
+/* Menu completo (6 itens, 2 com submenu) só cabe a partir de 1281px; abaixo disso vira o painel do botão de menu.
+   Com o menu completo, o número de telefone não cabe ao lado (o .wrap tem largura máxima): só o ícone aparece. */
+.header__phone { white-space: nowrap; }
+@media (min-width: 1281px) { .header__phone span { display: none; } }
 @media (max-width: 1280px) {
   .nav { position: fixed; inset: var(--header-h) 0 0; margin: 0; visibility: hidden; opacity: 0; }
   .menu-btn { display: grid; }

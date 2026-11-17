@@ -201,8 +201,8 @@ export type Service = {
   imageAlt: string;
   serviceType: string;
   waMessage: string;
-  /** principal = foco do site (destaque); outros = poucas vagas, menos destaque. */
-  group: 'principal' | 'outros';
+  /** principal = foco do site (destaque); outros = poucas vagas, menos destaque; especie = páginas da clínica por espécie. */
+  group: 'principal' | 'outros' | 'especie';
   audience?: string;
 };
 
@@ -300,6 +300,34 @@ export const services: Service[] = [
     waMessage: 'Olá! Vim pelo site e quero saber se há horário para banho e tosa.',
     group: 'outros',
   },
+  {
+    slug: 'veterinario-para-cachorro',
+    path: '/veterinario-para-cachorro/',
+    name: 'Veterinário para Cachorro',
+    navName: 'Veterinário para cães',
+    short: 'Consultas com especialistas, vacinas do filhote ao adulto, castração com anestesia inalatória e terapias de reabilitação.',
+    icon: 'dog',
+    image: 'filhote-em-consulta.webp',
+    imageAlt: 'Filhote de cachorro tricolor no colo de uma veterinária com estetoscópio',
+    serviceType: 'Clínica veterinária para cães',
+    waMessage: 'Olá! Vim pelo site e quero agendar uma consulta para o meu cachorro.',
+    group: 'especie',
+    audience: 'Tutores de cães',
+  },
+  {
+    slug: 'veterinario-para-gatos',
+    path: '/veterinario-para-gatos/',
+    name: 'Veterinário para Gatos',
+    navName: 'Veterinário para gatos',
+    short: 'Consultório e sala de espera só para felinos, teste de FIV e FeLV em 15 minutos e vacinação do filhote ao adulto.',
+    icon: 'cat',
+    image: 'equipe-atendendo-gato.webp',
+    imageAlt: 'Duas veterinárias do Ventura atendendo um gato branco',
+    serviceType: 'Clínica veterinária para gatos',
+    waMessage: 'Olá! Vim pelo site e quero agendar uma consulta para o meu gato.',
+    group: 'especie',
+    audience: 'Tutores de gatos',
+  },
 ];
 
 /** Serviço por slug (evita depender da ordem do array). */
@@ -314,34 +342,26 @@ export const otherServices = services.filter((s) => s.group === 'outros');
 /**
  * Menu principal (estrutura definida pelo cliente em 16/11/2026).
  * `columns`: submenu em colunas (Clínica: para cães / para gatos); `children`: submenu simples.
- * Os links "para gatos" da Clínica levam às mesmas páginas, com âncoras quando há seção própria.
+ * Cada coluna da Clínica leva à página da espécie, com uma âncora por seção.
  * Blog, Laboratório, Especialistas e Serviços saíram do menu, mas continuam no rodapé e nas páginas.
  */
 export interface NavLink { label: string; href: string; icon?: string }
-export interface NavItem { label: string; href: string; columns?: { title: string; icon: string; links: NavLink[] }[]; children?: NavLink[] }
+export interface NavColumn { title: string; href?: string; icon: string; links: NavLink[] }
+export interface NavItem { label: string; href: string; columns?: NavColumn[]; children?: NavLink[] }
+const speciesLinks = (base: string): NavLink[] => [
+  { label: 'Consulta', href: `${base}#consulta` },
+  { label: 'Exames', href: `${base}#exames` },
+  { label: 'Vacinas', href: `${base}#vacinas` },
+  { label: 'Castração sem dor', href: `${base}#castracao` },
+  { label: 'Tratamentos e terapias', href: `${base}#tratamentos` },
+];
 export const nav: NavItem[] = [
   { label: 'Quem somos', href: '/quem-somos/' },
   {
     label: 'Clínica Veterinária', href: '/clinica-veterinaria/',
     columns: [
-      {
-        title: 'Para cães', icon: 'dog', links: [
-          { label: 'Consulta', href: '/clinica-veterinaria/#consultas' },
-          { label: 'Exames', href: '/laboratorio/' },
-          { label: 'Vacinas', href: '/clinica-veterinaria/#vacinas' },
-          { label: 'Castração sem dor', href: '/castracao/' },
-          { label: 'Tratamentos e terapias', href: '/clinica-veterinaria/#terapias' },
-        ],
-      },
-      {
-        title: 'Para gatos', icon: 'cat', links: [
-          { label: 'Consulta', href: '/clinica-veterinaria/#consultorio-felino' },
-          { label: 'Exames', href: '/laboratorio/' },
-          { label: 'Vacinas', href: '/clinica-veterinaria/#vacinas' },
-          { label: 'Castração sem dor', href: '/castracao/' },
-          { label: 'Tratamentos e terapias', href: '/clinica-veterinaria/#terapias' },
-        ],
-      },
+      { title: 'Para cães', href: '/veterinario-para-cachorro/', icon: 'dog', links: speciesLinks('/veterinario-para-cachorro/') },
+      { title: 'Para gatos', href: '/veterinario-para-gatos/', icon: 'cat', links: speciesLinks('/veterinario-para-gatos/') },
     ],
   },
   {
