@@ -153,10 +153,11 @@ export const site = {
       'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3656.8674729921177!2d-46.65256558538363!3d-23.573202767913987!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce59955b584e6b%3A0x6bfc846c52edcb2c!2sVentura%20Veterin%C3%A1ria%20%26%20Pet%20Shop!5e0!3m2!1spt-BR!2sbr!4v1677094221274!5m2!1spt-BR!2sbr',
   },
 
+  /** Redes oficiais (cliente, nov/2026): só estas quatro aparecem no site. */
   social: {
     instagram: 'https://www.instagram.com/venturavet/',
     facebook: 'https://www.facebook.com/VenturaVeterinariaPetshop/',
-    linkedin: 'https://www.linkedin.com/company/ventura-veterinaria/',
+    tiktok: 'https://vt.tiktok.com/ZSpGLQfBN/',
     youtube: 'https://www.youtube.com/@ventura_tv',
   },
 
@@ -183,6 +184,8 @@ export const site = {
     ],
     groomingDisplay: 'Seg. a sex., 9h às 17h · Sáb., 9h às 15h',
     daycareDisplay: 'Rotina das 7h às 21h',
+    /** Hotéis: acompanhamento contínuo, que não é horário de funcionamento da clínica. */
+    hotelDisplay: 'Monitores 24 horas, todos os dias · entrada e saída em horários combinados',
   },
 
   analytics: { gtm: 'GTM-MQ8G7B9' },
@@ -196,137 +199,193 @@ export type Service = {
   name: string;
   navName: string;
   short: string;
+  /** Rótulo do botão do cartão (ex.: "Conheça a clínica"). */
+  cta: string;
   icon: string;
   image: string;
   imageAlt: string;
   serviceType: string;
   waMessage: string;
-  /** principal = foco do site (destaque); outros = poucas vagas, menos destaque; especie = páginas da clínica por espécie. */
-  group: 'principal' | 'outros' | 'especie';
+  /**
+   * principal = os sete cartões da home, nesta ordem; clinica = serviços clínicos (submenu da Clínica);
+   * exame = exames específicos (submenu de Exames); especie = clínica por espécie; hub = página geral de Day Care e Hotel.
+   */
+  group: 'principal' | 'clinica' | 'exame' | 'especie' | 'hub';
   audience?: string;
 };
 
+const wa = (txt: string) => `Olá! Vim pelo site do Ventura Vet e gostaria de ${txt}`;
+
 export const services: Service[] = [
+  // ---------- Os sete cartões da home (ordem do briefing de nov/2026) ----------
   {
-    slug: 'clinica-veterinaria',
-    path: '/clinica-veterinaria/',
-    name: 'Clínica Veterinária',
-    navName: 'Clínica Veterinária',
-    short: 'Consultas, vacinas, cirurgias e oito especialidades, com consultório exclusivo para gatos.',
-    icon: 'stethoscope',
-    image: 'consulta-dra-ana-luiza-com-boston-terrier.jpg',
+    slug: 'clinica-veterinaria', path: '/clinica-veterinaria/', name: 'Clínica Veterinária', navName: 'Clínica Veterinária',
+    short: 'Consultas, vacinação, especialidades e cirurgias para cães e gatos.', cta: 'Conheça a clínica',
+    icon: 'stethoscope', image: 'consulta-dra-ana-luiza-com-boston-terrier.jpg',
     imageAlt: 'Dra. Ana Luiza Mazorra examinando um boston terrier no consultório do Ventura',
-    serviceType: 'Clínica veterinária',
-    waMessage: 'Olá! Vim pelo site e quero agendar uma consulta veterinária.',
-    group: 'principal',
+    serviceType: 'Clínica veterinária', waMessage: wa('agendar uma consulta veterinária para meu pet.'), group: 'principal',
   },
   {
-    slug: 'laboratorio',
-    path: '/laboratorio/',
-    name: 'Laboratório e Exames de Imagem',
-    navName: 'Laboratório',
-    short: 'Hemograma, SDMA e FIV/FeLV com resultado em até 15 minutos; raio-X e ultrassom com hora marcada.',
-    icon: 'microscope',
-    image: 'veterinaria-examinando-yorkshire.webp',
-    imageAlt: 'Veterinária sorrindo enquanto examina um yorkshire',
-    serviceType: 'Laboratório veterinário e diagnóstico por imagem',
-    waMessage: 'Olá! Vim pelo site e quero agendar um exame para o meu pet.',
-    group: 'principal',
+    slug: 'laboratorio', path: '/laboratorio/', name: 'Exames e Laboratório', navName: 'Exames e Laboratório',
+    short: 'Exames laboratoriais, de imagem e cardiológicos para cães e gatos.', cta: 'Conheça os exames',
+    icon: 'flask-conical', image: 'laboratorio-bancada-equipamentos-microscopio.jpg',
+    imageAlt: 'Bancada do laboratório do Ventura com analisadores e microscópio',
+    serviceType: 'Laboratório veterinário e diagnóstico por imagem', waMessage: wa('informações sobre exames e laboratório.'), group: 'principal',
   },
   {
-    slug: 'castracao',
-    path: '/castracao/',
-    name: 'Castração de Cães e Gatos',
-    navName: 'Castração',
-    short: 'Castração com anestesia feita por anestesiologistas, monitorização contínua e suturas absorvíveis, sem cone nem roupinha.',
-    icon: 'heart-pulse',
-    image: 'cirurgia-monitoramento-anestesico.jpg',
-    imageAlt: 'Profissional ao lado do aparelho de anestesia e do monitor do centro cirúrgico',
-    serviceType: 'Castração de cães e gatos',
-    waMessage: 'Olá! Vim pelo site e quero agendar a castração do meu pet.',
-    group: 'principal',
-    audience: 'Tutores de cães e gatos',
+    slug: 'hotel-para-gatos', path: '/hotel-para-gatos/', name: 'Hotel para Gatos', navName: 'Hotel para gatos',
+    short: 'Conheça as acomodações e a rotina de cuidados durante a hospedagem.', cta: 'Conheça o hotel para gatos',
+    icon: 'cat', image: 'hotel-para-gatos-gato-siames-no-nicho.jpg',
+    imageAlt: 'Gato siamês em uma prateleira de parede do espaço do hotel para gatos, com mural ilustrado',
+    serviceType: 'Hotel para gatos', waMessage: wa('consultar a disponibilidade do hotel para meu gato.'), group: 'principal', audience: 'Tutores de gatos',
   },
   {
-    slug: 'hotel-para-gatos',
-    path: '/hotel-para-gatos/',
-    name: 'Hotel para Gatos',
-    navName: 'Hotel para Gatos',
-    short: 'Hospedagem só para gatos em gatil telado, sem contato com outros animais, numa clínica com selo Cat Friendly.',
-    icon: 'cat',
-    image: 'hotel-para-gatos-gato-descansando.jpg',
-    imageAlt: 'Gato siamês relaxando em uma plataforma alta no espaço telado do hotel para gatos',
-    serviceType: 'Hotel para gatos',
-    waMessage: 'Olá! Vim pelo site e quero reservar o Hotel para Gatos.',
-    group: 'principal',
-    audience: 'Tutores de gatos',
+    slug: 'day-care-para-cachorros', path: '/day-care-para-cachorros/', name: 'Day Care para Cachorros', navName: 'Day Care para cachorros',
+    short: 'Atividades, convivência e cuidados durante o dia, com adaptação previamente agendada.', cta: 'Conheça o Day Care',
+    icon: 'paw-print', image: 'day-care-monitora-com-caes.jpg',
+    imageAlt: 'Monitora do Day Care do Ventura brincando com cachorros na área de recreação',
+    serviceType: 'Creche para cachorros', waMessage: wa('conhecer as vagas e os planos do Day Care para meu cachorro.'), group: 'principal', audience: 'Tutores de cães',
   },
   {
-    slug: 'day-care-e-hotel',
-    path: '/day-care-e-hotel/',
-    name: 'Day Care e Hotel para Cães',
-    navName: 'Day Care e Hotel para Cães',
-    short: 'Dia de atividades, socialização e descanso, com pernoite. Só para cães castrados e vacinados; vagas limitadas.',
-    icon: 'moon-star',
-    image: 'day-care-area-de-recreacao-caes.jpg',
-    imageAlt: 'Cães pequenos brincando na área de recreação do day care do Ventura',
-    serviceType: 'Creche e hotel para cães',
-    waMessage: 'Olá! Vim pelo site e quero saber se há vaga no Day Care ou no Hotel para cães.',
-    group: 'outros',
+    slug: 'hotel-para-cachorros', path: '/hotel-para-cachorros/', name: 'Hotel para Cachorros', navName: 'Hotel para cachorros',
+    short: 'Hospedagem e cuidados para seu cachorro enquanto você viaja.', cta: 'Conheça o hotel para cachorros',
+    icon: 'house-heart', image: 'day-care-cavalier-descansando.jpg',
+    imageAlt: 'Cavalier king charles descansando no espaço dos cães do Ventura',
+    serviceType: 'Hotel para cachorros', waMessage: wa('consultar a disponibilidade do Hotel para Cachorros.'), group: 'principal', audience: 'Tutores de cães',
   },
   {
-    slug: 'natacao',
-    path: '/natacao/',
-    name: 'Natação para Cães',
-    navName: 'Natação',
-    short: 'Aulas de 40 minutos em piscina coberta e aquecida, para gastar energia ou reabilitar. Vagas limitadas.',
-    icon: 'waves',
-    image: 'natacao-cao-nadando-close.jpg',
-    imageAlt: 'Cão nadando com a cabeça fora da água e respingos ao redor, na piscina de natação',
-    serviceType: 'Natação e hidroterapia para cães',
-    waMessage: 'Olá! Vim pelo site e quero saber se há vaga para natação.',
-    group: 'outros',
+    slug: 'natacao', path: '/natacao/', name: 'Natação para Cachorros', navName: 'Natação',
+    short: 'Aulas em piscina coberta e aquecida, com acompanhamento de monitores.', cta: 'Conheça a natação',
+    icon: 'waves', image: 'natacao-cao-nadando-com-instrutora.jpg',
+    imageAlt: 'Cachorro nadando com a instrutora na piscina coberta e aquecida do Ventura',
+    serviceType: 'Natação para cachorros', waMessage: wa('informações sobre a natação para meu cachorro.'), group: 'principal', audience: 'Tutores de cães',
   },
   {
-    slug: 'banho-e-tosa',
-    path: '/banho-e-tosa/',
-    name: 'Banho e Tosa',
-    navName: 'Banho e Tosa',
-    short: 'Produtos EcoDog e Perigot, toalhas esterilizadas e ambiente climatizado — inclusive para gatos.',
-    icon: 'bath',
-    image: 'yorkshire-pos-banho.webp',
-    imageAlt: 'Yorkshire enrolado em toalhas após o banho, com patinho de borracha',
-    serviceType: 'Banho e tosa',
-    waMessage: 'Olá! Vim pelo site e quero saber se há horário para banho e tosa.',
-    group: 'outros',
+    slug: 'banho-e-tosa', path: '/banho-e-tosa/', name: 'Banho e Tosa', navName: 'Banho e Tosa',
+    short: 'Higiene e cuidados para a rotina do seu pet.', cta: 'Conheça o banho e tosa',
+    icon: 'shower-head', image: 'yorkshire-pos-banho.webp',
+    imageAlt: 'Yorkshire enrolado em toalhas após o banho',
+    serviceType: 'Banho e tosa', waMessage: wa('agendar banho e tosa para meu pet.'), group: 'principal',
+  },
+
+  // ---------- Página geral de Day Care e Hotel ----------
+  {
+    slug: 'day-care-e-hotel', path: '/day-care-e-hotel/', name: 'Day Care e Hotel', navName: 'Day Care e Hotel',
+    short: 'Day Care para cachorros, hotel para cachorros e hotel para gatos, com monitores e requisitos próprios.', cta: 'Conheça o Day Care e os hotéis',
+    icon: 'house-heart', image: 'day-care-area-de-recreacao-caes.jpg',
+    imageAlt: 'Cães pequenos brincando na área de recreação do Ventura',
+    serviceType: 'Creche e hotel para cães e gatos', waMessage: wa('informações sobre o Day Care e os hotéis.'), group: 'hub',
+  },
+
+  // ---------- Clínica por espécie ----------
+  {
+    slug: 'veterinario-para-cachorro', path: '/veterinario-para-cachorro/', name: 'Veterinário para Cachorro', navName: 'Atendimento para cães',
+    short: 'Consultas, vacinação, exames, castração e acompanhamento para cachorros de todas as idades.', cta: 'Atendimento para cães',
+    icon: 'dog', image: 'consulta-veterinaria-cachorro-jack-russell.jpg',
+    imageAlt: 'Veterinária do Ventura examinando um jack russell com o estetoscópio',
+    serviceType: 'Clínica veterinária para cães', waMessage: wa('agendar uma consulta para meu cachorro.'), group: 'especie', audience: 'Tutores de cães',
   },
   {
-    slug: 'veterinario-para-cachorro',
-    path: '/veterinario-para-cachorro/',
-    name: 'Veterinário para Cachorro',
-    navName: 'Veterinário para cães',
-    short: 'Consultas com especialistas, vacinas do filhote ao adulto, castração com anestesia inalatória e terapias de reabilitação.',
-    icon: 'dog',
-    image: 'filhote-em-consulta.webp',
+    slug: 'veterinario-para-gatos', path: '/veterinario-para-gatos/', name: 'Veterinário para Gatos', navName: 'Atendimento para gatos',
+    short: 'Consultório exclusivo e sala de espera separada para gatos, com selo Cat Friendly Practice.', cta: 'Atendimento para gatos',
+    icon: 'cat', image: 'consulta-veterinaria-gato-preto.jpg',
+    imageAlt: 'Veterinária do Ventura examinando um gato preto com o estetoscópio',
+    serviceType: 'Clínica veterinária para gatos', waMessage: wa('agendar uma consulta para meu gato.'), group: 'especie', audience: 'Tutores de gatos',
+  },
+
+  // ---------- Serviços clínicos (submenu da Clínica) ----------
+  {
+    slug: 'consulta-veterinaria', path: '/consulta-veterinaria/', name: 'Consulta Veterinária', navName: 'Consulta veterinária',
+    short: 'Avaliação clínica de cães e gatos, com orientação sobre exames e tratamentos.', cta: 'Conheça a consulta',
+    icon: 'stethoscope', image: 'consulta-veterinaria-cachorro-jack-russell.jpg',
+    imageAlt: 'Veterinária do Ventura examinando um jack russell com o estetoscópio',
+    serviceType: 'Consulta veterinária', waMessage: wa('agendar uma consulta veterinária para meu pet.'), group: 'clinica',
+  },
+  {
+    slug: 'vacinacao', path: '/vacinacao/', name: 'Vacinação de Cães e Gatos', navName: 'Vacinação',
+    short: 'Vacinas para cães e gatos, com avaliação e protocolo definidos pelo veterinário.', cta: 'Conheça a vacinação',
+    icon: 'syringe', image: 'filhote-em-consulta.webp',
     imageAlt: 'Filhote de cachorro tricolor no colo de uma veterinária com estetoscópio',
-    serviceType: 'Clínica veterinária para cães',
-    waMessage: 'Olá! Vim pelo site e quero agendar uma consulta para o meu cachorro.',
-    group: 'especie',
-    audience: 'Tutores de cães',
+    serviceType: 'Vacinação de cães e gatos', waMessage: wa('informações sobre a vacinação do meu pet.'), group: 'clinica',
   },
   {
-    slug: 'veterinario-para-gatos',
-    path: '/veterinario-para-gatos/',
-    name: 'Veterinário para Gatos',
-    navName: 'Veterinário para gatos',
-    short: 'Consultório e sala de espera só para felinos, teste de FIV e FeLV em 15 minutos e vacinação do filhote ao adulto.',
-    icon: 'cat',
-    image: 'equipe-atendendo-gato.webp',
-    imageAlt: 'Duas veterinárias do Ventura atendendo um gato branco',
-    serviceType: 'Clínica veterinária para gatos',
-    waMessage: 'Olá! Vim pelo site e quero agendar uma consulta para o meu gato.',
-    group: 'especie',
-    audience: 'Tutores de gatos',
+    slug: 'castracao', path: '/castracao/', name: 'Castração de Cães e Gatos', navName: 'Castração',
+    short: 'Avaliação, exames pré-operatórios, anestesia com monitorização contínua e orientação na recuperação.', cta: 'Como funciona a castração',
+    icon: 'heart-pulse', image: 'cirurgia-monitoramento-anestesico.jpg',
+    imageAlt: 'Profissional ao lado do aparelho de anestesia e do monitor do centro cirúrgico',
+    serviceType: 'Castração de cães e gatos', waMessage: wa('informações sobre castração para meu pet.'), group: 'clinica', audience: 'Tutores de cães e gatos',
+  },
+  {
+    slug: 'especialistas', path: '/especialistas/', name: 'Especialidades Veterinárias', navName: 'Especialidades',
+    short: 'Atendimento por áreas como cardiologia, dermatologia, oftalmologia, odontologia e medicina felina.', cta: 'Conheça as especialidades',
+    icon: 'graduation-cap', image: 'equipe-ventura-parede-verde.jpg',
+    imageAlt: 'Equipe do Ventura reunida em frente ao jardim vertical da recepção',
+    serviceType: 'Especialidades veterinárias', waMessage: wa('consultar a agenda de uma especialidade veterinária.'), group: 'clinica',
+  },
+  {
+    slug: 'cirurgias-veterinarias', path: '/cirurgias-veterinarias/', name: 'Cirurgias Veterinárias', navName: 'Cirurgias',
+    short: 'Procedimentos cirúrgicos com avaliação prévia, anestesia monitorada e orientação no pós-operatório.', cta: 'Conheça as cirurgias',
+    icon: 'activity', image: 'cirurgia-centro-cirurgico-ventura.jpg',
+    imageAlt: 'Centro cirúrgico do Ventura com mesa, foco e aparelhos de monitorização',
+    serviceType: 'Cirurgia veterinária', waMessage: wa('informações sobre um procedimento cirúrgico para meu pet.'), group: 'clinica',
+  },
+  {
+    slug: 'tratamentos-e-terapias', path: '/tratamentos-e-terapias/', name: 'Tratamentos e Terapias', navName: 'Tratamentos e Terapias',
+    short: 'Fluidoterapia, oncologia, reabilitação e outros cuidados indicados pela equipe veterinária.', cta: 'Conheça os tratamentos',
+    icon: 'pill', image: 'consultorio-clinico-ventura.jpg',
+    imageAlt: 'Consultório clínico do Ventura com mesa de atendimento e armários',
+    serviceType: 'Tratamentos e terapias veterinárias', waMessage: wa('informações sobre tratamentos e terapias para meu pet.'), group: 'clinica',
+  },
+  {
+    slug: 'fisioterapia-veterinaria', path: '/fisioterapia-veterinaria/', name: 'Fisioterapia Veterinária', navName: 'Fisioterapia',
+    short: 'Reabilitação e controle da dor para cães e gatos, com avaliação e plano individual.', cta: 'Conheça a fisioterapia',
+    icon: 'accessibility', image: 'especialista-lais-suda.jpg',
+    imageAlt: 'Dra. Lais Suda, fisioterapeuta e acupunturista veterinária, ao lado de um buldogue francês',
+    serviceType: 'Fisioterapia veterinária', waMessage: wa('consultar uma avaliação de fisioterapia para meu pet.'), group: 'clinica',
+  },
+  {
+    slug: 'acupuntura-veterinaria', path: '/acupuntura-veterinaria/', name: 'Acupuntura Veterinária', navName: 'Acupuntura',
+    short: 'Terapia complementar para cães e gatos, indicada após avaliação veterinária.', cta: 'Conheça a acupuntura',
+    icon: 'hand-heart', image: 'especialista-lais-suda.jpg',
+    imageAlt: 'Dra. Lais Suda, fisioterapeuta e acupunturista veterinária, ao lado de um buldogue francês',
+    serviceType: 'Acupuntura veterinária', waMessage: wa('informações sobre acupuntura para meu pet.'), group: 'clinica',
+  },
+  {
+    slug: 'microchipagem', path: '/microchipagem/', name: 'Microchipagem', navName: 'Microchipagem',
+    short: 'Identificação permanente de cães e gatos, com orientação sobre o cadastro.', cta: 'Conheça a microchipagem',
+    icon: 'scan', image: 'consulta-veterinaria-gato-preto.jpg',
+    imageAlt: 'Veterinária do Ventura examinando um gato preto com o estetoscópio',
+    serviceType: 'Microchipagem de cães e gatos', waMessage: wa('informações sobre a microchipagem do meu pet.'), group: 'clinica',
+  },
+
+  // ---------- Exames (submenu de Exames e Laboratório) ----------
+  {
+    slug: 'ultrassom-veterinario', path: '/ultrassom-veterinario/', name: 'Ultrassom Veterinário', navName: 'Ultrassom veterinário',
+    short: 'Ultrassom para cães e gatos, com agendamento e orientação de preparo.', cta: 'Conheça o ultrassom',
+    icon: 'scan-heart', image: 'exame-ultrassom.png',
+    imageAlt: 'Exame de ultrassom sendo realizado em um cachorro',
+    serviceType: 'Ultrassonografia veterinária', waMessage: wa('consultar a disponibilidade de ultrassom para meu pet.'), group: 'exame',
+  },
+  {
+    slug: 'raio-x-veterinario', path: '/raio-x-veterinario/', name: 'Raio-X Veterinário', navName: 'Raio X veterinário',
+    short: 'Raio-X para cães e gatos, com agendamento conforme a solicitação veterinária.', cta: 'Conheça o raio-X',
+    icon: 'bone', image: 'exame-raio-x.png',
+    imageAlt: 'Imagem de raio-X de um cachorro em avaliação',
+    serviceType: 'Radiologia veterinária', waMessage: wa('consultar a realização de um raio-X para meu pet.'), group: 'exame',
+  },
+  {
+    slug: 'exames-cardiologicos-veterinarios', path: '/exames-cardiologicos-veterinarios/', name: 'Exames Cardiológicos Veterinários', navName: 'Exames cardiológicos',
+    short: 'Eletrocardiograma e ecocardiograma para cães e gatos, com agendamento.', cta: 'Conheça os exames cardiológicos',
+    icon: 'heart-pulse', image: 'exame-ecocardiograma.png',
+    imageAlt: 'Exame de ecocardiograma sendo realizado em um cachorro',
+    serviceType: 'Cardiologia veterinária', waMessage: wa('consultar um exame cardiológico para meu pet.'), group: 'exame',
+  },
+  {
+    slug: 'teste-fiv-felv', path: '/teste-fiv-felv/', name: 'Teste de FIV e FeLV', navName: 'Teste FIV e FeLV',
+    short: 'Teste de ELISA para FIV e FeLV em gatos, realizado no laboratório do Ventura.', cta: 'Conheça o teste FIV e FeLV',
+    icon: 'microscope', image: 'laboratorio-profissional-operando-equipamento.jpg',
+    imageAlt: 'Profissional do Ventura operando um analisador do laboratório',
+    serviceType: 'Teste de FIV e FeLV para gatos', waMessage: wa('consultar o teste de FIV e FeLV para meu gato.'), group: 'exame', audience: 'Tutores de gatos',
   },
 ];
 
@@ -337,43 +396,57 @@ export function svc(slug: string): Service {
   return s;
 }
 export const mainServices = services.filter((s) => s.group === 'principal');
-export const otherServices = services.filter((s) => s.group === 'outros');
+export const clinicServices = services.filter((s) => s.group === 'clinica');
+export const examServices = services.filter((s) => s.group === 'exame');
 
 /**
- * Menu principal (estrutura definida pelo cliente em 16/11/2026).
- * `columns`: submenu em colunas (Clínica: para cães / para gatos); `children`: submenu simples.
- * Cada coluna da Clínica leva à página da espécie, com uma âncora por seção.
- * Blog, Laboratório, Especialistas e Serviços saíram do menu, mas continuam no rodapé e nas páginas.
+ * Menu principal (referência visual do cliente, nov/2026): cinco grupos com ícone.
+ * `overview` = link "Visão geral"; `columns` = colunas com título; `links` = lista simples.
+ * Natação e Banho e Tosa levam direto à página. Quem somos, Blog e Contato ficam na barra superior.
  */
-export interface NavLink { label: string; href: string; icon?: string }
-export interface NavColumn { title: string; href?: string; icon: string; links: NavLink[] }
-export interface NavItem { label: string; href: string; columns?: NavColumn[]; children?: NavLink[] }
-const speciesLinks = (base: string): NavLink[] => [
-  { label: 'Consulta', href: `${base}#consulta` },
-  { label: 'Exames', href: `${base}#exames` },
-  { label: 'Vacinas', href: `${base}#vacinas` },
-  { label: 'Castração sem dor', href: `${base}#castracao` },
-  { label: 'Tratamentos e terapias', href: `${base}#tratamentos` },
-];
+export interface NavLink { label: string; href: string }
+export interface NavColumn { title: string; links: NavLink[] }
+export interface NavItem { label: string; href: string; icon: string; overview?: NavLink; columns?: NavColumn[]; links?: NavLink[] }
+const link = (slug: string, label?: string): NavLink => ({ label: label ?? svc(slug).navName, href: svc(slug).path });
 export const nav: NavItem[] = [
-  { label: 'Quem somos', href: '/quem-somos/' },
   {
-    label: 'Clínica Veterinária', href: '/clinica-veterinaria/',
+    label: 'Clínica Veterinária', href: '/clinica-veterinaria/', icon: 'stethoscope',
+    overview: { label: 'Visão geral da clínica', href: '/clinica-veterinaria/' },
     columns: [
-      { title: 'Para cães', href: '/veterinario-para-cachorro/', icon: 'dog', links: speciesLinks('/veterinario-para-cachorro/') },
-      { title: 'Para gatos', href: '/veterinario-para-gatos/', icon: 'cat', links: speciesLinks('/veterinario-para-gatos/') },
+      { title: 'Por espécie', links: [link('veterinario-para-cachorro'), link('veterinario-para-gatos')] },
+      { title: 'Serviços clínicos', links: clinicServices.map((s) => link(s.slug)) },
     ],
   },
   {
-    label: 'Day Care / Hotel', href: '/day-care-e-hotel/',
-    children: [
-      { label: 'Para cães', href: '/day-care-e-hotel/', icon: 'dog' },
-      { label: 'Para gatos', href: '/hotel-para-gatos/', icon: 'cat' },
-    ],
+    label: 'Exames e Laboratório', href: '/laboratorio/', icon: 'flask-conical',
+    links: [link('laboratorio', 'Laboratório veterinário'), ...examServices.map((s) => link(s.slug))],
   },
-  { label: 'Natação para cachorro', href: '/natacao/' },
-  { label: 'Banho e Tosa', href: '/banho-e-tosa/' },
+  {
+    label: 'Day Care e Hotel', href: '/day-care-e-hotel/', icon: 'house-heart',
+    overview: { label: 'Visão geral', href: '/day-care-e-hotel/' },
+    links: [link('day-care-para-cachorros'), link('hotel-para-cachorros'), link('hotel-para-gatos')],
+  },
+  { label: 'Natação', href: '/natacao/', icon: 'waves' },
+  { label: 'Banho e Tosa', href: '/banho-e-tosa/', icon: 'shower-head' },
+];
+/** Links institucionais da barra superior. */
+export const topLinks: NavLink[] = [
+  { label: 'Quem somos', href: '/quem-somos/' },
+  { label: 'Blog', href: '/blog/' },
   { label: 'Contato', href: '/contato/' },
+];
+
+/**
+ * Seletor de atendimento (botão "Atendimento" e botões "Entrar em contato"):
+ * cada opção abre o WhatsApp com a mensagem pronta, sem envio automático.
+ */
+export const contactOptions: { label: string; icon: string; message: string; service: string }[] = [
+  { label: 'Consulta e especialidades', icon: 'stethoscope', service: 'consulta', message: wa('agendar uma consulta ou especialidade para meu pet.') },
+  { label: 'Exames e laboratório', icon: 'flask-conical', service: 'exames', message: wa('informações sobre exames e laboratório.') },
+  { label: 'Day Care', icon: 'paw-print', service: 'day-care', message: wa('informações sobre o Day Care para meu cachorro.') },
+  { label: 'Hotel para cães e gatos', icon: 'house-heart', service: 'hotel', message: wa('consultar a disponibilidade do hotel para meu pet.') },
+  { label: 'Natação', icon: 'waves', service: 'natacao', message: wa('informações sobre a natação para meu cachorro.') },
+  { label: 'Banho e tosa', icon: 'shower-head', service: 'banho-e-tosa', message: wa('agendar banho e tosa para meu pet.') },
 ];
 
 /**

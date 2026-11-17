@@ -1,0 +1,9 @@
+<dialog class="atend" id="atendimento" aria-labelledby="atend-titulo" data-atend>
+  <div class="atend__panel">
+    <button class="atend__close" type="button" commandfor="atendimento" command="close" data-atend-close><span class="sr-only">Fechar</span><x-icon name="x"></x-icon></button>
+    <p class="atend__title" id="atend-titulo"><x-icon name="whatsapp"></x-icon>Atendimento</p>
+    <p class="atend__lede">Escolha o atendimento e seja direcionado imediatamente para o WhatsApp.</p>
+    <ul class="atend__list">{{{atendOptions}}}</ul>
+    <p class="atend__note">Cada opção abre o WhatsApp com uma mensagem pronta, que você revisa antes de enviar. Prefere ligar? <a href="tel:{{site.phone.e164}}" data-track="phone">{{site.phone.display}}</a></p>
+  </div>
+</dialog>

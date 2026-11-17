@@ -1,0 +1,43 @@
+/* Estilos próprios das páginas do grupo "hospedagem" (escopar sempre por uma classe da página). */
+
+/* Selo textual abaixo do texto de apoio (hotel para gatos) */
+.pg-hospedagem .hosp-seal {
+  display: inline-flex; align-items: center; gap: 0.55rem; margin-top: 0.9rem; padding: 0.45rem 1rem 0.45rem 0.6rem;
+  border-radius: 999px; background: var(--branco); border: 1px solid var(--linha); font-weight: 700; font-size: 0.95rem; line-height: 1.3;
+  .icon { flex: none; width: 1.9rem; height: 1.9rem; padding: 0.4rem; border-radius: 999px; background: var(--tinta); color: var(--laranja); }
+}
+
+/* Texto curto de esclarecimento (monitores x clínica, sujeito à disponibilidade etc.) */
+.pg-hospedagem .hosp-note { margin-top: 1rem; max-width: 46rem; font-size: 0.95rem; line-height: 1.6; color: var(--tinta-2); }
+.pg-hospedagem .hosp-note a { color: var(--paraiso-texto); font-weight: 600; }
+.pg-hospedagem .hosp-actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1.5rem; }
+
+/* Quadro de horários / orientações */
+.pg-hospedagem .hosp-table { width: 100%; max-width: 46rem; border-collapse: collapse; font-size: 1rem; border: 1px solid var(--linha); border-radius: var(--r-sm); overflow: hidden; background: var(--branco); }
+.pg-hospedagem .hosp-table th, .pg-hospedagem .hosp-table td { padding: 0.8rem 1rem; text-align: left; vertical-align: top; border-bottom: 1px solid var(--linha); }
+.pg-hospedagem .hosp-table tr:last-child > * { border-bottom: 0; }
+.pg-hospedagem .hosp-table th { width: 40%; font-family: var(--f-display); font-weight: 800; background: var(--nevoa); }
+@media (max-width: 520px) { .pg-hospedagem .hosp-table th { width: 44%; } }
+
+/* Bloco de contato operacional (entrada e saída fora do horário comercial) */
+.pg-hospedagem .hosp-oper { margin-top: 1.5rem; max-width: 46rem; padding: 1.1rem 1.25rem; border-radius: var(--r-md); background: var(--nevoa); line-height: 1.6; strong { font-weight: 700; } a { color: var(--paraiso-texto); font-weight: 700; } }
+.pg-hospedagem .section--nevoa .hosp-oper { background: var(--branco); }
+
+/* Subtítulos dentro de seções de requisitos */
+.pg-hospedagem .hosp-req { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 19rem), 1fr)); gap: 1rem; }
+
+/* Hub: escolha do serviço */
+.pg-hospedagem .hosp-choices { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.25rem; padding: 0; list-style: none; }
+.pg-hospedagem .hosp-choice { display: flex; flex-direction: column; overflow: hidden; border-radius: var(--r-md); background: var(--branco); border: 1px solid var(--linha); }
+.pg-hospedagem .hosp-choice picture { aspect-ratio: 4 / 3; overflow: hidden; img { width: 100%; height: 100%; object-fit: cover; } }
+.pg-hospedagem .hosp-choice__body { display: flex; flex: 1; flex-direction: column; gap: 0.6rem; padding: 1.25rem 1.35rem 1.5rem; }
+.pg-hospedagem .hosp-choice h3 { font-size: 1.3rem; letter-spacing: -0.01em; }
+.pg-hospedagem .hosp-choice p { color: var(--tinta-2); font-size: 0.98rem; line-height: 1.6; }
+.pg-hospedagem .hosp-choice .hosp-choice__meta { font-size: 0.9rem; font-weight: 600; color: var(--tinta); }
+.pg-hospedagem .hosp-choice .btn { margin-top: auto; align-self: flex-start; }
+.pg-hospedagem .hosp-choice__body > p:last-of-type { margin-bottom: 0.5rem; }
+@media (max-width: 960px) { .pg-hospedagem .hosp-choices { grid-template-columns: 1fr; } .pg-hospedagem .hosp-choice { flex-direction: row; } .pg-hospedagem .hosp-choice picture { flex: 0 0 38%; aspect-ratio: auto; } }
+@media (max-width: 600px) { .pg-hospedagem .hosp-choice { flex-direction: column; } .pg-hospedagem .hosp-choice picture { flex: none; aspect-ratio: 4 / 3; } }
+
+/* Vídeo vertical (hotel para gatos) */
+.pg-hospedagem .hosp-video { max-width: 20rem; margin-inline: auto; text-align: center; p { margin-top: 0.6rem; font-size: 0.95rem; color: var(--tinta-2); } }

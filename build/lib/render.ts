@@ -6,7 +6,8 @@ import { minify } from 'html-minifier-terser';
 import { components, componentNames, interpolate, partial, type RenderCtx } from './components.ts';
 import { head, type PageMeta } from './seo.ts';
 import { sprite, icon } from './icons.ts';
-import { site, services, nav, waLink, svc } from './site.ts';
+import { site, nav, topLinks, contactOptions, waLink, type NavLink } from './site.ts';
+import { esc } from './seo.ts';
 
 export type Assets = { criticalCss: string; mainCss: string; mainJs: string; fonts: string[] };
 
@@ -25,39 +26,58 @@ export function parsePage(src: string): { meta: Partial<PageMeta>; body: string 
   return { meta: meta as Partial<PageMeta>, body: src.slice(m[0].length) };
 }
 
+/** Posição do botão na página, para a medição de contatos (topo, meio, final, menu, flutuante). */
+function position(el: cheerio.Cheerio<any>): string {
+  if (el.closest('.hero, .page-hero').length) return 'topo';
+  if (el.closest('.cta-final').length) return 'final';
+  if (el.closest('.header, .topbar').length) return 'menu';
+  if (el.closest('.footer').length) return 'rodape';
+  if (el.is('[data-wa-float]')) return 'flutuante';
+  return el.closest('section[id]').attr('id') ?? el.closest('section').find('h2').first().attr('id') ?? 'meio';
+}
+
 const selfClosing = (html: string) => html.replace(/<(x-[a-z-]+)([^>]*?)\s*\/>/g, '<$1$2></$1>');
 
 function navHtml(ctx: RenderCtx) {
-  ctx.icons.add('chevron-down');
+  ['chevron-down', 'chevron-right'].forEach((i) => ctx.icons.add(i));
   const ic = (name: string) => { ctx.icons.add(name); return icon(name); };
+  const li = (l: NavLink) => `<li><a href="${l.href}">${icon('chevron-right')}<span>${l.label}</span></a></li>`;
   return nav
     .map((item, n) => {
-      if (!item.columns && !item.children) return `<li><a class="nav__link" href="${item.href}">${item.label}</a></li>`;
+      const label = `${ic(item.icon)}<span>${item.label}</span>`;
+      if (!item.columns && !item.links) return `<li class="nav__item"><a class="nav__link" href="${item.href}">${label}</a></li>`;
       const id = `submenu-${n}`;
+      const overview = item.overview ? `<a class="nav__overview" href="${item.overview.href}">${icon('chevron-right')}<span>${item.overview.label}</span></a>` : '';
       const body = item.columns
-        ? `<div class="nav__cols">${item.columns.map((col) => `<div class="nav__col">
-      <p class="nav__col-title">${ic(col.icon)}${col.href ? `<a href="${col.href}">${col.title}</a>` : col.title}</p>
-      <ul>${col.links.map((l) => `<li><a href="${l.href}">${l.label}</a></li>`).join('')}</ul>
-    </div>`).join('')}</div>`
-        : `<ul class="nav__list">${item.children!.map((l) => `<li><a href="${l.href}">${l.icon ? ic(l.icon) : ''}<span>${l.label}</span></a></li>`).join('')}</ul>`;
-      return `<li class="nav__has-sub">
-  <a class="nav__link" href="${item.href}">${item.label}</a>
+        ? `<div class="nav__cols">${item.columns.map((col) => `<div class="nav__col"><p class="nav__col-title">${col.title}</p><ul>${col.links.map(li).join('')}</ul></div>`).join('')}</div>`
+        : `<ul class="nav__list">${item.links!.map(li).join('')}</ul>`;
+      return `<li class="nav__item nav__has-sub">
+  <a class="nav__link" href="${item.href}">${label}</a>
   <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="${id}"><span class="sr-only">Abrir submenu ${item.label}</span>${icon('chevron-down')}</button>
-  <div class="nav__sub${item.columns ? ' nav__sub--cols' : ''}" id="${id}">${body}</div>
+  <div class="nav__sub${item.columns ? ' nav__sub--cols' : ''}" id="${id}"><p class="nav__sub-head" aria-hidden="true">${icon(item.icon)}${item.label}</p>${overview}${body}</div>
 </li>`;
     })
     .join('');
 }
 
+/** Opções do seletor de atendimento: cada uma abre o WhatsApp com a mensagem pronta. */
+function atendHtml(ctx: RenderCtx) {
+  ctx.icons.add('chevron-right');
+  return contactOptions
+    .map((o) => { ctx.icons.add(o.icon); return `<li><a data-wa="${esc(o.message)}" data-service="${o.service}" data-pos="seletor">${icon(o.icon)}<span>${o.label}</span>${icon('chevron-right', 'atend__go')}</a></li>`; })
+    .join('');
+}
+
 export async function renderPage(meta: PageMeta, body: string, assets: Assets, extraVars: Record<string, unknown> = {}) {
-  const ctx: RenderCtx = { meta, icons: new Set(['whatsapp', 'phone', 'menu', 'x', 'instagram', 'facebook', 'linkedin', 'youtube', 'map-pin', 'clock', 'mail']), vars: {} };
+  const ctx: RenderCtx = { meta, icons: new Set(['whatsapp', 'phone', 'menu', 'x', 'instagram', 'facebook', 'tiktok', 'youtube', 'map-pin', 'clock', 'mail']), vars: {} };
   ctx.vars = {
     site,
     page: meta,
     year: new Date().getFullYear(),
     wa: waLink(),
-    waDayCare: waLink(svc('day-care-e-hotel').waMessage),
     nav: navHtml(ctx),
+    topLinks: topLinks.map((l) => `<a href="${l.href}">${l.label}</a>`).join(''),
+    atendOptions: atendHtml(ctx),
     ...extraVars,
   };
 
@@ -68,6 +88,7 @@ export async function renderPage(meta: PageMeta, body: string, assets: Assets, e
 <main id="conteudo" tabindex="-1">${bodyHtml}</main>
 <x-include src="footer"></x-include>
 <x-include src="whatsapp-float"></x-include>
+<x-include src="atendimento"></x-include>
 </body></html>`;
 
   const $ = cheerio.load(selfClosing(doc));
@@ -90,11 +111,29 @@ export async function renderPage(meta: PageMeta, body: string, assets: Assets, e
   const left = $('*').toArray().filter((n) => n.type === 'tag' && (n as unknown as { tagName: string }).tagName.startsWith('x-')) as unknown as { tagName: string }[];
   if (left.length) throw new Error(`Componente desconhecido: <${left[0].tagName}> em ${meta.path}`);
 
-  // Links de WhatsApp com mensagem contextual: <a data-wa="mensagem">
+  // Botões "Entrar em contato" / "Atendimento": abrem o seletor de atendimento (<dialog id="atendimento">).
+  // Invoker Commands nativos; o módulo atendimento.ts cobre navegadores sem suporte.
+  $('[data-atendimento]').each((_, node) => {
+    let el: cheerio.Cheerio<any> = $(node);
+    if ((node as unknown as { tagName: string }).tagName !== 'button') {
+      const attrs = { ...(el.attr() ?? {}) };
+      delete attrs.href;
+      const btn = $('<button></button>').attr(attrs).html(el.html() ?? '');
+      el.replaceWith(btn);
+      el = btn;
+    }
+    el.attr({ type: 'button', commandfor: 'atendimento', command: 'show-modal', 'aria-haspopup': 'dialog' });
+    if (!el.attr('data-pos')) el.attr('data-pos', position(el));
+  });
+
+  // Links de WhatsApp com mensagem contextual: <a data-wa="mensagem">.
+  // data-service e data-pos alimentam a medição por serviço e posição do botão (analytics.ts).
   $('a[data-wa]').each((_, a) => {
     const el = $(a);
     el.attr('href', waLink(el.attr('data-wa') || undefined));
     el.attr({ target: '_blank', rel: 'noopener', 'data-track': 'whatsapp' });
+    if (!el.attr('data-service')) el.attr('data-service', meta.service ?? (meta.type === 'home' ? 'home' : 'geral'));
+    if (!el.attr('data-pos')) el.attr('data-pos', position(el));
     el.removeAttr('data-wa');
   });
 

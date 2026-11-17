@@ -1,0 +1,93 @@
+/* Estilos próprios das páginas do grupo "clinica" (escopar sempre por uma classe da página). */
+
+/* Enquadramento das fotos do banner (retratos recortados em quadrado) */
+.pg-clinica .page-hero__art img.pos-cao { object-position: 50% 25%; }
+.pg-clinica .page-hero__art img.pos-gato { object-position: 50% 14%; }
+
+/* Cartões com botão no rodapé */
+.pg-clinica .card .card__cta { margin-top: auto; padding-top: 0.6rem; }
+.pg-clinica .card p { flex: 0 1 auto; }
+.pg-clinica .card .btn { max-width: 100%; text-align: left; }
+.pg-clinica .acao-bloco { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1.5rem; }
+.pg-clinica .acao-bloco--center { justify-content: center; margin-top: 2rem; }
+
+/* Cartões de atendimento por espécie, com foto */
+.pg-clinica .pet-cards { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.25rem; padding: 0; list-style: none; }
+.pg-clinica .pet-card { display: flex; flex-direction: column; overflow: hidden; border-radius: var(--r-lg); background: var(--branco); border: 1px solid var(--linha); }
+.pg-clinica .pet-card picture { display: block; aspect-ratio: 4 / 3; overflow: hidden; }
+.pg-clinica .pet-card img { width: 100%; height: 100%; object-fit: cover; }
+.pg-clinica .pet-card__body { display: flex; flex-direction: column; gap: 0.7rem; flex: 1; padding: clamp(1.25rem, 1rem + 1vw, 1.75rem); }
+.pg-clinica .pet-card__body h3 { font-size: var(--step-2); letter-spacing: -0.02em; }
+.pg-clinica .pet-card__body p { color: var(--tinta-2); line-height: 1.6; }
+.pg-clinica .pet-card__body .btn { margin-top: auto; align-self: flex-start; }
+
+/* Foto vertical (laboratório, equipe) em blocos de duas colunas */
+.pg-clinica .foto-retrato picture { display: block; aspect-ratio: 4 / 5; overflow: hidden; border-radius: var(--r-lg); max-height: 34rem; margin-inline: auto; }
+.pg-clinica .foto-retrato img { width: 100%; height: 100%; object-fit: cover; }
+.pg-clinica .foto-retrato--wide picture { aspect-ratio: 4 / 3; }
+.pg-clinica img.pos-topo { object-position: 50% 22%; }
+.pg-clinica .foto-retrato__apoio { margin-top: 1rem; display: flex; align-items: center; gap: 1rem; }
+.pg-clinica .foto-retrato__apoio picture { aspect-ratio: 1; width: 6.5rem; flex: none; border-radius: var(--r-md); max-height: none; margin: 0; }
+.pg-clinica .foto-retrato__apoio p { font-size: 0.9rem; color: var(--tinta-2); line-height: 1.5; }
+
+/* Destaques curtos (três ou quatro) */
+.pg-clinica .destaques { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 14rem), 1fr)); gap: 1rem; margin-top: 1.75rem; padding: 0; list-style: none; }
+.pg-clinica .destaques li { padding: 1.1rem 1.25rem; border-radius: var(--r-md); background: var(--nevoa); }
+.pg-clinica .section--nevoa .destaques li { background: var(--branco); }
+.pg-clinica .destaques h3 { font-size: 1.05rem; letter-spacing: -0.01em; }
+.pg-clinica .destaques p { margin-top: 0.35rem; font-size: 0.95rem; line-height: 1.55; color: var(--tinta-2); }
+
+/* Faixa de serviços complementares */
+.pg-clinica .faixa { display: flex; flex-wrap: wrap; align-items: center; gap: 0.75rem 1.25rem; margin-top: 1.5rem; padding: 1rem 1.25rem; border-radius: var(--r-md); background: var(--nevoa); }
+.pg-clinica .faixa strong { font-family: var(--f-display); font-weight: 800; }
+.pg-clinica .faixa ul { display: flex; flex-wrap: wrap; gap: 0.4rem 1rem; padding: 0; list-style: none; }
+.pg-clinica .faixa li::before { content: '•'; margin-right: 0.4rem; color: var(--laranja-texto); }
+.pg-clinica .faixa a { margin-left: auto; font-weight: 700; color: var(--laranja-texto); text-decoration: underline; text-underline-offset: 0.2em; }
+
+/* Áreas de atendimento em grade compacta */
+.pg-clinica .area-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 15rem), 1fr)); gap: 0.75rem; padding: 0; list-style: none; }
+.pg-clinica .area-grid li { display: flex; gap: 0.8rem; align-items: flex-start; padding: 1rem 1.1rem; border-radius: var(--r-md); background: var(--branco); border: 1px solid var(--linha); }
+.pg-clinica .area-grid .icon { flex: none; width: 2.2rem; height: 2.2rem; padding: 0.5rem; border-radius: 999px; background: var(--laranja-suave); color: var(--laranja-texto); }
+.pg-clinica .area-grid strong { display: block; font-family: var(--f-display); font-weight: 800; }
+.pg-clinica .area-grid small { display: block; margin-top: 0.15rem; font-size: 0.9rem; line-height: 1.45; color: var(--tinta-2); }
+.pg-clinica .area-grid--simples li { align-items: center; }
+.pg-clinica .section--nevoa .area-grid li { border-color: transparent; }
+
+/* Galeria da estrutura com legendas */
+.pg-clinica .estrutura { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 13rem), 1fr)); gap: 1rem; padding: 0; list-style: none; }
+.pg-clinica .estrutura figure { display: flex; flex-direction: column; gap: 0.6rem; }
+.pg-clinica .estrutura picture { display: block; aspect-ratio: 4 / 3; overflow: hidden; border-radius: var(--r-md); }
+.pg-clinica .estrutura img { width: 100%; height: 100%; object-fit: cover; }
+.pg-clinica .estrutura figcaption { font-size: 0.92rem; color: var(--tinta-2); }
+
+/* Localização e horários */
+.pg-clinica .loc { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr); gap: clamp(1.5rem, 4vw, 3.5rem); align-items: center; }
+.pg-clinica .loc__end { margin-top: 1.25rem; font-style: normal; line-height: 1.6; }
+.pg-clinica .loc__end strong { display: block; font-family: var(--f-display); font-weight: 800; }
+.pg-clinica .loc .hours { margin-top: 1.25rem; padding: 1rem 1.25rem; border-radius: var(--r-md); background: var(--nevoa); }
+.pg-clinica .loc .hours div { display: flex; justify-content: space-between; gap: 1rem; }
+.pg-clinica .loc__nota { margin-top: 1rem; font-size: 0.95rem; color: var(--tinta-2); line-height: 1.55; }
+.pg-clinica .loc__contatos { margin-top: 1rem; display: flex; flex-wrap: wrap; gap: 0.4rem 1.5rem; font-weight: 700; }
+.pg-clinica .loc__foto picture { display: block; aspect-ratio: 4 / 3; overflow: hidden; border-radius: var(--r-lg); }
+.pg-clinica .loc__foto img { width: 100%; height: 100%; object-fit: cover; }
+
+/* Equipe compacta */
+.pg-clinica .equipe-id { margin-top: 1.25rem; padding-left: 1rem; border-left: 4px solid var(--laranja); line-height: 1.5; }
+.pg-clinica .equipe-id strong { display: block; font-family: var(--f-display); font-weight: 800; font-size: 1.1rem; }
+
+/* Links para os demais serviços */
+.pg-clinica .outros { display: flex; flex-wrap: wrap; align-items: center; gap: 0.6rem; padding: 0; list-style: none; }
+.pg-clinica .outros a { display: inline-flex; padding: 0.55rem 1rem; border-radius: 999px; border: 1px solid var(--linha); background: var(--branco); font-weight: 700; font-size: 0.95rem; }
+.pg-clinica .outros a:hover { border-color: var(--laranja); }
+.pg-clinica .outros-titulo { font-size: var(--step-2); letter-spacing: -0.02em; margin-bottom: 1rem; }
+
+/* Bloco do Hotel para Gatos (complementar) */
+.pg-clinica .complemento { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem 2rem; padding: clamp(1.25rem, 1rem + 1.5vw, 2rem); border-radius: var(--r-lg); background: var(--nevoa); }
+.pg-clinica .complemento h2 { font-size: var(--step-2); letter-spacing: -0.02em; }
+.pg-clinica .complemento p { margin-top: 0.5rem; max-width: 40rem; color: var(--tinta-2); line-height: 1.6; }
+
+@media (max-width: 860px) {
+  .pg-clinica .pet-cards { grid-template-columns: 1fr; }
+  .pg-clinica .loc { grid-template-columns: 1fr; }
+  .pg-clinica .faixa a { margin-left: 0; }
+}

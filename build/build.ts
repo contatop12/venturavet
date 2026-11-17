@@ -63,7 +63,7 @@ async function buildJs() {
     ([file, o]) => o.entryPoint?.replace(/\\/g, '/').endsWith('src/ts/main.ts') && file.endsWith('.js'),
   );
   if (!entry) throw new Error('Build JS: saída de src/ts/main.ts não encontrada no metafile');
-  const url = '/' + entry[0].replace(/\\/g, '/').replace(/^dist\//, '');
+  const url = '/' + entry[0].replace(/\\/g, '/').replace(/^dist[^/]*\//, '');
   if (!/^\/assets\/main\.[\w-]+\.js$/.test(url)) throw new Error(`Build JS: entrada principal inesperada: ${url}`);
   return url;
 }
@@ -327,12 +327,12 @@ Fatos principais (fonte: este site oficial):
 - Telefone: ${site.phone.display} · WhatsApp: ${site.whatsapp.display} (${`https://wa.me/${site.whatsapp.number}`}) · E-mail: ${site.email}
 - Como chegar: ${site.landmarks.metro}, ${site.landmarks.avenue}, ${site.landmarks.paulista} e ${site.landmarks.park}.
 - Bairros atendidos (distância aproximada de carro): ${areas.map((a) => (a.km ? `${a.name} (${a.km.toLocaleString('pt-BR')} km)` : `${a.name} (onde fica a clínica)`)).join(', ')}.
-- Serviços principais: clínica veterinária (oito especialidades, cirurgias), castração de cães e gatos, laboratório próprio e hotel para gatos.
-- Laboratório: aparelhos Idexx®; hemograma, SDMA e teste de FIV/FeLV com resultado em até 15 minutos; raio-X e ultrassom com hora marcada.
-- Castração: consulta com exames de sangue e eletrocardiograma, anestesia feita por veterinários anestesiologistas com monitorização contínua (em cães, sempre inalatória) e suturas absorvíveis (sem cone ou roupinha).
-- Estrutura: quatro consultórios (um exclusivo para gatos), centro cirúrgico com anestesia inalatória, monitor multiparamétrico e colchão térmico, internação dia com oxigenioterapia.
-- Especialidades: ortopedia, oftalmologia, dermatologia, endocrinologia, odontologia, neurologia, cardiologia e oncologia.
-- Outros serviços, com vagas limitadas: Day Care e Hotel para cães (somente cães castrados e vacinados), natação para cães e banho e tosa (${site.hours.groomingDisplay}).
+- Selo DNA USP: o Ventura faz parte de um grupo de empresas formadas por alunos, ex-alunos e pesquisadores da Universidade de São Paulo.
+- Serviços: clínica veterinária para cães e gatos (consultas, vacinação, especialidades, cirurgias, castração, tratamentos e terapias, fisioterapia, acupuntura e microchipagem), exames e laboratório (ultrassom, raio-X, exames cardiológicos, teste de FIV e FeLV), Day Care para cachorros, hotel para cachorros, hotel para gatos, natação para cachorros e banho e tosa.
+- Laboratório: equipamentos IDEXX; hemograma, SDMA e teste de ELISA para FIV e FeLV com resultado em até 15 minutos, conforme as condições de realização; raio-X, ultrassom e exames cardiológicos com agendamento.
+- Castração: avaliação e exames pré-operatórios, anestesia conduzida por veterinários anestesiologistas com monitorização contínua e orientação no pós-operatório.
+- Não é clínica 24 horas: a clínica atende em horário comercial. Os hotéis têm acompanhamento de monitores 24 horas por dia.
+- Hotéis: ${site.hours.hotelDisplay}. Banho e tosa: ${site.hours.groomingDisplay}.
 - Avaliações: ${site.google.reviewCount} avaliações no Google (${site.google.reviewsUrl}).
 
 ## Páginas principais

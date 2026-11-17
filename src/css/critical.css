@@ -52,7 +52,7 @@
 
   /* Espaço */
   --gutter: clamp(1.125rem, 4vw, 2.5rem);
-  --section: clamp(4rem, 3rem + 5vw, 8rem);
+  --section: clamp(3.25rem, 2.25rem + 4vw, 6rem);
   --max: 76rem;
   --measure: 64ch;
 
@@ -137,21 +137,22 @@ main:focus { outline: none; }
 /* Rótulos longos quebram linha em telas estreitas em vez de estourar a largura da página */
 @media (max-width: 520px) { .btn { white-space: normal; text-align: center; border-radius: 1.75rem; } }
 
-/* ---------- Cabeçalho ---------- */
+/* ---------- Cabeçalho ----------
+   Referência do cliente (nov/2026): barra azul com endereço e links institucionais; abaixo, logo,
+   cinco grupos de serviços com ícone e o botão verde "Atendimento" (abre o seletor de WhatsApp). */
 .topbar {
-  background: var(--tinta); color: #d6e2ec; font-size: 0.85rem;
+  background: var(--tinta); color: #e3ebf2; font-size: 0.88rem; font-weight: 600;
   a { color: inherit; text-decoration: none; &:hover { color: var(--branco); text-decoration: underline; } }
   .wrap { display: flex; align-items: center; gap: 1.5rem; min-height: 2.5rem; }
   .topbar__item { display: inline-flex; align-items: center; gap: 0.45rem; }
-  .topbar__social { margin-left: auto; display: flex; gap: 0.25rem; a { display: grid; place-items: center; width: 2rem; height: 2rem; } }
   .icon { width: 1rem; height: 1rem; color: var(--laranja); }
-  .topbar__social .icon { color: inherit; }
 }
+.topbar__links { margin-left: auto; display: flex; align-items: center; a { padding: 0.35rem 0.9rem; } a + a { border-left: 1px solid rgb(255 255 255 / 35%); } }
 @media (max-width: 960px) { .topbar { display: none; } }
 
 .header {
   position: sticky; top: 0; z-index: 50;
-  background: rgb(255 255 255 / 92%);
+  background: rgb(255 255 255 / 94%);
   backdrop-filter: saturate(1.4) blur(14px);
   -webkit-backdrop-filter: saturate(1.4) blur(14px);
   border-bottom: 1px solid transparent;
@@ -160,126 +161,126 @@ main:focus { outline: none; }
   &.is-hidden { transform: translateY(-100%); }
   .wrap { display: flex; align-items: center; gap: 1rem; height: var(--header-h); }
 }
-.logo { display: block; flex: none; width: 8.75rem; img { width: 100%; height: auto; } }
+.logo { display: block; flex: none; width: 9.5rem; img { width: 100%; height: auto; } }
 .nav { margin-left: auto; }
 .nav ul { list-style: none; padding: 0; margin: 0; }
-.nav > ul { display: flex; align-items: center; gap: 0.1rem; }
+.nav__menu { display: flex; align-items: center; }
+.nav__item { position: relative; display: flex; align-items: center; }
 .nav__link {
-  display: inline-flex; align-items: center; min-height: 2.75rem; padding: 0.5rem 0.6rem;
-  border-radius: 999px; font-weight: 600; font-size: 0.94rem; white-space: nowrap; text-decoration: none;
-  transition: background-color 0.2s;
+  display: inline-flex; align-items: center; gap: 0.5rem; min-height: 2.75rem; padding: 0.4rem 0.6rem;
+  border-radius: var(--r-sm); font-family: var(--f-display); font-weight: 700; font-size: 0.98rem; line-height: 1.12;
+  text-decoration: none; transition: background-color 0.2s, color 0.2s;
+  > .icon { flex: none; width: 1.75rem; height: 1.75rem; color: var(--laranja); stroke-width: 1.75; }
   &:hover { background: var(--nevoa); }
   &[aria-current='page'], &.is-active { color: var(--laranja-texto); }
 }
-.nav__has-sub { position: relative; display: flex; align-items: center; }
-.nav__toggle { display: grid; place-items: center; width: 2rem; height: 2.75rem; margin-left: -0.6rem; border-radius: 999px; .icon { width: 1rem; transition: transform 0.3s; } }
+.nav__toggle { display: grid; place-items: center; width: 1.75rem; height: 2.75rem; margin-left: -0.35rem; border-radius: 999px; .icon { width: 1rem; transition: transform 0.3s; } }
 .nav__sub { position: absolute; display: none; }
+.nav__extra { display: none; }
 .header__cta { display: flex; align-items: center; gap: 0.5rem; }
-.header__phone { display: inline-flex; align-items: center; gap: 0.4rem; font-weight: 700; text-decoration: none; padding: 0.5rem; .icon { color: var(--laranja-texto); } }
+.btn--wa { --bg: #1f9d55; --fg: var(--branco); &:hover { --bg: #15803d; box-shadow: 0 10px 24px -10px rgb(21 128 61 / 60%); } }
 .menu-btn { display: none; place-items: center; width: 3rem; height: 3rem; border-radius: 999px; background: var(--nevoa); .icon { width: 1.5rem; height: 1.5rem; } }
 .menu-btn .icon-x { display: none; }
 
-/* Menu completo (6 itens, 2 com submenu) só cabe a partir de 1281px; abaixo disso vira o painel do botão de menu.
-   Com o menu completo, o número de telefone não cabe ao lado (o .wrap tem largura máxima): só o ícone aparece. */
-.header__phone { white-space: nowrap; }
-@media (min-width: 1281px) { .header__phone span { display: none; } }
-@media (max-width: 1280px) {
+/* Menu completo a partir de 1181px: rótulos em duas linhas, separados por traços verticais (como a referência). */
+@media (min-width: 1181px) {
+  :root { --header-h: 5.25rem; }
+  .nav__menu > .nav__item + .nav__item::before { content: ''; width: 1px; height: 2.25rem; margin-right: 0.35rem; background: var(--linha); }
+  .nav__link span { max-width: 7.2rem; }
+}
+@media (max-width: 1180px) {
   .nav { position: fixed; inset: var(--header-h) 0 0; margin: 0; visibility: hidden; opacity: 0; }
   .menu-btn { display: grid; }
   .header__cta { margin-left: auto; }
-  .header__phone span { display: inline; }
 }
 @media (max-width: 960px) {
   :root { --header-h: 4rem; }
   .logo { width: 7.25rem; }
   .header__cta .btn span { display: none; }
   .header__cta .btn { width: 3rem; padding: 0; }
-  .header__phone { display: none; }
 }
 
 /* ---------- Hero da home ----------
-   Composição do site anterior: fundo salmão, arco laranja com os pets recortados e menu de serviços
-   sobre a imagem. O título fica em azul-escuro (branco sobre salmão não tem contraste suficiente). */
+   Briefing de nov/2026: fundo salmão com arco laranja, Dra. Ana Luiza com o cachorro e o gato (recorte),
+   título à esquerda e os cinco grupos de serviços à direita. Nada de texto sobre a doutora e os animais:
+   no desktop são três colunas lado a lado; no celular, texto → foto → botões de serviços em grade. */
 .hero {
   --salmao: #ffb48c;
   position: relative; isolation: isolate; overflow: clip;
   background: var(--salmao);
 }
-/* Até 1199px: texto e lista à esquerda, pets à direita. A partir de 1200px: composição do site anterior,
-   com os pets no centro, o texto à esquerda e a lista de serviços à direita, sobrepostos às bordas da imagem. */
 .hero__grid {
-  display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); grid-template-areas: 'copy art' 'menu art';
+  display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); grid-template-areas: 'copy art' 'menu art';
   column-gap: clamp(1rem, 3vw, 3rem);
 }
 .hero__copy { grid-area: copy; position: relative; z-index: 2; align-self: end; padding-top: clamp(2.5rem, 1.5rem + 3vw, 4.5rem); }
-.hero__h1 { font-weight: 800; }
-/* Selo em pílula; continua dentro do H1 por SEO */
 .hero__kicker {
-  display: inline-flex; align-items: center; gap: 0.5rem; margin-bottom: 1.25rem; padding: 0.4rem 1rem 0.4rem 0.6rem;
+  display: inline-flex; align-items: center; gap: 0.5rem; margin-bottom: 1.25rem; padding: 0.45rem 1.1rem 0.45rem 0.65rem;
   border-radius: 999px; background: rgb(255 255 255 / 72%);
-  font-family: var(--f-text); font-size: 0.95rem; font-weight: 700; font-style: normal; letter-spacing: 0; line-height: 1.3; color: var(--tinta);
+  font-size: 0.98rem; font-weight: 700; line-height: 1.3; color: var(--tinta);
   .icon { flex: none; width: 1.35rem; height: 1.35rem; color: var(--paraiso-texto); }
 }
 .hero__title {
-  display: block; font-size: clamp(2.3rem, 1.3rem + 3.2vw, 4rem); font-style: italic; font-weight: 900; letter-spacing: -0.035em; line-height: 1; color: var(--tinta);
+  font-size: clamp(2.3rem, 1.3rem + 3.2vw, 4rem); font-style: italic; font-weight: 900; letter-spacing: -0.035em; line-height: 1.02; color: var(--tinta);
   em { font-style: italic; color: #9c3500; }
 }
-.hero__lede { max-width: 33rem; margin-top: 1.25rem; font-size: var(--step-1); line-height: 1.5; color: var(--tinta); }
 .hero__actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1.75rem; }
-.hero .btn--ghost { background: rgb(255 255 255 / 55%); }
-.hero__proof {
-  display: flex; flex-wrap: wrap; gap: 0.5rem 1.75rem; margin-top: 1.75rem; padding: 0; list-style: none;
-  font-size: 0.95rem; color: var(--tinta);
-  li { display: flex; align-items: center; gap: 0.5rem; }
-}
+/* Botão azul com seta em círculo laranja (referência do cliente) */
+.btn--hero { --bg: var(--paraiso-texto); --fg: var(--branco); padding-right: 0.45rem; gap: 0.75rem; &:hover { --bg: #085a93; } }
+.btn__go { display: grid; place-items: center; width: 2.1rem; height: 2.1rem; border-radius: 999px; background: var(--laranja); color: var(--tinta); .icon { width: 1.1rem; height: 1.1rem; } }
 .stars { display: inline-flex; gap: 1px; color: #f5a400; .icon { width: 1rem; height: 1rem; fill: currentColor; stroke: none; } }
-.hero .stars { color: #8a5a00; }
 
-/* Imagem com o arco (laranja da marca, #ff6600) encostada no rodapé da hero, como no site anterior:
-   o topo arredondado do arco aparece logo abaixo do cabeçalho e as patas tocam a base. */
-.hero__art { grid-area: art; position: relative; align-self: end; justify-self: center; width: 100%; max-width: 46rem; }
-.hero__pet { position: relative; display: block; width: 100%; img { width: 100%; height: auto; } }
-.hero__paw { position: absolute; top: 9%; right: 9%; width: 10%; color: var(--paraiso); rotate: 20deg; .icon { width: 100%; height: auto; stroke-width: 2.25; } }
+/* Foto recortada sobre um arco laranja (#ff6600), encostada na base da hero */
+.hero__art { grid-area: art; position: relative; align-self: end; justify-self: center; width: 100%; max-width: 38rem; padding-top: 2rem; }
+.hero__art::before {
+  content: ''; position: absolute; z-index: -1; inset: 6% 6% 0; border-radius: 999px 999px 0 0 / 48% 48% 0 0;
+  background: var(--laranja);
+}
+.hero__pet { position: relative; display: block; width: 100%; img { width: 100%; height: auto; filter: drop-shadow(0 18px 30px rgb(120 40 0 / 25%)); } }
+.hero__paw { position: absolute; top: 4%; right: 2%; width: 11%; color: var(--paraiso); rotate: 20deg; .icon { width: 100%; height: auto; stroke-width: 2.25; } }
 
-/* Lista de serviços: texto direto sobre o fundo, como no site anterior (em azul-escuro, para ter contraste no salmão) */
+/* Cinco grupos de serviços: links diretos para as páginas (não abrem o seletor) */
 .hero__menu {
-  grid-area: menu; position: relative; z-index: 2; align-self: start; width: min(100%, 22rem); margin-block: 1.75rem clamp(2.5rem, 4vw, 3.5rem);
+  grid-area: menu; position: relative; z-index: 2; align-self: start; width: min(100%, 24rem); margin-block: 1.75rem clamp(2.5rem, 4vw, 3.5rem);
   a {
-    display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 0.75rem 0.1rem;
+    display: flex; align-items: center; gap: 0.75rem; padding: 0.7rem 0.1rem;
     font-family: var(--f-display); font-size: 1.1rem; font-weight: 700; line-height: 1.2; color: var(--tinta); text-decoration: none;
     border-bottom: 1px solid rgb(19 41 61 / 22%);
     transition: color 0.3s var(--ease-out), border-color 0.3s var(--ease-out);
+    span { flex: 1; }
   }
-  a:hover { border-color: currentColor; }
   .icon { flex: none; width: 1.15rem; height: 1.15rem; color: var(--laranja-texto); transition: transform 0.3s var(--ease-out); }
-  a:hover { color: var(--laranja-texto); .icon { transform: translate(2px, -2px); } }
+  .hero__menu-ic { width: 1.5rem; height: 1.5rem; color: var(--tinta); }
+  a:hover { color: var(--laranja-texto); border-color: currentColor; .icon:last-child { transform: translate(2px, -2px); } }
   a:focus-visible { outline: 3px solid var(--paraiso); outline-offset: 2px; border-radius: 0.4rem; }
 }
 
-/* Entre 961 e 1199px a lista de serviços não cabe sem esticar a hero (o menu do cabeçalho e a faixa logo abaixo já levam aos serviços) */
-@media (min-width: 961px) and (max-width: 1199px) {
-  .hero__grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); grid-template-areas: 'copy art'; }
-  .hero__copy { padding-bottom: clamp(2.5rem, 1.5rem + 3vw, 4.5rem); }
-  .hero__menu { display: none; }
-}
 @media (min-width: 1200px) {
-  .hero__grid { grid-template-columns: minmax(0, 1fr); grid-template-areas: 'stack'; }
-  .hero__copy, .hero__art, .hero__menu { grid-area: stack; }
-  .hero__copy { justify-self: start; align-self: center; width: 30rem; padding-block: 2rem; }
-  .hero__title { font-size: clamp(2.6rem, 1rem + 2.6vw, 3.4rem); }
-  /* Pets um pouco à direita do centro (56%), para o texto longo da esquerda não cobrir o rosto do cão */
-  .hero__art { justify-self: start; width: min(44rem, 56%); margin-left: calc(56% - min(22rem, 28%)); }
-  .hero__menu { justify-self: end; align-self: center; width: 16rem; margin: 0; }
+  .hero__grid { grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.15fr) minmax(0, 0.7fr); grid-template-areas: 'copy art menu'; align-items: center; }
+  .hero__copy { align-self: center; padding-block: 3rem; }
+  .hero__title { font-size: clamp(2.6rem, 1rem + 2.6vw, 3.6rem); }
+  .hero__art { align-self: end; }
+  .hero__menu { align-self: center; width: auto; margin: 0; }
+}
+@media (min-width: 961px) and (max-width: 1199px) {
+  .hero__copy { padding-top: 3rem; }
 }
 @media (max-width: 960px) {
-  .hero__grid { grid-template-columns: 1fr; grid-template-areas: 'art' 'copy' 'menu'; }
-  .hero__art { max-width: 26rem; }
-  .hero__copy { padding-block: 1.75rem 0; }
-  .hero__menu { justify-self: stretch; width: auto; margin-block: 1.25rem 2.5rem; }
-  .hero__actions .btn { flex: 1 1 100%; }
+  .hero__grid { grid-template-columns: 1fr; grid-template-areas: 'copy' 'art' 'menu'; }
+  .hero__copy { padding-block: 2rem 0.5rem; text-align: center; }
+  .hero__actions { justify-content: center; }
+  .hero__art { max-width: 26rem; padding-top: 1rem; }
+  /* Botões dos serviços em grade de duas colunas, todos visíveis (sem carrossel) */
+  .hero__menu {
+    justify-self: stretch; width: auto; margin-block: 0; padding-block: 1.25rem 2rem;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 0.6rem;
+    a { min-height: 3.25rem; padding: 0.6rem 0.8rem; border: 0; border-radius: var(--r-sm); background: var(--branco); font-size: 0.98rem; box-shadow: 0 6px 16px -10px rgb(19 41 61 / 35%); }
+    a:last-child:nth-child(odd) { grid-column: 1 / -1; }
+    .icon:last-child { display: none; }
+  }
 }
 @media (max-width: 560px) {
-  .hero__kicker { font-size: 0.875rem; }
+  .hero__kicker { font-size: 0.9rem; }
 }
 
 /* ---------- Hero das páginas internas ---------- */
@@ -303,6 +304,48 @@ main:focus { outline: none; }
 .crumbs li + li::before { content: '/'; margin-right: 0.5rem; color: var(--traco); }
 .crumbs a { text-decoration: none; &:hover { text-decoration: underline; color: var(--tinta); } }
 .crumbs [aria-current] { color: var(--tinta); font-weight: 600; }
+
+/* Heros temáticas das páginas por espécie (o restante dos temas fica em components/especies.css).
+   Cães: salmão da home, patinhas e ossinhos, bolinha de tênis. Gatos: azul-noite com estrelinhas,
+   patinhas de gato e novelos, foto dentro de uma cabeça de gato lilás. */
+.tema-cao .page-hero {
+  background-color: #ffb48c;
+  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160'><g fill='%23fff' fill-opacity='.32'><g transform='translate(16 20) rotate(-18 12 12)'><ellipse cx='5' cy='10' rx='2.1' ry='2.7'/><ellipse cx='9.3' cy='5.6' rx='2.1' ry='2.8'/><ellipse cx='14.7' cy='5.6' rx='2.1' ry='2.8'/><ellipse cx='19' cy='10' rx='2.1' ry='2.7'/><path d='M12 11.5c-3.1 0-6.2 3.6-6.2 6.6 0 1.9 1.4 3 3 3 1.3 0 2-.6 3.2-.6s1.9.6 3.2.6c1.6 0 3-1.1 3-3 0-3-3.1-6.6-6.2-6.6z'/></g><g transform='translate(100 96) rotate(24 12 12)'><ellipse cx='5' cy='10' rx='2.1' ry='2.7'/><ellipse cx='9.3' cy='5.6' rx='2.1' ry='2.8'/><ellipse cx='14.7' cy='5.6' rx='2.1' ry='2.8'/><ellipse cx='19' cy='10' rx='2.1' ry='2.7'/><path d='M12 11.5c-3.1 0-6.2 3.6-6.2 6.6 0 1.9 1.4 3 3 3 1.3 0 2-.6 3.2-.6s1.9.6 3.2.6c1.6 0 3-1.1 3-3 0-3-3.1-6.6-6.2-6.6z'/></g></g><g fill='none' stroke='%23fff' stroke-opacity='.4' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'><path transform='translate(96 16) scale(1.3)' d='M17 10c.7-.7 1.69 0 2.5 0a2.5 2.5 0 1 0 0-5 .5.5 0 0 1-.5-.5 2.5 2.5 0 1 0-5 0c0 .81.7 1.8 0 2.5l-7 7c-.7.7-1.69 0-2.5 0a2.5 2.5 0 0 0 0 5c.28 0 .5.22.5.5a2.5 2.5 0 1 0 5 0c0-.81-.7-1.8 0-2.5Z'/><path transform='translate(18 98) scale(1.3) rotate(80 12 12)' d='M17 10c.7-.7 1.69 0 2.5 0a2.5 2.5 0 1 0 0-5 .5.5 0 0 1-.5-.5 2.5 2.5 0 1 0-5 0c0 .81.7 1.8 0 2.5l-7 7c-.7.7-1.69 0-2.5 0a2.5 2.5 0 0 0 0 5c.28 0 .5.22.5.5a2.5 2.5 0 1 0 5 0c0-.81-.7-1.8 0-2.5Z'/></g></svg>");
+}
+.tema-cao .page-hero h1 em { color: #9c3500; }
+.tema-cao .page-hero__lede, .tema-cao .page-hero .crumbs ol, .tema-cao .page-hero .crumbs li + li::before { color: var(--tinta); }
+.tema-cao .page-hero .btn--ghost { background: rgb(255 255 255 / 55%); }
+.tema-cao .page-hero__art::before { inset: 6% 2% 2% 8%; background: var(--laranja); rotate: -8deg; }
+.tema-cao .page-hero__art::after {
+  content: ''; position: absolute; left: 0; bottom: 4%; width: 19%; aspect-ratio: 1; rotate: -18deg;
+  background: center / contain no-repeat url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'><circle cx='24' cy='24' r='22' fill='%23d4e93b'/><path d='M7 10c9 6 9 22 0 28M41 10c-9 6-9 22 0 28' fill='none' stroke='%23fff' stroke-width='3' stroke-linecap='round'/></svg>");
+  filter: drop-shadow(0 6px 10px rgb(19 41 61 / 22%));
+}
+.tema-gato .page-hero {
+  color: var(--branco); background-color: var(--tinta);
+  background-image:
+    radial-gradient(circle at 8% 22%, rgb(255 255 255 / 70%) 0 1.5px, transparent 2.5px),
+    radial-gradient(circle at 46% 12%, rgb(255 255 255 / 55%) 0 1px, transparent 2px),
+    radial-gradient(circle at 58% 78%, rgb(255 255 255 / 60%) 0 1.5px, transparent 2.5px),
+    radial-gradient(circle at 92% 30%, rgb(255 255 255 / 70%) 0 1.5px, transparent 2.5px),
+    radial-gradient(circle at 30% 88%, rgb(255 255 255 / 45%) 0 1px, transparent 2px),
+    url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='170' height='170' viewBox='0 0 170 170'><g fill='%23fff' fill-opacity='.06'><g transform='translate(18 22) rotate(-14 12 12)'><circle cx='5.6' cy='10.4' r='2.1'/><circle cx='9.4' cy='6.4' r='2.1'/><circle cx='14.6' cy='6.4' r='2.1'/><circle cx='18.4' cy='10.4' r='2.1'/><path d='M12 11.2c-3 0-5.6 2.9-5.6 5.5 0 1.9 1.3 3 2.9 3 1.1 0 1.8-.5 2.7-.5s1.6.5 2.7.5c1.6 0 2.9-1.1 2.9-3 0-2.6-2.6-5.5-5.6-5.5z'/></g><g transform='translate(112 104) rotate(18 12 12)'><circle cx='5.6' cy='10.4' r='2.1'/><circle cx='9.4' cy='6.4' r='2.1'/><circle cx='14.6' cy='6.4' r='2.1'/><circle cx='18.4' cy='10.4' r='2.1'/><path d='M12 11.2c-3 0-5.6 2.9-5.6 5.5 0 1.9 1.3 3 2.9 3 1.1 0 1.8-.5 2.7-.5s1.6.5 2.7.5c1.6 0 2.9-1.1 2.9-3 0-2.6-2.6-5.5-5.6-5.5z'/></g></g><g fill='none' stroke='%23fff' stroke-opacity='.08' stroke-width='1.4' stroke-linecap='round'><g transform='translate(104 18) scale(1.5)'><circle cx='12' cy='12' r='7.5'/><path d='M5.2 9.5c4.2-.3 9.4 1.7 12.6 6.2M4.6 13.6c4.2-1.4 9.2-.5 12 3.7M9 4.9c.7 4.4 3.9 8.6 9.3 10.2'/><path d='M17.8 17.5c1.6 2.2 3.6 1.7 4.6 3.6'/></g></g></svg>");
+}
+.tema-gato .page-hero h1 { color: var(--branco); }
+.tema-gato .page-hero h1 em { color: #c9bcf7; }
+.tema-gato .page-hero__lede { color: #d3dce6; }
+.tema-gato .page-hero .crumbs ol, .tema-gato .page-hero .crumbs li + li::before { color: #b3c2d1; }
+.tema-gato .page-hero .crumbs a:hover, .tema-gato .page-hero .crumbs [aria-current] { color: var(--branco); }
+.tema-gato .page-hero .btn--ghost { --fg: var(--branco); &:hover { --bg: var(--branco); --fg: var(--tinta); border-color: var(--branco); } }
+.tema-gato .page-hero__art::before {
+  inset: -9% -2% 0; border-radius: 0;
+  background: center / 100% 100% no-repeat url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' preserveAspectRatio='none'><path d='M13 4 36 23c9-3 19-3 28 0L87 4c5 15 6 30 3 45 4 31-16 48-40 48S6 80 10 49C7 34 8 19 13 4z' fill='%239d8be0'/></svg>");
+}
+.tema-gato .page-hero__art::after {
+  content: ''; position: absolute; left: -2%; bottom: 2%; width: 20%; aspect-ratio: 1;
+  background: center / contain no-repeat url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><circle cx='30' cy='32' r='22' fill='%23ff8a3d'/><g fill='none' stroke='%23b84300' stroke-width='2.2' stroke-linecap='round'><path d='M10 26c10-1 24 4 32 16M9 36c11-4 24-2 31 9M22 11c2 11 9 21 23 25'/><path d='M50 46c4 6 9 5 12 10'/></g></svg>");
+  filter: drop-shadow(0 6px 10px rgb(0 0 0 / 30%));
+}
 @media (max-width: 860px) {
   .page-hero__grid { grid-template-columns: 1fr; }
   .page-hero__art { justify-self: center; max-width: 20rem; order: -1; }

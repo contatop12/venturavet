@@ -29,6 +29,7 @@ export function initAnalytics() {
   document.addEventListener('click', (e) => {
     const a = (e.target as HTMLElement).closest<HTMLAnchorElement>('[data-track]');
     if (!a) return;
-    window.dataLayer.push({ event: `${a.dataset.track}_click`, link_url: a.href, link_text: a.textContent?.trim().slice(0, 80), page_path: location.pathname });
+    // service e position: serviço da mensagem e posição do botão na página (definidos no build)
+    window.dataLayer.push({ event: `${a.dataset.track}_click`, link_url: a.href, link_text: a.textContent?.trim().slice(0, 80), page_path: location.pathname, service: a.dataset.service, position: a.dataset.pos });
   });
 }

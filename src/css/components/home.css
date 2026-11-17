@@ -183,3 +183,53 @@
 @media (hover: hover) {
   .post-card__link:hover { border-color: var(--traco); transform: translateY(-4px); img { scale: 1.05; } .post-card__title { text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 0.2em; } }
 }
+
+/* ---------- Sete cartões de serviços (home): três grandes + quatro menores ---------- */
+.svc-cards { display: grid; grid-template-columns: repeat(12, 1fr); gap: 1.25rem; padding: 0; margin: 0; list-style: none; }
+.svc-card { grid-column: span 3; }
+.svc-card--lg { grid-column: span 4; }
+.svc-card__link {
+  display: flex; flex-direction: column; height: 100%; overflow: hidden;
+  border: 1px solid var(--linha); border-radius: var(--r-md); background: var(--branco); color: var(--tinta); text-decoration: none;
+  transition: transform 0.4s var(--ease-out), box-shadow 0.4s var(--ease-out), border-color 0.3s;
+  &:hover, &:focus-visible { transform: translateY(-4px); box-shadow: var(--shadow); border-color: var(--laranja); }
+  &:hover .svc-card__img img { transform: scale(1.04); }
+}
+.svc-card__img { display: block; aspect-ratio: 4 / 3; overflow: hidden; background: var(--nevoa); img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s var(--ease-out); } }
+.svc-card--lg .svc-card__img { aspect-ratio: 3 / 2; }
+.svc-card__body { display: flex; flex: 1; flex-direction: column; gap: 0.45rem; padding: 1.1rem 1.15rem 1.2rem; }
+.svc-card__name { font-size: var(--step-1); line-height: 1.15; }
+.svc-card--lg .svc-card__name { font-size: var(--step-2); }
+.svc-card__desc { flex: 1; font-size: 0.97rem; color: var(--tinta-2); }
+.svc-card__go { display: inline-flex; align-items: center; gap: 0.4rem; margin-top: 0.35rem; font-family: var(--f-display); font-weight: 800; color: var(--laranja-texto); .icon { width: 1.1rem; height: 1.1rem; transition: transform 0.3s var(--ease-out); } }
+.svc-card__link:hover .svc-card__go .icon { transform: translateX(4px); }
+@media (max-width: 1000px) { .svc-card, .svc-card--lg { grid-column: span 6; } }
+@media (max-width: 640px) { .svc-cards { gap: 1rem; } .svc-card, .svc-card--lg { grid-column: 1 / -1; } .svc-card__img, .svc-card--lg .svc-card__img { aspect-ratio: 16 / 9; } }
+
+/* ---------- Home (briefing nov/2026): blocos de clínica, laboratório, castração e hotel de gatos ---------- */
+.home-clinica h2, .home-hotel-gatos h2 { font-size: var(--step-3); letter-spacing: -0.02em; }
+.home-clinica .split > div > p:not(.home-note), .home-hotel-gatos .split > div > p:not(.home-note) { margin-top: 1rem; font-size: var(--step-1); line-height: 1.6; color: var(--tinta-2); }
+.home-clinica .split__media img { border-radius: var(--r-lg); aspect-ratio: 4 / 3; object-fit: cover; }
+.home-note { display: flex; align-items: center; gap: 0.5rem; margin-top: 1rem; font-weight: 700; color: var(--tinta); .icon { flex: none; width: 1.3rem; height: 1.3rem; color: var(--laranja-texto); } }
+.home-note--muted { font-size: 0.92rem; font-weight: 500; color: var(--tinta-2); }
+.home-links { margin-top: 1.25rem; a { text-decoration: none; } }
+.home-hotel-gatos .checklist { margin-top: 1.25rem; }
+.lab15__copy .lab15__list { margin-top: 1.5rem; }
+.lab15__note { margin-top: 1rem; font-size: 0.92rem; color: var(--tinta-2); }
+.lab15__more { margin-top: 1.25rem; font-size: 0.95rem; color: var(--tinta-2); a { font-weight: 700; color: var(--tinta); } }
+.lab15__grid:has(.lab15__media) { grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.75fr); }
+.lab15__media img, .castra__media img { width: 100%; border-radius: var(--r-lg); object-fit: cover; }
+.lab15__media img { aspect-ratio: 3 / 4.4; max-height: 40rem; }
+.castra__grid:has(.castra__media) { grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr); }
+.castra__media img { aspect-ratio: 3 / 4; max-height: 38rem; }
+.castra__copy .castra__list { margin-top: 1.5rem; }
+.castra__list--compact li { padding-block: 0.75rem; h3 { font-size: 1.05rem; } }
+.about__sign { display: grid; gap: 0.15rem; margin-top: 1.25rem; strong { font-family: var(--f-display); font-size: 1.15rem; } span { font-size: 0.95rem; } }
+.about .facts-list li { color: inherit; }
+.local__hours { display: grid; gap: 1rem; }
+@media (max-width: 860px) {
+  .lab15__grid:has(.lab15__media), .castra__grid:has(.castra__media) { grid-template-columns: 1fr; }
+  .lab15__media, .castra__media { max-width: 26rem; }
+  .lab15__media img { aspect-ratio: 4 / 5; }
+}
+.svc-mini + .svc-mini { margin-top: 1rem; }

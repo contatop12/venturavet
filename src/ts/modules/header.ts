@@ -17,6 +17,10 @@ export function initHeader() {
     if (!open && !header.contains(document.activeElement)) header.classList.toggle('is-hidden', y > 420 && y > lastY + 4);
     if (y < lastY - 4) header.classList.remove('is-hidden');
     float?.classList.toggle('is-compact', y > 600);
+    // O botão flutuante some sobre o bloco final e o rodapé (que já têm os contatos), para não cobrir botões
+    const end = document.querySelector('.cta-final, .footer');
+    // e também no topo da página, onde o botão "Atendimento" do cabeçalho já está visível
+    if (float) float.classList.toggle('is-away', y < 480 || (!!end && end.getBoundingClientRect().top < window.innerHeight - 80));
     lastY = y;
     ticking = false;
   };
@@ -42,7 +46,7 @@ export function initHeader() {
   nav?.addEventListener('click', (e) => {
     if ((e.target as HTMLElement).closest('a')) setMenu(false);
   });
-  window.matchMedia('(min-width: 1281px)').addEventListener('change', (m) => m.matches && setMenu(false));
+  window.matchMedia('(min-width: 1181px)').addEventListener('change', (m) => m.matches && setMenu(false));
 
   // Submenu (botão dedicado, funciona por toque e teclado)
   const closeSub = (li: Element) => {

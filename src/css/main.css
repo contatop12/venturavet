@@ -6,6 +6,13 @@
 @import './components/home.css';
 @import './components/services.css';
 @import './components/blog.css';
+@import './components/especies.css';
+@import './components/p-hospedagem.css';
+@import './components/p-clinica.css';
+@import './components/p-clinicos.css';
+@import './components/p-terapias.css';
+@import './components/p-servicos.css';
+@import './components/p-exames.css';
 @import './components/forms.css';
 @import './components/footer.css';
 @import './components/motion.css';

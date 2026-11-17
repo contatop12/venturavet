@@ -1,0 +1,48 @@
+/* Estilos próprios das páginas do grupo "exames" (escopar sempre por uma classe da página). */
+.pg-exames .cta-row { display: flex; flex-wrap: wrap; align-items: center; gap: 0.75rem 1.25rem; margin-top: 1.5rem; }
+.pg-exames .lab-note .cta-row { margin-top: 0.75rem; }
+.pg-exames .lab-note p + p { margin-top: 0.5rem; }
+.pg-exames .fast > li .btn { align-self: flex-start; margin-top: auto; }
+.pg-exames .highlight .cta-row { margin-top: 1rem; }
+
+/* Blocos de exame (cartão com ícone, título, texto e botão) */
+.pg-exames .exame-bloco {
+  display: flex; flex-direction: column; gap: 0.6rem; padding: clamp(1.25rem, 1rem + 1vw, 1.75rem);
+  border-radius: var(--r-lg); background: var(--branco); border: 1px solid var(--linha);
+  > .icon { width: 2rem; height: 2rem; color: var(--laranja-texto); }
+  h3 { font-size: var(--step-2); letter-spacing: -0.02em; }
+  p { color: var(--tinta-2); line-height: 1.6; }
+  .cta-row { margin-top: auto; padding-top: 0.5rem; }
+}
+.pg-exames .section--nevoa .exame-bloco { border-color: transparent; }
+.pg-exames .compare .exame-bloco { align-items: flex-start; }
+
+/* Ícone grande no lugar de foto (sem imagem real do exame) */
+.pg-exames .exame-icone {
+  display: grid; place-items: center; aspect-ratio: 1; max-width: 18rem; margin-inline: auto; width: 100%;
+  border-radius: var(--blob); background: var(--laranja-suave);
+  .icon { width: 38%; height: 38%; color: var(--tinta); }
+}
+
+/* Selo Cat Friendly (foto do certificado) abaixo dos blocos por espécie */
+.pg-exames .exame-selo { margin-top: 1.5rem; max-width: 24rem; img { width: 100%; height: auto; border-radius: var(--r-lg); } }
+
+/* Endereço, horários e notas */
+.pg-exames .exame-end { margin-top: 1.25rem; font-style: normal; line-height: 1.7; color: var(--tinta-2); strong { color: var(--tinta); } }
+.pg-exames .exame-horas { margin-top: 1rem; padding: 1rem 1.25rem; border-radius: var(--r-md); background: var(--branco); }
+.pg-exames .exame-nota { margin-top: 1rem; color: var(--tinta-2); font-size: 0.95rem; line-height: 1.6; }
+
+/* Escolha rápida (cardiologia) */
+.pg-exames .exame-escolha { margin-top: 1.5rem; }
+.pg-exames .exame-escolha .card a { color: var(--laranja-texto); font-weight: 700; cursor: pointer; }
+
+/* Laboratório: foto de retrato sem ocupar a tela inteira; recorte do banner preserva a bancada */
+.pg-lab .lab-retrato { max-width: 22rem; margin-inline: auto; }
+.pg-lab .page-hero__art--photo img { object-position: 50% 62%; }
+
+/* FIV e FeLV: selo de prazo */
+.pg-fiv .fiv-tempo { display: grid; justify-items: center; gap: 0.75rem; padding: 2rem; border-radius: var(--blob); background: var(--laranja-suave); text-align: center; .fast__time { font-size: 1.5rem; padding: 0.5rem 1.25rem; } small { color: var(--tinta-2); } }
+
+@media (max-width: 860px) {
+  .pg-exames .exame-icone { max-width: 12rem; }
+}

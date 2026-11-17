@@ -12,6 +12,7 @@ import { initPrefetch } from './modules/prefetch';
 import { initFaq } from './modules/faq';
 import { initMarquee } from './modules/marquee';
 import { initMagnetic } from './modules/magnetic';
+import { initAtendimento } from './modules/atendimento';
 import { captureAttribution } from './modules/attribution';
 import { $, $$ } from './modules/dom';
 
@@ -34,6 +35,7 @@ window.__vvReady = true;
 
 safe('attribution', captureAttribution);
 safe('header', initHeader);
+safe('atendimento', initAtendimento);
 safe('scrollfx', initScrollFx);
 safe('countup', initCountUp);
 safe('faq', initFaq);

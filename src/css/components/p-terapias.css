@@ -1,0 +1,44 @@
+/* Estilos próprios das páginas do grupo "terapias" (escopar sempre por uma classe da página). */
+
+/* Comuns às quatro páginas */
+.pg-terapias .cta-row { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1.5rem; align-items: center; }
+.pg-terapias .card .btn { margin-top: 1rem; }
+.pg-terapias .aviso { margin-top: 1.25rem; padding: 1rem 1.25rem; border-radius: var(--r-md); background: var(--nevoa); color: var(--tinta-2); line-height: 1.55; strong { color: var(--tinta); } }
+.pg-terapias .section--nevoa .aviso { background: var(--branco); }
+.pg-terapias .split__media picture, .pg-terapias .local__foto picture { display: block; border-radius: var(--r-lg); overflow: hidden; }
+
+/* Banner com duas fotos de atendimento clínico (cachorro e gato) */
+.pg-terapias .hero-duo { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+.pg-terapias .hero-duo picture { display: block; aspect-ratio: 3 / 4; border-radius: var(--r-lg); overflow: hidden; background: var(--nevoa); }
+.pg-terapias .hero-duo img { width: 100%; height: 100%; object-fit: cover; }
+.pg-terapias .hero-duo picture:nth-child(2) { margin-top: 1.5rem; }
+
+/* Perfil da profissional */
+.pg-terapias .perfil { display: grid; grid-template-columns: minmax(0, 16rem) minmax(0, 1fr); gap: clamp(1.25rem, 3vw, 2.5rem); align-items: center; }
+.pg-terapias .perfil__foto { display: block; aspect-ratio: 4 / 5; border-radius: var(--r-lg); overflow: hidden; background: var(--nevoa); img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 18%; } }
+.pg-terapias .perfil h3 { font-size: var(--step-2); letter-spacing: -0.02em; }
+.pg-terapias .perfil__role { margin-top: 0.25rem; font-weight: 600; color: var(--laranja-texto); }
+.pg-terapias .perfil p + p { margin-top: 0.75rem; }
+
+/* Localização */
+.pg-terapias .local { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 0.9fr); gap: clamp(1.5rem, 4vw, 3.5rem); align-items: center; }
+.pg-terapias .local .nap { margin-top: 1.25rem; }
+.pg-terapias .local .hours { margin-top: 1.25rem; padding-top: 0; }
+.pg-terapias .local__nota { margin-top: 1rem; color: var(--tinta-2); line-height: 1.55; }
+
+/* Especialidades: grade de áreas */
+.pg-especialistas .areas .card { display: flex; flex-direction: column; }
+.pg-especialistas .areas .card .btn { margin-top: auto; align-self: flex-start; }
+.pg-especialistas .areas .card p { margin-bottom: 1rem; }
+.pg-especialistas .apoio { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+.pg-especialistas .apoio picture { display: block; aspect-ratio: 4 / 3; border-radius: var(--r-lg); overflow: hidden; }
+.pg-especialistas .apoio img { width: 100%; height: 100%; object-fit: cover; }
+
+/* Cirurgias */
+.pg-cirurgias .destaque-castracao { margin-top: 1.5rem; }
+
+@media (max-width: 720px) {
+  .pg-terapias .perfil, .pg-terapias .local { grid-template-columns: 1fr; }
+  .pg-terapias .perfil__foto { max-width: 15rem; }
+  .pg-especialistas .apoio { grid-template-columns: 1fr; }
+}

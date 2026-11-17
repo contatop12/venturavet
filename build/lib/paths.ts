@@ -2,6 +2,8 @@ import { fileURLToPath } from 'node:url';
 import { join } from 'node:path';
 
 const root = fileURLToPath(new URL('../../', import.meta.url));
+/** VV_DIST permite compilar em outra pasta (ex.: builds paralelos de revisão); o padrão é dist/. */
+const dist = join(root, process.env.VV_DIST ?? 'dist');
 
 export const paths = {
   root,
@@ -14,8 +16,8 @@ export const paths = {
   fonts: join(root, 'src/assets/fonts'),
   static: join(root, 'src/static'),
   posts: join(root, 'content/posts'),
-  dist: join(root, 'dist'),
-  distImg: join(root, 'dist/img'),
-  distAssets: join(root, 'dist/assets'),
+  dist,
+  distImg: join(dist, 'img'),
+  distAssets: join(dist, 'assets'),
   imgCache: join(root, '.cache/img'),
 };

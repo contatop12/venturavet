@@ -1,14 +1,15 @@
 <!---
-title: Veterinário para gatos no Paraíso, SP | Ventura Vet
-description: Veterinário para gatos no Paraíso (SP): consultório e sala de espera só para felinos, selo Cat Friendly, teste de FIV e FeLV em 15 minutos e vacinas.
+title: Veterinário para Gatos no Paraíso, SP | Ventura Vet
+description: Veterinário para gatos no Paraíso, São Paulo. Clínica com selo Cat Friendly Practice, consultório felino, consultas e exames. Agende no Ventura.
 path: /veterinario-para-gatos/
 type: service
 service: veterinario-para-gatos
-breadcrumb: [["Serviços", "/servicos/"], ["Clínica Veterinária", "/clinica-veterinaria/"], ["Para gatos"]]
-ogSource: equipe-atendendo-gato.webp
-ogImageAlt: Duas veterinárias do Ventura atendendo um gato branco
-imageSource: equipe-atendendo-gato.webp
+breadcrumb: [["Clínica Veterinária", "/clinica-veterinaria/"], ["Atendimento para Gatos"]]
+ogSource: consulta-veterinaria-gato-preto.jpg
+ogImageAlt: Dra. Ana Luiza Mazorra atendendo gato com estetoscópio no Ventura Vet
+imageSource: consulta-veterinaria-gato-preto.jpg
 priority: 0.9
+bodyClass: tema-gato pg-clinica
 --->
 
 <section class="page-hero">
@@ -16,15 +17,21 @@ priority: 0.9
     <x-breadcrumbs></x-breadcrumbs>
     <div class="page-hero__grid">
       <div>
-        <h1>Veterinário <em>para gatos</em> no Paraíso, São Paulo</h1>
-        <p class="page-hero__lede">Consultório exclusivo para felinos, com sala de espera longe dos cães e Feliway® no ambiente, numa clínica com selo {{site.credentials.catFriendly}}.</p>
+        <p class="castra__kicker castra__kicker--dark">Clínica com selo {{site.credentials.catFriendly}}</p>
+        <h1>Veterinário para gatos <em>no Paraíso</em>, em São Paulo</h1>
+        <p class="page-hero__lede">Consultório exclusivo para felinos, sala de espera separada dos cães e atenção às necessidades do seu gato. No Ventura, você encontra consultas, vacinas, exames e acompanhamento em uma clínica com selo {{site.credentials.catFriendly}}.</p>
         <div class="page-hero__actions">
-          <a class="btn" data-wa="Olá! Vim pelo site e quero agendar uma consulta para o meu gato." data-magnetic><x-icon name="whatsapp"></x-icon>Agendar consulta</a>
-          <a class="btn btn--ghost" href="tel:{{site.phone.e164}}" data-track="phone"><x-icon name="phone"></x-icon>{{site.phone.display}}</a>
+          <a class="btn" data-wa="Olá! Vim pela página de atendimento para gatos e gostaria de consultar os horários para uma consulta." data-magnetic><x-icon name="whatsapp"></x-icon>Agendar consulta para meu gato</a>
+          <a class="btn btn--ghost" href="#cat-friendly"><x-icon name="cat"></x-icon>Conhecer o atendimento felino</a>
         </div>
+        <ul class="pills">
+          <li><x-icon name="cat"></x-icon>Consultório exclusivo para gatos</li>
+          <li><x-icon name="door-open"></x-icon>Sala de espera separada</li>
+          <li><x-icon name="shield-check"></x-icon>Atendimento particular</li>
+        </ul>
       </div>
-      <div class="page-hero__art">
-        <x-img src="equipe-atendendo-gato.webp" alt="Duas veterinárias do Ventura atendendo um gato branco" priority widths="360,540,720" sizes="(min-width: 860px) 34vw, 80vw"></x-img>
+      <div class="page-hero__art page-hero__art--photo">
+        <x-img src="consulta-veterinaria-gato-preto.jpg" img-class="pos-gato" alt="Dra. Ana Luiza Mazorra atendendo gato com estetoscópio no Ventura Vet" priority widths="360,540,720" sizes="(min-width: 860px) 34vw, 80vw"></x-img>
       </div>
     </div>
   </div>
@@ -32,85 +39,151 @@ priority: 0.9
 
 <section class="section section--tight">
   <div class="wrap">
-    <p class="answer">O Ventura Vet, na Rua Otávio Nébias, 190, no Paraíso (SP), tem consultório exclusivo para gatos, com sala de espera separada dos cães, difusor e spray com Feliway® e o selo {{site.credentials.catFriendly}}. O teste de FIV e FeLV fica pronto em até 15 minutos, durante a consulta; a vacinação do filhote começa a partir da sexta semana, com a tríplice felina; e a castração de gatos e gatas tem anestesia feita por veterinários especializados em anestesiologia.</p>
-    <nav class="page-jump" aria-label="Nesta página">
-      <ul class="chips">
-        <li><a class="chip" href="#consulta"><x-icon name="stethoscope"></x-icon>Consulta</a></li>
-        <li><a class="chip" href="#exames"><x-icon name="flask-conical"></x-icon>Exames</a></li>
-        <li><a class="chip" href="#vacinas"><x-icon name="syringe"></x-icon>Vacinas</a></li>
-        <li><a class="chip" href="#castracao"><x-icon name="shield-check"></x-icon>Castração</a></li>
-        <li><a class="chip" href="#tratamentos"><x-icon name="activity"></x-icon>Tratamentos e terapias</a></li>
-      </ul>
-    </nav>
+    <p class="answer">O Ventura Vet atende cães e gatos no Paraíso, em São Paulo, e tem estrutura dedicada aos felinos: consultório exclusivo, sala de espera separada dos cães e selo {{site.credentials.catFriendly}}. A clínica fica na Rua Otávio Nébias, 190, atende em regime particular, de segunda a sexta, das 9h às 18h, e aos sábados, das 9h às 16h, e não oferece atendimento veterinário 24 horas.</p>
   </div>
 </section>
 
-<section class="section" id="consulta" aria-labelledby="consulta-titulo">
+<section class="section" id="cat-friendly" aria-labelledby="cat-friendly-titulo">
   <div class="wrap split">
     <div>
-      <h2 id="consulta-titulo" data-reveal>Consulta veterinária para gatos</h2>
+      <h2 id="cat-friendly-titulo" data-reveal>Um ambiente e um atendimento pensados para gatos</h2>
       <div class="prose" data-reveal style="--i:1">
-        <p>Para muitos gatos, a ida à clínica é a parte mais difícil da consulta. Por isso, o atendimento felino do Ventura acontece longe dos cães, num consultório só para gatos, com feromônio felino sintético no ambiente, o que deixa a visita bem menos estressante.</p>
+        <p>O Ventura possui o selo {{site.credentials.catFriendly}} e organiza o atendimento considerando as particularidades dos felinos.</p>
+        <p>O consultório exclusivo e a sala de espera separada dos cães fazem parte dessa estrutura. O manejo durante a consulta e as orientações ao tutor também ajudam a preparar a visita.</p>
+        <p>Antes do agendamento, conte à equipe como seu gato costuma reagir ao transporte e ao atendimento.</p>
       </div>
-      <ul class="checklist" data-reveal style="--i:2">
-        <li><x-icon name="check"></x-icon>Consultório exclusivo para felinos</li>
-        <li><x-icon name="check"></x-icon>Sala de espera separada dos cães</li>
-        <li><x-icon name="check"></x-icon>Difusor e spray com Feliway®</li>
-        <li><x-icon name="check"></x-icon>Clínica com selo {{site.credentials.catFriendly}}</li>
-        <li><x-icon name="check"></x-icon>Especialista em medicina felina, com hora marcada</li>
+      <!-- CONFIRMAR COM CLIENTE: vigência e categoria atual do reconhecimento (certificado da foto é Silver; categoria não citada no texto) e selo oficial em boa resolução, conforme regras de aplicação -->
+      <ul class="destaques" data-reveal style="--i:2">
+        <li><h3>Consultório exclusivo</h3><p>Um espaço dedicado ao atendimento dos gatos.</p></li>
+        <li><h3>Espera separada dos cães</h3><p>Organização da chegada para o atendimento felino.</p></li>
+        <li><h3>Manejo atento ao paciente</h3><p>Cuidados que consideram o comportamento e a resposta de cada gato.</p></li>
+        <li><h3>Orientações antes da visita</h3><p>Informações para organizar a chegada e comunicar necessidades específicas.</p></li>
       </ul>
-      <p data-reveal style="--i:3"><a class="link-more" href="/especialistas/#amanda-oncins">Conheça a especialista em medicina felina</a></p>
+      <div class="acao-bloco" data-reveal style="--i:3">
+        <a class="btn" data-wa="Olá! Gostaria de consultar o atendimento para o meu gato na clínica com selo Cat Friendly Practice."><x-icon name="whatsapp"></x-icon>Consultar o atendimento para meu gato</a>
+      </div>
     </div>
     <div class="split__media split__media--blob" data-reveal>
-      <x-img src="cat-friendly-practice-certificado-prata.jpg" alt="Gato sobre o certificado Cat Friendly Practice Silver do Ventura Veterinária" widths="360,540,720" sizes="(min-width: 860px) 40vw, 90vw"></x-img>
+      <x-img src="cat-friendly-practice-certificado-prata.jpg" img-class="pos-topo" alt="Gato junto ao certificado Cat Friendly Practice do Ventura" widths="360,540,720" sizes="(min-width: 860px) 40vw, 90vw"></x-img>
     </div>
   </div>
 </section>
 
-<section class="section section--nevoa" id="exames" aria-labelledby="exames-titulo">
+<section class="section section--nevoa" id="consulta" aria-labelledby="consulta-titulo">
+  <div class="wrap split split--rev">
+    <div>
+      <h2 id="consulta-titulo" data-reveal>Uma consulta que considera a rotina do seu gato</h2>
+      <div class="prose" data-reveal style="--i:1">
+        <p>Alimentação, hábitos, convivência com outros animais e mudanças percebidas em casa são informações importantes para a avaliação.</p>
+        <p>Durante a consulta, a equipe conversa com o tutor, examina o paciente e orienta sobre prevenção, exames ou acompanhamento.</p>
+        <p>Se seu gato costuma apresentar dificuldade no transporte ou na consulta, informe isso ao agendar para receber orientações individualizadas.</p>
+      </div>
+      <h3 class="subhead" data-reveal style="--i:2">Informações que ajudam no atendimento</h3>
+      <ul class="checklist" data-reveal style="--i:2">
+        <li><x-icon name="check"></x-icon>Histórico de saúde e exames anteriores.</li>
+        <li><x-icon name="check"></x-icon>Medicamentos em uso.</li>
+        <li><x-icon name="check"></x-icon>Alimentação e rotina.</li>
+        <li><x-icon name="check"></x-icon>Mudanças de comportamento percebidas pelo tutor.</li>
+        <li><x-icon name="check"></x-icon>Carteira de vacinação, quando disponível.</li>
+      </ul>
+      <div class="acao-bloco" data-reveal style="--i:3">
+        <a class="btn" data-wa="Olá! Gostaria de consultar os horários para uma consulta do meu gato."><x-icon name="whatsapp"></x-icon>Consultar horários para meu gato</a>
+      </div>
+    </div>
+    <div class="split__media split__media--blob" data-reveal>
+      <x-img src="equipe-atendendo-gato.webp" alt="Duas profissionais do Ventura atendendo um gato branco no consultório" widths="360,540,720" sizes="(min-width: 860px) 40vw, 90vw"></x-img>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="medicina-felina" aria-labelledby="medicina-felina-titulo">
+  <div class="wrap">
+    <div class="highlight highlight--row" data-reveal>
+      <x-icon name="cat" class="highlight__icon"></x-icon>
+      <div>
+        <h2 id="medicina-felina-titulo">Procura atendimento em medicina felina?</h2>
+        <p>O Ventura oferece atendimento voltado à saúde dos gatos. Consulte a equipe sobre a agenda de medicina felina e informe se você já possui exames ou encaminhamento.</p>
+        <p>No agendamento, você recebe informações sobre o profissional disponível e as orientações para a consulta.</p>
+        <!-- CONFIRMAR COM CLIENTE: profissional de medicina felina (participação atual, registro, qualificação divulgável e agenda); só chamar de "especialista" com título confirmado -->
+        <div class="acao-bloco">
+          <a class="btn btn--dark" data-wa="Olá! Gostaria de consultar a agenda de atendimento em medicina felina para meu gato."><x-icon name="whatsapp"></x-icon>Consultar agenda de medicina felina</a>
+          <a class="link-more" href="/especialistas/">Conhecer a equipe</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section--nevoa" id="servicos" aria-labelledby="servicos-titulo">
   <div class="wrap">
     <header class="section-head">
-      <h2 id="exames-titulo" data-reveal>Exames para gatos</h2>
-      <p data-reveal style="--i:1">O laboratório fica dentro da clínica, com aparelhos Idexx®: o gato faz o exame durante a consulta, sem outra viagem de caixa de transporte. <a href="/laboratorio/">Ver todos os exames</a>.</p>
+      <h2 id="servicos-titulo" data-reveal>Conheça os cuidados disponíveis para seu gato</h2>
     </header>
     <ul class="cards">
-      <li class="card"><x-icon name="shield-check"></x-icon><h3>FIV e FeLV em 15 minutos</h3><p>Teste de ELISA que detecta os vírus da imunodeficiência felina (FIV) e da leucemia felina (FeLV). É exigido para o <a href="/hotel-para-gatos/">Hotel para Gatos</a>.</p></li>
-      <li class="card"><x-icon name="droplets"></x-icon><h3>Hemograma em 15 minutos</h3><p>Resultado ainda durante a consulta. Também faz parte dos exames antes de cirurgias e castrações.</p></li>
-      <li class="card"><x-icon name="flask-conical"></x-icon><h3>SDMA em 15 minutos</h3><p>Marcador precoce da função renal, útil no check-up, principalmente do gato idoso.</p></li>
-      <li class="card"><x-icon name="microscope"></x-icon><h3>Hormônios e rotina</h3><p>T4, T4 livre, TSH, glicemia, função renal e hepática, urina e fezes, com prazo informado pela equipe.</p></li>
-      <li class="card"><x-icon name="scan-line"></x-icon><h3>Raio-X e ultrassom</h3><p>Com hora marcada, no mesmo endereço, feitos por veterinários especialistas.</p></li>
-      <li class="card"><x-icon name="heart-pulse"></x-icon><h3>Exames do coração</h3><p>Ecocardiograma com cardiologista e eletrocardiograma feito na clínica, com laudo de cardiologista por telemedicina.</p></li>
+      <li class="card"><x-icon name="stethoscope"></x-icon><h3>Consulta veterinária</h3><p>Avaliação clínica, revisão do histórico e orientação sobre os cuidados e o acompanhamento.</p><div class="card__cta"><a class="btn btn--sm btn--ghost" href="/consulta-veterinaria/">Conhecer as consultas</a></div></li>
+      <li class="card"><x-icon name="flask-conical"></x-icon><h3>Laboratório Veterinário e exames</h3><p>Exames laboratoriais e de imagem conforme indicação, com orientações sobre preparo e agendamento.</p><div class="card__cta"><a class="btn btn--sm btn--ghost" href="/laboratorio/">Conhecer exames para gatos</a></div></li>
+      <li class="card"><x-icon name="syringe"></x-icon><h3>Vacinação</h3><p>Avaliação da carteira e orientação sobre o protocolo conforme idade, histórico e condições de vida.</p><div class="card__cta"><a class="btn btn--sm btn--ghost" href="/vacinacao/">Conhecer a vacinação</a></div></li>
+      <li class="card"><x-icon name="shield-check"></x-icon><h3>Castração</h3><p>Avaliação pré-operatória, planejamento do procedimento e acompanhamento da recuperação.</p><div class="card__cta"><a class="btn btn--sm btn--ghost" href="/castracao/">Conhecer a castração</a></div></li>
+      <li class="card"><x-icon name="scissors"></x-icon><h3>Cirurgias</h3><p>Procedimentos conforme indicação veterinária, com planejamento anestésico e monitorização.</p><div class="card__cta"><a class="btn btn--sm btn--ghost" href="/cirurgias-veterinarias/">Consultar sobre cirurgias</a></div></li>
+      <li class="card"><x-icon name="activity"></x-icon><h3>Tratamentos e acompanhamento</h3><p>Cuidados definidos conforme as necessidades e a evolução de cada paciente.</p><div class="card__cta"><a class="btn btn--sm btn--ghost" href="/tratamentos-e-terapias/">Consultar tratamentos para meu gato</a></div></li>
     </ul>
-    <p class="vac-note" data-reveal><a class="link-more" href="/2023/03/03/fiv-e-felv-como-cuidar-dos-gatos/">FIV e FeLV: como cuidar dos gatos</a></p>
+  </div>
+</section>
+
+<section class="section" id="exames" aria-labelledby="exames-titulo">
+  <div class="wrap split">
+    <div>
+      <h2 id="exames-titulo" data-reveal>Exames para gatos no mesmo endereço</h2>
+      <div class="prose" data-reveal style="--i:1">
+        <p>O Ventura possui laboratório próprio e oferece exames de imagem com agendamento. Conforme a avaliação, a equipe orienta quais exames são necessários e informa preparo, disponibilidade e prazo.</p>
+        <p>Alguns exames laboratoriais podem ter resultado em até 15 minutos. Esse prazo não se aplica a todos os exames.</p>
+      </div>
+      <ul class="destaques" data-reveal style="--i:2">
+        <li><h3>Exames laboratoriais</h3><p>Avaliações conforme a investigação e o acompanhamento do paciente.</p></li>
+        <li><h3>Testes de FIV e FeLV</h3><p>Disponíveis conforme indicação, com interpretação e orientações da equipe veterinária.</p></li>
+        <li><h3>Exames de imagem</h3><p>Raio-X, ultrassom e exames cardíacos conforme disponibilidade e agendamento.</p></li>
+      </ul>
+      <div class="acao-bloco" data-reveal style="--i:3">
+        <a class="btn" href="/laboratorio/"><x-icon name="microscope"></x-icon>Conhecer o Laboratório Veterinário</a>
+        <a class="btn btn--ghost" data-wa="Olá! Gostaria de consultar a disponibilidade e o preparo de um exame para meu gato. Exame solicitado, se houver: [informar]."><x-icon name="whatsapp"></x-icon>Consultar um exame para meu gato</a>
+      </div>
+      <x-services-index group="exame"></x-services-index>
+    </div>
+    <div class="split__media foto-retrato" data-reveal>
+      <x-img src="laboratorio-bancada-equipamentos-microscopio.jpg" alt="Equipamentos de análise e microscópio do laboratório do Ventura Vet" widths="360,540,720" sizes="(min-width: 860px) 36vw, 90vw"></x-img>
+    </div>
+  </div>
+</section>
+
+<section class="section section--nevoa" id="fases" aria-labelledby="fases-titulo">
+  <div class="wrap">
+    <header class="section-head">
+      <h2 id="fases-titulo" data-reveal>Do primeiro atendimento ao acompanhamento do gato idoso</h2>
+    </header>
+    <ul class="cards">
+      <li class="card"><x-icon name="paw-print"></x-icon><h3>Filhotes: os primeiros cuidados</h3><p>Avaliação inicial, orientação sobre vacinação, alimentação, controle de parasitas e adaptação à rotina da casa.</p></li>
+      <li class="card"><x-icon name="cat"></x-icon><h3>Gatos adultos: prevenção e acompanhamento</h3><p>Consultas para revisar os cuidados de saúde, acompanhar o peso e conversar sobre alimentação, saúde bucal e mudanças na rotina.</p></li>
+      <li class="card"><x-icon name="heart-pulse"></x-icon><h3>Gatos idosos: atenção às necessidades ao longo dos anos</h3><p>Acompanhamento conforme o histórico e a condição de saúde, com exames e cuidados definidos individualmente.</p></li>
+    </ul>
+    <div class="acao-bloco" data-reveal>
+      <a class="btn" data-wa="Olá! Gostaria de agendar uma avaliação para o meu gato."><x-icon name="whatsapp"></x-icon>Agendar avaliação do meu gato</a>
+    </div>
   </div>
 </section>
 
 <section class="section" id="vacinas" aria-labelledby="vacinas-titulo">
   <div class="wrap">
     <header class="section-head">
-      <h2 id="vacinas-titulo" data-reveal>Vacinas para gatos: do filhote ao adulto</h2>
-      <p data-reveal style="--i:1">Usamos somente vacinas importadas, mantidas sob temperatura controlada. O protocolo de cada gato é definido pelo veterinário na consulta, de acordo com a idade, o histórico e a rotina.</p>
+      <h2 id="vacinas-titulo" data-reveal>Vacinas para gatos com orientação veterinária</h2>
+      <p data-reveal style="--i:1">O planejamento da vacinação considera idade, histórico, condições de saúde e convivência com outros animais.</p>
     </header>
-    <ol class="steps">
-      <li>
-        <h3>Antes da primeira dose</h3>
-        <p>Exame veterinário e vermifugação. Se o filhote acabou de chegar de um gatil ou abrigo, observe-o por pelo menos uma semana antes de vacinar.</p>
-      </li>
-      <li>
-        <h3>A partir da sexta semana</h3>
-        <p>Tríplice felina, contra rinotraqueíte, calicivirose e panleucopenia: três doses, com intervalo de 3 ou 4 semanas, até pelo menos as 16 semanas de idade.</p>
-      </li>
-      <li>
-        <h3>No quarto mês</h3>
-        <p>Antirrábica, em dose única nessa fase. Os reforços seguem a orientação do veterinário.</p>
-      </li>
-    </ol>
-    <div class="highlight highlight--row vac-note" data-reveal>
-      <x-icon name="clipboard-check" class="highlight__icon"></x-icon>
-      <div>
-        <h3>Vai hospedar o seu gato?</h3>
-        <p>Na chegada ao <a href="/hotel-para-gatos/">Hotel para Gatos</a>, a equipe veterinária confere a carteira de vacinação e atualiza a vacina, se preciso. Vermífugo e antipulgas também precisam estar em dia.</p>
-      </div>
+    <div class="prose" data-reveal>
+      <p>Leve a carteira de vacinação, se tiver. Se o histórico for desconhecido ou incompleto, informe isso à equipe.</p>
+      <p>Na avaliação, o veterinário orienta sobre as vacinas e os reforços indicados.</p>
+    </div>
+    <div class="acao-bloco" data-reveal>
+      <a class="btn" data-wa="Olá! Gostaria de consultar a vacinação do meu gato. Idade: [informar]. Tenho a carteira de vacinação: [sim/não]."><x-icon name="whatsapp"></x-icon>Consultar vacinação para meu gato</a>
+      <a class="btn btn--ghost" href="/vacinacao/">Conhecer a vacinação</a>
     </div>
   </div>
 </section>
@@ -118,21 +191,19 @@ priority: 0.9
 <section class="section section--nevoa" id="castracao" aria-labelledby="castracao-titulo">
   <div class="wrap split split--rev">
     <div>
-      <h2 id="castracao-titulo" data-reveal>Castração de gatos e gatas</h2>
+      <h2 id="castracao-titulo" data-reveal>Castração de gatos e gatas com planejamento individual</h2>
       <div class="prose" data-reveal style="--i:1">
-        <p>A castração é feita no centro cirúrgico do Ventura, com anestesia por veterinários especializados em anestesiologia e monitorização contínua durante todo o procedimento, numa clínica pensada para o bem-estar dos gatos.</p>
+        <p>A castração começa com avaliação veterinária e definição dos exames e cuidados necessários.</p>
+        <p>O Ventura conta com centro cirúrgico e monitorização durante os procedimentos. A equipe orienta sobre preparo, recuperação e acompanhamento.</p>
+        <p>Os cuidados com o paciente felino fazem parte da proposta de atendimento da clínica com selo {{site.credentials.catFriendly}}.</p>
       </div>
-      <ul class="checklist" data-reveal style="--i:2">
-        <li><x-icon name="check"></x-icon>Consulta inicial com exames de sangue em 15 minutos e eletrocardiograma</li>
-        <li><x-icon name="check"></x-icon>Centro cirúrgico com monitor multiparamétrico e colchão térmico</li>
-        <li><x-icon name="check"></x-icon>Sutura absorvível: sem retorno para tirar pontos</li>
-        <li><x-icon name="check"></x-icon>Recuperação em casa sem cone nem roupinha</li>
-        <li><x-icon name="check"></x-icon>Hotel para Gatos recebe só gatos castrados e com FIV e FeLV negativos</li>
-      </ul>
-      <p data-reveal style="--i:3"><a class="link-more" href="/castracao/">Como funciona a castração</a> <a class="link-more" href="/2023/04/27/castracao-de-gatos-por-que-fazer/">Por que castrar o gato</a></p>
+      <div class="acao-bloco" data-reveal style="--i:2">
+        <a class="btn" href="/castracao/"><x-icon name="shield-check"></x-icon>Conhecer a castração de gatos</a>
+        <a class="btn btn--ghost" data-wa="Olá! Gostaria de consultar sobre um procedimento cirúrgico para o meu gato."><x-icon name="whatsapp"></x-icon>Consultar sobre um procedimento</a>
+      </div>
     </div>
     <div class="split__media split__media--blob" data-reveal>
-      <x-img src="cirurgia-equipe-paramentada.jpg" alt="Equipe veterinária paramentada no centro cirúrgico do Ventura" widths="360,540,720" sizes="(min-width: 860px) 40vw, 90vw"></x-img>
+      <x-img src="cirurgia-monitoramento-anestesico.jpg" alt="Profissional ao lado dos equipamentos de anestesia e monitorização do centro cirúrgico do Ventura" widths="360,540,720" sizes="(min-width: 860px) 40vw, 90vw"></x-img>
     </div>
   </div>
 </section>
@@ -140,47 +211,149 @@ priority: 0.9
 <section class="section" id="tratamentos" aria-labelledby="tratamentos-titulo">
   <div class="wrap">
     <header class="section-head">
-      <h2 id="tratamentos-titulo" data-reveal>Tratamentos e terapias para gatos</h2>
-      <p data-reveal style="--i:1">Especialistas com hora marcada e internação dia, no mesmo ambiente tranquilo da consulta.</p>
+      <h2 id="tratamentos-titulo" data-reveal>Acompanhamento conforme a necessidade do seu gato</h2>
+      <p data-reveal style="--i:1">Quando necessário, o atendimento pode envolver outras áreas da medicina veterinária e tratamentos específicos. Consulte a equipe sobre os profissionais disponíveis, os exames e o planejamento indicado para seu gato.</p>
     </header>
-    <ul class="cards">
-      <li class="card"><x-icon name="cat"></x-icon><h3>Medicina felina</h3><p>Consulta com especialista em medicina felina, com hora marcada. <a href="/especialistas/#amanda-oncins">Conheça a especialista</a></p></li>
-      <li class="card"><x-icon name="smile"></x-icon><h3>Tratamento de periodontia</h3><p>Saúde bucal com especialista em odontologia: doenças na boca podem evoluir até para doenças cardíacas.</p></li>
-      <li class="card"><x-icon name="hand"></x-icon><h3>Dermatologia e endocrinologia</h3><p>Pele, alergias e alterações hormonais, com especialista e exames no mesmo endereço.</p></li>
-      <li class="card"><x-icon name="sparkles"></x-icon><h3>Acupuntura e fisioterapia</h3><p>Tratamentos complementares e integrativos, usados na reabilitação.</p></li>
-      <li class="card"><x-icon name="shield-check"></x-icon><h3>Quimioterapia</h3><p>Para gatos diagnosticados com alguns tipos de câncer, com acompanhamento de oncologista.</p></li>
-      <li class="card"><x-icon name="bed"></x-icon><h3>Internação dia e fluidoterapia</h3><p>Baias confortáveis e oxigenioterapia para o gato que precisa ficar em observação durante o dia.</p></li>
+    <!-- CONFIRMAR COM CLIENTE: disponibilidade de cada área e cuidado para gatos; condições da internação diurna -->
+    <ul class="area-grid area-grid--simples" data-reveal>
+      <li><x-icon name="cat"></x-icon><strong>Medicina felina</strong></li>
+      <li><x-icon name="hand"></x-icon><strong>Dermatologia</strong></li>
+      <li><x-icon name="activity"></x-icon><strong>Endocrinologia</strong></li>
+      <li><x-icon name="heart-pulse"></x-icon><strong>Cardiologia</strong></li>
+      <li><x-icon name="smile"></x-icon><strong>Odontologia</strong></li>
+      <li><x-icon name="eye"></x-icon><strong>Oftalmologia</strong></li>
+      <li><x-icon name="bone"></x-icon><strong>Ortopedia</strong></li>
+      <li><x-icon name="brain"></x-icon><strong>Neurologia</strong></li>
+      <li><x-icon name="ribbon"></x-icon><strong>Oncologia</strong></li>
+      <li><x-icon name="accessibility"></x-icon><strong>Fisioterapia e acupuntura</strong></li>
+      <li><x-icon name="droplets"></x-icon><strong>Fluidoterapia</strong></li>
+      <li><x-icon name="bed"></x-icon><strong>Internação diurna</strong></li>
     </ul>
+    <p class="loc__nota" data-reveal>Veja também os <a href="/tratamentos-e-terapias/">tratamentos e terapias</a> e a <a href="/microchipagem/">microchipagem</a> para identificação do seu gato.</p>
+    <p class="loc__nota" data-reveal>A internação apresentada é diurna, conforme avaliação e disponibilidade, e não corresponde a atendimento veterinário durante a noite.</p>
+    <div class="acao-bloco" data-reveal>
+      <a class="btn" data-wa="Olá! Gostaria de consultar a disponibilidade de atendimento na área de [informar área ou necessidade] para o meu gato."><x-icon name="whatsapp"></x-icon>Consultar uma área de atendimento</a>
+    </div>
   </div>
 </section>
 
-<section class="section section--tight section--nevoa" aria-labelledby="mais-titulo">
+<section class="section section--nevoa" id="preparacao" aria-labelledby="preparacao-titulo">
   <div class="wrap">
-    <h2 id="mais-titulo" class="subhead" data-reveal>Mais cuidados para o seu gato</h2>
-    <ul class="svc-mini">
-      <li><a class="svc-mini__link" href="/hotel-para-gatos/"><x-icon name="cat"></x-icon><span><strong>Hotel para Gatos</strong><small>Hospedagem só para gatos em gatil telado, sem contato com outros animais.</small></span></a></li>
-      <li><a class="svc-mini__link" href="/banho-e-tosa/"><x-icon name="bath"></x-icon><span><strong>Banho e Tosa</strong><small>Ambiente climatizado e toalhas esterilizadas, inclusive para gatos.</small></span></a></li>
-      <li><a class="svc-mini__link" href="/veterinario-para-cachorro/"><x-icon name="dog"></x-icon><span><strong>Tem cachorro em casa?</strong><small>Consultas, vacinas, castração e terapias para cães.</small></span></a></li>
+    <header class="section-head">
+      <h2 id="preparacao-titulo" data-reveal>Vamos ajudar você a organizar a consulta</h2>
+      <p data-reveal style="--i:1">Ao agendar, informe como seu gato costuma reagir ao transporte e ao atendimento, além de medicamentos em uso e necessidades específicas. A equipe poderá orientar a preparação da visita conforme o paciente e o atendimento previsto.</p>
+    </header>
+    <ul class="checklist checklist--cols" data-reveal>
+      <li><x-icon name="check"></x-icon>Informar o motivo da consulta.</li>
+      <li><x-icon name="check"></x-icon>Separar exames anteriores e carteira de vacinação.</li>
+      <li><x-icon name="check"></x-icon>Relacionar medicamentos em uso.</li>
+      <li><x-icon name="check"></x-icon>Comunicar dificuldades em visitas anteriores.</li>
+      <li><x-icon name="check"></x-icon>Confirmar se o atendimento exige algum preparo.</li>
     </ul>
+    <div class="acao-bloco" data-reveal>
+      <a class="btn" data-wa="Olá! Gostaria de agendar uma consulta para meu gato e receber orientações para organizar a visita."><x-icon name="whatsapp"></x-icon>Pedir orientações para a consulta</a>
+    </div>
   </div>
 </section>
 
-<section class="section faq" id="perguntas" aria-labelledby="faq-titulo">
+<section class="section" id="estrutura" aria-labelledby="estrutura-titulo">
+  <div class="wrap split">
+    <div>
+      <h2 id="estrutura-titulo" data-reveal>Conheça o Ventura e os ambientes de atendimento</h2>
+      <div class="prose" data-reveal style="--i:1">
+        <p>O Ventura está no Paraíso desde 2007 e reúne consultórios, laboratório e centro cirúrgico no mesmo endereço.</p>
+        <p>O atendimento felino conta com consultório exclusivo e sala de espera separada dos cães, em uma clínica com selo {{site.credentials.catFriendly}}.</p>
+        <p>À frente da clínica está a {{site.founder.name}}, médica-veterinária formada pela FMVZ-USP, proprietária e responsável técnica.</p>
+      </div>
+      <!-- CONFIRMAR COM CLIENTE: composição atual da equipe na foto; estrutura atual do consultório e da espera felina (sem foto específica fornecida) -->
+      <p class="equipe-id" data-reveal style="--i:2"><strong>{{site.founder.name}}</strong>{{site.founder.crmv}}</p>
+      <div class="acao-bloco" data-reveal style="--i:3">
+        <a class="btn" href="/especialistas/"><x-icon name="user-round-check"></x-icon>Conhecer nossa equipe</a>
+      </div>
+    </div>
+    <div class="split__media split__media--blob" data-reveal>
+      <x-img src="equipe-ventura-parede-verde.jpg" alt="Equipe do Ventura Vet reunida na clínica" widths="360,540,720" sizes="(min-width: 860px) 40vw, 90vw"></x-img>
+    </div>
+  </div>
+</section>
+
+<section class="section section--nevoa" id="avaliacoes" aria-labelledby="avaliacoes-titulo">
+  <div class="wrap">
+    <header class="section-head">
+      <h2 id="avaliacoes-titulo" data-reveal>O que os tutores contam sobre o Ventura</h2>
+    </header>
+    <x-reviews></x-reviews>
+  </div>
+</section>
+
+<section class="section" id="localizacao" aria-labelledby="localizacao-titulo">
+  <div class="wrap loc">
+    <div>
+      <h2 id="localizacao-titulo" data-reveal>Atendimento veterinário para gatos no Paraíso</h2>
+      <div class="prose" data-reveal style="--i:1">
+        <p>O Ventura fica na Rua Otávio Nébias, 190, no Paraíso, em São Paulo.</p>
+        <p>Recebemos tutores do Paraíso e de regiões próximas, como Vila Mariana, Bela Vista, Jardins e Jardim Paulista.</p>
+        <p>Consulte os horários para o atendimento do seu gato em uma clínica com selo {{site.credentials.catFriendly}}.</p>
+      </div>
+      <address class="loc__end" data-reveal style="--i:2"><strong>Ventura Veterinária &amp; Pet Shop</strong>Rua Otávio Nébias, 190 – Paraíso<br>São Paulo – SP<br>CEP 04002-011</address>
+      <dl class="hours" data-reveal style="--i:2">
+        <div><dt>Segunda a sexta</dt><dd>Das 9h às 18h</dd></div>
+        <div><dt>Sábado</dt><dd>Das 9h às 16h</dd></div>
+        <div><dt>Domingo</dt><dd>Fechado</dd></div>
+      </dl>
+      <div class="acao-bloco" data-reveal style="--i:3">
+        <a class="btn btn--ghost" href="{{site.google.mapsUrl}}" target="_blank" rel="noopener"><x-icon name="map-pin"></x-icon>Como chegar</a>
+        <a class="btn" data-wa="Olá! Vim pela página de atendimento para gatos e gostaria de consultar os horários para uma consulta."><x-icon name="whatsapp"></x-icon>Agendar consulta para meu gato</a>
+      </div>
+      <p class="loc__nota" data-reveal style="--i:3">A clínica não oferece atendimento veterinário 24 horas. Outros serviços do Ventura possuem condições e horários próprios.</p>
+    </div>
+    <div class="loc__foto" data-reveal>
+      <x-img src="fachada-clinica-ventura-paraiso.jpg" alt="Fachada do Ventura Vet no Paraíso" widths="360,540,720" sizes="(min-width: 860px) 40vw, 90vw"></x-img>
+    </div>
+  </div>
+</section>
+
+<section class="section faq section--nevoa" id="perguntas" aria-labelledby="faq-titulo">
   <div class="wrap faq__grid">
-    <header class="faq__head"><h2 id="faq-titulo">Dúvidas sobre o atendimento de gatos</h2></header>
+    <header class="faq__head"><h2 id="faq-titulo">Dúvidas sobre o atendimento veterinário para gatos</h2></header>
     <div class="faq__list">
-      <details class="faq__item" name="faq-gatos"><summary>Os gatos são atendidos separados dos cães?</summary><div class="faq__answer"><p>Sim. O Ventura tem consultório exclusivo para felinos e sala de espera separada, com difusor e spray com Feliway®, e o selo {{site.credentials.catFriendly}}.</p></div></details>
-      <details class="faq__item" name="faq-gatos"><summary>Com que idade o gato toma a primeira vacina?</summary><div class="faq__answer"><p>A partir da sexta semana de vida, com a tríplice felina, depois de exame veterinário e vermifugação. São três doses, com intervalo de 3 ou 4 semanas, e a antirrábica entra no quarto mês.</p></div></details>
-      <details class="faq__item" name="faq-gatos"><summary>Quanto tempo demora o teste de FIV e FeLV?</summary><div class="faq__answer"><p>Até 15 minutos. O teste de ELISA é feito no nosso laboratório, durante a consulta.</p></div></details>
-      <details class="faq__item" name="faq-gatos"><summary>O que é o Feliway®?</summary><div class="faq__answer"><p>É um feromônio felino sintético. Usamos difusor e spray no consultório e na sala de espera dos gatos, o que deixa o ambiente bem menos estressante.</p></div></details>
-      <details class="faq__item" name="faq-gatos"><summary>Vocês castram gatas?</summary><div class="faq__answer"><p>Sim. Castramos gatos e gatas. O valor depende do sexo do animal, e o orçamento é feito depois da avaliação; peça pelo WhatsApp {{site.whatsapp.display}}.</p></div></details>
-      <details class="faq__item" name="faq-gatos"><summary>Meu gato pode ficar hospedado no Ventura?</summary><div class="faq__answer"><p>Sim, no <a href="/hotel-para-gatos/">Hotel para Gatos</a>, só para felinos. O gato precisa ser castrado e ter teste de FIV e FeLV negativo; se você não tiver o exame, a equipe faz o teste aqui, antes da hospedagem.</p></div></details>
+      <details class="faq__item" name="faq-gatos"><summary>O Ventura possui atendimento para gatos?</summary><div class="faq__answer"><p>Sim. A clínica atende felinos e possui consultório exclusivo e sala de espera separada dos cães, além do selo {{site.credentials.catFriendly}}.</p></div></details>
+      <details class="faq__item" name="faq-gatos"><summary>A clínica atende somente gatos?</summary><div class="faq__answer"><p>Não. O Ventura atende cães e gatos, com estrutura dedicada ao atendimento felino.</p></div></details>
+      <details class="faq__item" name="faq-gatos"><summary>O que significa Cat Friendly Practice?</summary><div class="faq__answer"><p>É um reconhecimento relacionado à organização do ambiente e das práticas de atendimento para considerar as necessidades dos gatos. No Ventura, o atendimento felino conta com consultório exclusivo e sala de espera separada.</p></div></details>
+      <details class="faq__item" name="faq-gatos"><summary>Vocês têm atendimento em medicina felina?</summary><div class="faq__answer"><p>Consulte a equipe sobre os profissionais e a agenda de medicina felina. Informe se já possui exames ou encaminhamento.</p></div></details>
+      <details class="faq__item" name="faq-gatos"><summary>Meu gato fica muito agitado na consulta. O que devo fazer?</summary><div class="faq__answer"><p>Avise a equipe ao agendar. Você receberá orientações conforme o histórico e as necessidades do seu gato. Não administre medicamentos por conta própria.</p></div></details>
+      <details class="faq__item" name="faq-gatos"><summary>O que levar à consulta?</summary><div class="faq__answer"><p>Se tiver, leve exames anteriores, carteira de vacinação e informações sobre medicamentos em uso. Conte também sobre mudanças percebidas na rotina.</p></div></details>
+      <details class="faq__item" name="faq-gatos"><summary>Gatos que vivem dentro de casa também podem passar por avaliação?</summary><div class="faq__answer"><p>Sim. Informe à equipe as condições de vida do seu gato para receber orientação sobre prevenção e acompanhamento.</p></div></details>
+      <details class="faq__item" name="faq-gatos"><summary>Vocês realizam exames para gatos?</summary><div class="faq__answer"><p>Sim. O Ventura possui laboratório próprio e oferece exames de imagem com agendamento. Consulte preparo, disponibilidade e prazo.</p></div></details>
+      <details class="faq__item" name="faq-gatos"><summary>Quanto tempo demora o teste de FIV e FeLV?</summary><div class="faq__answer"><p>O teste disponível na clínica pode ter resultado em até 15 minutos, conforme as condições de realização. A equipe informa a indicação e interpreta o resultado.</p></div></details>
+      <details class="faq__item" name="faq-gatos"><summary>Todos os exames ficam prontos em 15 minutos?</summary><div class="faq__answer"><p>Não. O prazo depende do exame solicitado. Confirme com a equipe antes do atendimento.</p></div></details>
+      <details class="faq__item" name="faq-gatos"><summary>Vocês castram gatos e gatas?</summary><div class="faq__answer"><p>Sim. O procedimento depende de avaliação e planejamento veterinário. Consulte a <a href="/castracao/">página de castração</a> para conhecer as etapas.</p></div></details>
+      <details class="faq__item" name="faq-gatos"><summary>Quanto custa a consulta para gato?</summary><div class="faq__answer"><p>Entre em contato para consultar o valor e as condições do atendimento desejado. Exames e procedimentos deverão ter seus custos esclarecidos antes da realização.</p></div></details>
+      <details class="faq__item" name="faq-gatos"><summary>O atendimento é particular?</summary><div class="faq__answer"><p>Sim. A clínica realiza atendimento particular e não atende convênios ou planos de saúde pet.</p></div></details>
+      <details class="faq__item" name="faq-gatos"><summary>A clínica atende 24 horas?</summary><div class="faq__answer"><p>Não. O atendimento clínico acontece de segunda a sexta, das 9h às 18h, e aos sábados, das 9h às 16h. Aos domingos, a clínica fica fechada.</p></div></details>
+      <details class="faq__item" name="faq-gatos"><summary>Como agendar?</summary><div class="faq__answer"><p>Entre em contato pelo WhatsApp ou telefone para consultar os horários. Informe o motivo do atendimento e qualquer necessidade específica do seu gato.</p></div></details>
     </div>
   </div>
 </section>
 
 <section class="section section--tight">
-  <div class="wrap"><x-service-nav current="veterinario-para-gatos"></x-service-nav></div>
+  <div class="wrap">
+    <div class="complemento" data-reveal>
+      <div>
+        <h2>Vai viajar e precisa de hospedagem para seu gato?</h2>
+        <p>Conheça o Hotel para Gatos do Ventura e consulte a estrutura, os requisitos e a disponibilidade. O serviço fica no mesmo estabelecimento da clínica com selo {{site.credentials.catFriendly}}.</p>
+      </div>
+      <a class="btn" href="/hotel-para-gatos/"><x-icon name="cat"></x-icon>Conhecer o Hotel para Gatos</a>
+    </div>
+  </div>
 </section>
 
-<x-include src="cta-final"></x-include>
+<x-cta-final>
+  <h2 id="cta-final-titulo">Vamos organizar o próximo cuidado do seu gato?</h2>
+  <p>Consulte os horários e tire suas dúvidas sobre o atendimento felino do Ventura.</p>
+  <p>Estamos no Paraíso, em São Paulo, com consultório exclusivo para gatos e selo {{site.credentials.catFriendly}}.</p>
+  <div class="cta-final__actions">
+    <a class="btn btn--dark" data-wa="Olá! Vim pela página de atendimento para gatos e gostaria de consultar os horários para uma consulta. Idade do gato: [informar]. Motivo do atendimento: [informar]."><x-icon name="whatsapp"></x-icon>Agendar consulta para meu gato</a>
+    <a class="btn btn--light" href="tel:{{site.phone.e164}}" data-track="phone"><x-icon name="phone"></x-icon>Ligar para a clínica</a>
+  </div>
+</x-cta-final>

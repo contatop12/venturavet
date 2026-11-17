@@ -10,7 +10,7 @@ import { paths } from './paths.ts';
 const lucideDir = join(paths.root, 'node_modules/lucide-static/icons');
 const simpleDir = join(paths.root, 'node_modules/simple-icons/icons');
 
-const BRAND = new Set(['whatsapp', 'instagram', 'facebook', 'youtube', 'google']);
+const BRAND = new Set(['whatsapp', 'instagram', 'facebook', 'tiktok', 'youtube', 'google']);
 
 const CUSTOM: Record<string, { viewBox: string; fill: boolean; body: string }> = {
   'star-fill': { viewBox: '0 0 24 24', fill: true, body: '<path d="M12 2.6l2.9 5.88 6.5.94-4.7 4.58 1.11 6.47L12 17.42l-5.81 3.05 1.11-6.47-4.7-4.58 6.5-.94z"/>' },

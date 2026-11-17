@@ -1,63 +1,74 @@
 /* ---------- Submenus (desktop) ----------
-   Clínica Veterinária: duas colunas (para cães / para gatos). Day Care / Hotel: lista simples. */
-@media (min-width: 1281px) {
+   Painéis no estilo da referência do cliente: faixa azul com ícone e nome do grupo, "Visão geral"
+   e listas com setinhas laranja. Clínica: duas colunas (Por espécie / Serviços clínicos). */
+@media (min-width: 1181px) {
   .nav__sub {
-    display: block; left: 50%; top: calc(100% + 0.75rem);
-    min-width: 13rem; padding: 0.6rem;
+    display: block; left: 50%; top: calc(100% + 0.6rem); z-index: 5;
+    min-width: 17rem; padding: 0 0 0.75rem; overflow: hidden;
     background: var(--branco); border: 1px solid var(--linha); border-radius: var(--r-md);
     box-shadow: var(--shadow);
     opacity: 0; visibility: hidden; transform: translate(-50%, 0.5rem);
     transition: opacity 0.25s, transform 0.35s var(--ease-out), visibility 0.25s;
-    &::before { content: ''; position: absolute; inset: -0.85rem 0 auto; height: 0.85rem; }
-    ul { display: grid; gap: 0.1rem; padding: 0; list-style: none; }
+    &::before { content: ''; position: absolute; inset: -0.75rem 0 auto; height: 0.75rem; }
+    ul { display: grid; gap: 0.05rem; padding: 0; list-style: none; }
     a {
-      display: flex; align-items: center; gap: 0.6rem; padding: 0.6rem 0.75rem; border-radius: var(--r-sm);
-      font-size: 0.95rem; font-weight: 600; white-space: nowrap; text-decoration: none;
+      display: flex; align-items: center; gap: 0.45rem; padding: 0.5rem 0.75rem; border-radius: var(--r-sm);
+      font-size: 0.97rem; font-weight: 600; color: var(--tinta); white-space: nowrap; text-decoration: none;
       transition: background-color 0.2s, color 0.2s;
+      .icon { flex: none; width: 1rem; height: 1rem; color: var(--laranja); stroke-width: 3; }
       &:hover, &:focus-visible { background: var(--nevoa); color: var(--laranja-texto); }
       &[aria-current='page'] { background: var(--laranja-suave); }
     }
-    .icon { width: 1.25rem; height: 1.25rem; color: var(--laranja-texto); }
   }
-  .nav__sub--cols { width: 29rem; }
-  .nav__cols { display: grid; grid-template-columns: 1fr 1fr; }
+  .nav__sub-head {
+    display: flex; align-items: center; gap: 0.6rem; margin: 0 0 0.6rem; padding: 0.85rem 1.1rem;
+    background: var(--tinta); color: var(--branco);
+    font-family: var(--f-display); font-size: 1.15rem; font-weight: 800;
+    .icon { width: 1.75rem; height: 1.75rem; color: var(--laranja); }
+  }
+  .nav__sub > ul, .nav__overview, .nav__cols { margin-inline: 0.5rem; }
+  .nav__overview { font-family: var(--f-display); font-size: 1.05rem !important; font-weight: 800 !important; }
+  .nav__sub--cols { width: 34rem; }
+  .nav__cols { display: grid; grid-template-columns: 0.9fr 1.1fr; margin-top: 0.35rem; }
   .nav__col + .nav__col { margin-left: 0.5rem; padding-left: 0.5rem; border-left: 1px solid var(--linha); }
   .nav__col-title {
-    display: flex; align-items: center; gap: 0.5rem; margin: 0.25rem 0.75rem 0.35rem; padding-bottom: 0.5rem;
-    border-bottom: 2px solid var(--laranja-suave);
-    font-family: var(--f-display); font-size: 1rem; font-weight: 800; color: var(--tinta);
+    margin: 0.15rem 0.5rem 0.35rem; padding: 0.35rem 0.75rem; border-radius: var(--r-sm);
+    background: #dbeeff; font-family: var(--f-display); font-size: 0.98rem; font-weight: 800; color: var(--tinta);
   }
-  .nav__sub .nav__col-title a { display: inline; padding: 0; font: inherit; color: inherit; &:hover, &:focus-visible, &[aria-current='page'] { background: none; color: var(--laranja-texto); } &:hover, &:focus-visible { text-decoration: underline; } }
   .nav__has-sub:hover .nav__sub,
   .nav__has-sub:focus-within .nav__sub,
   .nav__has-sub.is-open .nav__sub { opacity: 1; visibility: visible; transform: translate(-50%, 0); }
   .nav__has-sub:hover .nav__toggle .icon, .nav__has-sub.is-open .nav__toggle .icon { transform: rotate(180deg); }
-  .nav__extra { display: none; }
+  /* A Clínica fica à esquerda: o painel largo abre alinhado ao item, sem sair da tela */
+  .nav__menu > .nav__item:first-child .nav__sub { left: 0; transform: translate(0, 0.5rem); }
+  .nav__menu > .nav__item:first-child:is(:hover, :focus-within, .is-open) .nav__sub { transform: none; }
 }
 
 /* ---------- Painel do menu (tablet e celular) ---------- */
-@media (max-width: 1280px) {
+@media (max-width: 1180px) {
   .nav {
     display: flex; flex-direction: column; gap: 1.5rem;
-    padding: 1.5rem var(--gutter) calc(2rem + env(safe-area-inset-bottom));
+    padding: 1rem var(--gutter) calc(2rem + env(safe-area-inset-bottom));
     background: var(--branco); overflow-y: auto; overscroll-behavior: contain;
     transform: translateY(-1rem);
     transition: opacity 0.3s, transform 0.4s var(--ease-out), visibility 0.3s;
   }
-  .nav > ul { flex-direction: column; align-items: stretch; gap: 0; }
-  .nav > ul > li { border-bottom: 1px solid var(--linha); }
-  .nav__link { min-height: 3.5rem; padding-inline: 0; font-family: var(--f-display); font-size: 1.5rem; font-weight: 800; border-radius: 0; white-space: normal; &:hover { background: none; } }
+  .nav__menu { flex-direction: column; align-items: stretch; }
+  .nav__menu > li { border-bottom: 1px solid var(--linha); }
+  .nav__link { flex: 1; min-height: 3.5rem; padding-inline: 0; font-size: 1.3rem; font-weight: 800; border-radius: 0; &:hover { background: none; } > .icon { width: 1.9rem; height: 1.9rem; } }
   .nav__has-sub { flex-wrap: wrap; justify-content: space-between; }
   .nav__toggle { width: 3rem; height: 3rem; margin: 0; background: var(--nevoa); .icon { width: 1.25rem; height: 1.25rem; } }
-  .nav__sub { position: static; flex-basis: 100%; padding-bottom: 1rem; }
+  .nav__sub { position: static; flex-basis: 100%; padding: 0 0 1rem 0.25rem; }
+  .nav__sub-head { display: none; }
   .nav__has-sub.is-open .nav__sub { display: block; }
   .nav__has-sub.is-open .nav__toggle .icon { transform: rotate(180deg); }
   .nav__sub ul { padding: 0; list-style: none; }
-  .nav__cols { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-  .nav__col-title { display: flex; align-items: center; gap: 0.5rem; padding-block: 0.25rem 0.35rem; font-family: var(--f-display); font-size: 1.05rem; font-weight: 800; .icon { width: 1.25rem; height: 1.25rem; color: var(--laranja-texto); } }
-  .nav__sub a { display: flex; align-items: center; gap: 0.75rem; min-height: 2.75rem; text-decoration: none; font-weight: 600; line-height: 1.25; .icon { width: 1.25rem; height: 1.25rem; color: var(--laranja-texto); } }
-  .nav__sub .nav__col-title a { display: inline-flex; min-height: 2.75rem; font: inherit; color: inherit; }
+  .nav__cols { display: grid; gap: 0.75rem; }
+  .nav__col-title { margin-top: 0.5rem; font-family: var(--f-display); font-size: 0.85rem; font-weight: 800; letter-spacing: 0.04em; text-transform: uppercase; color: var(--tinta-2); }
+  .nav__sub a { display: flex; align-items: center; gap: 0.6rem; min-height: 2.75rem; text-decoration: none; font-weight: 600; line-height: 1.25; .icon { flex: none; width: 1rem; height: 1rem; color: var(--laranja); stroke-width: 3; } }
+  .nav__overview { font-weight: 800 !important; }
   .nav__extra { display: grid; gap: 0.75rem; margin-top: auto; p { font-size: 0.9rem; color: var(--tinta-2); } }
+  .nav__inst { display: flex; flex-wrap: wrap; gap: 0.25rem 1.25rem; padding-bottom: 0.5rem; a { font-weight: 700; text-decoration: none; min-height: 2.75rem; display: inline-flex; align-items: center; } }
   .menu-open .nav { visibility: visible; opacity: 1; transform: none; }
   .menu-open .menu-btn .icon-menu { display: none; }
   .menu-open .menu-btn .icon-x { display: block; }
@@ -68,3 +79,35 @@
 /* Barra de progresso de leitura */
 .progress { position: absolute; inset: auto 0 -1px; height: 3px; pointer-events: none; }
 .progress span { display: block; height: 100%; background: var(--laranja); transform-origin: left; transform: scaleX(var(--p, 0)); }
+
+/* ---------- Seletor de atendimento (<dialog>) ----------
+   Painel à direita no desktop (como na referência) e folha inferior no celular. */
+.atend {
+  width: min(26rem, calc(100vw - 2rem)); max-height: calc(100dvh - 2rem); margin: auto 1rem auto auto; padding: 0;
+  border: 0; border-radius: var(--r-lg); background: var(--branco); color: var(--tinta);
+  box-shadow: 0 30px 80px -20px rgb(19 41 61 / 45%);
+  &::backdrop { background: rgb(19 41 61 / 45%); backdrop-filter: blur(3px); }
+  &[open] { animation: atend-in 0.35s var(--ease-out); }
+}
+@keyframes atend-in { from { opacity: 0; transform: translateX(1.5rem); } }
+.atend__panel { position: relative; display: grid; gap: 0.9rem; padding: 1.5rem 1.25rem 1.25rem; }
+.atend__close { position: absolute; top: 0.75rem; right: 0.75rem; display: grid; place-items: center; width: 2.75rem; height: 2.75rem; border-radius: 999px; background: var(--nevoa); .icon { width: 1.25rem; height: 1.25rem; } }
+.atend__title { display: flex; align-items: center; gap: 0.6rem; padding-right: 3rem; font-family: var(--f-display); font-size: 1.75rem; font-weight: 900; line-height: 1; .icon { width: 2.25rem; height: 2.25rem; color: #1f9d55; } }
+.atend__lede { font-size: 1rem; color: var(--tinta-2); }
+.atend__list { display: grid; gap: 0.5rem; padding: 0; margin: 0; list-style: none; }
+.atend__list a {
+  display: flex; align-items: center; gap: 0.85rem; min-height: 3.25rem; padding: 0.55rem 0.9rem;
+  border: 1px solid var(--linha); border-radius: var(--r-sm); background: var(--branco);
+  font-family: var(--f-display); font-weight: 800; font-size: 1.05rem; text-decoration: none; color: var(--tinta);
+  transition: border-color 0.2s, background-color 0.2s, transform 0.25s var(--ease-out);
+  > .icon:first-child { flex: none; width: 1.75rem; height: 1.75rem; color: var(--laranja); }
+  span { flex: 1; }
+  .atend__go { width: 1.1rem; height: 1.1rem; color: var(--traco); }
+  &:hover, &:focus-visible { border-color: #1f9d55; background: #f0fbf4; transform: translateX(3px); .atend__go { color: #1f9d55; } }
+}
+.atend__note { font-size: 0.85rem; color: var(--tinta-2); a { font-weight: 700; color: var(--tinta); } }
+.atend-open { overflow: hidden; }
+@media (max-width: 600px) {
+  .atend { width: 100%; max-width: none; margin: auto 0 0; border-radius: var(--r-lg) var(--r-lg) 0 0; padding-bottom: env(safe-area-inset-bottom); &[open] { animation-name: atend-up; } }
+  @keyframes atend-up { from { opacity: 0; transform: translateY(2rem); } }
+}

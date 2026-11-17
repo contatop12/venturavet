@@ -110,42 +110,50 @@ export const components: Record<string, Component> = {
       .join('')}</ol></nav>`;
   },
 
+  /**
+   * Cartões de serviços com foto. Sem atributo: os sete serviços da home (três grandes + quatro menores).
+   * group="clinica" | "exame" | "especie": cartões compactos do grupo (ex.: na Clínica e em /servicos/).
+   */
   'x-services-index': ($, el, ctx) => {
-    ctx.icons.add('arrow-up-right');
-    // group="outros": serviços com poucas vagas, em cartões compactos (menos destaque)
-    if (el.attr('group') === 'outros') {
-      const list = services.filter((s) => s.group === 'outros');
+    ctx.icons.add('arrow-right');
+    const group = el.attr('group');
+    if (group) {
+      const list = services.filter((s) => s.group === group && s.slug !== el.attr('exclude'));
       list.forEach((s) => ctx.icons.add(s.icon));
       return `<ul class="svc-mini">${list
         .map((s) => `<li><a class="svc-mini__link" href="${s.path}">${icon(s.icon)}<span><strong>${esc(s.navName)}</strong><small>${esc(s.short)}</small></span></a></li>`)
         .join('')}</ul>`;
     }
-    return `<ul class="svc-index" data-svc-index>${services
+    const heading = el.attr('heading') ?? 'h3';
+    return `<ul class="svc-cards">${services
       .filter((s) => s.group === 'principal')
       .map(
-        (s) => `<li class="svc-index__item">
-  <a class="svc-index__link" href="${s.path}">
-    <span class="svc-index__name">${esc(s.name)}</span>
-    <span class="svc-index__desc">${esc(s.short)}</span>
-    <span class="svc-index__go" aria-hidden="true">${icon('arrow-up-right')}</span>
+        (s, i) => `<li class="svc-card${i < 3 ? ' svc-card--lg' : ''}" data-reveal style="--i:${i % 4}">
+  <a class="svc-card__link" href="${s.path}">
+    <x-img class="svc-card__img" src="${s.image}" alt="${attr(s.imageAlt)}" widths="360,540,720" sizes="${i < 3 ? '(min-width: 1000px) 380px, (min-width: 640px) 45vw, 92vw' : '(min-width: 1000px) 280px, (min-width: 640px) 45vw, 92vw'}"></x-img>
+    <span class="svc-card__body">
+      <${heading} class="svc-card__name">${esc(s.name)}</${heading}>
+      <span class="svc-card__desc">${esc(s.short)}</span>
+      <span class="svc-card__go">${esc(s.cta)}${icon('arrow-right')}</span>
+    </span>
   </a>
-  <x-img class="svc-index__img" src="${s.image}" alt="${attr(s.imageAlt)}" widths="360,540,720" sizes="(min-width: 960px) 340px, 30vw"></x-img>
 </li>`,
       )
       .join('')}</ul>`;
   },
 
+  /** "Também no Ventura": os sete serviços principais (menos o atual), no fim das páginas de serviço. */
   'x-service-nav': ($, el, ctx) => {
     const current = el.attr('current');
-    services.forEach((s) => ctx.icons.add(s.icon));
-    return `<nav class="svc-nav" aria-label="Outros serviços"><p class="svc-nav__title">Também no Ventura</p><ul>${services
-      .filter((s) => s.slug !== current && s.group !== 'especie')
+    const list = services.filter((s) => s.slug !== current && s.group === 'principal');
+    list.forEach((s) => ctx.icons.add(s.icon));
+    return `<nav class="svc-nav" aria-label="Outros serviços"><p class="svc-nav__title">Também no Ventura</p><ul>${list
       .map((s) => `<li><a href="${s.path}">${icon(s.icon)}<span><strong>${esc(s.navName)}</strong><small>${esc(s.short)}</small></span></a></li>`)
       .join('')}</ul></nav>`;
   },
 
   'x-reviews': ($, el, ctx) => {
-    ctx.icons.add('google');
+    ['google', 'chevron-left', 'chevron-right'].forEach((i) => ctx.icons.add(i));
     const cards = reviews
       .map(
         (r) => `<li class="review"><figure>
@@ -159,6 +167,7 @@ export const components: Record<string, Component> = {
   <div class="reviews__summary">
     <p class="reviews__score">${icon('google', 'reviews__g')}<span>${stars(ctx)}<strong>${site.google.reviewCount} avaliações no Google</strong></span></p>
     <p class="reviews__links"><a href="${site.google.reviewsUrl}" target="_blank" rel="noopener">Ler todas no Google</a><a href="${site.google.writeReviewUrl}" target="_blank" rel="noopener">Avaliar o Ventura</a></p>
+    <p class="reviews__nav"><button class="reviews__btn" type="button" data-reviews-prev aria-label="Avaliações anteriores">${icon('chevron-left')}</button><button class="reviews__btn" type="button" data-reviews-next aria-label="Próximas avaliações">${icon('chevron-right')}</button></p>
   </div>
   <div class="reviews__viewport" data-marquee tabindex="0" role="region" aria-label="Avaliações de clientes no Google">
     <ul class="reviews__track">${cards}</ul>
@@ -169,7 +178,11 @@ export const components: Record<string, Component> = {
   'x-latest-posts': ($, el, ctx) => {
     const n = Number(el.attr('count') ?? 3);
     const cat = el.attr('category');
-    const list = getPosts().filter((p) => !cat || p.categories.includes(cat)).slice(0, n);
+    // slugs="a,b,c": escolhe os artigos (na ordem dada); sem isso, os mais recentes
+    const slugs = el.attr('slugs')?.split(',').map((x) => x.trim());
+    const list = slugs
+      ? slugs.map((sl) => { const p = getPosts().find((x) => x.slug === sl); if (!p) throw new Error(`Post inexistente: ${sl}`); return p; })
+      : getPosts().filter((p) => !cat || p.categories.includes(cat)).slice(0, n);
     return `<div class="post-grid">${list.map((p) => postCard(p, ctx)).join('')}</div>`;
   },
 
@@ -279,7 +292,40 @@ export const components: Record<string, Component> = {
   <div><dt>Clínica e Laboratório</dt><dd>${esc(site.hours.clinicDisplay)}</dd></div>
   <div><dt>Banho e Tosa</dt><dd>${esc(site.hours.groomingDisplay)}</dd></div>
   <div><dt>Day Care</dt><dd>${esc(site.hours.daycareDisplay)}</dd></div>
+  <div><dt>Hotéis</dt><dd>${esc(site.hours.hotelDisplay)}</dd></div>
 </dl>`;
+  },
+
+  /**
+   * Bloco final laranja (mapa, endereço e horários). Sem conteúdo: texto geral do briefing da home.
+   * Com conteúdo interno (h2, parágrafos e botões), usa o texto da página no lugar do geral.
+   */
+  'x-cta-final': ($, el, ctx) => {
+    const custom = (el.html() ?? '').trim();
+    const copy = custom || `<h2 id="cta-final-titulo">Seu pet merece o melhor, num só endereço.</h2>
+        <p>No Ventura Vet, você encontra clínica veterinária para cães e gatos, consultas, vacinação, especialidades, cirurgias e castração, exames e laboratório, Day Care para cachorros, hotel para cães, hotel para gatos, natação e banho e tosa. Tudo na ${esc(site.address.street)}, no Paraíso, em São Paulo.</p>
+        <p>Converse com nossa equipe para agendar um atendimento ou consultar a disponibilidade do serviço que seu pet precisa.</p>
+        <div class="cta-final__actions">
+          <button class="btn btn--dark" data-atendimento><x-icon name="whatsapp"></x-icon>Entrar em contato</button>
+          <a class="btn btn--light" href="${site.google.mapsUrl}" target="_blank" rel="noopener"><x-icon name="map-pin"></x-icon>Como chegar</a>
+        </div>`;
+    const id = custom.match(/<h2[^>]*id="([^"]+)"/)?.[1] ?? 'cta-final-titulo';
+    return `<section class="cta-final" aria-labelledby="${id}">
+  <div class="wrap">
+    <div class="cta-final__panel">
+      <x-img class="cta-final__pets" src="caes-e-gatos-espiando.webp" alt="" decorative widths="540,960,1280" sizes="(min-width: 1100px) 640px, 90vw"></x-img>
+      <div class="cta-final__copy">${copy}</div>
+      <div class="cta-final__visit">
+        <x-map></x-map>
+        <div class="cta-final__info">
+          <x-nap></x-nap>
+          <x-hours></x-hours>
+          <p class="cta-final__note">Clínica veterinária: atendimento em horário comercial. Hotéis: acompanhamento por monitores 24 horas, com horários específicos de entrada e saída.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>`;
   },
 };
 

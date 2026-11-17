@@ -1,0 +1,86 @@
+/* Estilos próprios das páginas do grupo "servicos" (escopar sempre por uma classe da página). */
+
+/* ---------- Partes comuns das quatro páginas ---------- */
+:is(.pg-trat, .pg-micro, .pg-nat, .pg-banho) {
+  /* Duas fotos lado a lado no banner */
+  .hero-duo { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; align-items: end; }
+  .hero-duo picture { display: block; aspect-ratio: 3 / 4; overflow: hidden; border-radius: var(--r-lg); }
+  .hero-duo picture:nth-child(2) { margin-bottom: 14%; }
+  .hero-duo img { width: 100%; height: 100%; object-fit: cover; }
+
+  .page-hero__note { max-width: 38rem; margin-top: 1rem; font-size: 0.95rem; line-height: 1.5; color: var(--tinta-2); }
+  .pills--small li { min-height: 2.5rem; padding-inline: 0.95rem; font-size: 0.95rem; border-width: 1.5px; }
+  .page-hero .pills { margin-top: 1.5rem; }
+
+  /* Endereço + botões (a imagem da fachada acompanha) */
+  .loc__addr { margin-top: 1rem; font-style: normal; line-height: 1.6; }
+  .loc__actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1.5rem; }
+  .loc__hours { margin-top: 1.25rem; }
+  .loc__hours p { margin-top: 0.35rem; }
+
+  .section-actions { margin-top: 1.75rem; display: flex; flex-wrap: wrap; gap: 0.75rem; }
+  .media-note { margin-top: 0.75rem; font-size: 0.9rem; color: var(--tinta-2); }
+}
+
+/* ---------- Tratamentos e terapias ---------- */
+.pg-trat {
+  .tcards a.tcard__go { margin-top: 0.75rem; display: inline-flex; font-weight: 700; color: var(--paraiso-texto); }
+  .tcards .card { display: flex; flex-direction: column; align-items: flex-start; }
+  .tblock { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: clamp(1.25rem, 3vw, 2.5rem); align-items: start; }
+  .tblock__icon { width: 4rem; height: 4rem; padding: 1rem; border-radius: 999px; background: var(--tinta); color: var(--laranja); }
+  .tblock h2 { font-size: var(--step-3); letter-spacing: -0.03em; }
+  .tblock p { margin-top: 0.9rem; max-width: 46rem; line-height: 1.65; }
+  .tblock .link-more { margin-top: 0.75rem; }
+  .tblock__alert { margin-top: 1.25rem; padding: 1rem 1.25rem; border-radius: var(--r-md); background: var(--laranja); font-weight: 700; max-width: 46rem; }
+  .three { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; margin-top: 1.5rem; padding: 0; list-style: none; }
+  .three li { padding: 1.25rem 1.4rem; border-radius: var(--r-lg); background: var(--branco); border: 1px solid var(--linha); }
+  .three h3 { font-size: var(--step-1); }
+  .three p { margin-top: 0.4rem; font-size: 0.97rem; line-height: 1.55; color: var(--tinta-2); }
+  .team-note { max-width: 46rem; }
+}
+@media (max-width: 860px) {
+  .pg-trat .three { grid-template-columns: 1fr; }
+  .pg-trat .tblock { grid-template-columns: 1fr; gap: 1rem; }
+  .pg-trat .tblock__icon { width: 3.25rem; height: 3.25rem; padding: 0.8rem; }
+}
+
+/* ---------- Microchipagem ---------- */
+.pg-micro {
+  .trio { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; margin-top: 1.75rem; padding: 0; list-style: none; counter-reset: trio; }
+  .trio li { position: relative; padding: 1.5rem; border-radius: var(--r-lg); background: var(--branco); border: 1px solid var(--linha); }
+  .trio li:not(:last-child)::after { content: '→'; position: absolute; right: -0.95rem; top: 50%; translate: 0 -50%; z-index: 1; font-weight: 900; color: var(--laranja-texto); }
+  .trio .icon { width: 2.75rem; height: 2.75rem; padding: 0.6rem; border-radius: 999px; background: var(--tinta); color: var(--laranja); }
+  .trio h3 { margin-top: 0.85rem; font-size: var(--step-2); }
+  .trio p { margin-top: 0.4rem; color: var(--tinta-2); line-height: 1.55; }
+  .notgps { margin-top: 1.5rem; }
+  .species .btn { margin-top: 1.25rem; }
+  .species .species__media { margin-top: 1.25rem; overflow: hidden; border-radius: var(--r-md); }
+  .species .species__media img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; object-position: 50% 25%; }
+}
+@media (max-width: 860px) {
+  .pg-micro .trio { grid-template-columns: 1fr; }
+  .pg-micro .trio li:not(:last-child)::after { content: '↓'; right: auto; left: 50%; top: auto; bottom: -1.15rem; translate: -50% 0; }
+}
+
+/* ---------- Natação ---------- */
+.pg-nat {
+  .nat-galeria { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
+  .nat-galeria picture { display: block; overflow: hidden; border-radius: var(--r-md); aspect-ratio: 4 / 3; }
+  .nat-galeria img { width: 100%; height: 100%; object-fit: cover; }
+  .diffs { margin-top: 1.5rem; }
+  .req-media { max-width: 26rem; }
+  .req-media picture { display: block; overflow: hidden; border-radius: var(--r-lg); }
+}
+@media (max-width: 700px) { .pg-nat .nat-galeria { grid-template-columns: 1fr 1fr; gap: 0.6rem; } }
+
+/* ---------- Banho e tosa ---------- */
+.pg-banho {
+  .species-block { scroll-margin-top: 6rem; }
+  .species-block .split__media picture { display: block; overflow: hidden; border-radius: var(--r-lg); }
+  .species-block .split__media img { width: 100%; }
+  .seal { margin-top: 1.25rem; padding: 1rem 1.25rem; border-radius: var(--r-md); background: var(--nevoa); border-left: 4px solid var(--laranja); line-height: 1.55; }
+  .banho-gallery { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1.5rem; }
+  .banho-gallery picture { display: block; overflow: hidden; border-radius: var(--r-md); }
+  .banho-gallery img { width: 100%; height: 100%; object-fit: cover; }
+}
+@media (max-width: 700px) { .pg-banho .banho-gallery { grid-template-columns: 1fr; } }

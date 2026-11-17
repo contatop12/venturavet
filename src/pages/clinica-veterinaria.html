@@ -1,14 +1,15 @@
 <!---
-title: Veterinário no Paraíso, SP: consultas e especialidades | Ventura Vet
-description: Veterinário no Paraíso (SP) para cães e gatos: consultas, vacinas, cirurgias e 8 especialidades numa clínica particular Cat Friendly, com exames em até 15 min.
+title: Clínica Veterinária no Paraíso, SP | Ventura Vet
+description: Clínica veterinária no Paraíso para cães e gatos. Consultas, vacinas, exames e cirurgias, com selo Cat Friendly Practice. Agende no Ventura Vet.
 path: /clinica-veterinaria/
 type: service
 service: clinica-veterinaria
-breadcrumb: [["Serviços", "/servicos/"], ["Clínica Veterinária"]]
+breadcrumb: [["Clínica Veterinária"]]
 ogSource: consulta-dra-ana-luiza-com-boston-terrier.jpg
-ogImageAlt: Dra. Ana Luiza Mazorra examinando um boston terrier na mesa do consultório do Ventura Vet
+ogImageAlt: Dra. Ana Luiza Mazorra atendendo um cachorro no Ventura Vet
 imageSource: consulta-dra-ana-luiza-com-boston-terrier.jpg
 priority: 0.9
+bodyClass: pg-clinica
 --->
 
 <section class="page-hero">
@@ -16,15 +17,21 @@ priority: 0.9
     <x-breadcrumbs></x-breadcrumbs>
     <div class="page-hero__grid">
       <div>
-        <h1>Veterinário <em>no Paraíso</em>, São Paulo: consultas e especialidades</h1>
-        <p class="page-hero__lede">Somos uma clínica veterinária completa, com diversas especialidades, centro cirúrgico, internação dia, laboratório e farmácia — e um consultório só para gatos.</p>
+        <p class="castra__kicker castra__kicker--dark">Atendimento para cães e gatos desde 2007</p>
+        <h1>Clínica veterinária <em>no Paraíso</em>, em São Paulo</h1>
+        <p class="page-hero__lede">Consultas, vacinas, exames, cirurgias e acompanhamento para cães e gatos. No Ventura, você encontra laboratório e centro cirúrgico no mesmo endereço, além de consultório exclusivo para felinos em uma clínica com selo {{site.credentials.catFriendly}}.</p>
         <div class="page-hero__actions">
-          <a class="btn" data-wa="Olá! Vim pelo site e quero agendar uma consulta veterinária." data-magnetic><x-icon name="whatsapp"></x-icon>Agendar consulta</a>
-          <a class="btn btn--ghost" href="tel:{{site.phone.e164}}" data-track="phone"><x-icon name="phone"></x-icon>{{site.phone.display}}</a>
+          <a class="btn" data-wa="Olá! Vim pela página da Clínica Veterinária e gostaria de consultar os horários para uma consulta do meu pet." data-magnetic><x-icon name="whatsapp"></x-icon>Agendar consulta</a>
+          <a class="btn btn--ghost" href="#servicos"><x-icon name="clipboard-list"></x-icon>Conhecer os serviços</a>
         </div>
+        <ul class="pills">
+          <li><x-icon name="shield-check"></x-icon>Atendimento particular</li>
+          <li><x-icon name="flask-conical"></x-icon>Laboratório no mesmo endereço</li>
+          <li><x-icon name="cat"></x-icon>Clínica {{site.credentials.catFriendly}}</li>
+        </ul>
       </div>
       <div class="page-hero__art page-hero__art--photo">
-        <x-img src="consulta-dra-ana-luiza-com-boston-terrier.jpg" alt="Dra. Ana Luiza Mazorra examinando um boston terrier na mesa do consultório do Ventura" priority widths="360,540,720" sizes="(min-width: 860px) 34vw, 80vw"></x-img>
+        <x-img src="consulta-dra-ana-luiza-com-boston-terrier.jpg" alt="Dra. Ana Luiza Mazorra atendendo cachorro no Ventura Vet" priority widths="360,540,720" sizes="(min-width: 860px) 34vw, 80vw"></x-img>
       </div>
     </div>
   </div>
@@ -32,144 +39,316 @@ priority: 0.9
 
 <section class="section section--tight">
   <div class="wrap">
-    <p class="answer">A clínica veterinária do Ventura, na Rua Otávio Nébias, 190, no Paraíso (SP), atende cães e gatos com veterinários especializados em ortopedia, oftalmologia, dermatologia, endocrinologia, odontologia, neurologia, cardiologia e oncologia. Oferece consultas, vacinas importadas, cirurgias e <a href="/castracao/">castração</a> em centro cirúrgico com anestesia inalatória, internação dia, exames em até 15 minutos e consultório exclusivo para felinos, com selo {{site.credentials.catFriendly}}. Clínica particular: não atendemos convênios. Responsável técnica: {{site.founder.name}} ({{site.founder.crmv}}).</p>
-    <ul class="svc-mini">
-      <li><a class="svc-mini__link" href="/veterinario-para-cachorro/"><x-icon name="dog"></x-icon><span><strong>Veterinário para cães</strong><small>Consulta, exames, vacinas do filhote ao adulto, castração e terapias.</small></span></a></li>
-      <li><a class="svc-mini__link" href="/veterinario-para-gatos/"><x-icon name="cat"></x-icon><span><strong>Veterinário para gatos</strong><small>Consultório só para felinos, teste de FIV e FeLV em 15 minutos e vacinas.</small></span></a></li>
-    </ul>
+    <p class="answer">O Ventura Vet é uma clínica veterinária no Paraíso, em São Paulo, na Rua Otávio Nébias, 190. Atende cães e gatos desde 2007, com consultas, vacinação, exames, cirurgias e tratamentos, em atendimento particular. A clínica funciona de segunda a sexta, das 9h às 18h, e aos sábados, das 9h às 16h, e não oferece atendimento veterinário 24 horas. Responsável técnica: {{site.founder.name}} ({{site.founder.crmv}}).</p>
   </div>
 </section>
 
-<section class="section section--tight" aria-labelledby="especialidades-titulo">
-  <div class="wrap">
-    <header class="section-head">
-      <h2 id="especialidades-titulo" data-reveal>Veterinários especializados em</h2>
-      <p data-reveal style="--i:1">Consultas com hora marcada com ortopedista, oftalmologista, dermatologista, endocrinologista, odontologista, neurologista, cardiologista e oncologista veterinário. <a href="/especialistas/">Conheça os especialistas</a>.</p>
-    </header>
-    <ul class="pills">
-      <li><x-icon name="bone"></x-icon>Ortopedia</li>
-      <li><x-icon name="eye"></x-icon>Oftalmologia</li>
-      <li><x-icon name="hand"></x-icon>Dermatologia</li>
-      <li><x-icon name="activity"></x-icon>Endocrinologia</li>
-      <li><x-icon name="smile"></x-icon>Odontologia</li>
-      <li><x-icon name="brain"></x-icon>Neurologia</li>
-      <li><x-icon name="heart-pulse"></x-icon>Cardiologia</li>
-      <li><x-icon name="shield-check"></x-icon>Oncologia</li>
-    </ul>
-    <h3 class="subhead" data-reveal>Conheça a equipe</h3>
-    <x-team compact></x-team>
-  </div>
-</section>
-
-<section class="section section--nevoa" aria-labelledby="servicos-clinica">
-  <div class="wrap">
-    <header class="section-head">
-      <h2 id="servicos-clinica" data-reveal>Nossos serviços</h2>
-      <p data-reveal style="--i:1">Da prevenção ao tratamento, organizados por etapa do cuidado.</p>
-    </header>
-    <div class="tabs" data-tabs>
-      <div class="tabs__list" aria-label="Categorias de serviços da clínica"></div>
-
-      <div class="tabs__panel" id="prevencao" data-label="Prevenção">
-        <h3 class="tabs__heading">Prevenção</h3>
-        <ul class="cards">
-          <li class="card" id="consultas"><x-icon name="stethoscope"></x-icon><h3>Consultas</h3><p>Dois consultórios para cães e um exclusivo para felinos, com sala de espera separada, difusor e spray com Feliway® — tranquilidade e segurança para os gatinhos durante a visita.</p></li>
-          <li class="card" id="vacinas"><x-icon name="syringe"></x-icon><h3>Vacinas</h3><p>Utilizamos somente vacinas importadas, sempre mantidas sob temperatura controlada.</p></li>
-          <li class="card"><x-icon name="scan-line"></x-icon><h3>Microchip animal</h3><p>Identificação única, segura e inviolável, que facilita encontrar o pet em casos de perda ou roubo.</p></li>
-          <li class="card"><x-icon name="gauge"></x-icon><h3>Pressão arterial</h3><p>Profissionais preparados para aferir a pressão do seu pet com dopplers de última geração, para resultados precisos.</p></li>
-        </ul>
-      </div>
-
-      <div class="tabs__panel" id="diagnostico" data-label="Diagnóstico">
-        <h3 class="tabs__heading">Diagnóstico</h3>
-        <ul class="cards">
-          <li class="card"><x-icon name="flask-conical"></x-icon><h3>Exames laboratoriais</h3><p>Laboratório com aparelhos Idexx®: exames feitos na hora da consulta, com resultados em 15 minutos. <a href="/laboratorio/">Ver exames</a></p></li>
-          <li class="card"><x-icon name="scan-line"></x-icon><h3>Exames de imagem</h3><p>Radiografia, ecocardiografia e ultrassonografia com hora marcada, feitos por veterinários especialistas.</p></li>
-        </ul>
-      </div>
-
-      <div class="tabs__panel" id="cirurgia" data-label="Cirurgia e internação">
-        <h3 class="tabs__heading">Cirurgia e internação</h3>
-        <ul class="cards">
-          <li class="card"><x-icon name="heart-pulse"></x-icon><h3>Cirurgias</h3><p>Anestesia feita por veterinários especializados em anestesiologia. Instrumental esterilizado em autoclave e centro cirúrgico com anestesia inalatória, monitor multiparamétrico e colchão térmico.</p></li>
-          <li class="card"><x-icon name="shield-check"></x-icon><h3>Castração</h3><p>Em cães, todo procedimento de castração é feito com anestesia inalatória, para melhor controle do quadro clínico. Seu animal 100% assistido por uma equipe preparada. <a href="/castracao/">Como funciona a castração</a></p></li>
-          <li class="card"><x-icon name="bed"></x-icon><h3>Internação dia</h3><p>Aparelhos de última geração, baias confortáveis e espaçosas e oxigenioterapia para o conforto do paciente.</p></li>
-          <li class="card"><x-icon name="droplets"></x-icon><h3>Fluidoterapia</h3><p>Restaura o volume e a composição dos líquidos corporais, repõe eletrólitos e nutrientes e corrige desequilíbrios hídricos.</p></li>
-        </ul>
-      </div>
-
-      <div class="tabs__panel" id="terapias" data-label="Tratamentos e terapias">
-        <h3 class="tabs__heading">Tratamentos e terapias</h3>
-        <ul class="cards">
-          <li class="card"><x-icon name="smile"></x-icon><h3>Tratamento de periodontia</h3><p>Essencial para a saúde e a longevidade do pet: doenças na boca podem evoluir até para doenças cardíacas.</p></li>
-          <li class="card"><x-icon name="sparkles"></x-icon><h3>Acupuntura</h3><p>Tratamento complementar e integrativo muito eficaz na reabilitação animal, que trata e previne doenças.</p></li>
-          <li class="card"><x-icon name="activity"></x-icon><h3>Fisioterapia</h3><p>Equipe especializada para oferecer ao seu pet o que há de mais moderno em recuperação e suporte.</p></li>
-          <li class="card"><x-icon name="shield-check"></x-icon><h3>Quimioterapia</h3><p>Indicada para animais diagnosticados com alguns tipos de câncer, com o objetivo de eliminar células cancerígenas.</p></li>
-          <li class="card"><x-icon name="pill"></x-icon><h3>Farmácia veterinária</h3><p>Medicamentos veterinários (antibióticos, anti-inflamatórios, antipulgas e vermífugos), suplementos e xampus medicinais, com equipe experiente para orientar o tutor.</p></li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="section" aria-labelledby="estrutura-titulo">
+<section class="section" id="apresentacao" aria-labelledby="apresentacao-titulo">
   <div class="wrap split">
     <div>
-      <h2 id="estrutura-titulo" data-reveal>Nossa estrutura</h2>
+      <h2 id="apresentacao-titulo" data-reveal>Cuidado veterinário da prevenção ao acompanhamento</h2>
       <div class="prose" data-reveal style="--i:1">
-        <p>Possuímos aparelhos modernos e uma equipe especializada e preparada para atender seu pet — e consulta, exames, cirurgia e internação dia ficam no mesmo endereço, no Paraíso.</p>
+        <p>Seja para uma consulta de rotina, vacinação ou investigação de uma alteração na saúde, o atendimento começa com a avaliação do seu pet.</p>
+        <p>A equipe conversa com o tutor, considera o histórico do paciente e orienta sobre os próximos passos. Quando necessário, o cuidado pode envolver exames, atendimento em uma área específica, procedimentos ou acompanhamento.</p>
+        <p>No Ventura, clínica, laboratório e centro cirúrgico ficam no mesmo endereço, facilitando a organização dessas etapas.</p>
       </div>
-      <ul class="checklist" data-reveal style="--i:2">
-        <li><x-icon name="check"></x-icon>Consultório felino com sala de espera separada</li>
-        <li><x-icon name="check"></x-icon>Centro cirúrgico com anestesia inalatória</li>
-        <li><x-icon name="check"></x-icon>Internação dia com oxigenioterapia</li>
-        <li><x-icon name="check"></x-icon>Laboratório Idexx® e diagnóstico por imagem</li>
-        <li><x-icon name="check"></x-icon>Desinfecção com vassoura de fogo</li>
+      <ul class="destaques" data-reveal style="--i:2">
+        <li><h3>Avaliação individual</h3><p>Orientações conforme a espécie, a fase de vida, o histórico e as necessidades do paciente.</p></li>
+        <li><h3>Estrutura integrada</h3><p>Consultas, exames e procedimentos disponíveis no mesmo endereço, conforme indicação e agendamento.</p></li>
+        <li><h3>Orientações para o tutor</h3><p>Explicações sobre o atendimento e os cuidados recomendados para a continuidade em casa.</p></li>
       </ul>
     </div>
-    <div class="gallery gallery--grid gallery--two" data-reveal style="--i:2">
-      <x-img src="consultorio-clinico-ventura.jpg" alt="Consultório do Ventura Vet com mesa de atendimento em inox, mesa de trabalho e diplomas na parede" widths="360,540,720" sizes="(min-width: 860px) 22vw, 45vw"></x-img>
-      <x-img src="cirurgia-sala-cirurgica-foco.jpg" alt="Sala cirúrgica equipada com foco, monitor e veterinária em procedimento" widths="360,540,720" sizes="(min-width: 860px) 22vw, 45vw"></x-img>
-      <x-img src="recepcao-clinica-ventura.jpg" alt="Recepção da clínica Ventura com parede verde, poltronas e sofá aconchegante" widths="360,540,720" sizes="(min-width: 860px) 22vw, 45vw"></x-img>
-      <x-img src="recepcao-clinica-ventura-sala-de-espera.jpg" alt="Sala de espera do Ventura Vet com sofá, poltrona e parede de folhagens" widths="360,540,720" sizes="(min-width: 860px) 22vw, 45vw"></x-img>
+    <div class="split__media split__media--blob" data-reveal>
+      <x-img src="consulta-veterinaria-cachorro-jack-russell.jpg" alt="Atendimento veterinário a cachorro com estetoscópio no Ventura Vet" widths="360,540,720" sizes="(min-width: 860px) 40vw, 90vw"></x-img>
     </div>
   </div>
 </section>
 
-<section class="section section--tight section--nevoa" id="consultorio-felino" aria-labelledby="catfriendly-titulo">
+<section class="section section--nevoa" id="atendimento-pet" aria-labelledby="atendimento-pet-titulo">
+  <div class="wrap">
+    <header class="section-head">
+      <h2 id="atendimento-pet-titulo" data-reveal>Conheça o atendimento para o seu pet</h2>
+    </header>
+    <ul class="pet-cards">
+      <li class="pet-card" data-reveal>
+        <x-img src="dra-ana-luiza-mazorra-com-schnauzer.jpg" img-class="pos-topo" alt="Dra. Ana Luiza Mazorra com um schnauzer no Ventura Vet" widths="360,540,720" sizes="(min-width: 860px) 45vw, 92vw"></x-img>
+        <div class="pet-card__body">
+          <h3>Atendimento para cães</h3>
+          <p>Consultas, vacinação, exames e acompanhamento nas diferentes fases da vida. Conheça o atendimento do Ventura para cachorros.</p>
+          <a class="btn" href="/veterinario-para-cachorro/"><x-icon name="dog"></x-icon>Ver atendimento para cães</a>
+        </div>
+      </li>
+      <li class="pet-card" data-reveal style="--i:1">
+        <x-img src="equipe-atendendo-gato.webp" alt="Duas profissionais do Ventura atendendo um gato branco no consultório" widths="360,540,720" sizes="(min-width: 860px) 45vw, 92vw"></x-img>
+        <div class="pet-card__body">
+          <h3>Atendimento para gatos</h3>
+          <p>Consultório exclusivo para felinos e cuidados voltados às suas necessidades, em uma clínica com selo {{site.credentials.catFriendly}}.</p>
+          <a class="btn" href="/veterinario-para-gatos/"><x-icon name="cat"></x-icon>Ver atendimento para gatos</a>
+        </div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<section class="section" id="servicos" aria-labelledby="servicos-titulo">
+  <div class="wrap">
+    <header class="section-head">
+      <h2 id="servicos-titulo" data-reveal>O que você encontra na nossa clínica</h2>
+      <p data-reveal style="--i:1">Da prevenção ao tratamento, conheça os principais serviços e encontre as informações de que precisa.</p>
+    </header>
+    <ul class="cards">
+      <li class="card"><x-icon name="stethoscope"></x-icon><h3>Consulta veterinária</h3><p>Avaliação clínica, conversa sobre o histórico do paciente e orientação sobre os próximos cuidados.</p><div class="card__cta"><a class="btn btn--sm btn--ghost" href="/consulta-veterinaria/">Conhecer as consultas</a></div></li>
+      <li class="card"><x-icon name="flask-conical"></x-icon><h3>Laboratório Veterinário e exames</h3><p>Exames laboratoriais e de imagem conforme a indicação veterinária, com orientações sobre preparo e agendamento.</p><div class="card__cta"><a class="btn btn--sm btn--ghost" href="/laboratorio/">Conhecer o Laboratório Veterinário</a></div></li>
+      <li class="card"><x-icon name="syringe"></x-icon><h3>Vacinas</h3><p>Avaliação do histórico e orientação sobre a vacinação de cães e gatos, conforme suas necessidades.</p><div class="card__cta"><a class="btn btn--sm btn--ghost" href="/vacinacao/">Conhecer a vacinação</a></div></li>
+      <li class="card"><x-icon name="shield-check"></x-icon><h3>Castração</h3><p>Avaliação pré-operatória, planejamento do procedimento e orientações para a recuperação.</p><div class="card__cta"><a class="btn btn--sm btn--ghost" href="/castracao/">Conhecer a castração</a></div></li>
+      <li class="card"><x-icon name="scissors"></x-icon><h3>Cirurgias</h3><p>Procedimentos conforme indicação veterinária, com planejamento anestésico e acompanhamento do paciente.</p><div class="card__cta"><a class="btn btn--sm btn--ghost" href="/cirurgias-veterinarias/">Consultar sobre cirurgias</a></div></li>
+      <li class="card"><x-icon name="activity"></x-icon><h3>Tratamentos e terapias</h3><p>Conheça as opções disponíveis conforme a avaliação e o planejamento de cada caso.</p><div class="card__cta"><a class="btn btn--sm btn--ghost" href="/tratamentos-e-terapias/">Conhecer tratamentos e terapias</a></div></li>
+    </ul>
+    <div class="faixa" data-reveal>
+      <strong>Também disponíveis mediante avaliação:</strong>
+      <ul>
+        <li><a href="/microchipagem/">Microchipagem</a></li>
+        <li>Aferição de pressão arterial</li>
+        <li>Fluidoterapia</li>
+        <li>Internação diurna</li>
+      </ul>
+      <a data-wa="Olá! Gostaria de tirar dúvidas sobre serviços complementares da clínica: microchipagem, aferição de pressão arterial, fluidoterapia ou internação diurna.">Tirar dúvidas sobre esses serviços</a>
+    </div>
+  </div>
+</section>
+
+<section class="section section--nevoa" id="exames" aria-labelledby="exames-titulo">
   <div class="wrap split split--rev">
     <div>
-      <h2 id="catfriendly-titulo" data-reveal>Veterinário para gatos: consultório felino com selo {{site.credentials.catFriendly}}</h2>
-      <p class="prose" data-reveal style="--i:1">Consultório exclusivo para felinos, com sala de espera separada e Feliway®.</p>
-      <p data-reveal style="--i:2"><a class="link-more" href="/veterinario-para-gatos/">Ver o atendimento para gatos</a></p>
+      <h2 id="exames-titulo" data-reveal>Exames no mesmo endereço para apoiar o cuidado</h2>
+      <div class="prose" data-reveal style="--i:1">
+        <p>O Ventura conta com laboratório próprio e realiza exames de imagem com agendamento. A equipe orienta quais exames são necessários e informa o preparo e a disponibilidade.</p>
+        <p>Alguns exames laboratoriais podem ter resultado em até 15 minutos. O prazo depende do exame solicitado e das condições de realização.</p>
+      </div>
+      <ul class="checklist" data-reveal style="--i:2">
+        <li><x-icon name="check"></x-icon>Laboratório próprio</li>
+        <li><x-icon name="check"></x-icon>Alguns resultados em até 15 minutos</li>
+        <li><x-icon name="check"></x-icon>Exames de imagem com agendamento</li>
+      </ul>
+      <div class="acao-bloco" data-reveal style="--i:3">
+        <a class="btn" href="/laboratorio/"><x-icon name="microscope"></x-icon>Conhecer o Laboratório Veterinário</a>
+        <a class="btn btn--ghost" data-wa="Olá! Gostaria de consultar a disponibilidade e as orientações para realizar um exame no Ventura."><x-icon name="whatsapp"></x-icon>Consultar um exame</a>
+      </div>
     </div>
-    <div class="split__media split__media--blob" data-reveal>
-      <x-img src="cat-friendly-practice-certificado-prata.jpg" alt="Gato sobre o certificado Cat Friendly Practice Silver do Ventura Veterinária" widths="360,540,720" sizes="(min-width: 860px) 30vw, 70vw"></x-img>
+    <div class="split__media foto-retrato" data-reveal>
+      <x-img src="laboratorio-bancada-equipamentos-microscopio.jpg" alt="Equipamentos de análise e microscópio do laboratório do Ventura Vet" widths="360,540,720" sizes="(min-width: 860px) 36vw, 90vw"></x-img>
     </div>
   </div>
 </section>
 
-<section class="section faq section--nevoa" id="perguntas" aria-labelledby="faq-titulo">
+<section class="section" id="gatos" aria-labelledby="gatos-titulo">
+  <div class="wrap split">
+    <div>
+      <h2 id="gatos-titulo" data-reveal>Um atendimento pensado para as necessidades dos gatos</h2>
+      <div class="prose" data-reveal style="--i:1">
+        <p>O Ventura possui o selo {{site.credentials.catFriendly}} e conta com consultório exclusivo para felinos, sala de espera separada e recursos voltados ao atendimento dos gatos.</p>
+        <p>A organização do ambiente e o manejo durante a consulta consideram as particularidades dos pacientes felinos.</p>
+        <p>Converse com a equipe sobre o agendamento e as orientações para a chegada do seu gato.</p>
+      </div>
+      <ul class="checklist" data-reveal style="--i:2">
+        <li><x-icon name="check"></x-icon>Clínica com selo {{site.credentials.catFriendly}}</li>
+        <li><x-icon name="check"></x-icon>Consultório exclusivo para gatos</li>
+        <li><x-icon name="check"></x-icon>Sala de espera separada</li>
+        <li><x-icon name="check"></x-icon>Manejo atento às necessidades dos felinos</li>
+      </ul>
+      <div class="acao-bloco" data-reveal style="--i:3">
+        <a class="btn" href="/veterinario-para-gatos/"><x-icon name="cat"></x-icon>Conhecer o atendimento para gatos</a>
+        <a class="btn btn--ghost" data-wa="Olá! Gostaria de consultar os horários para atendimento do meu gato na clínica."><x-icon name="whatsapp"></x-icon>Agendar para meu gato</a>
+      </div>
+    </div>
+    <div class="split__media split__media--blob foto-retrato" data-reveal>
+      <!-- CONFIRMAR COM CLIENTE: vigência e forma de aplicação do selo Cat Friendly Practice (selo oficial em boa resolução ainda não fornecido) -->
+      <x-img src="consulta-veterinaria-gato-preto.jpg" img-class="pos-topo" alt="Atendimento a gato no consultório do Ventura Vet" widths="360,540,720" sizes="(min-width: 860px) 36vw, 90vw"></x-img>
+      <div class="foto-retrato__apoio">
+        <x-img src="cat-friendly-practice-certificado-prata.jpg" alt="Gato junto ao certificado Cat Friendly Practice do Ventura" widths="360" sizes="104px"></x-img>
+        <p>Certificado {{site.credentials.catFriendly}} exposto na clínica.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section--nevoa" id="areas" aria-labelledby="areas-titulo">
+  <div class="wrap">
+    <header class="section-head">
+      <h2 id="areas-titulo" data-reveal>Atendimento em diferentes áreas da medicina veterinária</h2>
+      <p data-reveal style="--i:1">Alguns casos precisam de avaliação direcionada. O Ventura oferece atendimentos com agendamento nas áreas abaixo. Consulte a equipe para verificar a disponibilidade e entender qual atendimento procurar.</p>
+    </header>
+    <!-- CONFIRMAR COM CLIENTE: oferta e agenda atual de cada área; usar "especialista" só com qualificação confirmada -->
+    <ul class="area-grid" data-reveal>
+      <li><x-icon name="bone"></x-icon><span><strong>Ortopedia</strong><small>Avaliação de alterações relacionadas ao sistema musculoesquelético</small></span></li>
+      <li><x-icon name="eye"></x-icon><span><strong>Oftalmologia</strong><small>Cuidados e avaliação da saúde dos olhos</small></span></li>
+      <li><x-icon name="hand"></x-icon><span><strong>Dermatologia</strong><small>Avaliação de alterações da pele, pelos e ouvidos</small></span></li>
+      <li><x-icon name="activity"></x-icon><span><strong>Endocrinologia</strong><small>Investigação e acompanhamento de alterações hormonais</small></span></li>
+      <li><x-icon name="smile"></x-icon><span><strong>Odontologia</strong><small>Avaliação e cuidados com a saúde bucal</small></span></li>
+      <li><x-icon name="brain"></x-icon><span><strong>Neurologia</strong><small>Avaliação de alterações relacionadas ao sistema nervoso</small></span></li>
+      <li><x-icon name="heart-pulse"></x-icon><span><strong>Cardiologia</strong><small>Avaliação e acompanhamento da saúde cardíaca</small></span></li>
+      <li><x-icon name="ribbon"></x-icon><span><strong>Oncologia</strong><small>Avaliação e acompanhamento de pacientes oncológicos</small></span></li>
+    </ul>
+    <p class="loc__nota" data-reveal>Não sabe qual atendimento procurar? Entre em contato e explique sua necessidade à equipe.</p>
+    <div class="acao-bloco" data-reveal>
+      <a class="btn" data-wa="Olá! Gostaria de consultar a disponibilidade de atendimento na área de [informar área ou necessidade]."><x-icon name="whatsapp"></x-icon>Consultar disponibilidade de atendimento</a>
+      <a class="btn btn--ghost" href="/especialistas/"><x-icon name="user-round-check"></x-icon>Conhecer a equipe</a>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="cirurgias" aria-labelledby="cirurgias-titulo">
+  <div class="wrap split split--rev">
+    <div>
+      <h2 id="cirurgias-titulo" data-reveal>Estrutura para procedimentos e acompanhamento durante o dia</h2>
+      <div class="prose" data-reveal style="--i:1">
+        <p>A clínica possui centro cirúrgico e estrutura de internação diurna para os pacientes que precisam desses cuidados, conforme avaliação e disponibilidade.</p>
+        <p>O planejamento dos procedimentos considera a condição clínica do pet, os exames necessários e as orientações para a recuperação.</p>
+        <p>A internação diurna acontece durante o funcionamento da clínica e não corresponde a uma internação veterinária 24 horas.</p>
+      </div>
+      <!-- CONFIRMAR COM CLIENTE: condições da internação diurna -->
+      <div class="acao-bloco" data-reveal style="--i:2">
+        <a class="btn" data-wa="Olá! Gostaria de consultar sobre um procedimento cirúrgico para o meu pet."><x-icon name="whatsapp"></x-icon>Consultar sobre procedimentos</a>
+        <a class="btn btn--ghost" href="/castracao/">Conhecer a castração</a>
+      </div>
+    </div>
+    <div class="split__media split__media--blob" data-reveal>
+      <x-img src="cirurgia-monitoramento-anestesico.jpg" alt="Profissional ao lado dos equipamentos de anestesia e monitorização do centro cirúrgico do Ventura" widths="360,540,720" sizes="(min-width: 860px) 40vw, 90vw"></x-img>
+    </div>
+  </div>
+</section>
+
+<section class="section section--nevoa" id="estrutura" aria-labelledby="estrutura-titulo">
+  <div class="wrap">
+    <header class="section-head">
+      <h2 id="estrutura-titulo" data-reveal>Conheça a estrutura do Ventura</h2>
+      <p data-reveal style="--i:1">Veja os ambientes onde acontecem as consultas, os exames e os procedimentos.</p>
+    </header>
+    <!-- CONFIRMAR COM CLIENTE: atualidade das fotos dos ambientes; faltam fotos do consultório exclusivo para gatos e da internação diurna -->
+    <ul class="estrutura" data-reveal>
+      <li><figure><x-img src="recepcao-clinica-ventura.jpg" alt="Recepção da clínica Ventura Vet" widths="360,540,720" sizes="(min-width: 860px) 22vw, 45vw"></x-img><figcaption>Recepção.</figcaption></figure></li>
+      <li><figure><x-img src="consultorio-clinico-ventura.jpg" alt="Consultório de atendimento do Ventura Vet" widths="360,540,720" sizes="(min-width: 860px) 22vw, 45vw"></x-img><figcaption>Consultório de atendimento.</figcaption></figure></li>
+      <li><figure><x-img src="laboratorio-profissional-operando-equipamento.jpg" img-class="pos-topo" alt="Profissional operando um equipamento do laboratório do Ventura Vet" widths="360,540,720" sizes="(min-width: 860px) 22vw, 45vw"></x-img><figcaption>Laboratório.</figcaption></figure></li>
+      <li><figure><x-img src="corredor-clinica-ventura.jpg" alt="Corredor de acesso aos consultórios da clínica Ventura Vet" widths="360,540,720" sizes="(min-width: 860px) 22vw, 45vw"></x-img><figcaption>Corredor de acesso aos consultórios.</figcaption></figure></li>
+    </ul>
+  </div>
+</section>
+
+<section class="section" id="equipe" aria-labelledby="equipe-titulo">
+  <div class="wrap split">
+    <div class="split__media split__media--blob foto-retrato foto-retrato--wide" data-reveal>
+      <x-img src="dra-ana-luiza-mazorra.png" alt="Dra. Ana Luiza Mazorra, responsável técnica do Ventura Vet" widths="360,540,720" sizes="(min-width: 860px) 36vw, 90vw"></x-img>
+    </div>
+    <div>
+      <h2 id="equipe-titulo" data-reveal>No Paraíso desde 2007</h2>
+      <div class="prose" data-reveal style="--i:1">
+        <p>O Ventura atende cães e gatos no Paraíso desde 2007. À frente da clínica está a {{site.founder.name}}, médica-veterinária formada pela FMVZ-USP, proprietária e responsável técnica.</p>
+        <p>Conheça a equipe, sua atuação e os profissionais que participam do atendimento.</p>
+      </div>
+      <p class="equipe-id" data-reveal style="--i:2"><strong>{{site.founder.name}}</strong>Médica-veterinária, proprietária e responsável técnica<br>{{site.founder.crmv}}</p>
+      <div class="acao-bloco" data-reveal style="--i:3">
+        <a class="btn" href="/especialistas/"><x-icon name="user-round-check"></x-icon>Conhecer nossa equipe</a>
+        <a class="link-more" href="/quem-somos/">Conhecer nossa história</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section--nevoa" id="como-agendar" aria-labelledby="como-agendar-titulo">
+  <div class="wrap">
+    <header class="section-head">
+      <h2 id="como-agendar-titulo" data-reveal>Como funciona o atendimento</h2>
+    </header>
+    <ol class="steps steps--4">
+      <li><h3>Entre em contato</h3><p>Informe se o atendimento é para cachorro ou gato e explique brevemente o que precisa.</p></li>
+      <li><h3>Consulte os horários</h3><p>A equipe informa a disponibilidade e as orientações para o agendamento.</p></li>
+      <li><h3>Prepare as informações do pet</h3><p>Se tiver, leve carteira de vacinação, exames anteriores e informações sobre medicamentos em uso.</p></li>
+      <li><h3>Receba a orientação veterinária</h3><p>Após a avaliação, a equipe explica os próximos passos e os cuidados recomendados.</p></li>
+    </ol>
+    <div class="acao-bloco" data-reveal>
+      <a class="btn" data-wa="Olá! Gostaria de consultar os horários para uma consulta veterinária no Ventura."><x-icon name="whatsapp"></x-icon>Consultar horários para uma consulta</a>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="avaliacoes" aria-labelledby="avaliacoes-titulo">
+  <div class="wrap">
+    <header class="section-head">
+      <h2 id="avaliacoes-titulo" data-reveal>O que os tutores contam sobre o Ventura</h2>
+    </header>
+    <x-reviews></x-reviews>
+  </div>
+</section>
+
+<section class="section section--nevoa" id="localizacao" aria-labelledby="localizacao-titulo">
+  <div class="wrap loc">
+    <div>
+      <h2 id="localizacao-titulo" data-reveal>Clínica veterinária no Paraíso, perto de você</h2>
+      <div class="prose" data-reveal style="--i:1">
+        <p>O Ventura fica na Rua Otávio Nébias, 190, no Paraíso, em São Paulo.</p>
+        <p>Recebemos tutores do Paraíso e de regiões próximas, como Vila Mariana, Bela Vista, Jardins e Jardim Paulista. Entre em contato para consultar os horários e organizar o atendimento do seu pet.</p>
+      </div>
+      <address class="loc__end" data-reveal style="--i:2"><strong>Ventura Veterinária &amp; Pet Shop</strong>Rua Otávio Nébias, 190 – Paraíso<br>São Paulo – SP<br>CEP 04002-011</address>
+      <dl class="hours" data-reveal style="--i:2">
+        <div><dt>Segunda a sexta</dt><dd>Das 9h às 18h</dd></div>
+        <div><dt>Sábado</dt><dd>Das 9h às 16h</dd></div>
+        <div><dt>Domingo</dt><dd>Fechado</dd></div>
+      </dl>
+      <p class="loc__contatos" data-reveal style="--i:3"><a href="tel:{{site.phone.e164}}" data-track="phone">{{site.phone.display}}</a><span>WhatsApp {{site.whatsapp.display}}</span></p>
+      <div class="acao-bloco" data-reveal style="--i:3">
+        <a class="btn btn--ghost" href="{{site.google.mapsUrl}}" target="_blank" rel="noopener"><x-icon name="map-pin"></x-icon>Como chegar</a>
+        <a class="btn" data-wa="Olá! Gostaria de consultar os horários para uma consulta veterinária no Ventura."><x-icon name="whatsapp"></x-icon>Agendar consulta</a>
+      </div>
+      <p class="loc__nota" data-reveal style="--i:3">A clínica não oferece atendimento veterinário 24 horas. Os horários dos outros serviços do Ventura são próprios e devem ser consultados separadamente.</p>
+    </div>
+    <div class="loc__foto" data-reveal>
+      <x-img src="fachada-clinica-ventura-paraiso.jpg" alt="Fachada do Ventura Vet na Rua Otávio Nébias, no Paraíso" widths="360,540,720" sizes="(min-width: 860px) 40vw, 90vw"></x-img>
+    </div>
+  </div>
+</section>
+
+<section class="section faq" id="perguntas" aria-labelledby="faq-titulo">
   <div class="wrap faq__grid">
-    <header class="faq__head"><h2 id="faq-titulo">Dúvidas sobre a clínica</h2></header>
+    <header class="faq__head"><h2 id="faq-titulo">Dúvidas sobre a clínica veterinária</h2></header>
     <div class="faq__list">
-      <details class="faq__item" name="faq-clinica"><summary>A clínica atende gatos separadamente dos cães?</summary><div class="faq__answer"><p>Sim. Temos um consultório exclusivo para felinos, com sala de espera separada, em que usamos difusor e spray com Feliway® para deixar os gatos mais tranquilos durante a visita. O Ventura tem o selo {{site.credentials.catFriendly}}.</p></div></details>
-      <details class="faq__item" name="faq-clinica"><summary>Onde fica a clínica e quais bairros vocês atendem?</summary><div class="faq__answer"><p>Na Rua Otávio Nébias, 190, no Paraíso, em São Paulo, {{site.landmarks.metro}}. Atendemos tutores de {{site.areasShort}}, entre outros bairros. Veja <a href="/onde-estamos/">como chegar do seu bairro</a>.</p></div></details>
-      <details class="faq__item" name="faq-clinica"><summary>Qual o horário de atendimento da clínica?</summary><div class="faq__answer"><p>{{site.hours.clinicDisplay}}.</p></div></details>
-      <details class="faq__item" name="faq-clinica"><summary>Quais formas de pagamento a clínica aceita?</summary><div class="faq__answer"><p>Dinheiro, cartões de crédito e de débito e PIX. O parcelamento depende do valor; consulte no atendimento.</p></div></details>
-      <details class="faq__item" name="faq-clinica"><summary>O Ventura atende emergências?</summary><div class="faq__answer"><p>Sim, durante o horário de funcionamento: de segunda a sexta, das 9h às 18h, e aos sábados, das 9h às 16h. Fora desse horário, procure um hospital veterinário 24 horas.</p></div></details>
-      <details class="faq__item" name="faq-clinica"><summary>O Ventura é hospital veterinário ou atende 24 horas?</summary><div class="faq__answer"><p>Não. O Ventura é uma clínica veterinária, com internação dia e atendimento em horário marcado: {{site.hours.clinicDisplay}}. Fora desse horário, procure um hospital veterinário 24 horas.</p></div></details>
-      <details class="faq__item" name="faq-clinica"><summary>Vocês aceitam convênio ou plano de saúde pet?</summary><div class="faq__answer"><p>Não. Somos uma clínica particular e não trabalhamos com convênios nem planos de saúde pet.</p></div></details>
-      <details class="faq__item" name="faq-clinica"><summary>Quais vacinas vocês aplicam?</summary><div class="faq__answer"><p>Utilizamos somente vacinas importadas, mantidas sob temperatura controlada. O protocolo de cada pet é definido pelo veterinário na consulta, de acordo com idade, histórico e estilo de vida.</p></div></details>
-      <details class="faq__item" name="faq-clinica"><summary>Como é a anestesia nas cirurgias e castrações?</summary><div class="faq__answer"><p>Os procedimentos anestésicos são feitos por veterinários especializados em anestesiologia. Em cães, a castração é sempre feita com anestesia inalatória, e o centro cirúrgico conta com monitor multiparamétrico e colchão térmico.</p></div></details>
-      <details class="faq__item" name="faq-clinica"><summary>Preciso levar o pet a outro lugar para fazer exames?</summary><div class="faq__answer"><p>Não. Os exames laboratoriais são feitos no nosso laboratório durante a consulta, com resultados em até 15 minutos, e os exames de imagem são agendados no mesmo endereço.</p></div></details>
-      <details class="faq__item" name="faq-clinica"><summary>Por que tratar a saúde bucal do pet?</summary><div class="faq__answer"><p>O tratamento periodontal garante saúde e longevidade: doenças na boca do pet podem evoluir até para doenças cardíacas. A avaliação odontológica faz parte das especialidades da clínica.</p></div></details>
+      <details class="faq__item" name="faq-clinica"><summary>A clínica atende cães e gatos?</summary><div class="faq__answer"><p>Sim. O Ventura atende cães e gatos e possui consultório exclusivo para felinos, em uma clínica com selo {{site.credentials.catFriendly}}.</p></div></details>
+      <details class="faq__item" name="faq-clinica"><summary>Preciso agendar a consulta?</summary><div class="faq__answer"><p>Entre em contato para consultar os horários disponíveis e organizar o atendimento. As consultas em áreas específicas dependem da agenda dos profissionais.</p></div></details>
+      <details class="faq__item" name="faq-clinica"><summary>A clínica atende gatos em ambiente separado?</summary><div class="faq__answer"><p>O Ventura possui consultório exclusivo para gatos e sala de espera separada. A clínica tem o selo {{site.credentials.catFriendly}}, com práticas voltadas às necessidades dos felinos.</p></div></details>
+      <details class="faq__item" name="faq-clinica"><summary>Quais serviços a clínica oferece?</summary><div class="faq__answer"><p>A clínica oferece consultas, vacinação, exames, cirurgias, castração e tratamentos, além de outros cuidados conforme avaliação e disponibilidade.</p></div></details>
+      <details class="faq__item" name="faq-clinica"><summary>Vocês fazem exames no mesmo endereço?</summary><div class="faq__answer"><p>Sim. O Ventura possui laboratório próprio e oferece exames de imagem com agendamento. A equipe informa a disponibilidade, o preparo e as condições de cada exame.</p></div></details>
+      <details class="faq__item" name="faq-clinica"><summary>Todos os exames ficam prontos em 15 minutos?</summary><div class="faq__answer"><p>Não. Alguns exames laboratoriais podem ter resultado nesse prazo. O tempo depende do exame solicitado e das condições de realização.</p></div></details>
+      <details class="faq__item" name="faq-clinica"><summary>Vocês fazem castração?</summary><div class="faq__answer"><p>Sim. O procedimento depende de avaliação e planejamento veterinário. Conheça a <a href="/castracao/">página de castração</a> para entender as etapas do atendimento.</p></div></details>
+      <details class="faq__item" name="faq-clinica"><summary>Quais vacinas são aplicadas?</summary><div class="faq__answer"><p>A equipe avalia o histórico e orienta sobre a vacinação indicada para o paciente. Entre em contato para consultar a disponibilidade e o agendamento.</p></div></details>
+      <details class="faq__item" name="faq-clinica"><summary>O atendimento é particular?</summary><div class="faq__answer"><p>Sim. A clínica realiza atendimento particular e não atende convênios ou planos de saúde pet.</p></div></details>
+      <details class="faq__item" name="faq-clinica"><summary>Quanto custa a consulta veterinária?</summary><div class="faq__answer"><p>Entre em contato para consultar o valor do atendimento desejado. A equipe informa as condições da consulta e esclarece os custos de exames ou procedimentos que possam ser necessários.</p></div></details>
+      <details class="faq__item" name="faq-clinica"><summary>A clínica funciona 24 horas?</summary><div class="faq__answer"><p>Não. O atendimento clínico acontece de segunda a sexta, das 9h às 18h, e aos sábados, das 9h às 16h. Aos domingos, a clínica fica fechada.</p></div></details>
+      <details class="faq__item" name="faq-clinica"><summary>A internação é 24 horas?</summary><div class="faq__answer"><p>A estrutura apresentada é de internação diurna, conforme avaliação e disponibilidade. Ela não corresponde a acompanhamento veterinário durante a noite.</p></div></details>
+      <details class="faq__item" name="faq-clinica"><summary>O que levar à consulta?</summary><div class="faq__answer"><p>Se tiver, leve carteira de vacinação, exames anteriores e informações sobre medicamentos em uso. A equipe pode fornecer orientações adicionais ao agendar.</p></div></details>
+      <details class="faq__item" name="faq-clinica"><summary>Onde fica o Ventura?</summary><div class="faq__answer"><p>Na Rua Otávio Nébias, 190, no Paraíso, em São Paulo. Utilize o botão "Como chegar" para abrir a localização no mapa.</p></div></details>
+      <details class="faq__item" name="faq-clinica"><summary>Como agendar?</summary><div class="faq__answer"><p>Entre em contato pelo WhatsApp ou telefone, informe a necessidade do seu pet e consulte os horários disponíveis.</p></div></details>
     </div>
   </div>
 </section>
 
 <section class="section section--tight">
-  <div class="wrap"><x-service-nav current="clinica-veterinaria"></x-service-nav></div>
+  <div class="wrap">
+    <h2 class="outros-titulo" data-reveal>Conheça também os outros serviços do Ventura</h2>
+    <ul class="outros" data-reveal>
+      <li><a href="/day-care-para-cachorros/">Day Care para Cachorros</a></li>
+      <li><a href="/hotel-para-cachorros/">Hotel para Cachorros</a></li>
+      <li><a href="/hotel-para-gatos/">Hotel para Gatos</a></li>
+      <li><a href="/natacao/">Natação para Cachorros</a></li>
+      <li><a href="/banho-e-tosa/">Banho e Tosa</a></li>
+    </ul>
+  </div>
 </section>
 
-<x-include src="cta-final"></x-include>
+<x-cta-final>
+  <h2 id="cta-final-titulo">Vamos cuidar da saúde do seu pet?</h2>
+  <p>Consulte os horários para atendimento do seu cachorro ou gato. Nossa equipe orienta sobre o agendamento e os próximos passos.</p>
+  <p>Atendimento particular no Paraíso, em São Paulo.</p>
+  <div class="cta-final__actions">
+    <a class="btn btn--dark" data-wa="Olá! Gostaria de consultar os horários para uma consulta veterinária no Ventura. Meu pet é: [cachorro ou gato]. Preciso de atendimento para: [motivo]."><x-icon name="whatsapp"></x-icon>Agendar consulta pelo WhatsApp</a>
+    <a class="btn btn--light" href="tel:{{site.phone.e164}}" data-track="phone"><x-icon name="phone"></x-icon>Ligar para a clínica</a>
+  </div>
+</x-cta-final>

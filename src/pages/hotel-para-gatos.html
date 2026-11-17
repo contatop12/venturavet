@@ -1,28 +1,34 @@
 <!---
-title: Hotel para Gatos no Paraíso, SP | Cat Friendly — Ventura Vet
-description: Hotel para gatos no Paraíso (SP), numa clínica Cat Friendly Practice: espaço individual, sem contato com outros animais, monitores 24h e veterinários por perto.
+title: Hotel para Gatos no Paraíso, São Paulo | Ventura Vet
+description: Hotel para gatos no Paraíso, com monitores 24 horas, no mesmo endereço da clínica Ventura Vet, com selo Cat Friendly Practice. Consulte disponibilidade.
 path: /hotel-para-gatos/
 type: service
 service: hotel-para-gatos
-breadcrumb: [["Serviços", "/servicos/"], ["Hotel para Gatos"]]
-ogSource: hotel-para-gatos-gato-descansando.jpg
-imageSource: hotel-para-gatos-gato-descansando.jpg
+breadcrumb: [["Day Care e Hotel", "/day-care-e-hotel/"], ["Hotel para Gatos"]]
+ogSource: hotel-para-gatos-gato-siames-no-nicho.jpg
+ogImageAlt: Gato siamês sentado em uma prateleira de parede do hotel para gatos, com mural ilustrado e nichos ao fundo
+imageSource: hotel-para-gatos-gato-siames-no-nicho.jpg
 priority: 0.9
+bodyClass: pg-hospedagem
 --->
 
+<!-- CONFIRMAR COM CLIENTE: arte oficial do selo Cat Friendly Practice (arquivo) para usar no banner; por ora, selo em texto. Não incluir nível/categoria sem validação documental. -->
 <section class="page-hero">
   <div class="wrap">
     <x-breadcrumbs></x-breadcrumbs>
     <div class="page-hero__grid">
       <div>
+        <p class="castra__kicker castra__kicker--dark">Na clínica Ventura Vet, com selo {{site.credentials.catFriendly}}</p>
         <h1>Hotel para gatos <em>no Paraíso</em>, São Paulo</h1>
-        <p class="page-hero__lede">Um hotelzinho para gatos dentro de uma clínica {{site.credentials.catFriendly}}: sem contato com outros animais, com monitores 24 horas por dia e equipe veterinária por perto.</p>
+        <p class="page-hero__lede">Vai viajar? Conheça as acomodações e a rotina de cuidados do hotel para gatos do Ventura Vet, no mesmo endereço da nossa clínica com selo {{site.credentials.catFriendly}}. Os hóspedes contam com monitores presentes 24 horas por dia, todos os dias.</p>
         <div class="page-hero__actions">
-          <a class="btn" data-wa="Olá! Vim pelo site e quero consultar disponibilidade e orçamento do Hotel para Gatos." data-magnetic><x-icon name="whatsapp"></x-icon>Consultar disponibilidade e orçamento</a>
+          <a class="btn" data-wa="Olá! Vim pela página de Hotel para Gatos do Ventura Vet e gostaria de consultar disponibilidade e orçamento.&#10;Entrada:&#10;Saída:&#10;Quantidade de gatos:&#10;Há alguma necessidade de medicação ou cuidado especial?" data-magnetic><x-icon name="whatsapp"></x-icon>Consultar disponibilidade</a>
+          <a class="btn btn--ghost" href="#acomodacoes">Conheça as acomodações</a>
         </div>
+        <p class="hosp-seal"><x-icon name="badge-check"></x-icon><span>Clínica com selo {{site.credentials.catFriendly}}</span></p>
       </div>
       <div class="page-hero__art page-hero__art--photo">
-        <x-img src="hotel-para-gatos-gato-descansando.jpg" alt="Gato siamês relaxando em uma plataforma alta no espaço telado do hotel para gatos" priority widths="360,540,720" sizes="(min-width: 860px) 34vw, 80vw"></x-img>
+        <x-img src="hotel-para-gatos-gato-siames-no-nicho.jpg" alt="Gato siamês sentado em uma prateleira de parede do hotel para gatos, com mural ilustrado e nichos ao fundo" priority widths="360,540,720" sizes="(min-width: 860px) 34vw, 80vw"></x-img>
       </div>
     </div>
   </div>
@@ -30,115 +36,202 @@ priority: 0.9
 
 <section class="section section--tight">
   <div class="wrap">
-    <p class="answer">O Hotel para Gatos do Ventura Vet, no Paraíso (SP), hospeda apenas gatos castrados, com FIV e FeLV negativos e vacinas, vermífugo e antipulgas em dia. Os hóspedes ficam em gatil telado, sem contato com outros animais, acompanhados por monitores 24 horas por dia, numa clínica com selo Cat Friendly Practice. As vagas são limitadas: consulte a disponibilidade.</p>
-  </div>
-</section>
-
-<section class="section section--nevoa" aria-labelledby="cuidado-titulo">
-  <div class="wrap">
-    <header class="section-head">
-      <h2 id="cuidado-titulo" data-reveal>Cuidado pensado para gatos</h2>
-      <p data-reveal style="--i:1">Gatos valorizam calma e rotina. Por isso, a hospedagem foi pensada para estressar o mínimo possível.</p>
-    </header>
-    <ul class="cards">
-      <!-- CONFIRMAR COM CLIENTE: uso de gaiolas -->
-      <li class="card"><x-icon name="cat"></x-icon><h3>Sem contato com outros animais</h3><p>Seu gato não tem contato com cães nem com outros hóspedes durante a hospedagem.</p></li>
-      <li class="card"><x-icon name="sun"></x-icon><h3>Gatil telado e ensolarado</h3><p>Espaço amplo e telado, com arranhadores, rampas, casinhas e brinquedos, e janelas para observar o movimento e tomar sol. Os hóspedes usam o espaço em alternância.</p></li>
-      <li class="card"><x-icon name="shield-check"></x-icon><h3>Clínica Cat Friendly</h3><p>Selo {{site.credentials.catFriendly}} e consultório exclusivo para felinos, com sala de espera separada e Feliway®.</p></li>
-      <li class="card"><x-icon name="clock"></x-icon><h3>Monitores 24 horas</h3><p>Equipe treinada, presente 24 horas por dia, sete dias por semana, cuidando de higiene, alimentação e medicação.</p></li>
-      <li class="card"><x-icon name="stethoscope"></x-icon><h3>Veterinários por perto</h3><p>Se for preciso, seu gato é examinado pela equipe veterinária da própria clínica.</p></li>
-      <li class="card"><x-icon name="heart-pulse"></x-icon><h3>Vídeos para matar a saudade</h3><p>Os monitores fazem vídeos do seu gato para você acompanhar durante a viagem.</p></li>
+    <p class="answer">O Hotel para Gatos do Ventura Vet fica no Paraíso, em São Paulo, no mesmo endereço da clínica, que tem o selo Cat Friendly Practice. Os gatos ficam em espaço destinado a eles, sem contato com cães ou outros animais, acompanhados por monitores 24 horas por dia, todos os dias. A hospedagem exige gato castrado, com teste negativo de FIV e FeLV, vacinas, vermifugação e antipulgas em dia, ficha preenchida e contrato assinado.</p>
+    <ul class="cards" style="margin-top:1.5rem">
+      <li class="card" data-reveal><x-icon name="cat"></x-icon><h3>Espaço destinado a gatos</h3><p>Hospedagem sem contato com cães ou outros hóspedes.</p></li>
+      <li class="card" data-reveal style="--i:1"><x-icon name="moon-star"></x-icon><h3>Monitores 24 horas</h3><p>Acompanhamento todos os dias, inclusive durante a noite.</p></li>
+      <li class="card" data-reveal style="--i:2"><x-icon name="clipboard-list"></x-icon><h3>Cuidados com a rotina</h3><p>Alimentação, higiene e medicação conforme as orientações fornecidas.</p></li>
+      <li class="card" data-reveal style="--i:3"><x-icon name="video"></x-icon><h3>Notícias durante a viagem</h3><p>Vídeos feitos pelos monitores para os tutores acompanharem a estadia.</p></li>
     </ul>
   </div>
 </section>
 
-<section class="section section--tight" aria-labelledby="espaco-titulo">
+<section class="section section--nevoa" id="acomodacoes" aria-labelledby="acomodacoes-titulo">
   <div class="wrap">
     <header class="section-head">
-      <h2 id="espaco-titulo" data-reveal>Conheça o espaço do hotel</h2>
-      <p data-reveal style="--i:1">Os gatos ficam em um gatil telado, amplo e cheio de arranhadores, rampas e brinquedos, com janelas para contemplar a rua e tomar sol, como gostam de fazer em casa.</p>
+      <h2 id="acomodacoes-titulo" data-reveal>Conheça o espaço onde seu gato vai ficar</h2>
+      <p data-reveal style="--i:1">O hotel conta com espaços telados, arranhadores, nichos e áreas para descanso e exploração. Os gatos não ficam em contato com outros animais e utilizam os espaços de brincadeira em alternância.</p>
     </header>
+    <p class="highlight highlight--row" data-reveal style="margin-bottom:1.5rem"><x-icon name="info" class="highlight__icon"></x-icon><span>Conforme o regulamento, os gatos podem permanecer em gaiolas durante alguns períodos do dia, sendo liberados para brincar em alternância com os demais hóspedes.</span></p>
     <div class="gallery gallery--grid" data-reveal>
-      <x-img src="hotel-para-gatos-espaco-amplo-telado.jpg" alt="Visão geral da sala telada do hotel para gatos com arranhadores, casinhas e muita luz" widths="360,540,720" sizes="(min-width: 700px) 30vw, 45vw"></x-img>
-      <x-img src="hotel-para-gatos-varanda-com-casinhas.jpg" alt="Espaço telado do hotel para gatos com mural, casinhas, arranhadores e comedouros" widths="360,540,720" sizes="(min-width: 700px) 30vw, 45vw"></x-img>
+      <x-img src="hotel-para-gatos-espaco-amplo-telado.jpg" alt="Visão geral do espaço telado do hotel para gatos, com arranhadores, casinhas e muita luz" widths="360,540,720" sizes="(min-width: 700px) 30vw, 45vw"></x-img>
+      <x-img src="hotel-para-gatos-varanda-com-casinhas.jpg" alt="Arranhadores, casinhas e plataformas no espaço telado do hotel para gatos, com mural na parede" widths="360,540,720" sizes="(min-width: 700px) 30vw, 45vw"></x-img>
+      <x-img src="hotel-para-gatos-gato-descansando.jpg" alt="Gato siamês deitado em uma plataforma sobre arranhador, junto à tela de proteção do hotel" widths="360,540,720" sizes="(min-width: 700px) 30vw, 45vw"></x-img>
+      <x-img src="hotel-para-gatos-corredor-com-nichos.jpg" alt="Corredor do hotel para gatos com nichos e plataformas elevadas na parede e mural ilustrado" widths="360,540,720" sizes="(min-width: 700px) 30vw, 45vw"></x-img>
       <x-img src="hotel-para-gatos-gato-preto-na-casinha.jpg" alt="Gato preto descansando em uma casinha de madeira ao lado do arranhador no hotel para gatos" widths="360,540,720" sizes="(min-width: 700px) 30vw, 45vw"></x-img>
-      <x-img src="hotel-para-gatos-gato-siames-no-nicho.jpg" alt="Gato siamês em prateleira de parede decorada com mural no hotel para gatos" widths="360,540,720" sizes="(min-width: 700px) 30vw, 45vw"></x-img>
-      <x-img src="hotel-para-gatos-corredor-com-nichos.jpg" alt="Corredor do hotel para gatos com nichos elevados e mural ilustrado, com um gato no nicho" widths="360,540,720" sizes="(min-width: 700px) 30vw, 45vw"></x-img>
-      <x-img src="cat-friendly-practice-certificado-prata.jpg" img-class="pos-top" alt="Gato sobre o certificado Cat Friendly Practice Silver do Ventura Veterinária" widths="360,540,720" sizes="(min-width: 700px) 30vw, 45vw"></x-img>
     </div>
-    <h3 class="subhead" data-reveal>O hotel em vídeo</h3>
-    <div class="clips" data-reveal>
-      <x-video src="hotel-para-gatos-tour-corredor" alt="Corredor do hotel para gatos, com nichos e redes na parede e mural ilustrado"></x-video>
-      <x-video src="hotel-para-gatos-gato-na-rede" alt="Gato descansando na rede de um arranhador no espaço telado do hotel"></x-video>
-      <x-video src="hotel-para-gatos-carinho-no-nicho" alt="Gato de pelo longo recebendo carinho em um nicho de parede do hotel"></x-video>
-    </div>
-    <div class="clip-yt" data-reveal>
-      <x-youtube short id="9slTnG2b9LU" title="Hotel para Gatos no Paraíso, Ventura Vet"></x-youtube>
-      <p>Tour pelo hotel, no canal Ventura TV.</p>
+    <!-- CONFIRMAR COM CLIENTE: vídeo do Instagram (DW4ds19DDLj) sem arquivo original e sem conferência das falas; os 3 clipes curtos autoplay foram retirados (spec pede reprodução só ao clique). Mantido apenas o tour do YouTube, que precisa de conferência. -->
+    <div class="hosp-video" data-reveal style="margin-top:2rem">
+      <h3 class="subhead">Veja o hotel por dentro</h3>
+      <x-youtube short id="9slTnG2b9LU" title="Veja o hotel por dentro: conheça as acomodações e a rotina da hospedagem de gatos do Ventura Vet"></x-youtube>
+      <p>Conheça as acomodações e a rotina da hospedagem.</p>
     </div>
   </div>
 </section>
 
-<section class="section" id="regras" aria-labelledby="regras-titulo">
+<section class="section" id="cuidados" aria-labelledby="cuidados-titulo">
   <div class="wrap">
     <header class="section-head">
-      <h2 id="regras-titulo" data-reveal>Regras e requisitos</h2>
-      <p data-reveal style="--i:1">Para a segurança de todos os hóspedes, algumas regras são obrigatórias.</p>
+      <h2 id="cuidados-titulo" data-reveal>Cuidados durante toda a estadia</h2>
+      <p data-reveal style="--i:1">Os monitores acompanham a rotina dos hóspedes, cuidando da higiene, da alimentação e da administração dos medicamentos informados pelo tutor, conforme prescrição e orientações registradas.</p>
+    </header>
+    <ul class="cards">
+      <li class="card" data-reveal><x-icon name="clipboard-list"></x-icon><h3>Alimentação habitual</h3><p>A alimentação e os petiscos devem ser fornecidos pelo tutor. Alimentos naturais precisam ser entregues porcionados, em embalagens próprias para geladeira ou freezer e identificadas com o nome do gato.</p></li>
+      <li class="card" data-reveal style="--i:1"><x-icon name="pill"></x-icon><h3>Medicação e orientações</h3><p>O tutor deve fornecer os medicamentos prescritos e descrever na ficha de hospedagem como devem ser administrados. As necessidades do gato precisam ser informadas antes da confirmação da reserva.</p></li>
+      <li class="card" data-reveal style="--i:2"><x-icon name="video"></x-icon><h3>Acompanhamento e comunicação</h3><p>Monitores permanecem no hotel 24 horas por dia, sete dias por semana, e fazem vídeos dos hóspedes para os tutores acompanharem a estadia.</p></li>
+      <li class="card" data-reveal style="--i:3"><x-icon name="stethoscope"></x-icon><h3>Vistoria na chegada</h3><p>Na chegada, o gato passa por uma vistoria realizada por um monitor. Se houver necessidade, poderá ser examinado pela equipe veterinária, com cobrança dos atendimentos e procedimentos realizados conforme as condições contratadas.</p></li>
+    </ul>
+    <p class="hosp-note">O acompanhamento por monitores é contínuo. Consultas e atendimentos veterinários seguem o funcionamento da clínica. Hospedagem não equivale a internação ou pronto atendimento veterinário 24 horas. Necessidades como soro, insulina ou outros procedimentos exigem avaliação prévia e não estão incluídas automaticamente na hospedagem.</p>
+  </div>
+</section>
+
+<section class="section section--nevoa" id="cat-friendly" aria-labelledby="cat-friendly-titulo">
+  <div class="wrap split split--rev">
+    <div>
+      <h2 id="cat-friendly-titulo" data-reveal>O cuidado com os gatos também faz parte da nossa clínica</h2>
+      <div class="prose" data-reveal style="--i:1">
+        <p>O hotel funciona no mesmo endereço da clínica Ventura Vet, que possui o selo {{site.credentials.catFriendly}}. No atendimento veterinário, os felinos contam com consultório exclusivo, sala de espera separada e recursos de manejo voltados às suas particularidades.</p>
+        <p>Durante a hospedagem, os monitores acompanham a alimentação, a higiene e os cuidados registrados pelo tutor. Quando necessário, a equipe orienta sobre avaliação e atendimento veterinário.</p>
+      </div>
+      <ul class="checklist" data-reveal style="--i:2">
+        <li><x-icon name="check"></x-icon>Selo {{site.credentials.catFriendly}} da clínica</li>
+        <li><x-icon name="check"></x-icon>Consultório exclusivo para felinos</li>
+        <li><x-icon name="check"></x-icon>Sala de espera separada</li>
+        <li><x-icon name="check"></x-icon>Manejo que considera as particularidades dos gatos</li>
+      </ul>
+      <p class="hosp-note">O selo é um reconhecimento da clínica veterinária e do seu atendimento felino; o hotel funciona no mesmo endereço, com estrutura, rotina e regras próprias de hospedagem.</p>
+      <p data-reveal style="--i:3"><a class="link-more" href="/veterinario-para-gatos/">Atendimento veterinário para gatos</a></p>
+    </div>
+    <div class="split__media split__media--blob" data-reveal>
+      <x-img src="consulta-veterinaria-gato-preto.jpg" alt="Veterinária do Ventura examinando um gato preto no consultório" widths="360,540,720" sizes="(min-width: 860px) 40vw, 90vw"></x-img>
+      <x-img src="cat-friendly-practice-certificado-prata.jpg" img-class="pos-top" alt="Gato sobre o certificado Cat Friendly Practice da clínica Ventura Vet" widths="360,540" sizes="(min-width: 860px) 18vw, 40vw" style="margin-top:1rem;max-width:12rem"></x-img>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="reserva" aria-labelledby="reserva-titulo">
+  <div class="wrap">
+    <header class="section-head">
+      <h2 id="reserva-titulo" data-reveal>Como reservar a hospedagem do seu gato</h2>
+    </header>
+    <ol class="steps steps--4">
+      <li data-reveal><h3>Informe o período</h3><p>Envie as datas pretendidas de entrada e saída e a quantidade de gatos.</p></li>
+      <li data-reveal style="--i:1"><h3>Apresente as informações do seu gato</h3><p>Informe alimentação, hábitos, medicações e necessidades de cuidados.</p></li>
+      <li data-reveal style="--i:2"><h3>Confira os requisitos</h3><p>A equipe verificará a documentação e orientará sobre as condições de admissão.</p></li>
+      <li data-reveal style="--i:3"><h3>Receba o orçamento e confirme a contratação</h3><p>Consulte valores, formas de pagamento e disponibilidade. A hospedagem exige ficha preenchida e contrato assinado.</p></li>
+    </ol>
+    <p class="hosp-note">Enviar uma mensagem ou consultar a disponibilidade não é reserva confirmada.</p>
+    <p class="hosp-actions"><a class="btn" data-wa="Olá! Vim pela página de Hotel para Gatos do Ventura Vet e gostaria de consultar datas e orçamento.&#10;Entrada:&#10;Saída:&#10;Quantidade de gatos:&#10;Há alguma necessidade de medicação ou cuidado especial?"><x-icon name="whatsapp"></x-icon>Consultar datas e orçamento</a></p>
+  </div>
+</section>
+
+<section class="section section--nevoa" id="requisitos" aria-labelledby="requisitos-titulo">
+  <div class="wrap">
+    <header class="section-head">
+      <h2 id="requisitos-titulo" data-reveal>O que é necessário para a hospedagem</h2>
     </header>
     <div class="duo">
       <div data-reveal>
-        <h3>Saúde do gato</h3>
+        <h3>Condições de admissão</h3>
         <ul class="checklist">
-          <li><x-icon name="check"></x-icon>Apenas gatos castrados</li>
-          <li><x-icon name="syringe"></x-icon>Teste de FIV e FeLV negativo, assinado por veterinário. Não recebemos animais positivos; se você não tiver o exame, nossa equipe pode providenciá-lo antes da hospedagem.</li>
-          <li><x-icon name="syringe"></x-icon>Vacinas em dia: apresente a carteirinha antes da reserva e, se faltar alguma, a equipe veterinária atualiza</li>
-          <li><x-icon name="check"></x-icon>Vermífugo e antipulgas em dia</li>
+          <li><x-icon name="check"></x-icon>Gatos castrados</li>
+          <li><x-icon name="check"></x-icon>Teste negativo de FIV e FeLV, assinado por médico veterinário</li>
+          <li><x-icon name="check"></x-icon>Vacinas em dia</li>
+          <li><x-icon name="check"></x-icon>Vermifugação e antipulgas em dia</li>
+          <li><x-icon name="check"></x-icon>Carteirinha de vacinação apresentada antes da reserva</li>
+          <li><x-icon name="check"></x-icon>Ficha de hospedagem preenchida</li>
+          <li><x-icon name="check"></x-icon>Contrato de prestação de serviços assinado</li>
+          <li><x-icon name="check"></x-icon>Contato de emergência informado</li>
         </ul>
+        <p class="hosp-note">O hotel não recebe gatos positivos para FIV ou FeLV. Caso seu gato ainda não tenha o teste, a equipe poderá orientar sua realização antes da hospedagem (veja <a href="/teste-fiv-felv/">teste de FIV e FeLV</a>). Se houver vacinas pendentes, consulte a equipe veterinária sobre a atualização e a data de entrada.</p>
       </div>
       <div data-reveal style="--i:1">
-        <h3>Horários e documentos</h3>
+        <h3>O que levar</h3>
         <ul class="checklist">
-          <li><x-icon name="clock"></x-icon>Hospedagem 24 horas, com check-in até as 15h e check-out até as 20h, sem tolerância</li>
-          <li><x-icon name="check"></x-icon>Ficha de hospedagem e contrato assinados, com um contato de emergência</li>
-          <li><x-icon name="check"></x-icon>Alimentação, medicamentos e petiscos trazidos pelo tutor (comida natural porcionada e identificada com o nome do pet)</li>
-          <li><x-icon name="check"></x-icon>Vistoria na chegada, feita por um monitor</li>
+          <li><x-icon name="check"></x-icon>Alimentação habitual</li>
+          <li><x-icon name="check"></x-icon>Medicamentos prescritos</li>
+          <li><x-icon name="check"></x-icon>Petiscos, quando utilizados</li>
+          <li><x-icon name="check"></x-icon>Orientações de alimentação e medicação</li>
+          <li><x-icon name="check"></x-icon>Documentação solicitada</li>
         </ul>
+        <p class="hosp-note">Para alimentação natural: porções identificadas e embalagens adequadas para armazenamento refrigerado ou congelado.</p>
       </div>
     </div>
-    <p class="prose" data-reveal>Se quiser, seu gato pode voltar para casa cheirosinho: é só marcar a opção no formulário (serviço de segunda a sábado, exceto feriados). Para orçamento, informe o período de hospedagem e enviamos os valores e as formas de pagamento pelo WhatsApp.</p>
+
+    <h3 class="subhead" data-reveal style="margin-top:2.5rem">Horários</h3>
+    <table class="hosp-table" data-reveal>
+      <thead><tr><th scope="col">Item</th><th scope="col">Regra</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">Acompanhamento dos hóspedes</th><td>24 horas por dia, todos os dias</td></tr>
+        <tr><th scope="row">Check-in</th><td>Até as 15h</td></tr>
+        <tr><th scope="row">Check-out</th><td>Até as 20h</td></tr>
+        <tr><th scope="row">Tolerância</th><td>Não há tolerância para esses limites</td></tr>
+        <tr><th scope="row">Retirada após o limite</th><td>O regulamento prevê permanência do animal e cobrança de nova diária</td></tr>
+      </tbody>
+    </table>
+    <p class="hosp-note">Combine o horário de entrada e saída com a equipe.</p>
+    <p class="hosp-oper" data-reveal><strong>Entrada ou saída fora do horário comercial:</strong> quando estiverem dentro dos horários permitidos, devem ser combinadas com a equipe. Não toque a campainha, para evitar agitação dos animais. O regulamento informa <a href="tel:+5511994688587" data-track="phone">(11) 99468-8587</a> para esse contato operacional, separado do WhatsApp de orçamento.</p>
+    <p class="hosp-note"><strong>Prorrogação da hospedagem:</strong> a extensão da estadia depende de disponibilidade e atualização do orçamento.</p>
+    <p class="hosp-actions">
+      <a class="btn" data-wa="Olá! Vim pela página de Hotel para Gatos do Ventura Vet e gostaria de consultar disponibilidade e orçamento.&#10;Entrada:&#10;Saída:&#10;Quantidade de gatos:&#10;Há alguma necessidade de medicação ou cuidado especial?"><x-icon name="whatsapp"></x-icon>Consultar disponibilidade</a>
+      <a class="btn btn--ghost" href="/docs/regras-hotel-para-gatos.pdf" target="_blank" rel="noopener"><x-icon name="download"></x-icon>Ler regulamento completo</a>
+    </p>
   </div>
 </section>
 
-<section class="section section--tight section--nevoa">
+<section class="section" id="avaliacoes" aria-labelledby="avaliacoes-titulo">
   <div class="wrap">
-    <div class="highlight" data-reveal>
-      <h2>Vagas limitadas: consulte a disponibilidade</h2>
-      <p>Em vésperas de feriado, reserve com antecedência. Fale com a equipe pelo WhatsApp e informe as datas da viagem.</p>
-      <p><a class="btn btn--dark" data-wa="Olá! Vim pelo site e quero consultar disponibilidade e orçamento do Hotel para Gatos."><x-icon name="whatsapp"></x-icon>Consultar disponibilidade e orçamento</a></p>
-    </div>
+    <header class="section-head">
+      <h2 id="avaliacoes-titulo" data-reveal>O que os tutores contam sobre o Ventura</h2>
+      <p data-reveal style="--i:1">Avaliações reais publicadas no Google, sobre o atendimento do Ventura em geral. Elas não descrevem especificamente a hospedagem de gatos.</p>
+    </header>
+    <!-- CONFIRMAR COM CLIENTE: copiar do Google avaliações sobre hospedagem felina para substituir as gerais em site.ts (reviews); então o H2 pode virar "O que os tutores contam sobre a hospedagem". -->
+    <x-reviews></x-reviews>
   </div>
 </section>
 
-<section class="section faq" id="perguntas" aria-labelledby="faq-titulo">
+<section class="section faq section--nevoa" id="perguntas" aria-labelledby="faq-titulo">
   <div class="wrap faq__grid">
     <header class="faq__head"><h2 id="faq-titulo">Dúvidas sobre o hotel para gatos</h2></header>
     <div class="faq__list">
-      <details class="faq__item" name="faq-hotel-gatos"><summary>Onde fica o hotel para gatos?</summary><div class="faq__answer"><p>Dentro do Ventura Vet, na Rua Otávio Nébias, 190, no Paraíso, em São Paulo, {{site.landmarks.metro}}. Recebemos gatos de tutores de {{site.areasShort}}. Veja <a href="/onde-estamos/">como chegar</a>.</p></div></details>
-      <details class="faq__item" name="faq-hotel-gatos"><summary>Meu gato vai ter contato com outros animais?</summary><div class="faq__answer"><p>Não. Os gatos não ficam em contato com outros animais durante a hospedagem. O gatil telado é usado em alternância pelos hóspedes.</p></div></details>
-      <details class="faq__item" name="faq-hotel-gatos"><summary>Como é o espaço onde os gatos ficam?</summary><div class="faq__answer"><p>É um gatil telado e amplo, com arranhadores, rampas, casinhas e brinquedos, e janelas para os gatos observarem a rua e tomarem sol. Monitores treinados acompanham os hóspedes 24 horas por dia.</p></div></details>
-      <details class="faq__item" name="faq-hotel-gatos"><summary>Meu gato precisa ser castrado?</summary><div class="faq__answer"><p>Sim. Só recebemos gatos castrados, com FIV e FeLV negativos e com vacinas, vermífugo e antipulgas em dia. Se o seu gato ainda não foi castrado, veja a <a href="/castracao/">castração no Ventura</a>.</p></div></details>
-      <details class="faq__item" name="faq-hotel-gatos"><summary>E se eu não tiver o teste de FIV e FeLV?</summary><div class="faq__answer"><p>Nossa equipe pode fazer o teste antes da hospedagem. Ele é feito no nosso laboratório e o resultado fica pronto em até 15 minutos.</p></div></details>
-      <details class="faq__item" name="faq-hotel-gatos"><summary>Quais são os horários de check-in e check-out?</summary><div class="faq__answer"><p>A hospedagem funciona 24 horas, mas o check-in deve ser feito até as 15h e o check-out até as 20h, sem tolerância. Fora desses horários, o gato permanece conosco e uma nova diária é cobrada.</p></div></details>
-      <details class="faq__item" name="faq-hotel-gatos"><summary>Meu gato toma remédio. Vocês administram?</summary><div class="faq__answer"><p>Sim, desde que você forneça a medicação prescrita pelo seu veterinário e descreva na ficha como administrá-la.</p></div></details>
-      <details class="faq__item" name="faq-hotel-gatos"><summary>Vocês hospedam gatos que tomam soro ou remédio de uso contínuo?</summary><div class="faq__answer"><p>Sim. Como o hotel fica dentro da clínica, temos estrutura para hóspedes com necessidades especiais, como gatos com doença renal ou diabetes que precisam de soro e de medicamentos de uso contínuo. Avise no agendamento para a equipe organizar os cuidados.</p></div></details>
-      <details class="faq__item" name="faq-hotel-gatos"><summary>Quanto custa o hotel para gatos?</summary><div class="faq__answer"><p>O valor depende do período. Informe as datas pelo WhatsApp {{site.whatsapp.display}} e enviamos o orçamento. As vagas são limitadas.</p></div></details>
-      <details class="faq__item" name="faq-hotel-gatos"><summary>Posso prolongar a hospedagem?</summary><div class="faq__answer"><p>Sim, conforme a disponibilidade. Converse com a equipe para checar a data e reorganizar o orçamento.</p></div></details>
+      <details class="faq__item" name="faq-hotel-gatos"><summary>Onde fica o hotel?</summary><div class="faq__answer"><p>Na Rua Otávio Nébias, 190, no Paraíso, em São Paulo – SP, no mesmo endereço da clínica veterinária Ventura Vet.</p></div></details>
+      <details class="faq__item" name="faq-hotel-gatos"><summary>Meu gato terá contato com outros animais?</summary><div class="faq__answer"><p>Não. Conforme o regulamento, os gatos não ficam em contato com outros animais. O uso dos espaços de brincadeira acontece em alternância entre os hóspedes.</p></div></details>
+      <details class="faq__item" name="faq-hotel-gatos"><summary>Meu gato ficará solto durante toda a hospedagem?</summary><div class="faq__answer"><p>Não durante todo o período. O regulamento prevê permanência em gaiola em determinados momentos do dia e liberação para brincar em alternância com os demais hóspedes.</p></div></details>
+      <details class="faq__item" name="faq-hotel-gatos"><summary>Há acompanhamento durante a noite e nos fins de semana?</summary><div class="faq__answer"><p>Sim. Monitores estão presentes 24 horas por dia, sete dias por semana. Isso não significa atendimento veterinário ou pronto atendimento clínico 24 horas.</p></div></details>
+      <details class="faq__item" name="faq-hotel-gatos"><summary>O que significa a clínica ter o selo Cat Friendly Practice?</summary><div class="faq__answer"><p>O selo identifica uma clínica reconhecida pelo programa Cat Friendly Practice por atender critérios voltados ao atendimento de gatos. No Ventura, esse cuidado inclui consultório exclusivo para felinos, sala de espera separada e recursos de manejo que consideram suas particularidades.</p></div></details>
+      <details class="faq__item" name="faq-hotel-gatos"><summary>O selo Cat Friendly Practice é uma certificação do hotel?</summary><div class="faq__answer"><p>A certificação apresentada é da clínica veterinária Ventura Vet. O hotel funciona no mesmo endereço e possui estrutura, rotina e regras próprias de hospedagem, apresentadas nesta página.</p></div></details>
+      <details class="faq__item" name="faq-hotel-gatos"><summary>Meu gato precisa ser castrado?</summary><div class="faq__answer"><p>Sim. A castração é um dos requisitos de admissão do hotel.</p></div></details>
+      <details class="faq__item" name="faq-hotel-gatos"><summary>É obrigatório apresentar teste de FIV e FeLV?</summary><div class="faq__answer"><p>Sim. É necessário apresentar teste negativo assinado por médico veterinário. O hotel não recebe gatos positivos. Caso ainda não tenha o exame, converse com a equipe sobre a realização antes da hospedagem.</p></div></details>
+      <details class="faq__item" name="faq-hotel-gatos"><summary>Quais cuidados sanitários são exigidos?</summary><div class="faq__answer"><p>Vacinas, vermifugação e antipulgas em dia. A carteirinha de vacinação deve ser apresentada antes da reserva para conferência da equipe.</p></div></details>
+      <details class="faq__item" name="faq-hotel-gatos"><summary>Meu gato usa medicamentos. Vocês administram?</summary><div class="faq__answer"><p>O regulamento prevê a administração dos medicamentos prescritos pelo veterinário do gato, fornecidos pelo tutor e com as orientações registradas na ficha. Informe as necessidades antes de confirmar a hospedagem para a equipe verificar os cuidados envolvidos.</p></div></details>
+      <details class="faq__item" name="faq-hotel-gatos"><summary>Meu gato precisa de soro ou de outros procedimentos. Ele pode se hospedar?</summary><div class="faq__answer"><p>Essas necessidades precisam ser avaliadas previamente pela equipe veterinária. Não há confirmação automática de hospedagem para qualquer condição clínica, e procedimentos veterinários não devem ser considerados incluídos na diária.</p></div></details>
+      <details class="faq__item" name="faq-hotel-gatos"><summary>Preciso levar a alimentação?</summary><div class="faq__answer"><p>Sim. Alimentação, medicamentos e petiscos devem ser fornecidos pelo tutor. A alimentação natural deve ser entregue porcionada, identificada e em embalagens adequadas para geladeira ou freezer.</p></div></details>
+      <details class="faq__item" name="faq-hotel-gatos"><summary>Receberei notícias durante a viagem?</summary><div class="faq__answer"><p>Sim. Os monitores fazem vídeos dos hóspedes para os tutores acompanharem a estadia.</p></div></details>
+      <details class="faq__item" name="faq-hotel-gatos"><summary>Quais são os horários de entrada e saída?</summary><div class="faq__answer"><p>O check-in deve acontecer até as 15h e o check-out até as 20h, sem tolerância. Combine o horário com a equipe. A retirada após o limite implica permanência do gato e cobrança de nova diária, conforme o regulamento.</p></div></details>
+      <details class="faq__item" name="faq-hotel-gatos"><summary>Quanto custa a hospedagem?</summary><div class="faq__answer"><p>Informe as datas pretendidas e as necessidades do seu gato para receber o orçamento e as formas de pagamento pelo WhatsApp.</p></div></details>
+      <details class="faq__item" name="faq-hotel-gatos"><summary>Posso prolongar a estadia?</summary><div class="faq__answer"><p>Sim, desde que haja disponibilidade. Entre em contato com a equipe para verificar as novas datas e atualizar o orçamento.</p></div></details>
+      <details class="faq__item" name="faq-hotel-gatos"><summary>O que preciso preencher para confirmar a hospedagem?</summary><div class="faq__answer"><p>A ficha de hospedagem, com contatos, hábitos, alimentação, medicação e contato de emergência, além do contrato de prestação de serviços. O hotel não recebe hóspedes sem contrato assinado.</p></div></details>
     </div>
   </div>
 </section>
 
-<section class="section section--tight">
-  <div class="wrap"><x-service-nav current="hotel-para-gatos"></x-service-nav></div>
-</section>
+<x-cta-final>
+  <h2 id="cta-final-titulo">Vai viajar? Consulte a hospedagem para seu gato</h2>
+  <p>Informe as datas da viagem e as necessidades do seu gato. Nossa equipe orientará sobre disponibilidade, requisitos e orçamento da hospedagem no Ventura Vet, no Paraíso, em São Paulo.</p>
+  <div class="cta-final__actions">
+    <a class="btn btn--dark" data-wa="Olá! Vim pela página de Hotel para Gatos do Ventura Vet e gostaria de consultar disponibilidade e orçamento.&#10;Entrada:&#10;Saída:&#10;Quantidade de gatos:&#10;Há alguma necessidade de medicação ou cuidado especial?"><x-icon name="whatsapp"></x-icon>Consultar disponibilidade e orçamento</a>
+    <a class="btn btn--light" href="{{site.google.mapsUrl}}" target="_blank" rel="noopener"><x-icon name="map-pin"></x-icon>Como chegar</a>
+  </div>
+  <p>Hotel: acompanhamento por monitores 24 horas. Entrada e saída: horários específicos do regulamento. Clínica veterinária: atendimento em horário comercial.</p>
+</x-cta-final>
 
-<x-include src="cta-final"></x-include>
+<section class="section section--tight" aria-labelledby="relacionados-titulo">
+  <div class="wrap">
+    <h2 id="relacionados-titulo" class="subhead" data-reveal>Cuidados veterinários também no Ventura</h2>
+    <ul class="svc-mini">
+      <li><a class="svc-mini__link" href="/veterinario-para-gatos/"><x-icon name="cat"></x-icon><span><strong>Atendimento veterinário para gatos</strong><small>Consultório exclusivo e sala de espera separada.</small></span></a></li>
+      <li><a class="svc-mini__link" href="/laboratorio/"><x-icon name="flask-conical"></x-icon><span><strong>Laboratório Veterinário</strong><small>Exames laboratoriais, de imagem e cardiológicos.</small></span></a></li>
+      <li><a class="svc-mini__link" href="/teste-fiv-felv/"><x-icon name="shield-check"></x-icon><span><strong>Teste FIV e FeLV</strong><small>Exame exigido para a hospedagem de gatos.</small></span></a></li>
+    </ul>
+  </div>
+</section>

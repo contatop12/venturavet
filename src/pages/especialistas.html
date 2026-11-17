@@ -1,13 +1,15 @@
 <!---
-title: Veterinários Especialistas no Paraíso, SP | Ventura Vet
-description: Conheça os veterinários especialistas do Ventura Vet, no Paraíso (SP): cardiologia, dermatologia, oftalmologia, odontologia, medicina felina, ultrassom e mais.
+title: Especialidades Veterinárias no Paraíso | Ventura Vet
+description: Conheça as áreas de atendimento veterinário do Ventura no Paraíso, São Paulo. Consultas particulares para cães e gatos. Consulte profissionais e agenda.
 path: /especialistas/
-type: page
-breadcrumb: [["Clínica Veterinária", "/clinica-veterinaria/"], ["Especialistas"]]
+type: service
+service: especialistas
+breadcrumb: [["Clínica Veterinária", "/clinica-veterinaria/"], ["Especialidades"]]
 ogSource: equipe-ventura-parede-verde.jpg
 ogImageAlt: Equipe do Ventura Vet reunida em frente à parede verde da recepção da clínica
 imageSource: equipe-ventura-parede-verde.jpg
 priority: 0.8
+bodyClass: pg-terapias pg-especialistas
 --->
 
 <section class="page-hero">
@@ -15,12 +17,18 @@ priority: 0.8
     <x-breadcrumbs></x-breadcrumbs>
     <div class="page-hero__grid">
       <div>
-        <h1>Veterinários especialistas <em>no Paraíso</em>: conheça a equipe</h1>
-        <p class="page-hero__lede">Quando o caso pede um olhar mais específico, o clínico geral do Ventura conta com especialistas que atendem no mesmo endereço, com hora marcada.</p>
+        <p class="castra__kicker castra__kicker--dark">Atendimento para cães e gatos</p>
+        <h1>Especialidades veterinárias no Paraíso, em São Paulo</h1>
+        <p class="page-hero__lede">Conheça as áreas de atendimento do Ventura e consulte a disponibilidade dos profissionais. Consultas com agendamento, no mesmo endereço da clínica, para orientar o cuidado conforme as necessidades do seu pet.</p>
         <div class="page-hero__actions">
-          <a class="btn" data-wa="Olá! Vim pelo site e quero agendar uma consulta com um especialista." data-magnetic><x-icon name="whatsapp"></x-icon>Agendar com especialista</a>
-          <a class="btn btn--ghost" href="tel:{{site.phone.e164}}" data-track="phone"><x-icon name="phone"></x-icon>{{site.phone.display}}</a>
+          <a class="btn" data-wa="Olá! Vim pela página de Especialidades e gostaria de consultar um atendimento.&#10;Meu pet é:&#10;Área ou necessidade:" data-magnetic><x-icon name="whatsapp"></x-icon>Consultar área e disponibilidade</a>
+          <a class="btn btn--ghost" href="#areas">Conhecer as áreas</a>
         </div>
+        <ul class="pills">
+          <li><x-icon name="badge-check"></x-icon>Atendimento particular</li>
+          <li><x-icon name="calendar-check"></x-icon>Consultas com agendamento</li>
+          <li><x-icon name="paw-print"></x-icon>No Paraíso desde 2007</li>
+        </ul>
       </div>
       <div class="page-hero__art page-hero__art--photo">
         <x-img src="equipe-ventura-parede-verde.jpg" alt="Equipe do Ventura Vet reunida em frente à parede verde da recepção" priority widths="360,540,720" sizes="(min-width: 860px) 34vw, 80vw"></x-img>
@@ -31,53 +39,175 @@ priority: 0.8
 
 <section class="section section--tight">
   <div class="wrap">
-    <p class="answer">O Ventura Vet, clínica veterinária particular no Paraíso, em São Paulo, reúne especialistas em cardiologia, dermatologia e endocrinologia, oftalmologia, odontologia, medicina felina, anestesiologia, ultrassonografia, fisioterapia e acupuntura. As consultas são com hora marcada, na Rua Otávio Nébias, 190, com o apoio do laboratório próprio, que entrega hemograma, SDMA e teste de FIV/FeLV em até 15 minutos.</p>
+    <p class="answer">O Ventura, clínica veterinária particular no Paraíso, em São Paulo, apresenta nesta página as áreas de atendimento para cães e gatos e os profissionais da equipe. As consultas são com agendamento, na Rua Otávio Nébias, 190, e a disponibilidade de cada área e de cada profissional deve ser consultada com a equipe.</p>
+  </div>
+</section>
+
+<section class="section" id="areas" aria-labelledby="areas-titulo">
+  <!-- CONFIRMAR COM CLIENTE: áreas efetivamente disponíveis hoje (em especial ortopedia, neurologia e oncologia, sem profissional identificado), profissionais, espécies atendidas, agenda e valores. -->
+  <div class="wrap">
+    <header class="section-head">
+      <h2 id="areas-titulo" data-reveal>Encontre a área que você procura</h2>
+      <p data-reveal style="--i:1">Consulte os atendimentos disponíveis e a agenda dos profissionais. Se você já possui encaminhamento ou exames, informe isso ao entrar em contato.</p>
+    </header>
+    <ul class="cards areas">
+      <li class="card" id="ortopedia"><x-icon name="bone"></x-icon><h3>Ortopedia veterinária</h3><p>Avaliação de alterações relacionadas a ossos, articulações e mobilidade.</p><a class="btn btn--sm" data-wa="Olá! Gostaria de consultar a disponibilidade e o valor de atendimento em ortopedia para meu pet."><x-icon name="whatsapp"></x-icon>Consultar ortopedia</a></li>
+      <li class="card" id="dermatologia"><x-icon name="hand-heart"></x-icon><h3>Dermatologia veterinária</h3><p>Avaliação de alterações da pele, pelos e ouvidos.</p><a class="btn btn--sm" data-wa="Olá! Gostaria de consultar a disponibilidade e o valor de atendimento em dermatologia para meu pet."><x-icon name="whatsapp"></x-icon>Consultar dermatologia</a></li>
+      <li class="card" id="oftalmologia"><x-icon name="eye"></x-icon><h3>Oftalmologia veterinária</h3><p>Avaliação e acompanhamento da saúde dos olhos.</p><a class="btn btn--sm" data-wa="Olá! Gostaria de consultar a disponibilidade e o valor de atendimento em oftalmologia para meu pet."><x-icon name="whatsapp"></x-icon>Consultar oftalmologia</a></li>
+      <li class="card" id="endocrinologia"><x-icon name="activity"></x-icon><h3>Endocrinologia veterinária</h3><p>Investigação e acompanhamento de alterações hormonais.</p><a class="btn btn--sm" data-wa="Olá! Gostaria de consultar a disponibilidade e o valor de atendimento em endocrinologia para meu pet."><x-icon name="whatsapp"></x-icon>Consultar endocrinologia</a></li>
+      <li class="card" id="odontologia"><x-icon name="smile"></x-icon><h3>Odontologia veterinária</h3><p>Avaliação da saúde bucal e planejamento dos cuidados necessários.</p><a class="btn btn--sm" data-wa="Olá! Gostaria de consultar a disponibilidade e o valor de atendimento em odontologia para meu pet."><x-icon name="whatsapp"></x-icon>Consultar odontologia</a></li>
+      <li class="card" id="neurologia"><x-icon name="brain"></x-icon><h3>Neurologia veterinária</h3><p>Avaliação de alterações relacionadas ao sistema nervoso.</p><a class="btn btn--sm" data-wa="Olá! Gostaria de consultar a disponibilidade e o valor de atendimento em neurologia para meu pet."><x-icon name="whatsapp"></x-icon>Consultar neurologia</a></li>
+      <li class="card" id="cardiologia"><x-icon name="heart-pulse"></x-icon><h3>Cardiologia veterinária</h3><p>Avaliação e acompanhamento da saúde cardíaca.</p><a class="btn btn--sm" data-wa="Olá! Gostaria de consultar a disponibilidade e o valor de atendimento em cardiologia para meu pet."><x-icon name="whatsapp"></x-icon>Consultar cardiologia</a></li>
+      <li class="card" id="oncologia"><x-icon name="shield-check"></x-icon><h3>Oncologia veterinária</h3><p>Avaliação e acompanhamento de pacientes com suspeita ou diagnóstico de doença oncológica.</p><a class="btn btn--sm" data-wa="Olá! Gostaria de consultar a disponibilidade e o valor de atendimento em oncologia para meu pet."><x-icon name="whatsapp"></x-icon>Consultar oncologia</a></li>
+    </ul>
+  </div>
+</section>
+
+<section class="section section--nevoa" id="medicina-felina" aria-labelledby="felina-titulo">
+  <!-- CONFIRMAR COM CLIENTE: qualificação comprovada da Dra. Amanda Oncins antes de divulgar título de especialista; vigência do Cat Friendly Practice. -->
+  <div class="wrap split">
+    <div>
+      <h2 id="felina-titulo" data-reveal>Atendimento em medicina felina</h2>
+      <div class="prose" data-reveal style="--i:1">
+        <p>Consulte a agenda de atendimento voltado à saúde dos gatos.</p>
+        <p>O Ventura possui selo {{site.credentials.catFriendly}}, consultório exclusivo para felinos e sala de espera separada dos cães. A equipe orienta a organização da visita conforme as necessidades do paciente.</p>
+      </div>
+      <div class="cta-row" data-reveal style="--i:2">
+        <a class="btn" data-wa="Olá! Gostaria de consultar a agenda e as condições de atendimento em medicina felina."><x-icon name="whatsapp"></x-icon>Consultar medicina felina</a>
+        <a class="link-more" href="/veterinario-para-gatos/">Conhecer o atendimento para gatos</a>
+      </div>
+      <p class="aviso" data-reveal style="--i:3">O {{site.credentials.catFriendly}} é um reconhecimento da clínica e de suas práticas, e não um título profissional individual.</p>
+    </div>
+    <div class="split__media" data-reveal>
+      <x-img src="cat-friendly-practice-certificado-prata.jpg" alt="Gato sobre o certificado Cat Friendly Practice do Ventura" widths="360,540,720" sizes="(min-width: 860px) 40vw, 90vw"></x-img>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="orientacao" aria-labelledby="orientacao-titulo">
+  <div class="wrap">
+    <div class="highlight highlight--row" data-reveal>
+      <x-icon name="clipboard-list" class="highlight__icon"></x-icon>
+      <div>
+        <h2 id="orientacao-titulo">Explique sua necessidade à equipe</h2>
+        <p>Você não precisa escolher uma área sozinho. Conte o motivo do contato e informe se o pet já passou por avaliação, possui exames ou recebeu encaminhamento.</p>
+        <p>A equipe orientará sobre as opções de agendamento. Quando necessário, o primeiro passo poderá ser uma consulta clínica.</p>
+        <div class="cta-row">
+          <a class="btn btn--dark" data-wa="Olá! Preciso de atendimento para meu pet, mas não sei qual área procurar. Gostaria de orientação sobre o agendamento."><x-icon name="whatsapp"></x-icon>Pedir orientação para agendar</a>
+          <a class="link-more" href="/consulta-veterinaria/">Conhecer a consulta veterinária</a>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
 <section class="section section--nevoa" id="equipe" aria-labelledby="equipe-titulo">
+  <!-- CONFIRMAR COM CLIENTE: vínculo atual, nome completo, registros (CRMV) e qualificações de cada profissional antes de manter títulos de especialista. -->
   <div class="wrap">
     <header class="section-head">
-      <h2 id="equipe-titulo" data-reveal>Nossos especialistas</h2>
-      <p data-reveal style="--i:1">Cada profissional cuida de uma área. O atendimento é integrado: o especialista conversa com o clínico que acompanha o seu pet.</p>
+      <h2 id="equipe-titulo" data-reveal>Conheça os profissionais</h2>
+      <p data-reveal style="--i:1">Atendimento clínico e responsabilidade técnica, áreas de atendimento, diagnóstico e apoio aos procedimentos, reabilitação e terapias: cada profissional atua em uma frente. Ultrassonografia, anestesiologia e fisioterapia não são consultas equivalentes às demais áreas, e a disponibilidade depende da agenda de cada um.</p>
     </header>
     <x-team></x-team>
-    <p class="lab-note" data-reveal>A clínica também oferece consultas de ortopedia, neurologia e oncologia veterinária. Consulte a agenda de cada especialidade pelo WhatsApp {{site.whatsapp.display}}.</p>
+    <div class="cta-row" data-reveal>
+      <a class="btn" data-wa="Olá! Vim pela página de Especialidades e gostaria de consultar a disponibilidade de um profissional.&#10;Profissional ou área:"><x-icon name="whatsapp"></x-icon>Consultar disponibilidade</a>
+    </div>
   </div>
 </section>
 
-<section class="section" aria-labelledby="estrutura-titulo">
-  <div class="wrap split">
+<section class="section" id="estrutura" aria-labelledby="estrutura-titulo">
+  <div class="wrap">
+    <header class="section-head">
+      <h2 id="estrutura-titulo" data-reveal>Atendimento com a estrutura do Ventura</h2>
+      <p data-reveal style="--i:1">Os profissionais atendem no endereço da clínica, no Paraíso. Conforme a indicação e a disponibilidade, o acompanhamento pode contar com laboratório, exames de imagem e estrutura para procedimentos. A equipe informa quais etapas podem ser realizadas no local e quais precisam de agendamento específico.</p>
+    </header>
+    <div class="apoio" data-reveal>
+      <x-img src="consultorio-clinico-ventura.jpg" alt="Consultório clínico do Ventura Vet" widths="360,540,720" sizes="(min-width: 860px) 45vw, 92vw"></x-img>
+      <x-img src="laboratorio-bancada-equipamentos-microscopio.jpg" alt="Bancada do laboratório do Ventura, com analisadores e microscópio" widths="360,540,720" sizes="(min-width: 860px) 45vw, 92vw"></x-img>
+    </div>
+    <div class="cta-row">
+      <a class="link-more" href="/clinica-veterinaria/">Conhecer a Clínica Veterinária</a>
+      <a class="link-more" href="/laboratorio/">Conhecer o Laboratório Veterinário</a>
+      <a class="link-more" href="/tratamentos-e-terapias/">Conhecer Tratamentos e Terapias</a>
+    </div>
+  </div>
+</section>
+
+<section class="section section--nevoa" id="como-agendar" aria-labelledby="agendar-titulo">
+  <div class="wrap">
+    <header class="section-head">
+      <h2 id="agendar-titulo" data-reveal>Como organizar a consulta</h2>
+    </header>
+    <ol class="steps steps--4">
+      <li><h3>Informe a necessidade</h3><p>Escolha a área ou explique o motivo do atendimento.</p></li>
+      <li><h3>Consulte a agenda</h3><p>A equipe informa profissional disponível, valor e condições.</p></li>
+      <li><h3>Prepare o histórico</h3><p>Separe exames, relatórios e encaminhamento, quando disponíveis.</p></li>
+      <li><h3>Confirme as orientações</h3><p>Verifique horário, preparo e documentos necessários.</p></li>
+    </ol>
+    <div class="cta-row">
+      <a class="btn" data-wa="Olá! Gostaria de consultar a agenda e os valores de atendimento no Ventura.&#10;Meu pet é:&#10;Área ou necessidade:"><x-icon name="whatsapp"></x-icon>Consultar agenda e valores</a>
+    </div>
+    <p class="aviso">Os valores e as condições dependem do atendimento solicitado. Consulte a equipe e esclareça o que está incluído antes de confirmar. <strong>Atendimento particular. Não atendemos convênios ou planos de saúde pet.</strong></p>
+  </div>
+</section>
+
+<section class="section" id="avaliacoes" aria-labelledby="avaliacoes-titulo">
+  <div class="wrap">
+    <header class="section-head">
+      <h2 id="avaliacoes-titulo" data-reveal>O que os tutores contam sobre o Ventura</h2>
+    </header>
+    <x-reviews></x-reviews>
+  </div>
+</section>
+
+<section class="section section--nevoa" id="localizacao" aria-labelledby="local-titulo">
+  <div class="wrap local">
     <div>
-      <h2 id="estrutura-titulo" data-reveal>Conheça a estrutura da clínica</h2>
-      <div class="prose" data-reveal style="--i:1">
-        <p>Os especialistas atendem na própria Ventura, com a estrutura da clínica à disposição. Assista ao vídeo para ver os ambientes por dentro.</p>
+      <h2 id="local-titulo" data-reveal>Atendimento veterinário no Paraíso</h2>
+      <p class="prose" data-reveal style="--i:1">O Ventura fica na Rua Otávio Nébias, 190, no Paraíso, em São Paulo. Consulte a agenda do profissional desejado antes de organizar a visita. Os horários das áreas de atendimento podem variar.</p>
+      <x-nap></x-nap>
+      <dl class="hours">
+        <div><dt>Segunda a sexta</dt><dd>Das 9h às 18h</dd></div>
+        <div><dt>Sábado</dt><dd>Das 9h às 16h</dd></div>
+        <div><dt>Domingo</dt><dd>Fechado</dd></div>
+      </dl>
+      <p class="local__nota">Horário da clínica. Nem todos os profissionais atendem durante todo o período.</p>
+      <div class="cta-row">
+        <a class="btn btn--ghost" href="{{site.google.mapsUrl}}" target="_blank" rel="noopener"><x-icon name="map-pin"></x-icon>Como chegar</a>
+        <a class="btn" data-wa="Olá! Vim pela página de Especialidades e gostaria de consultar a disponibilidade de atendimento."><x-icon name="whatsapp"></x-icon>Consultar disponibilidade</a>
       </div>
-      <ul class="checklist" data-reveal style="--i:2">
-        <li><x-icon name="check"></x-icon>Quatro consultórios, um deles exclusivo para gatos</li>
-        <li><x-icon name="check"></x-icon>Laboratório próprio com aparelhos Idexx®</li>
-        <li><x-icon name="check"></x-icon>Raio-X, ultrassom e ecocardiograma com hora marcada</li>
-        <li><x-icon name="check"></x-icon>Centro cirúrgico com anestesia conduzida por anestesiologista</li>
-      </ul>
-      <p data-reveal style="--i:3"><a class="link-more" href="/clinica-veterinaria/">Ver a Clínica Veterinária</a></p>
     </div>
-    <div class="split__media" data-reveal>
-      <x-youtube short id="z0DHfZE4DY4" title="Estrutura da clínica veterinária Ventura Vet, no Paraíso"></x-youtube>
+    <div class="local__foto" data-reveal>
+      <x-img src="fachada-clinica-ventura-paraiso.jpg" alt="Fachada do Ventura Vet, na Rua Otávio Nébias, no Paraíso" widths="360,540,720" sizes="(min-width: 860px) 40vw, 92vw"></x-img>
     </div>
   </div>
 </section>
 
-<section class="section faq section--nevoa" id="perguntas" aria-labelledby="faq-titulo">
+<section class="section faq" id="perguntas" aria-labelledby="faq-titulo">
   <div class="wrap faq__grid">
-    <header class="faq__head"><h2 id="faq-titulo">Dúvidas sobre os especialistas</h2></header>
+    <header class="faq__head"><h2 id="faq-titulo">Dúvidas sobre as áreas de atendimento</h2></header>
     <div class="faq__list">
-      <details class="faq__item" name="faq-esp"><summary>Quais especialidades veterinárias o Ventura oferece?</summary><div class="faq__answer"><p>Cardiologia, dermatologia, endocrinologia, oftalmologia, odontologia, medicina felina, anestesiologia, ultrassonografia, fisioterapia e acupuntura, além de ortopedia, neurologia e oncologia.</p></div></details>
-      <details class="faq__item" name="faq-esp"><summary>Como agendar uma consulta com um especialista?</summary><div class="faq__answer"><p>Pelo WhatsApp {{site.whatsapp.display}} ou pelo telefone {{site.phone.display}}. As consultas com especialistas são com hora marcada, e a equipe informa os dias de atendimento de cada um.</p></div></details>
-      <details class="faq__item" name="faq-esp"><summary>Onde os especialistas atendem?</summary><div class="faq__answer"><p>Na própria clínica: {{site.address.full}}. Exames de laboratório e de imagem são feitos no mesmo endereço.</p></div></details>
-      <details class="faq__item" name="faq-esp"><summary>O Ventura tem veterinário especialista em gatos?</summary><div class="faq__answer"><p>Sim. A Dra. Amanda Oncins é especialista em medicina felina, e a clínica tem o selo Cat Friendly Practice, com consultório exclusivo para gatos.</p></div></details>
-      <details class="faq__item" name="faq-esp"><summary>As consultas com especialistas aceitam convênio?</summary><div class="faq__answer"><p>Não. O Ventura é uma clínica particular e não trabalha com convênios nem planos de saúde pet. Os valores são informados no agendamento.</p></div></details>
+      <details class="faq__item" name="faq-esp"><summary>Quais áreas o Ventura oferece?</summary><div class="faq__answer"><p>Consulte os atendimentos apresentados nesta página e confirme a disponibilidade com a equipe. A agenda depende de cada profissional.</p></div></details>
+      <details class="faq__item" name="faq-esp"><summary>Preciso de encaminhamento?</summary><div class="faq__answer"><p>Informe se você já possui encaminhamento. A equipe esclarece as condições para o atendimento desejado.</p></div></details>
+      <details class="faq__item" name="faq-esp"><summary>Não sei qual área procurar. Como faço?</summary><div class="faq__answer"><p>Explique sua necessidade no contato. A equipe orientará sobre o agendamento e a possibilidade de começar por uma consulta clínica.</p></div></details>
+      <details class="faq__item" name="faq-esp"><summary>Os atendimentos são para cães e gatos?</summary><div class="faq__answer"><p>O Ventura atende as duas espécies. Confirme a atuação do profissional para o paciente e a necessidade informados.</p></div></details>
+      <details class="faq__item" name="faq-esp"><summary>Vocês oferecem medicina felina?</summary><div class="faq__answer"><p>Consulte a agenda do atendimento felino. A clínica possui selo {{site.credentials.catFriendly}}, consultório exclusivo para gatos e sala de espera separada.</p></div></details>
+      <details class="faq__item" name="faq-esp"><summary>Todos os profissionais atendem diariamente?</summary><div class="faq__answer"><p>Não considere disponibilidade diária. As consultas e os procedimentos dependem da agenda.</p></div></details>
+      <details class="faq__item" name="faq-esp"><summary>Posso levar exames de outra clínica?</summary><div class="faq__answer"><p>Sim. Informe quais documentos possui e consulte as orientações para apresentá-los no atendimento.</p></div></details>
+      <details class="faq__item" name="faq-esp"><summary>Preciso fazer novos exames?</summary><div class="faq__answer"><p>A necessidade será definida pelo profissional conforme o caso. Não presuma que todos os exames anteriores precisam ser repetidos.</p></div></details>
+      <details class="faq__item" name="faq-esp"><summary>Quanto custa a consulta?</summary><div class="faq__answer"><p>Consulte o valor e as condições da área desejada. Exames e procedimentos deverão ter seus custos esclarecidos separadamente.</p></div></details>
+      <details class="faq__item" name="faq-esp"><summary>O atendimento aceita convênio?</summary><div class="faq__answer"><p>Não. O atendimento é particular.</p></div></details>
+      <details class="faq__item" name="faq-esp"><summary>A clínica atende 24 horas?</summary><div class="faq__answer"><p>Não. Consulte os horários da clínica e a agenda específica dos profissionais.</p></div></details>
+      <details class="faq__item" name="faq-esp"><summary>Como confirmar o agendamento?</summary><div class="faq__answer"><p>Entre em contato pelo WhatsApp ou telefone. A equipe confirma o horário e as orientações correspondentes.</p></div></details>
     </div>
   </div>
 </section>
 
-<x-include src="cta-final"></x-include>
+<x-cta-final>
+  <h2 id="cta-final-titulo">Encontre o atendimento que seu pet precisa</h2>
+  <p>Informe a área desejada ou explique sua necessidade. Consulte os profissionais, os valores e os horários disponíveis no Ventura. O envio da mensagem não confirma agendamento.</p>
+  <div class="cta-final__actions">
+    <a class="btn btn--dark" data-wa="Olá! Vim pela página de Especialidades do Ventura e gostaria de consultar um atendimento.&#10;Cachorro ou gato:&#10;Área ou necessidade:"><x-icon name="whatsapp"></x-icon>Consultar área e agendamento</a>
+    <a class="btn btn--light" href="tel:{{site.phone.e164}}" data-track="phone"><x-icon name="phone"></x-icon>Ligar para a clínica</a>
+  </div>
+</x-cta-final>

@@ -1,0 +1,88 @@
+/* =====================================================================
+   Temas das páginas por espécie (bodyClass no front matter).
+   tema-cao: quente e brincalhão (laranja, patinhas e ossinhos, movimento com "pulo").
+   tema-gato: calmo e aconchegante (lilás, patinhas de gato e novelos, movimento lento).
+   A hero de cada tema fica em critical.css, para não piscar no carregamento.
+   ===================================================================== */
+
+/* ---------- Cães ---------- */
+.tema-cao {
+  --pet: var(--laranja);
+  --pet-texto: var(--laranja-texto);
+  --pet-suave: #fff1e6;
+  --pet-mola: cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.tema-cao .section--nevoa {
+  background-color: var(--pet-suave);
+  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160'><g fill='%23ff6600' fill-opacity='.08'><g transform='translate(16 20) rotate(-18 12 12)'><ellipse cx='5' cy='10' rx='2.1' ry='2.7'/><ellipse cx='9.3' cy='5.6' rx='2.1' ry='2.8'/><ellipse cx='14.7' cy='5.6' rx='2.1' ry='2.8'/><ellipse cx='19' cy='10' rx='2.1' ry='2.7'/><path d='M12 11.5c-3.1 0-6.2 3.6-6.2 6.6 0 1.9 1.4 3 3 3 1.3 0 2-.6 3.2-.6s1.9.6 3.2.6c1.6 0 3-1.1 3-3 0-3-3.1-6.6-6.2-6.6z'/></g><g transform='translate(100 96) rotate(24 12 12)'><ellipse cx='5' cy='10' rx='2.1' ry='2.7'/><ellipse cx='9.3' cy='5.6' rx='2.1' ry='2.8'/><ellipse cx='14.7' cy='5.6' rx='2.1' ry='2.8'/><ellipse cx='19' cy='10' rx='2.1' ry='2.7'/><path d='M12 11.5c-3.1 0-6.2 3.6-6.2 6.6 0 1.9 1.4 3 3 3 1.3 0 2-.6 3.2-.6s1.9.6 3.2.6c1.6 0 3-1.1 3-3 0-3-3.1-6.6-6.2-6.6z'/></g></g><g fill='none' stroke='%23ff6600' stroke-opacity='.12' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'><path transform='translate(96 16) scale(1.3)' d='M17 10c.7-.7 1.69 0 2.5 0a2.5 2.5 0 1 0 0-5 .5.5 0 0 1-.5-.5 2.5 2.5 0 1 0-5 0c0 .81.7 1.8 0 2.5l-7 7c-.7.7-1.69 0-2.5 0a2.5 2.5 0 0 0 0 5c.28 0 .5.22.5.5a2.5 2.5 0 1 0 5 0c0-.81-.7-1.8 0-2.5Z'/><path transform='translate(18 98) scale(1.3) rotate(80 12 12)' d='M17 10c.7-.7 1.69 0 2.5 0a2.5 2.5 0 1 0 0-5 .5.5 0 0 1-.5-.5 2.5 2.5 0 1 0-5 0c0 .81.7 1.8 0 2.5l-7 7c-.7.7-1.69 0-2.5 0a2.5 2.5 0 0 0 0 5c.28 0 .5.22.5.5a2.5 2.5 0 1 0 5 0c0-.81-.7-1.8 0-2.5Z'/></g></svg>");
+}
+/* Rastro de patinhas sob os títulos */
+.tema-cao .section h2::after {
+  content: ''; display: block; width: 7.5rem; height: 1.6rem; margin-top: 0.75rem;
+  background: no-repeat left center / contain url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='96' height='24' viewBox='0 0 96 24'><g fill='%23ff6600'><g transform='translate(0 4) scale(.8) rotate(90 12 12)' fill-opacity='.4'><ellipse cx='5' cy='10' rx='2.1' ry='2.7'/><ellipse cx='9.3' cy='5.6' rx='2.1' ry='2.8'/><ellipse cx='14.7' cy='5.6' rx='2.1' ry='2.8'/><ellipse cx='19' cy='10' rx='2.1' ry='2.7'/><path d='M12 11.5c-3.1 0-6.2 3.6-6.2 6.6 0 1.9 1.4 3 3 3 1.3 0 2-.6 3.2-.6s1.9.6 3.2.6c1.6 0 3-1.1 3-3 0-3-3.1-6.6-6.2-6.6z'/></g><g transform='translate(36 0) scale(.8) rotate(90 12 12)' fill-opacity='.7'><ellipse cx='5' cy='10' rx='2.1' ry='2.7'/><ellipse cx='9.3' cy='5.6' rx='2.1' ry='2.8'/><ellipse cx='14.7' cy='5.6' rx='2.1' ry='2.8'/><ellipse cx='19' cy='10' rx='2.1' ry='2.7'/><path d='M12 11.5c-3.1 0-6.2 3.6-6.2 6.6 0 1.9 1.4 3 3 3 1.3 0 2-.6 3.2-.6s1.9.6 3.2.6c1.6 0 3-1.1 3-3 0-3-3.1-6.6-6.2-6.6z'/></g><g transform='translate(72 4) scale(.8) rotate(90 12 12)'><ellipse cx='5' cy='10' rx='2.1' ry='2.7'/><ellipse cx='9.3' cy='5.6' rx='2.1' ry='2.8'/><ellipse cx='14.7' cy='5.6' rx='2.1' ry='2.8'/><ellipse cx='19' cy='10' rx='2.1' ry='2.7'/><path d='M12 11.5c-3.1 0-6.2 3.6-6.2 6.6 0 1.9 1.4 3 3 3 1.3 0 2-.6 3.2-.6s1.9.6 3.2.6c1.6 0 3-1.1 3-3 0-3-3.1-6.6-6.2-6.6z'/></g></g></svg>");
+}
+.tema-cao .answer { background: var(--pet-suave); }
+.tema-cao .chip { border-color: var(--pet); &:hover { background: var(--pet); border-color: var(--pet); color: var(--tinta); .icon { color: var(--tinta); } } }
+/* Cartões arredondados que "pulam" */
+.tema-cao .card {
+  border-radius: 1.75rem; transition: transform 0.45s var(--pet-mola), box-shadow 0.45s var(--ease-out);
+  > .icon { background: var(--pet); color: var(--branco); border-radius: 46% 54% 52% 48% / 55% 45% 55% 45%; }
+  &:hover { transform: translateY(-6px) rotate(-1deg); box-shadow: var(--shadow); }
+}
+.tema-cao .card:nth-child(even):hover { transform: translateY(-6px) rotate(1deg); }
+.tema-cao .steps > li { border-radius: 1.75rem; &::before { background: var(--pet); color: var(--tinta); } }
+.tema-cao .split__media--blob::before { background: var(--pet); opacity: 0.35; rotate: -6deg; }
+.tema-cao .split__media img { border-radius: var(--blob); }
+.tema-cao .svc-mini__link { border-radius: 1.5rem; transition: transform 0.4s var(--pet-mola), border-color 0.3s; &:hover { transform: translateY(-4px); border-color: var(--pet); } }
+
+/* ---------- Gatos ---------- */
+.tema-gato {
+  --pet: #9d8be0;
+  --pet-texto: #5a47a8;
+  --pet-suave: #f3f0fc;
+  --pet-calmo: cubic-bezier(0.33, 0, 0.2, 1);
+}
+.tema-gato .section--nevoa {
+  background-color: var(--pet-suave);
+  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='170' height='170' viewBox='0 0 170 170'><g fill='%237c68c9' fill-opacity='.09'><g transform='translate(18 22) rotate(-14 12 12)'><circle cx='5.6' cy='10.4' r='2.1'/><circle cx='9.4' cy='6.4' r='2.1'/><circle cx='14.6' cy='6.4' r='2.1'/><circle cx='18.4' cy='10.4' r='2.1'/><path d='M12 11.2c-3 0-5.6 2.9-5.6 5.5 0 1.9 1.3 3 2.9 3 1.1 0 1.8-.5 2.7-.5s1.6.5 2.7.5c1.6 0 2.9-1.1 2.9-3 0-2.6-2.6-5.5-5.6-5.5z'/></g><g transform='translate(112 104) rotate(18 12 12)'><circle cx='5.6' cy='10.4' r='2.1'/><circle cx='9.4' cy='6.4' r='2.1'/><circle cx='14.6' cy='6.4' r='2.1'/><circle cx='18.4' cy='10.4' r='2.1'/><path d='M12 11.2c-3 0-5.6 2.9-5.6 5.5 0 1.9 1.3 3 2.9 3 1.1 0 1.8-.5 2.7-.5s1.6.5 2.7.5c1.6 0 2.9-1.1 2.9-3 0-2.6-2.6-5.5-5.6-5.5z'/></g></g><g fill='none' stroke='%237c68c9' stroke-opacity='.13' stroke-width='1.4' stroke-linecap='round'><g transform='translate(104 18) scale(1.5)'><circle cx='12' cy='12' r='7.5'/><path d='M5.2 9.5c4.2-.3 9.4 1.7 12.6 6.2M4.6 13.6c4.2-1.4 9.2-.5 12 3.7M9 4.9c.7 4.4 3.9 8.6 9.3 10.2'/><path d='M17.8 17.5c1.6 2.2 3.6 1.7 4.6 3.6'/></g><g transform='translate(20 104) scale(1.5)'><circle cx='12' cy='12' r='7.5'/><path d='M5.2 9.5c4.2-.3 9.4 1.7 12.6 6.2M4.6 13.6c4.2-1.4 9.2-.5 12 3.7M9 4.9c.7 4.4 3.9 8.6 9.3 10.2'/><path d='M17.8 17.5c1.6 2.2 3.6 1.7 4.6 3.6'/></g></g></svg>");
+}
+/* Bigodes sob os títulos */
+.tema-gato .section h2::after {
+  content: ''; display: block; width: 6rem; height: 1.5rem; margin-top: 0.75rem;
+  background: no-repeat left center / contain url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='96' height='24' viewBox='0 0 96 24'><g fill='none' stroke='%239d8be0' stroke-width='2' stroke-linecap='round'><path d='M38 9 6 3M38 12H4M38 15 6 21M58 9l32-6M58 12h34M58 15l32 6'/></g><path d='M43 8.5h10L48 14z' fill='%235a47a8'/></svg>");
+}
+.tema-gato .answer { background: var(--pet-suave); &::before { background: var(--pet); } }
+.tema-gato .chip { border-color: var(--pet); &:hover { background: var(--pet-suave); border-color: var(--pet-texto); } .icon { color: var(--pet-texto); } }
+.tema-gato .link-more, .tema-gato .prose a, .tema-gato .card a, .tema-gato .section-head a { color: var(--pet-texto); }
+.tema-gato .checklist li .icon { background: var(--pet); color: var(--branco); }
+/* Cartões com orelhinhas e movimento lento */
+.tema-gato .cards { row-gap: 2rem; }
+.tema-gato .card {
+  position: relative; transition: transform 0.8s var(--pet-calmo), box-shadow 0.8s var(--pet-calmo);
+  > .icon { background: var(--pet-suave); color: var(--pet-texto); }
+  &::before {
+    content: ''; position: absolute; top: -0.8rem; left: 1.4rem; width: 3.25rem; height: 0.85rem; background: var(--pet);
+    clip-path: polygon(0 100%, 17% 0, 36% 100%, 64% 100%, 83% 0, 100% 100%);
+    transition: transform 0.8s var(--pet-calmo); transform-origin: bottom;
+  }
+  &:hover { transform: translateY(-3px); box-shadow: var(--shadow); &::before { transform: scaleY(1.25); } }
+}
+.tema-gato .steps { row-gap: 2rem; }
+.tema-gato .steps > li {
+  position: relative; overflow: visible;
+  &::before { background: var(--pet-texto); }
+  &::after {
+    content: ''; position: absolute; top: -0.8rem; right: 1.6rem; width: 3.25rem; height: 0.85rem; background: var(--pet);
+    clip-path: polygon(0 100%, 17% 0, 36% 100%, 64% 100%, 83% 0, 100% 100%);
+  }
+}
+.tema-gato .highlight { background: var(--pet-suave); }
+.tema-gato .highlight__icon { background: var(--pet-texto); color: var(--branco); }
+.tema-gato .split__media--blob::before { background: var(--pet); opacity: 0.3; }
+.tema-gato .split__media img { border-radius: 50% 50% var(--r-lg) var(--r-lg) / 38% 38% var(--r-lg) var(--r-lg); }
+.tema-gato .svc-mini__link { transition: border-color 0.6s var(--pet-calmo), background-color 0.6s var(--pet-calmo); &:hover { border-color: var(--pet); background: var(--branco); } .icon { color: var(--pet-texto); } }
+.tema-gato .faq__item summary::marker, .tema-gato .faq__item summary .icon { color: var(--pet-texto); }
+
+@media (prefers-reduced-motion: reduce) {
+  .tema-cao .card:hover, .tema-cao .card:nth-child(even):hover, .tema-gato .card:hover, .tema-cao .svc-mini__link:hover { transform: none; }
+}
