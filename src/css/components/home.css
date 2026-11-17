@@ -134,7 +134,7 @@
 .about__copy > p { margin-top: 1.25rem; font-size: var(--step-1); line-height: 1.6; color: #d3dfe9; strong { color: var(--branco); } }
 .about__copy .btn { margin-top: 2rem; }
 .facts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; margin-top: 2rem; padding-top: 2rem; border-top: 1px solid rgb(255 255 255 / 18%); }
-.facts dt { font-family: var(--f-display); font-style: italic; font-weight: 900; font-size: var(--step-4); line-height: 1; color: var(--laranja); }
+.facts dt { font-family: var(--f-display); font-style: italic; font-weight: 900; font-size: min(var(--step-4), 3.2rem); line-height: 1; color: var(--laranja); }
 .facts dd { margin-top: 0.4rem; font-size: 0.95rem; line-height: 1.4; color: #c9d6e1; }
 .section--nevoa .facts, .facts--light { border-color: var(--linha); dd { color: var(--tinta-2); } dt { color: var(--laranja-texto); } }
 @media (max-width: 860px) { .about__grid { grid-template-columns: 1fr; } .about__media { max-width: 26rem; } }

@@ -8,13 +8,24 @@
 @media (max-width: 860px) { .split { grid-template-columns: 1fr; } .split--rev > :first-child { order: 0; } .split__media { max-width: 28rem; } }
 
 /* Lista de especialidades em "pílulas" grandes */
-.pills { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+/* Destaques curtos. Item sem link é informação, não botão: texto com marcador, sem contorno nem hover.
+   Só item com link (<li><a>) ganha cara de botão (contorno + hover). */
+.pills { display: flex; flex-wrap: wrap; gap: 0.5rem 1.5rem; padding: 0; list-style: none; }
 .pills li {
-  display: inline-flex; align-items: center; gap: 0.55rem; min-height: 3rem; padding: 0.5rem 1.15rem;
-  border-radius: 999px; border: 2px solid var(--tinta); font-family: var(--f-display); font-weight: 800; font-size: var(--step-1);
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  font-family: var(--f-display); font-weight: 700; font-size: 1rem; line-height: 1.3; color: var(--tinta);
+  .icon { flex: none; width: 1.25rem; height: 1.25rem; color: var(--laranja-texto); }
+}
+.pills li:not(:has(> a, > .icon))::before {
+  content: ''; flex: none; width: 1.25rem; height: 1.25rem; border-radius: 999px;
+  background: var(--laranja-suave) center / 0.8rem no-repeat url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23b84300' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'><path d='M20 6 9 17l-5-5'/></svg>");
+}
+.pills:has(> li > a) { gap: 0.6rem; }
+.pills li > a {
+  display: inline-flex; align-items: center; gap: 0.5rem; min-height: 2.75rem; padding: 0.45rem 1.1rem;
+  border-radius: 999px; border: 2px solid var(--tinta); font-weight: 800; color: var(--tinta); text-decoration: none;
   transition: background-color 0.25s, color 0.25s;
-  .icon { color: var(--laranja-texto); }
-  &:hover { background: var(--tinta); color: var(--branco); .icon { color: var(--laranja); } }
+  &:hover, &:focus-visible { background: var(--tinta); color: var(--branco); .icon { color: var(--laranja); } }
 }
 
 /* Abas (clínica) — sem JS, todos os painéis aparecem em sequência */

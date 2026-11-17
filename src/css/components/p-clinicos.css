@@ -26,5 +26,5 @@
 :is(.pg-consulta, .pg-vacinacao) .team-pair picture { display: block; overflow: hidden; border-radius: var(--r-lg); }
 :is(.pg-consulta, .pg-vacinacao) .team-pair img { width: 100%; height: 100%; object-fit: cover; }
 .pg-consulta .team-pair > :last-child { width: 55%; justify-self: end; margin-top: -3.5rem; border: 4px solid var(--branco); border-radius: var(--r-lg); box-shadow: 0 10px 24px rgb(19 41 61 / 16%); }
-.pg-castracao .tag-selo { display: inline-flex; align-items: center; gap: 0.5rem; margin-top: 1rem; padding: 0.5rem 0.9rem; border-radius: 999px; background: var(--branco); font-weight: 700; }
+.pg-castracao .tag-selo { display: inline-flex; align-items: center; gap: 0.5rem; margin-top: 1rem; padding: 0; font-weight: 700; }
 .pg-castracao .note-final { margin-top: 1rem; font-size: 0.95rem; }

@@ -97,7 +97,7 @@ picture img { width: 100%; }
 input, button, textarea, select { font: inherit; color: inherit; }
 button { cursor: pointer; background: none; border: 0; padding: 0; }
 a { color: inherit; text-decoration-thickness: 0.08em; text-underline-offset: 0.18em; }
-h1, h2, h3, h4 { font-family: var(--f-display); line-height: 1.08; text-wrap: balance; font-weight: 800; letter-spacing: -0.015em; }
+h1, h2, h3, h4 { font-family: var(--f-display); line-height: 1.08; text-wrap: balance; font-weight: 800; letter-spacing: -0.015em; hyphens: auto; overflow-wrap: break-word; }
 p, li, dd { text-wrap: pretty; }
 ul[class], ol[class] { list-style: none; padding: 0; }
 :focus-visible { outline: 3px solid var(--paraiso); outline-offset: 3px; border-radius: 4px; }
@@ -124,7 +124,8 @@ main:focus { outline: none; }
   border-radius: 999px; border: 2px solid var(--bg);
   background: var(--bg); color: var(--fg);
   font-family: var(--f-display); font-weight: 800; font-size: 1.0625rem; line-height: 1.1;
-  text-decoration: none; white-space: nowrap;
+  /* Rótulo quebra linha quando o espaço é estreito (cartões, colunas), em vez de sair da pílula */
+  text-decoration: none; text-align: center; text-wrap: balance;
   transition: transform 0.35s var(--ease-out), background-color 0.2s, color 0.2s, box-shadow 0.35s var(--ease-out);
   &:hover { box-shadow: 0 10px 24px -10px rgb(255 102 0 / 70%); }
   &:active { transform: scale(0.97); }
