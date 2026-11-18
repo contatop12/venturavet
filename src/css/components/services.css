@@ -219,11 +219,29 @@ picture.rounded { display: block; border-radius: var(--r-lg); overflow: hidden; 
 .team--compact .team__role { font-size: 0.9rem; }
 .team--compact .team__crmv { margin-top: 0.35rem; font-size: 0.8rem; }
 @media (max-width: 560px) {
-  .team { grid-template-columns: 1fr 1fr; }
+  /* Compacta (só nome, função e CRMV): duas colunas */
+  .team--compact { grid-template-columns: 1fr 1fr; }
   .team__name { font-size: 0.98rem; }
-  .team__body { padding: 0.85rem 0.9rem 1rem; }
-  .team__card h3 { font-size: 1.02rem; }
-  .team__role, .team__about { font-size: 0.86rem; }
+  .team--compact .team__body { padding: 0.85rem 0.9rem 1rem; }
+  /* Completa (/especialistas/): uma coluna; foto redonda ao lado de nome, função e CRMV;
+     texto, áreas e botão em largura cheia, para o botão nunca estourar o cartão */
+  .team:not(.team--compact) { grid-template-columns: 1fr; gap: 0.85rem; }
+  .team:not(.team--compact) .team__card {
+    display: grid; grid-template-columns: 5.5rem minmax(0, 1fr); column-gap: 1rem; align-items: start; padding: 1.1rem 1.1rem 1.25rem;
+  }
+  .team:not(.team--compact) .team__photo { grid-row: 1 / span 3; width: 5.5rem; aspect-ratio: 1; border-radius: 999px; overflow: hidden; }
+  .team:not(.team--compact) .team__body { display: contents; }
+  .team:not(.team--compact) .team__body > * { grid-column: 2; order: 4; }
+  .team:not(.team--compact) .team__body > h3 { order: 1; align-self: end; }
+  .team:not(.team--compact) .team__role { order: 2; }
+  .team:not(.team--compact) .team__crmv { order: 3; align-self: start; }
+  .team:not(.team--compact) .team__body > :is(.team__about, .team__edu, .team__areas, .team__cta) { grid-column: 1 / -1; }
+  .team:not(.team--compact) .team__about { margin-top: 0.9rem; }
+  .team:not(.team--compact) .team__areas { order: 5; }
+  .team:not(.team--compact) .team__cta { order: 6; }
+  .team:not(.team--compact) .team__cta .btn { width: 100%; justify-content: center; }
+  .team__card h3 { font-size: 1.1rem; }
+  .team--compact .team__role { font-size: 0.86rem; }
 }
 /* Vídeos curtos gravados em retrato, lado a lado; no celular viram uma faixa com rolagem horizontal */
 .clips { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
