@@ -21,6 +21,9 @@
   background: var(--laranja-suave) center / 0.8rem no-repeat url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23b84300' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'><path d='M20 6 9 17l-5-5'/></svg>");
 }
 .pills:has(> li > a) { gap: 0.6rem; }
+/* No banner, os destaques ficam abaixo dos botões em peso menor: a ação vem primeiro */
+.page-hero .pills li:not(:has(> a)) { font-weight: 600; font-size: 0.95rem; color: var(--tinta-2); }
+.prose + .checklist { margin-top: 1rem; }
 .pills li > a {
   display: inline-flex; align-items: center; gap: 0.5rem; min-height: 2.75rem; padding: 0.45rem 1.1rem;
   border-radius: 999px; border: 2px solid var(--tinta); font-weight: 800; color: var(--tinta); text-decoration: none;

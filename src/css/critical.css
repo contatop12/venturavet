@@ -97,7 +97,7 @@ picture img { width: 100%; }
 input, button, textarea, select { font: inherit; color: inherit; }
 button { cursor: pointer; background: none; border: 0; padding: 0; }
 a { color: inherit; text-decoration-thickness: 0.08em; text-underline-offset: 0.18em; }
-h1, h2, h3, h4 { font-family: var(--f-display); line-height: 1.08; text-wrap: balance; font-weight: 800; letter-spacing: -0.015em; hyphens: auto; overflow-wrap: break-word; }
+h1, h2, h3, h4 { font-family: var(--f-display); line-height: 1.08; text-wrap: balance; font-weight: 800; letter-spacing: -0.015em; hyphens: manual; overflow-wrap: break-word; }
 p, li, dd { text-wrap: pretty; }
 ul[class], ol[class] { list-style: none; padding: 0; }
 :focus-visible { outline: 3px solid var(--paraiso); outline-offset: 3px; border-radius: 4px; }
@@ -306,6 +306,7 @@ main:focus { outline: none; }
 .page-hero h1 em { font-style: italic; font-weight: 900; color: var(--laranja-texto); }
 .page-hero__lede { max-width: 38rem; margin-top: 1.25rem; font-size: var(--step-1); line-height: 1.5; color: var(--tinta-2); }
 .page-hero__actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1.75rem; }
+.page-hero__actions + .pills { margin-top: 1.75rem; }
 .page-hero__art { position: relative; justify-self: end; width: 100%; max-width: 30rem; }
 .page-hero__art::before { content: ''; position: absolute; inset: 8% 6% 4% 10%; z-index: -1; background: var(--laranja-suave); border-radius: var(--blob); }
 /* Variante para fotos reais (sem recorte): ganham a forma orgânica e o fundo aparece deslocado */

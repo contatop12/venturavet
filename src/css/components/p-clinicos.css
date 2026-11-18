@@ -34,6 +34,8 @@
 .pg-castracao .castra-video .yt { border-radius: var(--r-lg); box-shadow: 0 24px 48px -24px rgb(19 41 61 / 45%); }
 .pg-castracao .castra-video h2 { font-size: var(--step-3); letter-spacing: -0.03em; }
 .pg-castracao .castra-video .prose { margin-top: 1rem; }
+.pg-consulta [data-reveal] > p + p:has(> .btn) { margin-top: 1.25rem; }
+.pg-micro [data-reveal] > p + p { margin-top: 0.75rem; }
 .pg-castracao .castra-video .prose p + p { margin-top: 0.75rem; }
 .pg-castracao .castra-video .checklist { margin-top: 1.25rem; }
 .pg-castracao .castra-cards { grid-template-columns: repeat(auto-fit, minmax(min(100%, 13rem), 1fr)); }

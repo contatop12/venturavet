@@ -122,6 +122,8 @@
   .esp-galeria picture:first-child { grid-column: span 2; grid-row: auto; aspect-ratio: 4 / 3; }
 }
 .esp-estrutura { display: grid; grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr); gap: clamp(1.5rem, 4vw, 3.5rem); align-items: center; }
+.esp-estrutura h2 + .prose { margin-top: 1.25rem; }
+.esp-estrutura .prose p + p { margin-top: 0.75rem; }
 .esp-estrutura .selos { margin-top: 1.5rem; }
 @media (max-width: 960px) { .esp-estrutura { grid-template-columns: 1fr; } }
 
