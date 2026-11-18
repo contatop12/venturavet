@@ -142,6 +142,73 @@ export const components: Record<string, Component> = {
       .join('')}</ul>`;
   },
 
+  /**
+   * Grade de especialidades (grupo "especialidade" em site.ts, em ordem alfabética): ícone, área, quem atende,
+   * link para a página da especialidade e WhatsApp com a mensagem da área.
+   * `exclude="slug"` tira uma área; `compact`: só ícone e nome, como atalhos (fim das páginas de especialidade).
+   * O id de cada cartão (#dermatologia, #ortopedia...) preserva as âncoras antigas de /especialistas/.
+   */
+  'x-especialidades': ($, el, ctx) => {
+    const list = services.filter((s) => s.group === 'especialidade' && s.slug !== el.attr('exclude'));
+    ['arrow-right', 'whatsapp', 'calendar-check', ...list.map((s) => s.icon)].forEach((i) => ctx.icons.add(i));
+    const title = (s: (typeof list)[number]) => s.name.replace(' Veterinária', ' veterinária');
+    if (el.attr('compact') !== undefined) {
+      return `<ul class="esp-atalhos">${list
+        .map((s) => `<li><a href="${s.path}">${icon(s.icon)}<span>${esc(s.navName)}</span></a></li>`)
+        .join('')}</ul>`;
+    }
+    const heading = el.attr('heading') ?? 'h3';
+    return `<ul class="esp-grid">${list
+      .map((s, i) => {
+        const p = s.professional ? member(s.professional) : undefined;
+        const who = p
+          ? `<p class="esp-card__prof"><x-img class="esp-card__avatar" src="${p.image}" alt="" decorative widths="96" sizes="2.5rem"></x-img><span>Com ${p.name.startsWith('Dr. ') ? 'o' : 'a'} <strong>${esc(p.name)}</strong></span></p>`
+          : `<p class="esp-card__prof esp-card__prof--agenda"><span class="esp-card__avatar">${icon('calendar-check')}</span><span>Agenda e profissional informados pela equipe</span></p>`;
+        return `<li class="esp-card" id="${s.area}" data-reveal style="--i:${i % 2}">
+  <span class="esp-card__icon">${icon(s.icon)}</span>
+  <div class="esp-card__body">
+    <${heading} class="esp-card__title"><a href="${s.path}">${esc(title(s))}</a></${heading}>
+    <p class="esp-card__desc">${esc(s.short)}</p>
+    ${who}
+    <p class="esp-card__actions"><a class="btn btn--sm" data-wa="${attr(`Olá! Gostaria de consultar a disponibilidade e o valor de atendimento em ${s.area} para meu pet.`)}" data-service="${s.slug}" data-pos="areas">${icon('whatsapp')}${esc(s.consult ?? 'Consultar')}</a><a class="esp-card__more" href="${s.path}" aria-label="Conhecer o atendimento de ${esc(s.navName)}">Conhecer o atendimento${icon('arrow-right')}</a></p>
+  </div>
+</li>`;
+      })
+      .join('')}</ul>`;
+  },
+
+  /**
+   * Profissionais de uma especialidade (só quem é pertinente à página, conforme a spec do cliente).
+   * Filhos <x-prof slug="..." papel="..." [destaque] [cta="..." msg="..."] [link="/..." link-texto="..."]>texto</x-prof>.
+   * O primeiro com `destaque` ganha o cartão grande e o botão de agendamento; os demais, link secundário.
+   * Nome, foto e CRMV vêm de `team` (site.ts), para não divergir do restante do site.
+   */
+  'x-profissionais': ($, el, ctx) => {
+    ['whatsapp', 'arrow-right'].forEach((i) => ctx.icons.add(i));
+    const items = el.find('x-prof').toArray().map((n) => {
+      const c = $(n);
+      return { t: member(c.attr('slug')!), papel: c.attr('papel'), destaque: c.attr('destaque') !== undefined, cta: c.attr('cta'), msg: c.attr('msg'), link: c.attr('link'), linkTexto: c.attr('link-texto'), texto: (c.html() ?? '').trim() };
+    });
+    const card = (p: (typeof items)[number], tag: 'article' | 'li') => {
+      const id = `<p class="prof__id"><span class="prof__papel">${esc(p.papel ?? p.t.role)}</span>${p.t.crmv ? `<span class="prof__crmv">${esc(p.t.crmv)}</span>` : ''}</p>`;
+      const action = p.cta
+        ? `<p class="prof__acao"><a class="btn" data-wa="${attr(p.msg ?? `Olá! Vim pelo site do Ventura Vet e gostaria de consultar a agenda com ${p.t.name}.`)}" data-pos="equipe">${icon('whatsapp')}${esc(p.cta)}</a></p>`
+        : p.link ? `<p class="prof__acao"><a class="link-more" href="${p.link}">${esc(p.linkTexto ?? 'Saiba mais')}</a></p>` : '';
+      return `<${tag} class="prof${p.destaque ? ' prof--destaque' : ''}" data-reveal>
+  <x-img class="prof__foto" src="${p.t.image}" alt="${attr(p.t.imageAlt)}" widths="${p.destaque ? '360,540,720' : '240,360'}" sizes="${p.destaque ? '(min-width: 600px) 15rem, 80vw' : '6.5rem'}"></x-img>
+  <div class="prof__body">
+    <h3>${esc(p.t.name)}</h3>
+    ${id}
+    ${p.texto ? `<p class="prof__texto">${p.texto}</p>` : ''}
+    ${action}
+  </div>
+</${tag}>`;
+    };
+    const main = items.find((p) => p.destaque);
+    const rest = items.filter((p) => p !== main);
+    return `<div class="profs${main ? '' : ' profs--sem-destaque'}">${main ? card(main, 'article') : ''}${rest.length ? `<ul class="profs__lista">${rest.map((p) => card(p, 'li')).join('')}</ul>` : ''}</div>`;
+  },
+
   /** "Também no Ventura": os sete serviços principais (menos o atual), no fim das páginas de serviço. */
   'x-service-nav': ($, el, ctx) => {
     const current = el.attr('current');
@@ -244,6 +311,7 @@ export const components: Record<string, Component> = {
     <p class="team__about">${esc(t.about)}</p>
     ${t.education ? `<p class="team__edu">${esc(t.education)}</p>` : ''}
     ${t.crmv ? `<p class="team__crmv">${esc(t.crmv)}</p>` : ''}
+    ${services.some((s) => s.professional === t.slug) ? `<p class="team__areas">${services.filter((s) => s.professional === t.slug).map((s) => `<a class="link-more" href="${s.path}">${esc(s.navName)}</a>`).join('')}</p>` : ''}
     <p class="team__cta"><a class="btn btn--ghost btn--sm" data-wa="${attr(`Olá! Vim pelo site do Ventura Vet e gostaria de consultar a disponibilidade de atendimento com ${t.name} (${t.role.toLowerCase()}).`)}" data-service="especialistas" data-pos="equipe"><x-icon name="whatsapp"></x-icon>Consultar disponibilidade</a></p>
   </div>
 </li>`).join('')}</ul>`,

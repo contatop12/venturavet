@@ -39,27 +39,18 @@ bodyClass: pg-terapias pg-especialistas
 
 <section class="section section--tight">
   <div class="wrap">
-    <p class="answer">O Ventura, clínica veterinária particular no Paraíso, em São Paulo, apresenta nesta página as áreas de atendimento para cães e gatos e os profissionais da equipe. As consultas são com agendamento, na Rua Otávio Nébias, 190, e a disponibilidade de cada área e de cada profissional deve ser consultada com a equipe.</p>
+    <p class="answer">O Ventura, clínica veterinária particular no Paraíso, em São Paulo, apresenta nesta página as áreas de atendimento para cães e gatos (acupuntura, cardiologia, dermatologia, endocrinologia, fisioterapia e reabilitação, neurologia, odontologia, oftalmologia, oncologia e ortopedia) e os profissionais da equipe. As consultas são com agendamento, na Rua Otávio Nébias, 190, e a disponibilidade de cada área e de cada profissional deve ser consultada com a equipe.</p>
   </div>
 </section>
 
 <section class="section" id="areas" aria-labelledby="areas-titulo">
-  <!-- CONFIRMAR COM CLIENTE: áreas efetivamente disponíveis hoje (em especial ortopedia, neurologia e oncologia, sem profissional identificado), profissionais, espécies atendidas, agenda e valores. -->
+  <!-- CONFIRMAR COM CLIENTE: profissionais de Oncologia e Neurologia (o documento de ajustes deixa nome e CRMV pendentes); agenda e valores de cada área. -->
   <div class="wrap">
     <header class="section-head">
       <h2 id="areas-titulo" data-reveal>Encontre a área que você procura</h2>
-      <p data-reveal style="--i:1">Consulte os atendimentos disponíveis e a agenda dos profissionais. Se você já possui encaminhamento ou exames, informe isso ao entrar em contato.</p>
+      <p data-reveal style="--i:1">Consulte os atendimentos disponíveis e a agenda dos profissionais. Cada área tem uma página com quem atende, como funciona a consulta e as orientações para a visita. Se você já possui encaminhamento ou exames, informe isso ao entrar em contato.</p>
     </header>
-    <ul class="cards areas">
-      <li class="card" id="ortopedia"><x-icon name="bone"></x-icon><h3>Ortopedia veterinária</h3><p>Avaliação de alterações relacionadas a ossos, articulações e mobilidade.</p><a class="btn btn--sm" data-wa="Olá! Gostaria de consultar a disponibilidade e o valor de atendimento em ortopedia para meu pet."><x-icon name="whatsapp"></x-icon>Consultar ortopedia</a></li>
-      <li class="card" id="dermatologia"><x-icon name="hand-heart"></x-icon><h3>Dermatologia veterinária</h3><p>Avaliação de alterações da pele, pelos e ouvidos.</p><a class="btn btn--sm" data-wa="Olá! Gostaria de consultar a disponibilidade e o valor de atendimento em dermatologia para meu pet."><x-icon name="whatsapp"></x-icon>Consultar dermatologia</a></li>
-      <li class="card" id="oftalmologia"><x-icon name="eye"></x-icon><h3>Oftalmologia veterinária</h3><p>Avaliação e acompanhamento da saúde dos olhos.</p><a class="btn btn--sm" data-wa="Olá! Gostaria de consultar a disponibilidade e o valor de atendimento em oftalmologia para meu pet."><x-icon name="whatsapp"></x-icon>Consultar oftalmologia</a></li>
-      <li class="card" id="endocrinologia"><x-icon name="activity"></x-icon><h3>Endocrinologia veterinária</h3><p>Investigação e acompanhamento de alterações hormonais.</p><a class="btn btn--sm" data-wa="Olá! Gostaria de consultar a disponibilidade e o valor de atendimento em endocrinologia para meu pet."><x-icon name="whatsapp"></x-icon>Consultar endocrinologia</a></li>
-      <li class="card" id="odontologia"><x-icon name="smile"></x-icon><h3>Odontologia veterinária</h3><p>Avaliação da saúde bucal e planejamento dos cuidados necessários.</p><a class="btn btn--sm" data-wa="Olá! Gostaria de consultar a disponibilidade e o valor de atendimento em odontologia para meu pet."><x-icon name="whatsapp"></x-icon>Consultar odontologia</a></li>
-      <li class="card" id="neurologia"><x-icon name="brain"></x-icon><h3>Neurologia veterinária</h3><p>Avaliação de alterações relacionadas ao sistema nervoso.</p><a class="btn btn--sm" data-wa="Olá! Gostaria de consultar a disponibilidade e o valor de atendimento em neurologia para meu pet."><x-icon name="whatsapp"></x-icon>Consultar neurologia</a></li>
-      <li class="card" id="cardiologia"><x-icon name="heart-pulse"></x-icon><h3>Cardiologia veterinária</h3><p>Avaliação e acompanhamento da saúde cardíaca.</p><a class="btn btn--sm" data-wa="Olá! Gostaria de consultar a disponibilidade e o valor de atendimento em cardiologia para meu pet."><x-icon name="whatsapp"></x-icon>Consultar cardiologia</a></li>
-      <li class="card" id="oncologia"><x-icon name="shield-check"></x-icon><h3>Oncologia veterinária</h3><p>Avaliação e acompanhamento de pacientes com suspeita ou diagnóstico de doença oncológica.</p><a class="btn btn--sm" data-wa="Olá! Gostaria de consultar a disponibilidade e o valor de atendimento em oncologia para meu pet."><x-icon name="whatsapp"></x-icon>Consultar oncologia</a></li>
-    </ul>
+    <x-especialidades></x-especialidades>
   </div>
 </section>
 

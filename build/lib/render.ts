@@ -41,7 +41,15 @@ const selfClosing = (html: string) => html.replace(/<(x-[a-z-]+)([^>]*?)\s*\/>/g
 function navHtml(ctx: RenderCtx) {
   ['chevron-down', 'chevron-right'].forEach((i) => ctx.icons.add(i));
   const ic = (name: string) => { ctx.icons.add(name); return icon(name); };
-  const li = (l: NavLink) => `<li><a href="${l.href}">${icon('chevron-right')}<span>${l.label}</span></a></li>`;
+  const a = (l: NavLink, cls = '') => `<a${cls ? ` class="${cls}"` : ''} href="${l.href}">${icon('chevron-right')}<span>${l.label}</span></a>`;
+  let flyouts = 0;
+  // Link com `children` (Especialidades): painel lateral no desktop, sanfona no celular.
+  // O primeiro filho com o mesmo endereço do pai é o "Ver todas", em destaque.
+  const li = (l: NavLink): string => {
+    if (!l.children) return `<li>${a(l)}</li>`;
+    const id = `subnav-${++flyouts}`;
+    return `<li class="nav__fly">${a(l, 'nav__fly-link')}<button class="nav__fly-toggle" type="button" aria-expanded="false" aria-controls="${id}"><span class="sr-only">Abrir a lista de ${l.label}</span>${icon('chevron-down')}</button><div class="nav__flyout" id="${id}"><ul>${l.children.map((c) => `<li>${a(c, c.href === l.href ? 'nav__fly-all' : '')}</li>`).join('')}</ul></div></li>`;
+  };
   return nav
     .map((item, n) => {
       const label = `${ic(item.icon)}<span>${item.label}</span>`;
@@ -153,6 +161,11 @@ export async function renderPage(meta: PageMeta, body: string, assets: Assets, e
   $('.nav__has-sub').each((_, li) => {
     const paths = $(li).find('a').map((_, a) => ($(a).attr('href') ?? '').split('#')[0]).get();
     if (paths.includes(meta.path)) $(li).children('.nav__link').addClass('is-active');
+  });
+  // Especialidades fica marcado nas páginas de cada especialidade
+  $('.nav__fly').each((_, li) => {
+    const paths = $(li).find('a').map((_, a) => $(a).attr('href') ?? '').get();
+    if (paths.includes(meta.path)) $(li).addClass('is-current');
   });
 
   // Auditoria leve de semântica

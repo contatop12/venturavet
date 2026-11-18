@@ -180,19 +180,21 @@ bodyClass: pg-clinica
     </header>
     <!-- CONFIRMAR COM CLIENTE: oferta e agenda atual de cada área; usar "especialista" só com qualificação confirmada -->
     <ul class="area-grid" data-reveal>
-      <li><x-icon name="bone"></x-icon><span><strong>Ortopedia</strong><small>Avaliação de alterações relacionadas ao sistema musculoesquelético</small></span></li>
-      <li><x-icon name="eye"></x-icon><span><strong>Oftalmologia</strong><small>Cuidados e avaliação da saúde dos olhos</small></span></li>
-      <li><x-icon name="hand"></x-icon><span><strong>Dermatologia</strong><small>Avaliação de alterações da pele, pelos e ouvidos</small></span></li>
-      <li><x-icon name="activity"></x-icon><span><strong>Endocrinologia</strong><small>Investigação e acompanhamento de alterações hormonais</small></span></li>
-      <li><x-icon name="smile"></x-icon><span><strong>Odontologia</strong><small>Avaliação e cuidados com a saúde bucal</small></span></li>
-      <li><x-icon name="brain"></x-icon><span><strong>Neurologia</strong><small>Avaliação de alterações relacionadas ao sistema nervoso</small></span></li>
-      <li><x-icon name="heart-pulse"></x-icon><span><strong>Cardiologia</strong><small>Avaliação e acompanhamento da saúde cardíaca</small></span></li>
-      <li><x-icon name="ribbon"></x-icon><span><strong>Oncologia</strong><small>Avaliação e acompanhamento de pacientes oncológicos</small></span></li>
+      <li><a href="/ortopedia-veterinaria/"><x-icon name="bone"></x-icon><span><strong>Ortopedia</strong><small>Avaliação de alterações relacionadas ao sistema musculoesquelético</small></span></a></li>
+      <li><a href="/oftalmologia-veterinaria/"><x-icon name="eye"></x-icon><span><strong>Oftalmologia</strong><small>Cuidados e avaliação da saúde dos olhos</small></span></a></li>
+      <li><a href="/dermatologia-veterinaria/"><x-icon name="fingerprint"></x-icon><span><strong>Dermatologia</strong><small>Avaliação de alterações da pele, pelos e ouvidos</small></span></a></li>
+      <li><a href="/endocrinologia-veterinaria/"><x-icon name="droplet"></x-icon><span><strong>Endocrinologia</strong><small>Investigação e acompanhamento de alterações hormonais</small></span></a></li>
+      <li><a href="/odontologia-veterinaria/"><x-icon name="toothbrush-sparkles"></x-icon><span><strong>Odontologia</strong><small>Avaliação e cuidados com a saúde bucal</small></span></a></li>
+      <li><a href="/neurologia-veterinaria/"><x-icon name="brain"></x-icon><span><strong>Neurologia</strong><small>Avaliação de alterações relacionadas ao sistema nervoso</small></span></a></li>
+      <li><a href="/cardiologia-veterinaria/"><x-icon name="heart-pulse"></x-icon><span><strong>Cardiologia</strong><small>Avaliação e acompanhamento da saúde cardíaca</small></span></a></li>
+      <li><a href="/oncologia-veterinaria/"><x-icon name="ribbon"></x-icon><span><strong>Oncologia</strong><small>Avaliação e acompanhamento de pacientes oncológicos</small></span></a></li>
+      <li><a href="/fisioterapia-veterinaria/"><x-icon name="accessibility"></x-icon><span><strong>Fisioterapia e reabilitação</strong><small>Avaliação e plano individual de reabilitação</small></span></a></li>
+      <li><a href="/acupuntura-veterinaria/"><x-icon name="hand-heart"></x-icon><span><strong>Acupuntura</strong><small>Terapia complementar, conforme avaliação veterinária</small></span></a></li>
     </ul>
     <p class="loc__nota" data-reveal>Não sabe qual atendimento procurar? Entre em contato e explique sua necessidade à equipe.</p>
     <div class="acao-bloco" data-reveal>
       <a class="btn" data-wa="Olá! Gostaria de consultar a disponibilidade de atendimento na área de [informar área ou necessidade]."><x-icon name="whatsapp"></x-icon>Consultar disponibilidade de atendimento</a>
-      <a class="btn btn--ghost" href="/especialistas/"><x-icon name="user-round-check"></x-icon>Conhecer a equipe</a>
+      <a class="btn btn--ghost" href="/especialistas/"><x-icon name="user-round-check"></x-icon>Ver todas as especialidades</a>
     </div>
   </div>
 </section>
@@ -236,7 +238,7 @@ bodyClass: pg-clinica
 
 <x-equipe titulo="Conheça a equipe do Ventura" foto="equipe-ventura-recepcao.jpg" foto-alt="Equipe do Ventura Vet reunida diante do jardim vertical da recepção da clínica" legenda="Parte da equipe do Ventura na recepção da clínica, no Paraíso.">
   <p>O Ventura atende cães e gatos no Paraíso desde 2007. À frente da clínica está a {{site.founder.name}}, médica-veterinária formada pela FMVZ-USP, proprietária e responsável técnica.</p>
-  <p>Ao lado dela, clínicos e especialistas em cirurgia, anestesia, cardiologia, dermatologia, oftalmologia, odontologia, ultrassom, fisioterapia e medicina felina trabalham juntos, no mesmo endereço.</p>
+  <p>Ao lado dela, clínicos e especialistas em cirurgia, anestesia, <a href="/cardiologia-veterinaria/">cardiologia</a>, <a href="/dermatologia-veterinaria/">dermatologia</a>, <a href="/oftalmologia-veterinaria/">oftalmologia</a>, <a href="/odontologia-veterinaria/">odontologia</a>, ultrassom, <a href="/fisioterapia-veterinaria/">fisioterapia</a> e medicina felina trabalham juntos, no mesmo endereço.</p>
 </x-equipe>
 
 <section class="section section--nevoa" id="como-agendar" aria-labelledby="como-agendar-titulo">

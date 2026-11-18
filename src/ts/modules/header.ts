@@ -64,4 +64,19 @@ export function initHeader() {
   document.addEventListener('click', (e) => {
     $$('.nav__has-sub.is-open').forEach((li) => { if (!li.contains(e.target as Node)) closeSub(li); });
   });
+
+  // Sub-submenu (Especialidades): painel lateral no desktop, sanfona no celular
+  const setFly = (li: Element, open: boolean) => {
+    li.classList.toggle('is-open', open);
+    li.querySelector('.nav__fly-toggle')?.setAttribute('aria-expanded', String(open));
+  };
+  $$('.nav__fly-toggle').forEach((t) => {
+    t.addEventListener('click', () => {
+      const li = t.closest('.nav__fly')!;
+      setFly(li, !li.classList.contains('is-open'));
+    });
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') $$('.nav__fly.is-open').forEach((li) => setFly(li, false));
+  });
 }

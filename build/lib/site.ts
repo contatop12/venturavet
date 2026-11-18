@@ -76,8 +76,8 @@ export const team: TeamMember[] = [
     education: 'Formada pela Universidade Metodista de São Paulo, com pós-graduação em odontologia veterinária pela Anclivepa-SP. Mestranda na FMVZ-USP.',
   },
   {
-    // CRMV pendente: a lista do cliente (18/11/2026) repetiu para ela o número da Dra. Amanda Oncins (CRMV-SP 41.263).
-    slug: 'lais-suda', name: 'Dra. Lais Suda', role: 'Fisioterapeuta e acupunturista',
+    // CRMV das páginas de Ortopedia e Neurologia do documento de ajustes do cliente (18/11/2026); a lista anterior repetia o da Dra. Amanda.
+    slug: 'lais-suda', name: 'Dra. Lais Suda', role: 'Fisioterapeuta e acupunturista', crmv: 'CRMV-SP 31.871',
     about: 'Atua na reabilitação e no controle da dor, em pacientes idosos e na recuperação de cirurgias ortopédicas e neurológicas.',
     image: 'especialista-lais-suda.jpg', imageAlt: 'Dra. Lais Suda, fisioterapeuta e acupunturista veterinária, ao lado de um buldogue francês',
     knowsAbout: ['Fisioterapia veterinária', 'Acupuntura veterinária'],
@@ -229,10 +229,17 @@ export type Service = {
   waMessage: string;
   /**
    * principal = os sete cartões da home, nesta ordem; clinica = serviços clínicos (submenu da Clínica);
+   * especialidade = páginas de cada especialidade (sub-submenu "Especialidades", em ordem alfabética);
    * exame = exames específicos (submenu de Exames); especie = clínica por espécie; hub = página geral de Day Care e Hotel.
    */
-  group: 'principal' | 'clinica' | 'exame' | 'especie' | 'hub';
+  group: 'principal' | 'clinica' | 'especialidade' | 'exame' | 'especie' | 'hub';
   audience?: string;
+  /** Especialidades: área em minúsculas, usada nas mensagens ("atendimento em dermatologia"). */
+  area?: string;
+  /** Especialidades: rótulo do botão de WhatsApp na grade de /especialistas/ (ex.: "Consultar dermatologia"). */
+  consult?: string;
+  /** Especialidades: slug em `team` de quem responde pelo atendimento (vazio enquanto o cliente não confirmar). */
+  professional?: string;
 };
 
 const wa = (txt: string) => `Olá! Vim pelo site do Ventura Vet e gostaria de ${txt}`;
@@ -358,25 +365,96 @@ export const services: Service[] = [
     serviceType: 'Tratamentos e terapias veterinárias', waMessage: wa('informações sobre tratamentos e terapias para meu pet.'), group: 'clinica',
   },
   {
-    slug: 'fisioterapia-veterinaria', path: '/fisioterapia-veterinaria/', name: 'Fisioterapia Veterinária', navName: 'Fisioterapia',
-    short: 'Reabilitação e controle da dor para cães e gatos, com avaliação e plano individual.', cta: 'Conheça a fisioterapia',
-    icon: 'accessibility', image: 'especialista-lais-suda.jpg',
-    imageAlt: 'Dra. Lais Suda, fisioterapeuta e acupunturista veterinária, ao lado de um buldogue francês',
-    serviceType: 'Fisioterapia veterinária', waMessage: wa('consultar uma avaliação de fisioterapia para meu pet.'), group: 'clinica',
-  },
-  {
-    slug: 'acupuntura-veterinaria', path: '/acupuntura-veterinaria/', name: 'Acupuntura Veterinária', navName: 'Acupuntura',
-    short: 'Terapia complementar para cães e gatos, indicada após avaliação veterinária.', cta: 'Conheça a acupuntura',
-    icon: 'hand-heart', image: 'especialista-lais-suda.jpg',
-    imageAlt: 'Dra. Lais Suda, fisioterapeuta e acupunturista veterinária, ao lado de um buldogue francês',
-    serviceType: 'Acupuntura veterinária', waMessage: wa('informações sobre acupuntura para meu pet.'), group: 'clinica',
-  },
-  {
     slug: 'microchipagem', path: '/microchipagem/', name: 'Microchipagem', navName: 'Microchipagem',
     short: 'Identificação permanente de cães e gatos, com orientação sobre o cadastro.', cta: 'Conheça a microchipagem',
     icon: 'scan', image: 'consulta-veterinaria-gato-preto.jpg',
     imageAlt: 'Veterinária do Ventura examinando um gato preto com o estetoscópio',
     serviceType: 'Microchipagem de cães e gatos', waMessage: wa('informações sobre a microchipagem do meu pet.'), group: 'clinica',
+  },
+
+  // ---------- Especialidades (sub-submenu "Especialidades", em ordem alfabética; documento de ajustes de 18/11/2026) ----------
+  // `short` = texto do cartão da grade de /especialistas/ (spec da página de Especialidades).
+  {
+    slug: 'acupuntura-veterinaria', path: '/acupuntura-veterinaria/', name: 'Acupuntura Veterinária', navName: 'Acupuntura',
+    short: 'Terapia complementar para cães e gatos, indicada após avaliação veterinária.', cta: 'Conheça a acupuntura',
+    icon: 'hand-heart', image: 'especialista-lais-suda.jpg',
+    imageAlt: 'Dra. Lais Suda, fisioterapeuta e acupunturista veterinária, ao lado de um buldogue francês',
+    serviceType: 'Acupuntura veterinária', waMessage: wa('informações sobre acupuntura para meu pet.'), group: 'especialidade',
+    area: 'acupuntura', consult: 'Consultar acupuntura', professional: 'lais-suda',
+  },
+  {
+    slug: 'cardiologia-veterinaria', path: '/cardiologia-veterinaria/', name: 'Cardiologia Veterinária', navName: 'Cardiologia',
+    short: 'Avaliação e acompanhamento da saúde cardíaca.', cta: 'Conheça a cardiologia',
+    icon: 'heart-pulse', image: 'especialista-felipe-alfaro.jpg',
+    imageAlt: 'Dr. Felipe Alfaro, cardiologista veterinário, de jaleco branco',
+    serviceType: 'Cardiologia veterinária', waMessage: wa('consultar a agenda de Cardiologia com o Dr. Felipe Alfaro para meu pet.'), group: 'especialidade',
+    area: 'cardiologia', consult: 'Consultar cardiologia', professional: 'felipe-alfaro',
+  },
+  {
+    slug: 'dermatologia-veterinaria', path: '/dermatologia-veterinaria/', name: 'Dermatologia Veterinária', navName: 'Dermatologia',
+    short: 'Avaliação de alterações da pele, pelos e ouvidos.', cta: 'Conheça a dermatologia',
+    icon: 'fingerprint', image: 'especialista-flavia-iannicelli.jpg',
+    imageAlt: 'Dra. Flávia Iannicelli, dermatologista e endocrinologista veterinária, de jaleco branco',
+    serviceType: 'Dermatologia veterinária', waMessage: wa('consultar a agenda de Dermatologia com a Dra. Flávia Iannicelli para meu pet.'), group: 'especialidade',
+    area: 'dermatologia', consult: 'Consultar dermatologia', professional: 'flavia-iannicelli',
+  },
+  {
+    slug: 'endocrinologia-veterinaria', path: '/endocrinologia-veterinaria/', name: 'Endocrinologia Veterinária', navName: 'Endocrinologia',
+    short: 'Investigação e acompanhamento de alterações hormonais.', cta: 'Conheça a endocrinologia',
+    icon: 'droplet', image: 'especialista-flavia-iannicelli.jpg',
+    imageAlt: 'Dra. Flávia Iannicelli, dermatologista e endocrinologista veterinária, de jaleco branco',
+    serviceType: 'Endocrinologia veterinária', waMessage: wa('consultar a agenda de Endocrinologia com a Dra. Flávia Iannicelli para meu pet.'), group: 'especialidade',
+    area: 'endocrinologia', consult: 'Consultar endocrinologia', professional: 'flavia-iannicelli',
+  },
+  {
+    slug: 'fisioterapia-veterinaria', path: '/fisioterapia-veterinaria/', name: 'Fisioterapia Veterinária', navName: 'Fisioterapia e reabilitação',
+    short: 'Reabilitação e controle da dor para cães e gatos, com avaliação e plano individual.', cta: 'Conheça a fisioterapia',
+    icon: 'accessibility', image: 'especialista-lais-suda.jpg',
+    imageAlt: 'Dra. Lais Suda, fisioterapeuta e acupunturista veterinária, ao lado de um buldogue francês',
+    serviceType: 'Fisioterapia veterinária', waMessage: wa('consultar uma avaliação de fisioterapia para meu pet.'), group: 'especialidade',
+    area: 'fisioterapia', consult: 'Consultar fisioterapia', professional: 'lais-suda',
+  },
+  {
+    // CONFIRMAR COM CLIENTE: profissional responsável pela Neurologia (a spec deixa nome e CRMV pendentes).
+    slug: 'neurologia-veterinaria', path: '/neurologia-veterinaria/', name: 'Neurologia Veterinária', navName: 'Neurologia',
+    short: 'Avaliação de alterações relacionadas ao sistema nervoso.', cta: 'Conheça a neurologia',
+    icon: 'brain', image: 'equipe-ventura-parede-verde.jpg',
+    imageAlt: 'Equipe do Ventura Vet reunida em frente ao jardim vertical da recepção',
+    serviceType: 'Neurologia veterinária', waMessage: wa('consultar o atendimento de Neurologia para meu pet.'), group: 'especialidade',
+    area: 'neurologia', consult: 'Consultar neurologia',
+  },
+  {
+    slug: 'odontologia-veterinaria', path: '/odontologia-veterinaria/', name: 'Odontologia Veterinária', navName: 'Odontologia',
+    short: 'Avaliação da saúde bucal e planejamento dos cuidados necessários.', cta: 'Conheça a odontologia',
+    icon: 'toothbrush-sparkles', image: 'especialista-daniela-scatena.jpg',
+    imageAlt: 'Dra. Daniela Scatena, da odontologia veterinária, com um cãozinho no colo',
+    serviceType: 'Odontologia veterinária', waMessage: wa('consultar a agenda de Odontologia com a Dra. Daniela Scatena para meu pet.'), group: 'especialidade',
+    area: 'odontologia', consult: 'Consultar odontologia', professional: 'daniela-scatena',
+  },
+  {
+    slug: 'oftalmologia-veterinaria', path: '/oftalmologia-veterinaria/', name: 'Oftalmologia Veterinária', navName: 'Oftalmologia',
+    short: 'Avaliação e acompanhamento da saúde dos olhos.', cta: 'Conheça a oftalmologia',
+    icon: 'eye', image: 'especialista-graziele-massae-shimamura.jpg',
+    imageAlt: 'Dra. Graziele Massae Shimamura, oftalmologista veterinária, de jaleco branco',
+    serviceType: 'Oftalmologia veterinária', waMessage: wa('consultar a agenda de Oftalmologia com a Dra. Graziele Massae Shimamura para meu pet.'), group: 'especialidade',
+    area: 'oftalmologia', consult: 'Consultar oftalmologia', professional: 'graziele-massae-shimamura',
+  },
+  {
+    // CONFIRMAR COM CLIENTE: profissional responsável pela Oncologia (a spec deixa nome e CRMV pendentes).
+    slug: 'oncologia-veterinaria', path: '/oncologia-veterinaria/', name: 'Oncologia Veterinária', navName: 'Oncologia',
+    short: 'Avaliação e acompanhamento de pacientes com suspeita ou diagnóstico de doença oncológica.', cta: 'Conheça a oncologia',
+    icon: 'ribbon', image: 'equipe-ventura-parede-verde.jpg',
+    imageAlt: 'Equipe do Ventura Vet reunida em frente ao jardim vertical da recepção',
+    serviceType: 'Oncologia veterinária', waMessage: wa('consultar o atendimento de Oncologia para meu pet.'), group: 'especialidade',
+    area: 'oncologia', consult: 'Consultar oncologia',
+  },
+  {
+    slug: 'ortopedia-veterinaria', path: '/ortopedia-veterinaria/', name: 'Ortopedia Veterinária', navName: 'Ortopedia',
+    short: 'Avaliação de alterações relacionadas a ossos, articulações e mobilidade.', cta: 'Conheça a ortopedia',
+    icon: 'bone', image: 'especialista-sam-oda.jpg',
+    imageAlt: 'Dr. Sam Oda, cirurgião e ortopedista veterinário, de jaleco branco no consultório do Ventura',
+    serviceType: 'Ortopedia veterinária', waMessage: wa('consultar a agenda de Ortopedia com o Dr. Sam Oda para meu pet.'), group: 'especialidade',
+    area: 'ortopedia', consult: 'Consultar ortopedia', professional: 'sam-oda',
   },
 
   // ---------- Exames (submenu de Exames e Laboratório) ----------
@@ -418,14 +496,16 @@ export function svc(slug: string): Service {
 }
 export const mainServices = services.filter((s) => s.group === 'principal');
 export const clinicServices = services.filter((s) => s.group === 'clinica');
+export const specialtyServices = services.filter((s) => s.group === 'especialidade');
 export const examServices = services.filter((s) => s.group === 'exame');
 
 /**
  * Menu principal (referência visual do cliente, nov/2026): cinco grupos com ícone.
  * `overview` = link "Visão geral"; `columns` = colunas com título; `links` = lista simples.
+ * `children` = sub-submenu de um link (Especialidades: painel lateral no desktop, sanfona no celular).
  * Natação e Banho e Tosa levam direto à página. Quem somos, Blog e Contato ficam na barra superior.
  */
-export interface NavLink { label: string; href: string }
+export interface NavLink { label: string; href: string; children?: NavLink[] }
 export interface NavColumn { title: string; links: NavLink[] }
 export interface NavItem { label: string; href: string; icon: string; overview?: NavLink; columns?: NavColumn[]; links?: NavLink[] }
 const link = (slug: string, label?: string): NavLink => ({ label: label ?? svc(slug).navName, href: svc(slug).path });
@@ -435,7 +515,12 @@ export const nav: NavItem[] = [
     overview: { label: 'Visão geral da clínica', href: '/clinica-veterinaria/' },
     columns: [
       { title: 'Por espécie', links: [link('veterinario-para-cachorro'), link('veterinario-para-gatos')] },
-      { title: 'Serviços clínicos', links: clinicServices.map((s) => link(s.slug)) },
+      {
+        title: 'Serviços clínicos',
+        links: clinicServices.map((s) => s.slug === 'especialistas'
+          ? { ...link(s.slug), children: [link(s.slug, 'Ver todas as especialidades'), ...specialtyServices.map((e) => link(e.slug))] }
+          : link(s.slug)),
+      },
     ],
   },
   {

@@ -4,7 +4,7 @@
 @media (min-width: 1181px) {
   .nav__sub {
     display: block; left: 50%; top: calc(100% + 0.6rem); z-index: 5;
-    min-width: 17rem; padding: 0 0 0.75rem; overflow: hidden;
+    min-width: 17rem; padding: 0 0 0.75rem;
     background: var(--branco); border: 1px solid var(--linha); border-radius: var(--r-md);
     box-shadow: var(--shadow);
     opacity: 0; visibility: hidden; transform: translate(-50%, 0.5rem);
@@ -22,6 +22,7 @@
   }
   .nav__sub-head {
     display: flex; align-items: center; gap: 0.6rem; margin: 0 0 0.6rem; padding: 0.85rem 1.1rem;
+    border-radius: calc(var(--r-md) - 1px) calc(var(--r-md) - 1px) 0 0;
     background: var(--tinta); color: var(--branco);
     font-family: var(--f-display); font-size: 1.15rem; font-weight: 800;
     .icon { width: 1.75rem; height: 1.75rem; color: var(--laranja); }
@@ -42,6 +43,28 @@
   /* A Clínica fica à esquerda: o painel largo abre alinhado ao item, sem sair da tela */
   .nav__menu > .nav__item:first-child .nav__sub { left: 0; transform: translate(0, 0.5rem); }
   .nav__menu > .nav__item:first-child:is(:hover, :focus-within, .is-open) .nav__sub { transform: none; }
+
+  /* Sub-submenu (Especialidades): linha em destaque e painel ao lado da coluna */
+  .nav__fly { position: relative; display: flex; align-items: center; border-radius: var(--r-sm); transition: background-color 0.2s; }
+  .nav__fly > .nav__fly-link { flex: 1; }
+  .nav__fly-toggle {
+    display: grid; place-items: center; width: 2rem; height: 2rem; margin-right: 0.3rem; border-radius: 999px; color: var(--laranja);
+    .icon { width: 1rem; height: 1rem; stroke-width: 3; transform: rotate(-90deg); }
+  }
+  .nav__fly:is(:hover, :focus-within, .is-open, .is-current) { background: var(--laranja-suave); }
+  .nav__sub .nav__fly > .nav__fly-link { &:hover, &:focus-visible, &[aria-current='page'] { background: transparent; } }
+  .nav__flyout {
+    position: absolute; top: -2.9rem; left: calc(100% + 1.35rem); z-index: 2;
+    width: max-content; min-width: 15rem; padding: 0.5rem;
+    background: var(--branco); border: 1px solid var(--linha); border-radius: var(--r-md); box-shadow: var(--shadow);
+    opacity: 0; visibility: hidden; translate: -0.4rem 0;
+    transition: opacity 0.2s, translate 0.3s var(--ease-out), visibility 0.2s;
+    /* ponte invisível: o mouse atravessa o espaço até o painel sem fechá-lo */
+    &::before { content: ''; position: absolute; inset: 0 100% 0 auto; width: 1.5rem; }
+    a { padding: 0.32rem 0.6rem; font-size: 0.92rem; font-weight: 500; }
+    .nav__fly-all { font-weight: 800; }
+  }
+  .nav__fly:is(:hover, :focus-within, .is-open) .nav__flyout { opacity: 1; visibility: visible; translate: 0 0; }
 }
 
 /* ---------- Painel do menu (tablet e celular) ---------- */
@@ -67,6 +90,18 @@
   .nav__col-title { margin-top: 0.5rem; font-family: var(--f-display); font-size: 0.85rem; font-weight: 800; letter-spacing: 0.04em; text-transform: uppercase; color: var(--tinta-2); }
   .nav__sub a { display: flex; align-items: center; gap: 0.6rem; min-height: 2.75rem; text-decoration: none; font-weight: 600; line-height: 1.25; .icon { flex: none; width: 1rem; height: 1rem; color: var(--laranja); stroke-width: 3; } }
   .nav__overview { font-weight: 800 !important; }
+  /* Sub-submenu (Especialidades) em sanfona, com fio guia à esquerda */
+  .nav__fly { display: flex; flex-wrap: wrap; align-items: center; margin-inline: -0.5rem; padding-inline: 0.5rem; border-radius: var(--r-sm); }
+  .nav__fly > .nav__fly-link { flex: 1; font-weight: 800; }
+  .nav__fly-toggle { display: grid; place-items: center; width: 2.75rem; height: 2.75rem; color: var(--laranja); .icon { width: 1.15rem; height: 1.15rem; stroke-width: 3; transition: transform 0.3s; } }
+  .nav__fly:is(.is-open, .is-current) { background: var(--laranja-suave); }
+  .nav__fly.is-open .nav__fly-toggle .icon { transform: rotate(180deg); }
+  .nav__flyout { display: none; flex-basis: 100%; padding-bottom: 0.4rem; }
+  .nav__fly.is-open .nav__flyout { display: block; }
+  .nav__flyout ul { margin-left: 0.45rem; padding-left: 0.85rem; border-left: 1px solid var(--traco); }
+  .nav__flyout a { min-height: 2.5rem; font-weight: 500; }
+  .nav__flyout .nav__fly-all { font-weight: 800; }
+  .nav__flyout a[aria-current='page'] { color: var(--laranja-texto); font-weight: 800; }
   .nav__extra { display: grid; gap: 0.75rem; margin-top: auto; p { font-size: 0.9rem; color: var(--tinta-2); } }
   .nav__inst { display: flex; flex-wrap: wrap; gap: 0.25rem 1.25rem; padding-bottom: 0.5rem; a { font-weight: 700; text-decoration: none; min-height: 2.75rem; display: inline-flex; align-items: center; } }
   .menu-open .nav { visibility: visible; opacity: 1; transform: none; }
