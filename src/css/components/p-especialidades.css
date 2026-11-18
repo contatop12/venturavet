@@ -84,8 +84,8 @@
 }
 @media (max-width: 1000px) { .profs { grid-template-columns: 1fr; } }
 @media (max-width: 600px) {
-  .prof--destaque { grid-template-columns: 1fr; .prof__foto { width: min(100%, 15rem); } .btn { width: 100%; justify-content: center; } }
-  .prof { grid-template-columns: 5.25rem minmax(0, 1fr); }
+  .prof { grid-template-columns: 5.25rem minmax(0, 1fr); gap: 0.9rem; }
+  .prof--destaque { grid-template-columns: 1fr; gap: 1.1rem; padding: 1rem; .prof__foto { width: min(100%, 13rem); } .btn { width: 100%; justify-content: center; } }
 }
 
 /* ---------- Banner das páginas de especialidade: retrato + identificação em HTML ---------- */
@@ -171,3 +171,92 @@
 .team__areas { display: flex; flex-wrap: wrap; gap: 0.25rem 1rem; margin-top: 0.5rem; }
 
 .esp-outras__titulo { margin-bottom: 1rem; font-size: var(--step-1); letter-spacing: -0.01em; }
+
+/* ---------- Celular: respiro, hierarquia e compactação das páginas de especialidade ---------- */
+@media (max-width: 600px) {
+  .pg-especialidade {
+    /* Banner */
+    .page-hero .castra__kicker { margin-bottom: 1rem; }
+    .esp-hero__art { max-width: 14.5rem; margin-bottom: 0.5rem; }
+    .esp-hero__art--inst { max-width: 100%; }
+    .esp-hero__id { max-width: 88%; padding: 0.65rem 0.9rem; strong { font-size: 1rem; } span { font-size: 0.82rem; } }
+    .page-hero__lede { margin-top: 1rem; font-size: 1.05rem; }
+    .page-hero__actions { margin-top: 1.5rem; gap: 0.7rem; .btn { flex: 1 1 100%; justify-content: center; text-align: center; min-height: 3.1rem; } }
+    .page-hero__actions + .pills { margin-top: 1.5rem; gap: 0.45rem 1.25rem; }
+    .page-hero .pills li { min-height: 0; }
+
+    /* Cabeçalhos de seção */
+    .section-head { margin-bottom: 1.5rem; }
+    .section-head h2, .esp-estrutura h2, .duo h2 { margin-bottom: 0; }
+    .section-head p { margin-top: 0.85rem; font-size: 1.02rem; line-height: 1.55; }
+
+    /* Sinais: lista compacta com ícone ao lado */
+    .cards { gap: 0.6rem; }
+    .cards .card:has(> .icon) {
+      display: grid; grid-template-columns: auto minmax(0, 1fr); column-gap: 0.85rem; row-gap: 0.4rem; align-items: start; padding: 0.95rem 1rem;
+      > .icon { grid-row: 1 / span 2; width: 2.4rem; height: 2.4rem; padding: 0.5rem; }
+      h3 { font-size: 1.05rem; line-height: 1.25; align-self: center; }
+      p { grid-column: 2; font-size: 0.92rem; line-height: 1.5; }
+    }
+    .nota { margin-top: 1rem; font-size: 0.93rem; }
+
+    /* Passos */
+    .steps { gap: 0.6rem; }
+    .steps > li {
+      padding: 1rem 1.1rem 1.1rem 4rem; border-radius: var(--r-md);
+      &::before { top: 1rem; left: 1rem; width: 2.2rem; height: 2.2rem; }
+      h3 { font-size: 1.1rem; line-height: 1.25; }
+      > p { margin-top: 0.4rem; font-size: 0.93rem; line-height: 1.5; }
+    }
+    .steps + .aviso, .aviso { margin-top: 1rem; padding: 0.9rem 1rem; font-size: 0.95rem; }
+
+    /* Botões das seções: largura cheia e respiro acima */
+    .cta-row { margin-top: 1.25rem; gap: 0.7rem; }
+    .cta-row > .btn, .esp-especie__acao .btn, .cta-final__actions .btn { flex: 1 1 100%; justify-content: center; text-align: center; }
+    .cta-row > .link-more { min-height: 2.75rem; display: inline-flex; align-items: center; }
+
+    /* Estrutura / galeria */
+    .esp-estrutura { gap: 1.5rem; }
+    .esp-estrutura .selos { margin-top: 1.25rem; }
+    .esp-galeria { gap: 0.5rem; }
+
+    /* Cães e gatos */
+    .esp-especies { gap: 1rem; }
+    .esp-especie__body { gap: 0.65rem; padding: 1.1rem; }
+    .esp-especie__body h3 { font-size: 1.3rem; }
+    .esp-especie__body p { line-height: 1.55; }
+    .esp-especie__body p.esp-especie__acao { padding-top: 0.6rem; }
+
+    /* Painéis lado a lado */
+    .duo { gap: 2.5rem; }
+    .duo h2 + *, .duo h3 + * { margin-top: 0.9rem; }
+    .duo .checklist { margin-top: 1rem; }
+    .duo .aviso { margin-top: 1.1rem; }
+
+    /* Localização */
+    .local { gap: 1.5rem; }
+    .local .nap { margin-top: 1rem; }
+    .local__nota { margin-top: 1rem; font-size: 0.93rem; }
+    .local .cta-row { margin-top: 1.25rem; }
+
+    /* Atalhos para outras especialidades */
+    .esp-atalhos { gap: 0.5rem; }
+    .esp-outras__titulo { margin-bottom: 1rem; font-size: 1.25rem; }
+  }
+}
+
+/* Respiro entre blocos empilhados que vinham colados (todas as larguras) */
+.pg-especialidade .esp-especies + .profs { margin-top: 2rem; }
+.pg-especialidade .prose + .cards { margin-top: 1.5rem; }
+.pg-especialidade .cta-row + .highlight { margin-top: 2rem; }
+.pg-especialidade .wrap + .wrap.duo { margin-top: 3rem; }
+
+/* /especialistas/: botão de disponibilidade nunca estoura o cartão */
+.team__cta .btn { max-width: 100%; white-space: normal; text-align: center; }
+@media (max-width: 600px) {
+  .team__cta { margin-top: 1rem; }
+  .team__cta .btn { width: 100%; padding-inline: 0.5rem; font-size: 0.88rem; flex-direction: column; gap: 0.25rem; }
+}
+
+/* Avaliações: título da seção afastado do resumo do Google no celular */
+@media (max-width: 860px) { .pg-terapias .section-head + .reviews { margin-top: 1.25rem; } }
