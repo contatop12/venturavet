@@ -52,7 +52,8 @@ bodyClass: tema-gato pg-clinica
         <p>O consultório exclusivo e a sala de espera separada dos cães fazem parte dessa estrutura. O manejo durante a consulta e as orientações ao tutor também ajudam a preparar a visita.</p>
         <p>Antes do agendamento, conte à equipe como seu gato costuma reagir ao transporte e ao atendimento.</p>
       </div>
-      <!-- CONFIRMAR COM CLIENTE: vigência e categoria atual do reconhecimento (certificado da foto é Silver; categoria não citada no texto) e selo oficial em boa resolução, conforme regras de aplicação -->
+      <!-- CONFIRMAR COM CLIENTE: vigência e categoria atual do reconhecimento (certificado da foto é Silver; categoria não citada no texto). Selo oficial enviado pelo cliente em 18/11/2026. -->
+      <div class="selos-faixa selos-faixa--sem-linha" data-reveal style="--i:2"><x-selos only="cat"></x-selos></div>
       <ul class="destaques" data-reveal style="--i:2">
         <li><h3>Consultório exclusivo</h3><p>Um espaço dedicado ao atendimento dos gatos.</p></li>
         <li><h3>Espera separada dos cães</h3><p>Organização da chegada para o atendimento felino.</p></li>
@@ -277,7 +278,12 @@ bodyClass: tema-gato pg-clinica
   </div>
 </section>
 
-<section class="section section--nevoa" id="avaliacoes" aria-labelledby="avaliacoes-titulo">
+<x-equipe titulo="A equipe que cuida do seu gato" destaque="amanda-oncins" rotulo="Medicina felina" foto="dra-ana-luiza-mazorra-com-cao-e-gato.jpg" foto-alt="Dra. Ana Luiza Mazorra, fundadora do Ventura, com um cavalier king charles e um gato preto no colo" legenda="Dra. Ana Luiza Mazorra, fundadora do Ventura, clínica com selo Cat Friendly Practice." fundo="nevoa">
+  <p>Gatos são atendidos por uma equipe treinada no manejo gentil de felinos, com a Dra. Amanda Oncins dedicada à medicina felina e especialistas para cada necessidade.</p>
+  <p>À frente da clínica está a {{site.founder.name}}, médica-veterinária formada pela FMVZ-USP, proprietária e responsável técnica.</p>
+</x-equipe>
+
+<section class="section" id="avaliacoes" aria-labelledby="avaliacoes-titulo">
   <div class="wrap">
     <header class="section-head">
       <h2 id="avaliacoes-titulo" data-reveal>O que os tutores contam sobre o Ventura</h2>
@@ -286,7 +292,7 @@ bodyClass: tema-gato pg-clinica
   </div>
 </section>
 
-<section class="section" id="localizacao" aria-labelledby="localizacao-titulo">
+<section class="section section--nevoa" id="localizacao" aria-labelledby="localizacao-titulo">
   <div class="wrap loc">
     <div>
       <h2 id="localizacao-titulo" data-reveal>Atendimento veterinário para gatos no Paraíso</h2>
@@ -313,7 +319,7 @@ bodyClass: tema-gato pg-clinica
   </div>
 </section>
 
-<section class="section faq section--nevoa" id="perguntas" aria-labelledby="faq-titulo">
+<section class="section faq" id="perguntas" aria-labelledby="faq-titulo">
   <div class="wrap faq__grid">
     <header class="faq__head"><h2 id="faq-titulo">Dúvidas sobre o atendimento veterinário para gatos</h2></header>
     <div class="faq__list">

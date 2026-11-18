@@ -28,9 +28,10 @@ export const areas: { name: string; from: string; km: number }[] = [
 ];
 
 /**
- * Especialistas da página /especialistas/ (nomes, funções e fotos vindos do site anterior).
+ * Equipe veterinária (blocos de equipe das páginas da Clínica e página /especialistas/).
+ * A ordem do array é a ordem de exibição definida pelo cliente (nov/2026).
  * `about` descreve a área de atuação, não o currículo da pessoa.
- * `crmv` e `education` só entram quando confirmados em fonte que nomeia a pessoa; sem isso, ficam de fora.
+ * `crmv` veio da lista enviada pelo cliente em 18/11/2026; `education` só entra quando confirmada em fonte que nomeia a pessoa.
  */
 export interface TeamMember { slug: string; name: string; role: string; about: string; image: string; imageAlt: string; knowsAbout: string[]; crmv?: string; education?: string; founder?: boolean }
 export const team: TeamMember[] = [
@@ -41,42 +42,54 @@ export const team: TeamMember[] = [
     knowsAbout: ['Clínica de pequenos animais', 'Medicina felina'],
   },
   {
-    slug: 'cassia-garcia', name: 'Dra. Cássia Garcia', role: 'Ultrassonografista',
-    about: 'Faz os exames de ultrassom, que mostram os órgãos abdominais em tempo real e ajudam no diagnóstico sem precisar de cirurgia.',
-    image: 'especialista-cassia-garcia.jpg', imageAlt: 'Dra. Cássia Garcia, ultrassonografista veterinária, de jaleco estampado no consultório',
-    knowsAbout: ['Ultrassonografia veterinária', 'Diagnóstico por imagem'],
-  },
-  {
-    slug: 'flavia-ianiceli', name: 'Dra. Flávia Ianiceli', role: 'Dermatologista e endocrinologista',
-    about: 'Cuida de doenças de pele, alergias e otites, e de alterações hormonais como diabetes e problemas de tireoide.',
-    image: 'especialista-flavia-ianiceli.jpg', imageAlt: 'Dra. Flávia Ianiceli, dermatologista e endocrinologista veterinária, de jaleco branco',
-    knowsAbout: ['Dermatologia veterinária', 'Endocrinologia veterinária'],
-  },
-  {
-    slug: 'daniela-scatena', name: 'Dra. Daniela Scatena', role: 'Odontologia veterinária',
-    about: 'Trata dentes e gengivas: limpeza de tártaro, doença periodontal e extrações, que influenciam a saúde do pet como um todo.',
-    image: 'especialista-daniela-scatena.jpg', imageAlt: 'Dra. Daniela Scatena, da odontologia veterinária, com um cãozinho no colo',
-    knowsAbout: ['Odontologia veterinária'],
-    // Fontes (conferidas em 16/11/2026): CRMV na página de Odontologia da Inova Veterinária; formação na bio da equipe da Mastercat.
-    crmv: 'CRMV-SP 19.821',
-    education: 'Formada pela Universidade Metodista de São Paulo, com pós-graduação em odontologia veterinária pela Anclivepa-SP. Mestranda na FMVZ-USP.',
-  },
-  {
-    slug: 'felipe-alfaro', name: 'Dr. Felipe Alfaro', role: 'Cardiologista',
-    about: 'Avalia o coração com ecocardiograma e eletrocardiograma e acompanha cães e gatos com doenças cardíacas.',
-    image: 'especialista-felipe-alfaro.jpg', imageAlt: 'Dr. Felipe Alfaro, cardiologista veterinário, de jaleco branco',
-    knowsAbout: ['Cardiologia veterinária', 'Ecocardiograma', 'Eletrocardiograma'],
-    // Fonte: página da equipe da Maskovet, onde ele também atende como cardiologista (conferida em 16/11/2026).
-    crmv: 'CRMV-SP 42.817',
-  },
-  {
-    slug: 'luciana-moreno', name: 'Dra. Luciana Moreno', role: 'Anestesista',
+    slug: 'luciana-moreno', name: 'Dra. Luciana Moreno', role: 'Anestesista', crmv: 'CRMV-SP 15.874',
     about: 'Conduz a anestesia e monitora o paciente do início ao fim de cirurgias, castrações e outros procedimentos.',
     image: 'especialista-luciana-moreno.jpg', imageAlt: 'Dra. Luciana Moreno, anestesista veterinária, segurando um gato siamês',
     knowsAbout: ['Anestesiologia veterinária'],
   },
   {
-    slug: 'graziele-massae-shimamura', name: 'Dra. Graziele Massae Shimamura', role: 'Oftalmologista',
+    slug: 'amanda-oncins', name: 'Dra. Amanda Oncins', role: 'Especialista em medicina felina', crmv: 'CRMV-SP 41.263',
+    about: 'Dedica-se ao atendimento de gatos, do check-up às doenças crônicas da espécie, com o manejo gentil de uma clínica Cat Friendly.',
+    image: 'especialista-amanda-oncins.jpg', imageAlt: 'Dra. Amanda Oncins, especialista em medicina felina, com um gato no colo',
+    knowsAbout: ['Medicina felina'],
+  },
+  {
+    slug: 'sam-oda', name: 'Dr. Sam Oda', role: 'Cirurgia geral, cardiovascular e ortopedia', crmv: 'CRMV-SP 19.696',
+    about: 'Conduz cirurgias de tecidos moles, cirurgias cardiovasculares e procedimentos ortopédicos, como fraturas, luxações e lesões de ligamento, do planejamento ao pós-operatório.',
+    image: 'especialista-sam-oda.jpg', imageAlt: 'Dr. Sam Oda, cirurgião e ortopedista veterinário, de jaleco branco no consultório do Ventura',
+    knowsAbout: ['Cirurgia veterinária', 'Cirurgia cardiovascular veterinária', 'Ortopedia veterinária'],
+  },
+  {
+    slug: 'flavia-iannicelli', name: 'Dra. Flávia Iannicelli', role: 'Dermatologista e endocrinologista', crmv: 'CRMV-SP 17.123',
+    about: 'Cuida de doenças de pele, alergias e otites, e de alterações hormonais como diabetes e problemas de tireoide.',
+    image: 'especialista-flavia-iannicelli.jpg', imageAlt: 'Dra. Flávia Iannicelli, dermatologista e endocrinologista veterinária, de jaleco branco',
+    knowsAbout: ['Dermatologia veterinária', 'Endocrinologia veterinária'],
+    // Fonte: perfil na Clínica Veterinária Jardim França, com o mesmo CRMV-SP 17.123 enviado pelo cliente em 18/11/2026.
+    education: 'Formada pela FMVZ-USP, com especialização em dermatologia e pós-graduação em endocrinologia e metabologia.',
+  },
+  {
+    slug: 'daniela-scatena', name: 'Dra. Daniela Scatena', role: 'Odontologia veterinária', crmv: 'CRMV-SP 19.821',
+    about: 'Trata dentes e gengivas: limpeza de tártaro, doença periodontal e extrações, que influenciam a saúde do pet como um todo.',
+    image: 'especialista-daniela-scatena.jpg', imageAlt: 'Dra. Daniela Scatena, da odontologia veterinária, com um cãozinho no colo',
+    knowsAbout: ['Odontologia veterinária'],
+    // Fonte da formação (conferida em 16/11/2026): bio da equipe da Mastercat.
+    education: 'Formada pela Universidade Metodista de São Paulo, com pós-graduação em odontologia veterinária pela Anclivepa-SP. Mestranda na FMVZ-USP.',
+  },
+  {
+    // CRMV pendente: a lista do cliente (18/11/2026) repetiu para ela o número da Dra. Amanda Oncins (CRMV-SP 41.263).
+    slug: 'lais-suda', name: 'Dra. Lais Suda', role: 'Fisioterapeuta e acupunturista',
+    about: 'Atua na reabilitação e no controle da dor, em pacientes idosos e na recuperação de cirurgias ortopédicas e neurológicas.',
+    image: 'especialista-lais-suda.jpg', imageAlt: 'Dra. Lais Suda, fisioterapeuta e acupunturista veterinária, ao lado de um buldogue francês',
+    knowsAbout: ['Fisioterapia veterinária', 'Acupuntura veterinária'],
+  },
+  {
+    slug: 'felipe-alfaro', name: 'Dr. Felipe Alfaro', role: 'Cardiologista', crmv: 'CRMV-SP 42.817',
+    about: 'Avalia o coração com ecocardiograma e eletrocardiograma e acompanha cães e gatos com doenças cardíacas.',
+    image: 'especialista-felipe-alfaro.jpg', imageAlt: 'Dr. Felipe Alfaro, cardiologista veterinário, de jaleco branco',
+    knowsAbout: ['Cardiologia veterinária', 'Ecocardiograma', 'Eletrocardiograma'],
+  },
+  {
+    slug: 'graziele-massae-shimamura', name: 'Dra. Graziele Massae Shimamura', role: 'Oftalmologista', crmv: 'CRMV-SP 15.786',
     about: 'Cuida da saúde dos olhos: úlceras de córnea, catarata, glaucoma, olho seco e alterações das pálpebras.',
     image: 'especialista-graziele-massae-shimamura.jpg', imageAlt: 'Dra. Graziele Massae Shimamura, oftalmologista veterinária, de jaleco branco',
     knowsAbout: ['Oftalmologia veterinária'],
@@ -84,18 +97,25 @@ export const team: TeamMember[] = [
     education: 'Formada pela Unesp, com residência em clínica e cirurgia de pequenos animais na USP e mestrado pela FMVZ-USP, com pesquisa sobre os olhos de cães com diabetes.',
   },
   {
-    slug: 'amanda-oncins', name: 'Dra. Amanda Oncins', role: 'Especialista em medicina felina',
-    about: 'Dedica-se ao atendimento de gatos, do check-up às doenças crônicas da espécie, com o manejo gentil de uma clínica Cat Friendly.',
-    image: 'especialista-amanda-oncins.jpg', imageAlt: 'Dra. Amanda Oncins, especialista em medicina felina, com um gato no colo',
-    knowsAbout: ['Medicina felina'],
+    slug: 'marianna-pantano', name: 'Dra. Marianna Pantano', role: 'Ultrassonografista', crmv: 'CRMV-SP 30.524',
+    about: 'Realiza o ultrassom de cães e gatos, que avalia órgãos como fígado, rins, bexiga e intestinos e ajuda a direcionar o diagnóstico e o tratamento.',
+    image: 'especialista-marianna-pantano.jpg', imageAlt: 'Dra. Marianna Pantano, ultrassonografista veterinária, segurando um gato preto e branco',
+    knowsAbout: ['Ultrassonografia veterinária', 'Diagnóstico por imagem'],
   },
   {
-    slug: 'lais-suda', name: 'Dra. Lais Suda', role: 'Fisioterapeuta e acupunturista',
-    about: 'Atua na reabilitação e no controle da dor, em pacientes idosos e na recuperação de cirurgias ortopédicas e neurológicas.',
-    image: 'especialista-lais-suda.jpg', imageAlt: 'Dra. Lais Suda, fisioterapeuta e acupunturista veterinária, ao lado de um buldogue francês',
-    knowsAbout: ['Fisioterapia veterinária', 'Acupuntura veterinária'],
+    slug: 'cassia-garcia', name: 'Dra. Cássia Garcia', role: 'Ultrassonografista', crmv: 'CRMV-SP 13.395',
+    about: 'Faz os exames de ultrassom, que mostram os órgãos abdominais em tempo real e ajudam no diagnóstico sem precisar de cirurgia.',
+    image: 'especialista-cassia-garcia.jpg', imageAlt: 'Dra. Cássia Garcia, ultrassonografista veterinária, de jaleco estampado no consultório',
+    knowsAbout: ['Ultrassonografia veterinária', 'Diagnóstico por imagem'],
   },
 ];
+
+/** Membro da equipe por slug (o build falha se o slug não existir). */
+export function member(slug: string): TeamMember {
+  const t = team.find((x) => x.slug === slug);
+  if (!t) throw new Error(`Especialista inexistente: ${slug}`);
+  return t;
+}
 
 export const site = {
   url: 'https://venturavet.com.br',
@@ -139,6 +159,7 @@ export const site = {
   /** Diferenciais institucionais destacados no site e nos dados estruturados. */
   credentials: {
     catFriendly: 'Cat Friendly Practice',
+    dnaUsp: 'DNA USP',
   },
   /** Clínica particular: não trabalha com convênios / planos de saúde pet. */
   paymentNote: 'Clínica particular: não atendemos convênios nem planos de saúde pet.',

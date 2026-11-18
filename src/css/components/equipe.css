@@ -1,0 +1,113 @@
+/* =====================================================================
+   Bloco de equipe (<x-equipe>) das páginas da Clínica e selos (<x-selos>).
+   Só o que é link tem cara de clicável: cartões da faixa (link para o perfil),
+   setas e botões. Fatos, rótulos e selos são informação estática.
+   ===================================================================== */
+
+/* ---------- Topo: apresentação + foto real da equipe (ou perfil) ---------- */
+.equipe-bloco__top { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: clamp(1.75rem, 4vw, 4rem); align-items: center; }
+.equipe-bloco__top--perfil { grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr); }
+.equipe-bloco__kicker { font-family: var(--f-display); font-weight: 800; font-size: 0.85rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--laranja-texto); }
+.equipe-bloco__intro h2 { margin-top: 0.5rem; font-size: var(--step-4); letter-spacing: -0.03em; line-height: 1.05; }
+.equipe-bloco__intro .prose { margin-top: 1.1rem; }
+.equipe-bloco__intro .prose p { font-size: var(--step-0); line-height: 1.65; color: var(--tinta-2); }
+.equipe-bloco__intro .prose p + p { margin-top: 0.75rem; }
+
+.equipe-bloco__fatos { display: grid; gap: 0.85rem; margin: 1.5rem 0 0; padding: 0; list-style: none; }
+.equipe-bloco__fatos li { display: flex; align-items: flex-start; gap: 0.75rem; font-size: 0.95rem; line-height: 1.45; color: var(--tinta-2); }
+.equipe-bloco__fatos .icon { flex: none; width: 1.35rem; height: 1.35rem; margin-top: 0.1rem; color: var(--laranja); }
+.equipe-bloco__fatos strong { color: var(--tinta); font-family: var(--f-display); font-weight: 800; }
+
+.equipe-bloco__foto { position: relative; margin: 0; }
+.equipe-bloco__foto picture { display: block; aspect-ratio: 4 / 3; overflow: hidden; border-radius: clamp(1.25rem, 2.5vw, 2rem); background: var(--linha); box-shadow: 0 24px 48px -24px rgb(19 41 61 / 45%); }
+.equipe-bloco__foto img { width: 100%; height: 100%; object-fit: cover; }
+.equipe-bloco__foto figcaption { margin-top: 0.75rem; font-size: 0.85rem; color: var(--tinta-2); }
+
+/* Perfil em destaque (ex.: fisioterapia e acupuntura) */
+.equipe-perfil { display: grid; grid-template-columns: minmax(0, 11.5rem) minmax(0, 1fr); gap: clamp(1rem, 2.5vw, 1.75rem); align-items: center; padding: clamp(1rem, 2vw, 1.5rem); border-radius: var(--r-lg); background: var(--branco); box-shadow: 0 20px 40px -28px rgb(19 41 61 / 40%); }
+.section--nevoa .equipe-perfil { background: var(--branco); }
+.section:not(.section--nevoa) .equipe-perfil { background: var(--nevoa); box-shadow: none; }
+.equipe-perfil__foto { display: block; aspect-ratio: 4 / 5; overflow: hidden; border-radius: var(--r-md); background: var(--linha); img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 18%; } }
+.equipe-perfil h3 { font-size: var(--step-2); letter-spacing: -0.02em; line-height: 1.15; }
+.equipe-perfil__role { margin-top: 0.25rem; font-weight: 700; color: var(--laranja-texto); }
+.equipe-perfil__body > p:not(.equipe-perfil__role) { margin-top: 0.6rem; font-size: 0.95rem; line-height: 1.55; color: var(--tinta-2); }
+.equipe-perfil__crmv { font-size: 0.85rem !important; font-weight: 600; }
+.equipe-perfil__cta { margin-top: 1rem !important; }
+
+/* ---------- Faixa rolável com todos os médicos-veterinários ---------- */
+.equipe-carrossel { margin-top: clamp(2.5rem, 5vw, 4rem); }
+.equipe-carrossel__head { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-bottom: 1rem; }
+.equipe-carrossel__titulo { font-size: var(--step-1); letter-spacing: -0.01em; }
+.equipe-carrossel.is-static .reviews__nav { display: none; }
+.equipe-carrossel__viewport {
+  overflow-x: auto; scrollbar-width: none; scroll-snap-type: x mandatory; scroll-padding-inline: 0.25rem;
+  margin-inline: -0.25rem; padding: 0.25rem 0.25rem 1rem;
+  &::-webkit-scrollbar { display: none; }
+  &:focus-visible { outline: 3px solid var(--paraiso); outline-offset: 2px; border-radius: var(--r-md); }
+}
+.equipe-carrossel__track { display: flex; gap: clamp(0.75rem, 1.6vw, 1.15rem); width: max-content; margin: 0; padding: 0; list-style: none; }
+.equipe-card { width: clamp(11.5rem, 17vw, 13.5rem); flex: none; scroll-snap-align: start; }
+.equipe-card__link {
+  display: flex; flex-direction: column; height: 100%; overflow: hidden; border: 1px solid var(--linha); border-radius: var(--r-md);
+  background: var(--branco); color: inherit; text-decoration: none;
+  transition: transform 0.35s var(--ease-out), border-color 0.35s var(--ease-out), box-shadow 0.35s var(--ease-out);
+  &:hover { transform: translateY(-3px); border-color: var(--laranja); box-shadow: 0 16px 28px -20px rgb(19 41 61 / 45%); }
+  &:focus-visible { outline: 3px solid var(--paraiso); outline-offset: 3px; }
+}
+.equipe-card__foto { display: block; aspect-ratio: 4 / 5; overflow: hidden; background: var(--nevoa); img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 18%; transition: transform 0.6s var(--ease-out); } }
+.equipe-card__link:hover .equipe-card__foto img { transform: scale(1.03); }
+.equipe-card__body { display: flex; flex-direction: column; gap: 0.2rem; flex: 1; padding: 0.8rem 0.9rem 0.95rem; }
+.equipe-card__nome { font-family: var(--f-display); font-size: 1rem; font-weight: 800; letter-spacing: -0.01em; line-height: 1.2; }
+.equipe-card__area { font-size: 0.86rem; font-weight: 600; line-height: 1.3; color: var(--laranja-texto); }
+.equipe-card__crmv, .equipe-bloco__crmv, .equipe-perfil__crmv { white-space: nowrap; }
+.equipe-card__crmv { margin-top: auto; padding-top: 0.35rem; font-size: 0.78rem; font-weight: 600; color: var(--tinta-2); }
+/* Rótulo do destaque: texto pequeno, sem contorno nem fundo de botão */
+.equipe-card__rotulo { display: flex; align-items: center; gap: 0.4rem; font-size: 0.72rem; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; color: var(--paraiso-texto); }
+.equipe-card__rotulo::before { content: ''; width: 0.5rem; height: 0.5rem; border-radius: 999px; background: var(--laranja); }
+.equipe-card--destaque .equipe-card__link { border-color: var(--laranja-suave); box-shadow: inset 0 3px 0 var(--laranja); }
+
+/* ---------- Rodapé do bloco: selos + link para a equipe completa ---------- */
+.equipe-bloco__rodape { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1.25rem 2rem; margin-top: clamp(1.75rem, 3vw, 2.5rem); padding-top: clamp(1.5rem, 3vw, 2rem); border-top: 1px solid var(--linha); }
+.equipe-bloco__rodape .selos { flex: 1 1 36rem; }
+.equipe-bloco__acao { flex: none; }
+
+/* ---------- Selos (Cat Friendly Practice e DNA USP) ---------- */
+.selos { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 17rem), 1fr)); gap: 1rem 1.75rem; margin: 0; padding: 0; list-style: none; }
+.selo { display: flex; align-items: center; gap: 1rem; }
+.selo__logo { display: block; flex: none; img { width: 100%; height: auto; } }
+.selo--cat .selo__logo { width: 9.5rem; }
+.selo--dna .selo__logo { width: 5.5rem; }
+.selo p { font-size: 0.86rem; line-height: 1.45; color: var(--tinta-2); }
+.selo strong { display: block; margin-bottom: 0.1rem; font-family: var(--f-display); font-size: 0.95rem; color: var(--tinta); }
+.selos--compact { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem 1.5rem; }
+.selos--compact .selo--cat .selo__logo { width: 8rem; }
+.selos--compact .selo--dna .selo__logo { width: 4.25rem; }
+
+@media (max-width: 860px) {
+  .equipe-bloco__top, .equipe-bloco__top--perfil { grid-template-columns: 1fr; }
+  .equipe-bloco__foto { order: -1; }
+  .equipe-bloco__top--perfil .equipe-perfil { order: 0; }
+}
+@media (max-width: 560px) {
+  .equipe-perfil { grid-template-columns: 1fr; }
+  .equipe-perfil__foto { max-width: 13rem; }
+  .equipe-card { width: 40vw; }
+  .equipe-carrossel__head { align-items: flex-end; }
+  .equipe-bloco__acao, .equipe-bloco__acao .btn { width: 100%; }
+}
+
+/* Faixa de selos solta em seções (Quem somos, Especialistas, Veterinário para gatos) */
+.selos-faixa { margin-top: 1.75rem; padding-top: 1.5rem; border-top: 1px solid var(--linha); }
+.selos-faixa--sem-linha { padding-top: 0; border-top: 0; }
+/* Fundo escuro (home): texto claro; o selo Cat Friendly já tem o miolo branco */
+.selos--escuro .selo p { color: #c9d6e1; }
+.selos--escuro .selo strong { color: var(--branco); }
+.about__selos { margin-top: 1.5rem; }
+.bento__item .selos { margin-top: 1.1rem; }
+/* Rodapé */
+.footer__brand .selos { margin-top: 1.25rem; }
+.footer__brand .selos + .footer__social { margin-top: 1rem; }
+/* Hotel para gatos: logo oficial no lugar do ícone */
+.pg-hospedagem .hosp-seal--logo { gap: 0.85rem; picture { display: block; flex: none; width: 8.5rem; } img { width: 100%; height: auto; } }
+/* Vídeo da equipe no lugar da foto (Quem somos) */
+.equipe-bloco__foto--video video { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; border-radius: clamp(1.25rem, 2.5vw, 2rem); background: var(--linha); box-shadow: 0 24px 48px -24px rgb(19 41 61 / 45%); }

@@ -39,6 +39,7 @@ priority: 0.8
         <p>O Ventura tem o selo <strong>DNA USP</strong>: faz parte de um grupo de empresas formadas por alunos, ex-alunos e pesquisadores da Universidade de São Paulo, uma das maiores referências acadêmicas do país.</p>
         <p>Contamos com um amplo espaço para atender os clientes com conforto e segurança. A higienização dos ambientes segue a rotina definida pela equipe, que inclui a desinfecção com <strong>vassoura de fogo</strong>.</p>
       </div>
+      <div class="selos-faixa" data-reveal style="--i:2"><x-selos></x-selos></div>
     </div>
     <div class="gallery gallery--grid gallery--two" data-reveal style="--i:2">
       <x-img src="fachada-clinica-ventura-paraiso.jpg" alt="Fachada do Ventura Veterinária &amp; Pet Shop no Paraíso, em São Paulo, com letreiro de serviços" widths="360,540,720" sizes="(min-width: 860px) 22vw, 45vw"></x-img>
@@ -71,18 +72,10 @@ priority: 0.8
   </div>
 </section>
 
-<section class="section" aria-labelledby="equipe-titulo">
-  <div class="wrap split">
-    <div>
-      <h2 id="equipe-titulo" data-reveal>Nossa equipe</h2>
-      <p class="prose" data-reveal style="--i:1">Nossa equipe de veterinários é formada nas melhores universidades do Brasil e acompanha o seu pet da consulta ao retorno.</p>
-      <x-video class="team-video" src="equipe-ventura-fachada-video" alt="Equipe do Ventura Vet acenando em frente à fachada da clínica"></x-video>
-    </div>
-    <div class="split__media" data-reveal>
-      <x-img class="rounded" src="equipe-ventura-parede-verde.jpg" alt="Equipe do Ventura Vet reunida em frente à parede verde da recepção da clínica" widths="360,540,720,960" sizes="(min-width: 860px) 40vw, 85vw"></x-img>
-    </div>
-  </div>
-</section>
+<x-equipe titulo="Nossa equipe" video="equipe-ventura-fachada-video" video-alt="Equipe do Ventura Vet acenando em frente à fachada da clínica" legenda="Equipe do Ventura na fachada da clínica, na Rua Otávio Nébias.">
+  <p>Nossa equipe de veterinários é formada nas melhores universidades do Brasil e acompanha o seu pet da consulta ao retorno.</p>
+  <p>São clínicos e especialistas em cirurgia, anestesia, cardiologia, dermatologia, oftalmologia, odontologia, ultrassom, fisioterapia e medicina felina, todos no mesmo endereço.</p>
+</x-equipe>
 
 <section class="section" aria-labelledby="estrutura-titulo">
   <div class="wrap">

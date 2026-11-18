@@ -8,7 +8,7 @@ import type { CheerioAPI } from 'cheerio';
 import { getImage } from './images.ts';
 import { icon } from './icons.ts';
 import { paths } from './paths.ts';
-import { site, services, reviews, categories, waLink, areas, team } from './site.ts';
+import { site, services, reviews, categories, waLink, areas, team, member } from './site.ts';
 import { getPosts, formatDate, categoryName, type Post } from './posts.ts';
 import { esc, type PageMeta } from './seo.ts';
 
@@ -247,6 +247,121 @@ export const components: Record<string, Component> = {
     <p class="team__cta"><a class="btn btn--ghost btn--sm" data-wa="${attr(`Olá! Vim pelo site do Ventura Vet e gostaria de consultar a disponibilidade de atendimento com ${t.name} (${t.role.toLowerCase()}).`)}" data-service="especialistas" data-pos="equipe"><x-icon name="whatsapp"></x-icon>Consultar disponibilidade</a></p>
   </div>
 </li>`).join('')}</ul>`,
+
+  /**
+   * Selos da clínica (Cat Friendly Practice e DNA USP), com as artes oficiais.
+   * Sem atributo: logos com uma linha de explicação. `compact`: só os logos (rodapé, heróis).
+   * `only="cat"` ou `only="dna"`: um selo só. `tom="escuro"`: fundo escuro (DNA USP na versão negativa oficial, branca).
+   */
+  'x-selos': ($, el) => {
+    const compact = el.attr('compact') !== undefined;
+    const only = el.attr('only');
+    const dark = el.attr('tom') === 'escuro';
+    const all = [
+      {
+        key: 'cat', src: 'selo-cat-friendly-practice.png', alt: `Selo ${site.credentials.catFriendly}`, w: '360,540', sizes: compact ? '9rem' : '10rem',
+        title: site.credentials.catFriendly, text: 'Clínica certificada no programa internacional de atendimento amigo dos gatos, com consultório exclusivo para felinos.',
+      },
+      {
+        key: 'dna', src: dark ? 'selo-dna-usp-branco.png' : 'selo-dna-usp.png', alt: `Selo ${site.credentials.dnaUsp}`, w: '360', sizes: compact ? '5rem' : '7rem',
+        title: site.credentials.dnaUsp, text: 'Empresa do grupo DNA USP, formado por empresas de alunos, ex-alunos e pesquisadores da Universidade de São Paulo.',
+      },
+    ].filter((s) => !only || s.key === only);
+    return `<ul class="selos${compact ? ' selos--compact' : ''}${dark ? ' selos--escuro' : ''}">${all
+      .map((s) => `<li class="selo selo--${s.key}"><x-img class="selo__logo" src="${s.src}" alt="${attr(s.alt)}" widths="${s.w}" sizes="${s.sizes}"></x-img>${compact ? '' : `<p><strong>${esc(s.title)}</strong>${esc(s.text)}</p>`}</li>`)
+      .join('')}</ul>`;
+  },
+
+  /**
+   * Bloco "Equipe" das páginas da Clínica Veterinária: apresentação, foto real da equipe (ou o perfil de quem atende),
+   * faixa rolável com todos os médicos-veterinários (ordem de `team`) e os selos.
+   * Atributos: titulo, id (padrão "equipe"), fundo="nevoa", foto, foto-alt, legenda,
+   * video (nome do vídeo em /video/, no lugar da foto), video-alt,
+   * destaque="slug,slug" (sobem para o início da faixa com o `rotulo`), perfil="slug" (cartão grande no lugar da foto),
+   * perfil-msg (mensagem de WhatsApp do perfil), perfil-cta (rótulo do botão do perfil).
+   * O conteúdo interno (parágrafos) substitui o texto padrão.
+   */
+  'x-equipe': ($, el, ctx) => {
+    ['chevron-left', 'chevron-right', 'arrow-right', 'users-round', 'calendar-heart', 'graduation-cap', 'whatsapp'].forEach((i) => ctx.icons.add(i));
+    const id = el.attr('id') ?? 'equipe';
+    const titulo = el.attr('titulo') ?? 'Conheça a equipe do Ventura';
+    const destaque = (el.attr('destaque') ?? '').split(',').map((s) => s.trim()).filter(Boolean);
+    destaque.forEach(member);
+    const rotulo = el.attr('rotulo') ?? 'Nesta área';
+    const perfilSlug = el.attr('perfil');
+    const lede = (el.html() ?? '').trim() || `<p>O Ventura atende cães e gatos no Paraíso desde ${site.foundingYear}. À frente da clínica está a ${esc(site.founder.name)}, médica-veterinária formada pela FMVZ-USP, com uma equipe de clínicos e especialistas que trabalham juntos no mesmo endereço.</p>`;
+    const ordered = [...destaque.map(member), ...team.filter((t) => !destaque.includes(t.slug))];
+
+    let side: string;
+    if (perfilSlug) {
+      const p = member(perfilSlug);
+      const msg = el.attr('perfil-msg') ?? `Olá! Vim pelo site do Ventura Vet e gostaria de consultar a disponibilidade de atendimento com ${p.name}.`;
+      side = `<article class="equipe-perfil" data-reveal style="--i:1">
+  <x-img class="equipe-perfil__foto" src="${p.image}" alt="${attr(p.imageAlt)}" widths="360,540" sizes="(min-width: 860px) 15rem, 40vw"></x-img>
+  <div class="equipe-perfil__body">
+    <h3>${esc(p.name)}</h3>
+    <p class="equipe-perfil__role">${esc(p.role)}</p>
+    <p>${esc(p.about)}</p>
+    ${p.crmv ? `<p class="equipe-perfil__crmv">${esc(p.crmv)}</p>` : ''}
+    <p class="equipe-perfil__cta"><a class="btn btn--sm" data-wa="${attr(msg)}" data-service="especialistas" data-pos="equipe-perfil"><x-icon name="whatsapp"></x-icon>${esc(el.attr('perfil-cta') ?? 'Consultar agenda')}</a></p>
+  </div>
+</article>`;
+    } else if (el.attr('video')) {
+      side = `<figure class="equipe-bloco__foto equipe-bloco__foto--video" data-reveal style="--i:1">
+  <x-video src="${attr(el.attr('video'))}" alt="${attr(el.attr('video-alt') ?? 'Equipe do Ventura Vet')}"></x-video>
+  <figcaption>${esc(el.attr('legenda') ?? 'Equipe do Ventura na fachada da clínica, no Paraíso.')}</figcaption>
+</figure>`;
+    } else {
+      const foto = el.attr('foto') ?? 'equipe-ventura-parede-verde.jpg';
+      const alt = el.attr('foto-alt') ?? 'Equipe do Ventura Vet reunida em frente ao jardim vertical da recepção da clínica';
+      const legenda = el.attr('legenda') ?? 'Equipe do Ventura na recepção da clínica, no Paraíso.';
+      side = `<figure class="equipe-bloco__foto" data-reveal style="--i:1">
+  <x-img src="${foto}" alt="${attr(alt)}" widths="540,720,960,1280" sizes="(min-width: 1100px) 560px, (min-width: 860px) 48vw, 92vw"></x-img>
+  <figcaption>${esc(legenda)}</figcaption>
+</figure>`;
+    }
+
+    const cards = ordered
+      .map((t) => {
+        const hl = destaque.includes(t.slug);
+        return `<li class="equipe-card${hl ? ' equipe-card--destaque' : ''}"><a class="equipe-card__link" href="/especialistas/#${t.slug}">
+  <x-img class="equipe-card__foto" src="${t.image}" alt="${attr(t.imageAlt)}" widths="360,540" sizes="(min-width: 860px) 13.5rem, 46vw"></x-img>
+  <span class="equipe-card__body">${hl ? `<span class="equipe-card__rotulo">${esc(rotulo)}</span>` : ''}<strong class="equipe-card__nome">${esc(t.name)}</strong><span class="equipe-card__area">${esc(t.role)}</span>${t.crmv ? `<span class="equipe-card__crmv">${esc(t.crmv)}</span>` : ''}</span>
+</a></li>`;
+      })
+      .join('');
+
+    return `<section class="section equipe-bloco${el.attr('fundo') === 'nevoa' ? ' section--nevoa' : ''}" id="${id}" aria-labelledby="${id}-titulo">
+  <div class="wrap">
+    <div class="equipe-bloco__top${perfilSlug ? ' equipe-bloco__top--perfil' : ''}">
+      <div class="equipe-bloco__intro">
+        <p class="equipe-bloco__kicker" data-reveal>Equipe Ventura</p>
+        <h2 id="${id}-titulo" data-reveal>${esc(titulo)}</h2>
+        <div class="prose" data-reveal style="--i:1">${lede}</div>
+        <ul class="equipe-bloco__fatos" data-reveal style="--i:2">
+          <li>${icon('users-round')}<span><strong>${team.length} médicos-veterinários</strong> entre clínicos e especialistas</span></li>
+          <li>${icon('calendar-heart')}<span><strong>No Paraíso desde ${site.foundingYear}</strong> no mesmo endereço</span></li>
+          <li>${icon('graduation-cap')}<span><strong>Fundadora formada pela FMVZ-USP</strong> <span class="equipe-bloco__crmv">${esc(site.founder.crmv)}</span></span></li>
+        </ul>
+      </div>
+      ${side}
+    </div>
+    <div class="equipe-carrossel" data-carousel>
+      <div class="equipe-carrossel__head">
+        <h3 class="equipe-carrossel__titulo">Médicos-veterinários do Ventura</h3>
+        <p class="reviews__nav"><button class="reviews__btn" type="button" data-carousel-prev aria-label="Profissionais anteriores">${icon('chevron-left')}</button><button class="reviews__btn" type="button" data-carousel-next aria-label="Próximos profissionais">${icon('chevron-right')}</button></p>
+      </div>
+      <div class="equipe-carrossel__viewport" data-marquee tabindex="0" role="region" aria-label="Médicos-veterinários do Ventura">
+        <ul class="equipe-carrossel__track">${cards}</ul>
+      </div>
+    </div>
+    <div class="equipe-bloco__rodape">
+      <x-selos></x-selos>
+      <p class="equipe-bloco__acao"><a class="btn btn--ghost" href="/especialistas/">${icon('arrow-right')}Conhecer a equipe completa</a></p>
+    </div>
+  </div>
+</section>`;
+  },
 
   'x-youtube': ($, el, ctx) => {
     const id = el.attr('id')!;

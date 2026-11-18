@@ -186,21 +186,10 @@ bodyClass: pg-terapias pg-cirurgias
   </div>
 </section>
 
-<section class="section section--nevoa" id="equipe" aria-labelledby="equipe-titulo">
-  <div class="wrap split">
-    <div>
-      <h2 id="equipe-titulo" data-reveal>Atendimento no Paraíso desde 2007</h2>
-      <div class="prose" data-reveal style="--i:1">
-        <p>O Ventura atende cães e gatos no Paraíso desde 2007. À frente da clínica está a {{site.founder.name}}, médica-veterinária formada pela FMVZ-USP, proprietária e responsável técnica ({{site.founder.crmv}}).</p>
-        <p>Consulte os profissionais que participarão da avaliação e do procedimento do seu pet.</p>
-      </div>
-      <p data-reveal style="--i:2"><a class="btn btn--ghost" href="/especialistas/">Conhecer nossa equipe</a></p>
-    </div>
-    <div class="split__media" data-reveal>
-      <x-img src="equipe-ventura-parede-verde.jpg" alt="Equipe do Ventura Vet reunida em frente à parede verde da recepção" widths="360,540,720" sizes="(min-width: 860px) 40vw, 90vw"></x-img>
-    </div>
-  </div>
-</section>
+<x-equipe titulo="Quem conduz as cirurgias no Ventura" destaque="sam-oda,luciana-moreno" rotulo="Cirurgia e anestesia" foto="equipe-ventura-jardim-vertical.jpg" foto-alt="Equipe do Ventura Vet reunida em frente ao jardim vertical da recepção" fundo="nevoa">
+  <p>Cada procedimento reúne cirurgião, anestesista e equipe clínica: avaliação antes, anestesia monitorada durante e acompanhamento no pós-operatório.</p>
+  <p>À frente da clínica está a {{site.founder.name}}, médica-veterinária formada pela FMVZ-USP, proprietária e responsável técnica.</p>
+</x-equipe>
 
 <section class="section" id="avaliacoes" aria-labelledby="avaliacoes-titulo">
   <div class="wrap">

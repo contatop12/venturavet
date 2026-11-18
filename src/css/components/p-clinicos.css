@@ -28,3 +28,48 @@
 .pg-consulta .team-pair > :last-child { width: 55%; justify-self: end; margin-top: -3.5rem; border: 4px solid var(--branco); border-radius: var(--r-lg); box-shadow: 0 10px 24px rgb(19 41 61 / 16%); }
 .pg-castracao .tag-selo { display: inline-flex; align-items: center; gap: 0.5rem; margin-top: 1rem; padding: 0; font-weight: 700; }
 .pg-castracao .note-final { margin-top: 1rem; font-size: 0.95rem; }
+
+/* ---------- Castração sem dor (conteúdo da landing aprovada pelo cliente) ---------- */
+.pg-castracao .castra-video { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: clamp(1.75rem, 4vw, 3.5rem); align-items: center; }
+.pg-castracao .castra-video .yt { border-radius: var(--r-lg); box-shadow: 0 24px 48px -24px rgb(19 41 61 / 45%); }
+.pg-castracao .castra-video h2 { font-size: var(--step-3); letter-spacing: -0.03em; }
+.pg-castracao .castra-video .prose { margin-top: 1rem; }
+.pg-castracao .castra-video .prose p + p { margin-top: 0.75rem; }
+.pg-castracao .castra-video .checklist { margin-top: 1.25rem; }
+.pg-castracao .castra-cards { grid-template-columns: repeat(auto-fit, minmax(min(100%, 13rem), 1fr)); }
+
+.pg-castracao .castra-dif { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.pg-castracao .castra-dif__item { display: grid; grid-template-rows: auto 1fr; gap: 1.25rem; padding: clamp(1.5rem, 1rem + 2vw, 2.5rem); border-radius: var(--r-lg); background: var(--branco); }
+.pg-castracao .castra-dif__item h2 { font-size: var(--step-2); letter-spacing: -0.02em; line-height: 1.15; }
+.pg-castracao .castra-dif__item p { margin-top: 0.75rem; color: var(--tinta-2); line-height: 1.6; }
+.pg-castracao .castra-dif__art { display: flex; align-items: center; gap: 0.5rem; min-height: 9rem; }
+.pg-castracao .castra-dif__art picture { display: block; width: 9rem; }
+.pg-castracao .castra-dif__art img { width: 100%; height: auto; }
+.pg-castracao .castra-dif__art--icon .icon { width: 6.5rem; height: 6.5rem; padding: 1.5rem; border-radius: 999px; background: var(--laranja-suave); color: var(--laranja-texto); }
+
+.pg-castracao .castra-tempo { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; margin: 0; padding: 0; list-style: none; }
+.pg-castracao .castra-tempo li { position: relative; padding: 1.5rem 1.5rem 1.75rem; border-radius: var(--r-lg); background: var(--branco); border-top: 4px solid var(--laranja); }
+.pg-castracao .castra-tempo li:nth-child(2) { border-top-color: var(--paraiso); }
+.pg-castracao .castra-tempo li:nth-child(3) { border-top-color: var(--tinta); }
+.pg-castracao .castra-tempo__quando { font-family: var(--f-display); font-size: var(--step-2); font-weight: 900; letter-spacing: -0.02em; color: var(--tinta); }
+.pg-castracao .castra-tempo h3 { margin-top: 0.35rem; font-size: 1.1rem; color: var(--laranja-texto); }
+.pg-castracao .castra-tempo li > p:last-child { margin-top: 0.5rem; color: var(--tinta-2); line-height: 1.55; }
+
+.pg-castracao #estrutura .gallery--grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+
+.pg-castracao .castra-especies { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.pg-castracao .castra-especie { display: flex; flex-direction: column; overflow: hidden; border-radius: var(--r-lg); background: var(--nevoa); }
+.pg-castracao .castra-especie__foto { display: block; aspect-ratio: 16 / 10; overflow: hidden; img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%; } }
+.pg-castracao .castra-especie__body { display: flex; flex-direction: column; align-items: flex-start; gap: 0.75rem; flex: 1; padding: clamp(1.25rem, 1rem + 1.5vw, 2rem); }
+.pg-castracao .castra-especie__body h3 { font-size: var(--step-2); }
+.pg-castracao .castra-especie__body p { flex: 1; color: var(--tinta-2); line-height: 1.6; }
+
+@media (max-width: 900px) {
+  .pg-castracao .castra-video, .pg-castracao .castra-dif, .pg-castracao .castra-especies { grid-template-columns: 1fr; }
+  .pg-castracao .castra-tempo { grid-template-columns: 1fr; }
+}
+@media (max-width: 700px) {
+  .pg-castracao #estrutura .gallery--grid { grid-template-columns: 1fr 1fr; }
+  .pg-castracao #estrutura .gallery--portrait picture:nth-child(3) { display: block; }
+  .pg-castracao .castra-dif__art picture { width: 7.5rem; }
+}

@@ -234,25 +234,10 @@ bodyClass: pg-clinica
   </div>
 </section>
 
-<section class="section" id="equipe" aria-labelledby="equipe-titulo">
-  <div class="wrap split">
-    <div class="split__media split__media--blob foto-retrato foto-retrato--wide" data-reveal>
-      <x-img src="dra-ana-luiza-mazorra.png" alt="Dra. Ana Luiza Mazorra, responsável técnica do Ventura Vet" widths="360,540,720" sizes="(min-width: 860px) 36vw, 90vw"></x-img>
-    </div>
-    <div>
-      <h2 id="equipe-titulo" data-reveal>No Paraíso desde 2007</h2>
-      <div class="prose" data-reveal style="--i:1">
-        <p>O Ventura atende cães e gatos no Paraíso desde 2007. À frente da clínica está a {{site.founder.name}}, médica-veterinária formada pela FMVZ-USP, proprietária e responsável técnica.</p>
-        <p>Conheça a equipe, sua atuação e os profissionais que participam do atendimento.</p>
-      </div>
-      <p class="equipe-id" data-reveal style="--i:2"><strong>{{site.founder.name}}</strong>Médica-veterinária, proprietária e responsável técnica<br>{{site.founder.crmv}}</p>
-      <div class="acao-bloco" data-reveal style="--i:3">
-        <a class="btn" href="/especialistas/"><x-icon name="user-round-check"></x-icon>Conhecer nossa equipe</a>
-        <a class="link-more" href="/quem-somos/">Conhecer nossa história</a>
-      </div>
-    </div>
-  </div>
-</section>
+<x-equipe titulo="Conheça a equipe do Ventura" foto="equipe-ventura-recepcao.jpg" foto-alt="Equipe do Ventura Vet reunida diante do jardim vertical da recepção da clínica" legenda="Parte da equipe do Ventura na recepção da clínica, no Paraíso.">
+  <p>O Ventura atende cães e gatos no Paraíso desde 2007. À frente da clínica está a {{site.founder.name}}, médica-veterinária formada pela FMVZ-USP, proprietária e responsável técnica.</p>
+  <p>Ao lado dela, clínicos e especialistas em cirurgia, anestesia, cardiologia, dermatologia, oftalmologia, odontologia, ultrassom, fisioterapia e medicina felina trabalham juntos, no mesmo endereço.</p>
+</x-equipe>
 
 <section class="section section--nevoa" id="como-agendar" aria-labelledby="como-agendar-titulo">
   <div class="wrap">

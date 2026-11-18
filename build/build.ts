@@ -12,7 +12,7 @@ import { bundleAsync, browserslistToTargets, Features } from 'lightningcss';
 import sharp from 'sharp';
 import * as cheerio from 'cheerio';
 import { paths } from './lib/paths.ts';
-import { site, services, categories, svc, areas } from './lib/site.ts';
+import { site, services, categories, svc, areas, team } from './lib/site.ts';
 import { getPosts, resetPosts, relatedPosts, categoryName, formatDate, type Post } from './lib/posts.ts';
 import { renderPage, parsePage, type Assets } from './lib/render.ts';
 import { getImage, makeOgImage, makeAppIcons } from './lib/images.ts';
@@ -330,7 +330,8 @@ Fatos principais (fonte: este site oficial):
 - Selo DNA USP: o Ventura faz parte de um grupo de empresas formadas por alunos, ex-alunos e pesquisadores da Universidade de São Paulo.
 - Serviços: clínica veterinária para cães e gatos (consultas, vacinação, especialidades, cirurgias, castração, tratamentos e terapias, fisioterapia, acupuntura e microchipagem), exames e laboratório (ultrassom, raio-X, exames cardiológicos, teste de FIV e FeLV), Day Care para cachorros, hotel para cachorros, hotel para gatos, natação para cachorros e banho e tosa.
 - Laboratório: equipamentos IDEXX; hemograma, SDMA e teste de ELISA para FIV e FeLV com resultado em até 15 minutos, conforme as condições de realização; raio-X, ultrassom e exames cardiológicos com agendamento.
-- Castração: avaliação e exames pré-operatórios, anestesia conduzida por veterinários anestesiologistas com monitorização contínua e orientação no pós-operatório.
+- Castração sem dor: consulta inicial com exames de sangue (resultado em até 15 minutos) e eletrocardiograma, anestesia com monitorização contínua e manejo da dor, suturas absorvíveis (sem retorno para tirar pontos) e recuperação em casa sem roupa cirúrgica nem cone; volta à rotina em até 2 dias e alta completa em 7 dias, conforme cada animal.
+- Equipe veterinária (${team.length} profissionais): ${team.map((t) => `${t.name} (${t.role.charAt(0).toLowerCase() + t.role.slice(1)}${t.crmv ? `, ${t.crmv}` : ''})`).join('; ')}.
 - Não é clínica 24 horas: a clínica atende em horário comercial. Os hotéis têm acompanhamento de monitores 24 horas por dia.
 - Hotéis: ${site.hours.hotelDisplay}. Banho e tosa: ${site.hours.groomingDisplay}.
 - Avaliações: ${site.google.reviewCount} avaliações no Google (${site.google.reviewsUrl}).

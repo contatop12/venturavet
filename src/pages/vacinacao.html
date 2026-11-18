@@ -164,23 +164,10 @@ bodyClass: pg-vacinacao
   </div>
 </section>
 
-<section class="section section--nevoa" id="equipe" aria-labelledby="equipe-titulo">
-  <div class="wrap split">
-    <div>
-      <h2 id="equipe-titulo" data-reveal>Atendimento no Paraíso desde 2007</h2>
-      <div class="prose" data-reveal style="--i:1">
-        <p>O Ventura atende cães e gatos no Paraíso desde 2007. À frente da clínica está a {{site.founder.name}}, médica-veterinária formada pela FMVZ-USP, proprietária e responsável técnica.</p>
-        <p>O atendimento felino conta com estrutura dedicada em uma clínica com selo {{site.credentials.catFriendly}}.</p>
-        <p><strong>{{site.founder.name}}</strong><br>{{site.founder.crmv}}</p>
-      </div>
-      <p class="sec-cta"><a class="btn" href="/especialistas/"><x-icon name="graduation-cap"></x-icon>Conhecer nossa equipe</a></p>
-      <!-- CONFIRMAR COM CLIENTE: se a composição da equipe na foto permanece atual -->
-    </div>
-    <div class="team-pair" data-reveal>
-      <x-img src="equipe-ventura-parede-verde.jpg" alt="Equipe do Ventura Vet reunida em frente à parede verde da clínica" widths="360,540,720" sizes="(min-width: 860px) 40vw, 90vw"></x-img>
-    </div>
-  </div>
-</section>
+<x-equipe titulo="A equipe que acompanha a saúde do seu pet" foto="equipe-ventura-na-fachada.jpg" foto-alt="Equipe do Ventura Vet reunida na fachada da clínica, na Rua Otávio Nébias" legenda="Equipe do Ventura na fachada da clínica, na Rua Otávio Nébias." fundo="nevoa">
+  <p>A vacinação é feita com avaliação veterinária e protocolo definido para cada fase da vida do pet. Gatos contam com consultório exclusivo, em uma clínica com selo {{site.credentials.catFriendly}}.</p>
+  <p>À frente da clínica está a {{site.founder.name}}, médica-veterinária formada pela FMVZ-USP, proprietária e responsável técnica.</p>
+</x-equipe>
 
 <section class="section" id="avaliacoes" aria-labelledby="avaliacoes-titulo">
   <div class="wrap">
