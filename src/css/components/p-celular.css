@@ -1,0 +1,168 @@
+/* ---------- Celular: respiro, hierarquia e compactação das páginas internas ----------
+   Mesmo critério das páginas de especialidade (p-especialidades.css, bloco "Celular"), aplicado ao restante do site.
+   Só vale em tela estreita; o desktop não muda. As páginas de especialidade e de especialistas já têm bloco próprio. */
+@media (max-width: 600px) {
+  body:not(.pg-especialidade, .pg-especialistas) {
+    /* Banner: foto menor para o título e o botão aparecerem logo; etiqueta, título e texto com respiro */
+    .page-hero__art { max-width: 15rem; margin-bottom: 0.5rem; }
+    .page-hero__art:has(.hero-duo) { max-width: 18rem; }
+    .page-hero .castra__kicker { margin-bottom: 1rem; }
+    .page-hero__lede { margin-top: 1rem; font-size: 1.05rem; }
+    .page-hero__actions { margin-top: 1.5rem; gap: 0.7rem; }
+    .page-hero__actions + .pills { margin-top: 1.5rem; gap: 0.45rem 1.25rem; }
+    .page-hero .pills li { min-height: 0; }
+    .page-hero { padding-bottom: 1.5rem; }
+
+    /* Cabeçalhos de seção */
+    .section-head { margin-bottom: 1.5rem; }
+    .section-head h2 { margin-bottom: 0; }
+    .section-head p { margin-top: 0.85rem; font-size: 1.02rem; line-height: 1.55; }
+    .split h2 + *, .duo h2 + *, .duo h3 + *, .highlight h2 + *, .highlight h3 + * { margin-top: 0.9rem; }
+    .split h2 + .prose, .split h2 + p { margin-top: 0.9rem; }
+    .duo h2, .duo h3 { margin-bottom: 0; }
+
+    /* Botões: largura cheia, rótulo centralizado, alvo de toque confortável; quando seguidos, com respiro */
+    main .btn { width: 100%; justify-content: center; text-align: center; min-height: 3.1rem; }
+    main :not(.acao-bloco, .cta-row, .page-hero__actions, .cta-final__actions, .svc-row__actions) > .btn + .btn { margin-top: 0.7rem; }
+    main :is(.acao-bloco, .cta-row, .page-hero__actions, .cta-final__actions, .svc-row__actions) { gap: 0.7rem; }
+    &.pg-clinica .card .btn { text-align: center; }
+    .acao-bloco, &.pg-terapias .cta-row, &.pg-exames .cta-row { margin-top: 1.25rem; }
+    .link-more { min-height: 2.75rem; display: inline-flex; align-items: center; }
+
+    /* Cartões com ícone: lista compacta, ícone à esquerda e texto à direita */
+    .cards { gap: 0.6rem; }
+    .cards .card:has(> .icon) {
+      display: grid; grid-template-columns: auto minmax(0, 1fr); column-gap: 0.85rem; row-gap: 0.4rem; align-items: start; padding: 0.95rem 1rem;
+      > .icon { grid-row: 1 / span 2; width: 2.4rem; height: 2.4rem; padding: 0.5rem; }
+      > h3 { font-size: 1.05rem; line-height: 1.25; align-self: center; }
+      > p { grid-column: 2; font-size: 0.92rem; line-height: 1.5; }
+      > :not(.icon, h3, p) { grid-column: 1 / -1; margin-top: 0.3rem; }
+      .btn { width: auto; justify-self: start; min-height: 2.6rem; padding: 0.5rem 1.15rem; font-size: 0.95rem; }
+    }
+    &.pg-clinica .card .card__cta { padding-top: 0.3rem; }
+    .nota { margin-top: 1rem; font-size: 0.93rem; }
+
+    /* Passos numerados: número ao lado do título */
+    .steps { gap: 0.6rem; }
+    .steps > li {
+      padding: 1rem 1.1rem 1.1rem 4rem; border-radius: var(--r-md);
+      &::before { top: 1rem; left: 1rem; width: 2.2rem; height: 2.2rem; }
+      h3 { font-size: 1.1rem; line-height: 1.25; }
+      > p { margin-top: 0.4rem; font-size: 0.93rem; line-height: 1.5; }
+    }
+
+    /* Painéis lado a lado e destaques em laranja */
+    .duo { gap: 1rem; }
+    .duo > * { padding: 1.35rem 1.25rem; }
+    .duo p + p, .duo p + .checklist, .duo .checklist + p, .duo .prose p + p { margin-top: 0.75rem; }
+    .duo .checklist { margin-top: 1rem; }
+    .duo .btn, .highlight .btn { margin-top: 1.1rem; }
+    .highlight { padding: 1.4rem 1.25rem; border-radius: var(--r-md); }
+    .highlight p + p { margin-top: 0.75rem; }
+    :not(.duo) > .highlight:not(:first-child) { margin-top: 1.25rem; }
+    .highlight .checklist { margin-top: 1rem; }
+    .aviso { margin-top: 1rem; padding: 0.9rem 1rem; font-size: 0.95rem; }
+    .highlight--row { gap: 0.9rem; }
+    .highlight__icon { width: 3rem; height: 3rem; padding: 0.7rem; }
+
+    /* Destaques curtos, faixas e áreas de atendimento */
+    &.pg-clinica .destaques { gap: 0.6rem; margin-top: 1.25rem; }
+    &.pg-clinica .destaques li { padding: 0.9rem 1rem; }
+    &.pg-clinica .destaques p { margin-top: 0.45rem; }
+    &.pg-clinica .area-grid { gap: 0.6rem; }
+    &.pg-clinica .area-grid li { padding: 0.85rem 1rem; }
+    &.pg-clinica .faixa { gap: 0.6rem 1rem; padding: 0.9rem 1rem; }
+    &.pg-clinica .outros { gap: 0.55rem; }
+    &.pg-clinica .outros a { min-height: 2.75rem; align-items: center; }
+    &.pg-clinica .pet-cards { gap: 1rem; }
+    &.pg-clinica .pet-card__body { gap: 0.6rem; padding: 1.1rem; }
+    &.pg-clinica .pet-card__body .btn { align-self: stretch; margin-top: 0.4rem; }
+    &.pg-clinica .loc h2 + * { margin-top: 0.9rem; }
+    &.pg-clinica .loc .hours { padding: 0.85rem 1rem; }
+    &.pg-clinica .complemento { padding: 1.25rem; }
+    &.pg-clinica .equipe-id { margin-top: 1rem; }
+
+    /* Cartões de serviço (home e Serviços): foto ao lado do texto, lista curta em vez de cartões altos */
+    .svc-cards { gap: 0.75rem; }
+    .svc-card__link { flex-direction: row; align-items: stretch; }
+    .svc-card__img, .svc-card--lg .svc-card__img { flex: 0 0 34%; aspect-ratio: auto; min-height: 7.5rem; }
+    .svc-card__body { justify-content: center; gap: 0.4rem; padding: 0.85rem 0.95rem; }
+    .svc-card__name, .svc-card--lg .svc-card__name { font-size: 1.1rem; }
+    .svc-card__desc { flex: none; font-size: 0.9rem; line-height: 1.45; }
+    .svc-card__go { display: block; align-self: flex-start; margin-top: 0.15rem; font-size: 0.93rem; line-height: 1.25; }
+    .svc-card__go .icon { display: inline-block; margin-left: 0.3rem; vertical-align: -0.2em; }
+
+    /* Blog: cartões em lista, miniatura ao lado do título */
+    .post-grid { gap: 0.75rem; }
+    .post-card__link { flex-direction: row; }
+    .post-card__media { flex: 0 0 34%; aspect-ratio: auto; min-height: 7.5rem; }
+    .post-card__body { gap: 0.45rem; padding: 0.85rem 0.95rem; justify-content: center; }
+    .post-card__title { font-size: 1.02rem; line-height: 1.25; }
+    .post-card__meta { padding-top: 0.15rem; font-size: 0.8rem; gap: 0.15rem 0.75rem; }
+
+    /* Hospedagem: cartões de escolha com foto mais baixa e botão em largura cheia */
+    &.pg-hospedagem .hosp-choices { gap: 1rem; }
+    &.pg-hospedagem .hosp-choice picture { aspect-ratio: 16 / 10; }
+    &.pg-hospedagem .hosp-choice__body { padding: 1.1rem; gap: 0.5rem; }
+    &.pg-hospedagem .hosp-choice .btn { align-self: stretch; margin-top: 0.4rem; }
+    &.pg-hospedagem .hosp-actions { gap: 0.7rem; margin-top: 1.25rem; }
+    &.pg-hospedagem .hosp-seal { margin-top: 1rem; }
+    &.pg-hospedagem .hosp-note { margin-top: 1rem; }
+    &.pg-hospedagem .hosp-oper { padding: 0.9rem 1rem; }
+
+    /* Galerias: foto sozinha na última linha ocupa a largura toda (sem buraco na grade) */
+    .gallery--grid picture:last-child:nth-child(odd), &.pg-nat .nat-galeria picture:last-child:nth-child(odd) { grid-column: 1 / -1; aspect-ratio: 16 / 9; }
+
+    /* Exames: blocos, ícone decorativo e cartões de prazo */
+    &.pg-exames .exame-bloco { gap: 0.5rem; padding: 1.1rem; }
+    &.pg-exames .exame-bloco .btn, &.pg-exames .fast > li .btn { align-self: stretch; }
+    &.pg-exames .exame-icone { max-width: 7.5rem; }
+    &.pg-exames .exame-bloco h3 + p { margin-top: 0; }
+    &.pg-exames .cta-row { margin-top: 1.25rem; gap: 0.7rem; }
+    .fast { gap: 0.7rem; }
+    .fast > li { padding: 1.1rem; gap: 0.5rem; }
+    .lab-group { padding: 1.1rem; }
+    .lab-note { margin-top: 1rem; padding: 0.9rem 1rem; }
+
+    /* Serviços do grupo "servicos" (tratamentos, microchipagem, natação, banho e tosa) */
+    &.pg-trat .three { gap: 0.6rem; margin-top: 1.25rem; }
+    &.pg-trat .three li { padding: 0.95rem 1rem; }
+    &.pg-trat .tblock__alert { padding: 0.9rem 1rem; }
+    &.pg-micro .trio { gap: 1.5rem; margin-top: 1.25rem; }
+    &.pg-micro .trio li { padding: 1.1rem; }
+    &.pg-micro .notgps { margin-top: 1.25rem; }
+    /* Avisos curtos não podem parecer botão: fundo suave e filete lateral, sem bloco laranja cheio */
+    .highlight.notgps, &.pg-trat .tblock__alert { padding: 0.9rem 1rem 0.9rem 1.15rem; border-radius: var(--r-md); border-left: 4px solid var(--laranja); background: var(--laranja-suave); font-size: 0.97rem; line-height: 1.5; }
+    &.pg-micro .species .btn { margin-top: 1rem; }
+    &.pg-nat .diffs { margin-top: 1.25rem; }
+
+    .section-actions + p, .sec-cta + p, .cta-row + p, .hosp-note + p, .hosp-actions + p { margin-top: 0.75rem; }
+    p:has(> .link-more + .link-more) { row-gap: 0.4rem; }
+    .field > legend + * { margin-top: 0.5rem; }
+    .loc__hours p { margin-top: 0.5rem; }
+
+    /* Castração */
+    &.pg-castracao .castra-dif { gap: 0.75rem; }
+    &.pg-castracao .castra-dif__item { gap: 0.9rem; padding: 1.25rem; }
+    &.pg-castracao .castra-dif__art { min-height: 0; }
+    &.pg-castracao .castra-dif__art--icon .icon { width: 4rem; height: 4rem; padding: 1rem; }
+    &.pg-castracao .castra-dif__art picture { width: 7rem; }
+    &.pg-castracao .castra-tempo { gap: 0.7rem; }
+    &.pg-castracao .castra-tempo h3 { margin-top: 0.5rem; }
+    &.pg-castracao .castra-tempo li { padding: 1.1rem 1.1rem 1.25rem; }
+    &.pg-castracao .sec-cta { margin-top: 1.25rem; gap: 0.7rem; }
+
+    /* Onde estamos: cartões de bairro mais compactos */
+    .area-cards { gap: 0.6rem; }
+    .area-card { gap: 0.45rem; padding: 0.95rem 1rem; }
+    .area-card a { min-height: 2.5rem; }
+
+    /* Avaliações e perguntas frequentes */
+    .reviews__summary { margin-top: 0; margin-bottom: 1.25rem; gap: 0.25rem 1rem; }
+    .reviews__score { margin-bottom: 0.25rem; }
+    .reviews__links { gap: 0.4rem 1.25rem; }
+    .highlight + .cards, .answer + .cards, .highlight + .duo { margin-top: 1rem; }
+    .faq__head p { margin-top: 0.85rem; }
+    .faq__grid { gap: 1.75rem; }
+  }
+}
