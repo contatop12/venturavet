@@ -72,8 +72,6 @@
 .pg-clinica .loc__foto img { width: 100%; height: 100%; object-fit: cover; }
 
 /* Equipe compacta */
-.pg-clinica .equipe-id { margin-top: 1.25rem; padding-left: 1rem; border-left: 4px solid var(--laranja); line-height: 1.5; }
-.pg-clinica .equipe-id strong { display: block; font-family: var(--f-display); font-weight: 800; font-size: 1.1rem; }
 
 /* Links para os demais serviços */
 .pg-clinica .outros { display: flex; flex-wrap: wrap; align-items: center; gap: 0.6rem; padding: 0; list-style: none; }

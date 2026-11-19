@@ -7,6 +7,8 @@
 .section-head h2 { font-size: var(--step-4); letter-spacing: -0.03em; }
 .section-head p { margin-top: 1rem; font-size: var(--step-1); line-height: 1.55; color: var(--tinta-2); }
 .section-head--row { display: flex; align-items: end; justify-content: space-between; gap: 1rem 2rem; flex-wrap: wrap; max-width: none; }
+/* Dentro de um parágrafo (classe posta no build): link de texto comum, sem altura mínima */
+:is(main, footer) a.link-more.link-more--inline { display: inline; min-height: 0; text-decoration: underline; text-underline-offset: 0.15em; }
 .link-more {
   display: inline-flex; align-items: center; min-height: 2.75rem; font-weight: 700; color: var(--laranja-texto);
   text-decoration-thickness: 2px;
@@ -44,7 +46,8 @@
 /* ---------- FAQ ---------- */
 .faq__grid { display: grid; grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr); gap: clamp(2rem, 5vw, 5rem); align-items: start; }
 .faq__head { position: sticky; top: calc(var(--header-h) + 2rem); }
-.faq__head h2 { font-size: var(--step-4); letter-spacing: -0.03em; }
+.faq__head { container-type: inline-size; }
+.faq__head h2 { font-size: min(var(--step-4), 13.5cqi); letter-spacing: -0.03em; }
 .faq__list { border-top: 2px solid var(--tinta); }
 .faq__item {
   border-bottom: 1px solid var(--linha);
@@ -94,7 +97,8 @@
 .review:nth-child(3n) .review__avatar { background: var(--tinta); color: var(--branco); }
 
 /* ---------- CTA final + mapa ---------- */
-.cta-final { padding-block: clamp(6rem, 4rem + 8vw, 11rem) var(--section); }
+/* Espaço para os pets que espiam sobre o painel: a altura visível da imagem (≈ 30% da largura dela) + folga */
+.cta-final { padding-block: calc(min(12.1rem, 24vw) + 1rem) var(--section); }
 .cta-final__panel {
   position: relative; display: grid; grid-template-columns: 1fr 1fr; gap: clamp(1.5rem, 4vw, 3.5rem);
   padding: clamp(1.5rem, 1rem + 3vw, 3.5rem); border-radius: clamp(1.5rem, 3vw, 3rem);
@@ -198,3 +202,17 @@
 .lightbox__prev { left: 1rem; top: 50%; translate: 0 -50%; }
 .lightbox__next { right: 1rem; top: 50%; translate: 0 -50%; }
 @media (max-width: 600px) { .lightbox__prev, .lightbox__next { top: auto; bottom: 3.5rem; translate: none; } }
+
+/* Avaliações dentro de .wrap (páginas de serviço): resumo e primeiro cartão alinhados à coluna do texto;
+   depois de um subtítulo (h3.subhead) o resumo não sobe por cima dele */
+.wrap .reviews__summary { width: 100%; }
+.wrap .reviews__viewport { margin-inline: calc(-1 * var(--gutter)); }
+.subhead + .reviews .reviews__summary { margin-top: 0; }
+
+/* Respiro mínimo antes e depois de ações (botões, links "Conheça", avisos). Especificidade zero:
+   vale só onde nenhuma regra da página já define a margem */
+:where(main) :where(p, ul, ol, div) + :where(p:has(> .btn, > .link-more), .highlight, .section-actions, .cta-row, .acao-bloco) { margin-top: 1.25rem; }
+:where(main) :where(.section-actions, .cta-row, .acao-bloco, .btn) + :where(p) { margin-top: 1rem; }
+:where(.faq__head) h2 + p { margin-top: 0.85rem; }
+/* Cartão de visita do CTA final: endereço e horários em uma coluna até o painel ter largura para dois */
+@media (max-width: 1200px) { .cta-final__info { grid-template-columns: 1fr; } }

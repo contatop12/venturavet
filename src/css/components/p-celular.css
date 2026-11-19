@@ -80,7 +80,6 @@
     &.pg-clinica .loc h2 + * { margin-top: 0.9rem; }
     &.pg-clinica .loc .hours { padding: 0.85rem 1rem; }
     &.pg-clinica .complemento { padding: 1.25rem; }
-    &.pg-clinica .equipe-id { margin-top: 1rem; }
 
     /* Cartões de serviço (home e Serviços): foto ao lado do texto, lista curta em vez de cartões altos */
     .svc-cards { gap: 0.75rem; }

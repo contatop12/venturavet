@@ -23,7 +23,7 @@
 /* Localização */
 .pg-terapias .local { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 0.9fr); gap: clamp(1.5rem, 4vw, 3.5rem); align-items: center; }
 .pg-terapias .local .nap { margin-top: 1.25rem; }
-.pg-terapias .local .hours { margin-top: 1.25rem; padding-top: 0; }
+.pg-terapias .local .hours { margin-top: 1.25rem; }
 .pg-terapias .local h2 + .prose { margin-top: 1rem; }
 .pg-terapias .prose + p { margin-top: 1.5rem; }
 .pg-terapias .local__nota { margin-top: 1rem; color: var(--tinta-2); line-height: 1.55; }

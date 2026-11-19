@@ -85,7 +85,7 @@
 @media (max-width: 1000px) { .profs { grid-template-columns: 1fr; } }
 @media (max-width: 600px) {
   .prof { grid-template-columns: 5.25rem minmax(0, 1fr); gap: 0.9rem; }
-  .prof--destaque { grid-template-columns: 1fr; gap: 1.1rem; padding: 1rem; .prof__foto { width: min(100%, 13rem); } .btn { width: 100%; justify-content: center; } }
+  .prof--destaque { grid-template-columns: 1fr; gap: 1.1rem; padding: 1rem; .prof__foto { width: 100%; aspect-ratio: 4 / 3; } .btn { width: 100%; justify-content: center; } }
 }
 
 /* ---------- Banner das páginas de especialidade: retrato + identificação em HTML ---------- */
@@ -179,7 +179,8 @@
     .page-hero .castra__kicker { margin-bottom: 1rem; }
     .esp-hero__art { max-width: 14.5rem; margin-bottom: 0.5rem; }
     .esp-hero__art--inst { max-width: 100%; }
-    .esp-hero__id { max-width: 88%; padding: 0.65rem 0.9rem; strong { font-size: 1rem; } span { font-size: 0.82rem; } }
+    /* Cartão do nome abaixo da foto, encostando só na borda: nomes longos em duas linhas não cobrem o rosto */
+    .esp-hero__id { position: relative; bottom: auto; max-width: 100%; margin-top: -1.75rem; padding: 0.65rem 0.9rem; strong { font-size: 1rem; } span { font-size: 0.82rem; } }
     .page-hero__lede { margin-top: 1rem; font-size: 1.05rem; }
     .page-hero__actions { margin-top: 1.5rem; gap: 0.7rem; .btn { flex: 1 1 100%; justify-content: center; text-align: center; min-height: 3.1rem; } }
     .page-hero__actions + .pills { margin-top: 1.5rem; gap: 0.45rem 1.25rem; }

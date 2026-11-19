@@ -111,3 +111,7 @@
 .pg-hospedagem .hosp-seal--logo { gap: 0.85rem; picture { display: block; flex: none; width: 8.5rem; } img { width: 100%; height: auto; } }
 /* Vídeo da equipe no lugar da foto (Quem somos) */
 .equipe-bloco__foto--video video { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; border-radius: clamp(1.25rem, 2.5vw, 2rem); background: var(--linha); box-shadow: 0 24px 48px -24px rgb(19 41 61 / 45%); }
+/* Faixa completa: mesma coluna para os dois logos, para os textos começarem alinhados quando empilham */
+.selos:not(.selos--compact) .selo { display: grid; grid-template-columns: 9.5rem minmax(0, 1fr); }
+.selos:not(.selos--compact) .selo--dna .selo__logo { justify-self: center; }
+@media (max-width: 420px) { .selos:not(.selos--compact) .selo { grid-template-columns: 7.5rem minmax(0, 1fr); } .selos:not(.selos--compact) .selo--cat .selo__logo { width: 7.5rem; } .selos:not(.selos--compact) .selo--dna .selo__logo { width: 4.75rem; } }

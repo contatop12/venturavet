@@ -119,6 +119,20 @@ export async function renderPage(meta: PageMeta, body: string, assets: Assets, e
   const left = $('*').toArray().filter((n) => n.type === 'tag' && (n as unknown as { tagName: string }).tagName.startsWith('x-')) as unknown as { tagName: string }[];
   if (left.length) throw new Error(`Componente desconhecido: <${left[0].tagName}> em ${meta.path}`);
 
+  // Termos que não podem quebrar linha no hífen ou no espaço ("raio-" / "X", "CRMV-" / "SP 15.768")
+  const nobr = /(CRMV-SP\s[\d.]+|\b[Rr]aio[-\s]X\b)/g;
+  const esc = (s: string) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  $('body *:not(script):not(style):not(textarea):not(.nobr)').contents().each((_, n) => {
+    const data = (n as unknown as { type: string; data?: string }).type === 'text' ? (n as unknown as { data: string }).data : '';
+    if (!data || !data.match(nobr)) return;
+    $(n).replaceWith(esc(data).replace(nobr, '<span class="nobr">$1</span>'));
+  });
+  // .link-more no meio de um parágrafo vira link de texto: a altura mínima de alvo de toque abriria buracos entre as linhas
+  $('.link-more').each((_, a) => {
+    const solto = $(a).parent().contents().toArray().some((n) => n !== a && (n as unknown as { type: string }).type === 'text' && ((n as unknown as { data: string }).data ?? '').trim());
+    if (solto) $(a).addClass('link-more--inline');
+  });
+
   // Botões "Entrar em contato" / "Atendimento": abrem o seletor de atendimento (<dialog id="atendimento">).
   // Invoker Commands nativos; o módulo atendimento.ts cobre navegadores sem suporte.
   $('[data-atendimento]').each((_, node) => {

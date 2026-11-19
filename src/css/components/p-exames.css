@@ -25,7 +25,6 @@
 }
 
 /* Selo Cat Friendly (foto do certificado) abaixo dos blocos por espécie */
-.pg-exames .exame-selo { margin-top: 1.5rem; max-width: 24rem; img { width: 100%; height: auto; border-radius: var(--r-lg); } }
 
 /* Endereço, horários e notas */
 .pg-exames .exame-end { margin-top: 1.25rem; font-style: normal; line-height: 1.7; color: var(--tinta-2); strong { color: var(--tinta); } }
@@ -46,3 +45,4 @@
 @media (max-width: 860px) {
   .pg-exames .exame-icone { max-width: 12rem; }
 }
+.pg-fiv .fiv-tempo { align-self: center; justify-self: center; align-content: center; width: min(100%, 19rem); aspect-ratio: 1; }

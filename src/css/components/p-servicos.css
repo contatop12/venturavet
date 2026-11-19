@@ -31,7 +31,8 @@
   .tblock h2 { font-size: var(--step-3); letter-spacing: -0.03em; }
   .tblock p { margin-top: 0.9rem; max-width: 46rem; line-height: 1.65; }
   .tblock .link-more { margin-top: 0.75rem; }
-  .tblock__alert { margin-top: 1.25rem; padding: 1rem 1.25rem; border-radius: var(--r-md); background: var(--laranja); font-weight: 700; max-width: 46rem; }
+  /* Aviso curto: nota com filete lateral, sem bloco laranja cheio (não pode parecer botão) */
+  .tblock__alert { margin-top: 1.25rem; padding: 0.95rem 1.15rem 0.95rem 1.25rem; border-radius: var(--r-md); border-left: 4px solid var(--laranja); background: var(--laranja-suave); font-weight: 700; line-height: 1.5; max-width: 46rem; }
   .three { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; margin-top: 1.5rem; padding: 0; list-style: none; }
   .three li { padding: 1.25rem 1.4rem; border-radius: var(--r-lg); background: var(--branco); border: 1px solid var(--linha); }
   .three h3 { font-size: var(--step-1); }
@@ -52,7 +53,7 @@
   .trio .icon { width: 2.75rem; height: 2.75rem; padding: 0.6rem; border-radius: 999px; background: var(--tinta); color: var(--laranja); }
   .trio h3 { margin-top: 0.85rem; font-size: var(--step-2); }
   .trio p { margin-top: 0.4rem; color: var(--tinta-2); line-height: 1.55; }
-  .notgps { margin-top: 1.5rem; }
+  .notgps { margin-top: 1.5rem; padding: 0.95rem 1.15rem 0.95rem 1.25rem; border-radius: var(--r-md); border-left: 4px solid var(--laranja); background: var(--laranja-suave); max-width: 46rem; }
   .species .btn { margin-top: 1.25rem; }
   .species .species__media { margin-top: 1.25rem; overflow: hidden; border-radius: var(--r-md); }
   .species .species__media img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; object-position: 50% 25%; }
@@ -69,7 +70,8 @@
   .nat-galeria img { width: 100%; height: 100%; object-fit: cover; }
   .diffs { margin-top: 1.5rem; }
   .req-media { max-width: 26rem; }
-  .req-media picture { display: block; overflow: hidden; border-radius: var(--r-lg); }
+  /* A foto já vem recortada na borda direita: fundo branco faz o corte coincidir com a moldura */
+  .req-media picture { display: block; overflow: hidden; border-radius: var(--r-lg); background: var(--branco); }
 }
 @media (max-width: 700px) { .pg-nat .nat-galeria { grid-template-columns: 1fr 1fr; gap: 0.6rem; } }
 

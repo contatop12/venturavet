@@ -138,7 +138,8 @@
 .facts dd { margin-top: 0.4rem; font-size: 0.95rem; line-height: 1.4; color: #c9d6e1; }
 .section--nevoa .facts, .facts--light { border-color: var(--linha); dd { color: var(--tinta-2); } dt { color: var(--laranja-texto); } }
 @media (max-width: 860px) { .about__grid { grid-template-columns: 1fr; } .about__media { max-width: 26rem; } }
-@media (max-width: 480px) { .facts { grid-template-columns: 1fr 1fr; } }
+/* Três números lado a lado também no celular (em 2 colunas o terceiro ficava sozinho) */
+@media (max-width: 480px) { .facts { gap: 0.75rem; } .facts dd { font-size: 0.82rem; } }
 
 /* ---------- Laboratório na home: exames em até 15 minutos ---------- */
 .lab15__grid { display: grid; grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr); gap: clamp(2rem, 6vw, 5rem); align-items: center; }
